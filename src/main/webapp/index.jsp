@@ -8,5 +8,6 @@
 </head>
 <body>
 	<jsp:forward page="main.do"/>
+	gggg
 </body>
 </html>
