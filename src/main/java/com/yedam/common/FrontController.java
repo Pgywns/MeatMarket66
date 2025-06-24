@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.control.BoardControl;
 
 import com.yedam.control.CartControl;
+import com.yedam.control.CompleteOrder;
 import com.yedam.control.MainControl;
 import com.yedam.control.MemberControl;
 import com.yedam.control.OrderControl;
@@ -45,7 +46,7 @@ public class FrontController extends HttpServlet {
 		map.put("/cart.do", new CartControl());
 		//주문페이지
 		map.put("/order.do", new OrderControl());
-
+		map.put("/complete.do", new CompleteOrder());
 		// 관리자
 		map.put("/productManagement.do", new ProductManagementControl());
 		

@@ -159,7 +159,7 @@
 					<div
 						class="row g-4 text-center align-items-center justify-content-center pt-4">
 						<button type="button"
-							class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary">Place
+							class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary" onclick="location.href='complete.do'">Place
 							Order</button>
 					</div>
 				</div>
