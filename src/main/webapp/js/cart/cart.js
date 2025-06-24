@@ -1,14 +1,16 @@
 /*
-* cart.js
+* cart.js   fetch로 DB랑 연동필요. 기능만구현했음. 
 */
+
+
+//장바구니 상품목록출력
 let basketBody = document.querySelector('#basketBody');
 let productList = makeTemplet();
-console.log(basketBody);
 basketBody.insertAdjacentHTML("beforeend", productList);
 
 function makeTemplet(){
 		let tempelet = `
-		<tr>
+		<tr class="cartProduct">
 			<th scope="row">
 				<div class="d-flex align-items-center">
 					<input type="checkbox" id="selectdeProduct"
@@ -46,11 +48,26 @@ function makeTemplet(){
 				<p class="mb-0 mt-4">2.99 $</p>
 			</td>
 			<td>
-				<button class="btn btn-md rounded-circle bg-light border mt-4">
+				<button id="delbtn" class="btn btn-md rounded-circle bg-light border mt-4" onclick="delitem(event)">
 					<i class="fa fa-times text-danger"></i>
 				</button>
 			</td>
 		
 		</tr>`;
 	return tempelet;	
+}
+
+
+
+//delbtn 상품목록 삭제버튼
+function delitem(event){
+	let delbtn = event.target;
+	console.log(delbtn);
+	delbtn.closest('.cartProduct').remove();
+}
+
+
+//전체삭제
+function delAll(){
+	document.querySelector('#basketBody').remove();
 }
