@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+import com.yedam.control.BoardControl;
+
 import com.yedam.control.CartControl;
 import com.yedam.control.MemberControl;
 import com.yedam.control.OrderControl;
@@ -30,6 +33,7 @@ public class FrontController extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		map.put("/main.do", new MainControl());
+		//상품
 		map.put("/productDetail.do", new ProductDetailControl());
 		map.put("/proudctList.do", new ProductListControl());
 		
@@ -44,6 +48,10 @@ public class FrontController extends HttpServlet {
 
 		// 관리자
 		map.put("/productManagement.do", new ProductManagementControl());
+		
+		//고객센터
+		map.put("/board.do", new BoardControl());
+
 
 	}
 	
