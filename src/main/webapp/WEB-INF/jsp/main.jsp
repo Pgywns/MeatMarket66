@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-   	
+   <style>
+   .hero-header {
+    background: linear-gradient(rgba(248, 223, 173, 0.1), rgba(248, 223, 173, 0.1)), url(img/hero-img.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+   </style>
 
         <!-- Hero Start -->
         <div class="container-fluid py-5 mb-5 hero-header">
