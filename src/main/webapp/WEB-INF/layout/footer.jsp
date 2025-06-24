@@ -52,12 +52,6 @@
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                         <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>육월육일</a>, All right reserved.</span>
                     </div>
-                    <div class="col-md-6 my-auto text-center text-md-end text-white">
-                        <!--/*** This template is free as long as you keep the below authorâs credit link/attribution link/backlink. ***/-->
-                        <!--/*** If you'd like to use the template without the below authorâs credit link/attribution link/backlink, ***/-->
-                        <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                        Designed By HTML Codex
-                    </div>
                 </div>
             </div>
         </div>
