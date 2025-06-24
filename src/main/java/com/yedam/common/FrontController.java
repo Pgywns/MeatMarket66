@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.control.MemberControl;
+import com.yedam.control.ProductDetailControl;
 import com.yedam.service.MainControl;
 
 
@@ -24,7 +25,8 @@ public class FrontController extends HttpServlet {
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		map.put("/main.do", new MainControl()); // 글 목록
+		map.put("/main.do", new MainControl());
+		map.put("/productDetail.do", new ProductDetailControl());
 		
 		//로그인 회원가입
 		map.put("/member.do", new MemberControl());
