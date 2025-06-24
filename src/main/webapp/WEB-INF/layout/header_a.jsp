@@ -22,6 +22,7 @@
                     </button>
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
+                            <a href="index.html" class="nav-item nav-link active">Home</a>
                             <a href="shop.html" class="nav-item nav-link">Shop</a>
                             <a href="productDetail.do" class="nav-item nav-link">Shop Detail</a>
                             <div class="nav-item dropdown">
@@ -33,8 +34,7 @@
                                     <a href="productManagement.do" class="dropdown-item">상품관리</a>
                                 </div>
                             </div>
-                            <a href="contact.html" class="nav-item nav-link">My page</a>
-                            <a href="contact.html" class="nav-item nav-link">Logout</a>
+                            <a href="contact.html" class="nav-item nav-link">상품관리</a>
                         </div>
                         <div class="d-flex m-3 me-0">
                             <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>

@@ -21,13 +21,12 @@
 					<div class="row g-4">
 						<div class="col-lg-6">
 							<div class="border rounded">
-								<a href="#"> <img src="img/초신선 돼지 목살(19800).png"
-									class="img-fluid rounded" alt="Image">
-								</a>
+								<img src="img/초신선 돼지 목살(19800).png"
+									class="img-fluid rounded" alt="Image" style="margin: 0 auto; display: block;">
 							</div>
 						</div>
 						<div class="col-lg-6 d-flex flex-column">
-							<h4 class="fw-bold mb-3">초신선 돼지 목살</h4>
+							<h4 class="fw-bold mb-3 mt-1">초신선 돼지 목살</h4>
 							<p class="mb-3">Category: 돼지</p>
 							<h5 class="fw-bold mb-3">10,000원</h5>
 							<p class="mb-4">The generated Lorem Ipsum is therefore always
@@ -37,7 +36,7 @@
 								suscipit. Sabertooth peacock flounder; chain pickerel
 								hatchetfish, pencilfish snailfish</p>
 
-							<div class="input-group quantity mb-5" style="width: 100px;">
+							<div class="input-group quantity mt-3" style="width: 100px; margin: 0 auto;">
 								<div class="input-group-btn">
 									<button
 										class="btn btn-sm btn-minus rounded-circle bg-light border">
@@ -55,10 +54,11 @@
 								</div>
 							</div>
 
-							<!-- ë§¨ ìëë¡ ì´ëëë ë²í¼ -->
 							<a href="#"
 								class="btn border border-secondary rounded-pill px-4 py-2 text-primary mt-auto">
-								<i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+								<i class="fa fa-shopping-bag me-2 text-primary"></i> 장바구니
+							</a>
+							<a href="#" class="btn border border-secondary rounded-pill px-4 py-2 text-primary mt-auto"> 구매하기
 							</a>
 						</div>
 						<div class="col-lg-12">
