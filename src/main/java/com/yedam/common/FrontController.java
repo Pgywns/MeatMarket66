@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.control.CartControl;
 import com.yedam.control.MemberControl;
 import com.yedam.control.ProductDetailControl;
+import com.yedam.control.ProductListControl;
 import com.yedam.service.MainControl;
 
 
@@ -28,6 +29,7 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		map.put("/main.do", new MainControl());
 		map.put("/productDetail.do", new ProductDetailControl());
+		map.put("/proudctList.do", new ProductListControl());
 		
 		//로그인 회원가입
 		map.put("/member.do", new MemberControl());
