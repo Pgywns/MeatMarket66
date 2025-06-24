@@ -1,14 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-   	
+   <style>
+   .hero-header {
+    background: linear-gradient(rgba(248, 223, 173, 0.1), rgba(248, 223, 173, 0.1)), url(img/hero-img.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+   </style>
 
         <!-- Hero Start -->
         <div class="container-fluid py-5 mb-5 hero-header">
             <div class="container py-5">
                 <div class="row g-5 align-items-center">
                     <div class="col-md-12 col-lg-7">
-                        <h4 class="mb-3 text-secondary">100% Organic Foods</h4>
-                        <h1 class="mb-5 display-3 text-primary">Organic Veggies & Fruits Foods</h1>
+                        <h4 class="mb-3 text-secondary">100% 국내산!</h4>
+                        <h1 class="mb-5 display-3 text-primary">초신선 국내산 고기만 사용합니다!</h1>
                     </div>
                     <div class="col-md-12 col-lg-5">
                         <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
