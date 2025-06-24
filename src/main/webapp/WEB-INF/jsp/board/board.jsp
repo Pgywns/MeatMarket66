@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
+<div class="container-fluid py-5 mb-5 hero-header">
 <div class="board-container">
 	<nav>
 		<h2>고객 센터</h2>
@@ -43,4 +43,4 @@
 		</div>
 	</div>
 </div>
-
+</div>
