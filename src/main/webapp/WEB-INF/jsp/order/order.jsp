@@ -23,27 +23,27 @@
 					<!-- 주소영역 -->
 					<div class="row my-3">
 						<div>
-							<input type="radio" id="defaultAdd" name="defaultAdd">
+							<input type="radio" id="defaultAdd" name="address">
 							<label for="defaultAdd">기본 배송지</label>
-							<input type="radio" id="newtAdd" name="newAdd">
+							<input type="radio" id="newtAdd" name="address" onclick="postApi()">
 							<label for="newAdd">새로운 배송지 등록</label>
 						</div>
 						<div class="col-md-12 col-lg-6">
 							<div class="form-item w-100">
-								<label class="form-label my-3">우편번호<sup>*</sup></label> <input
+								<label class="form-label my-3" id="sample6_postcode">우편번호<sup>*</sup></label> <input
 									type="text" class="form-control">
 							</div>
 						</div>
 						<div class="col-md-12 col-lg-6">
 							<div class="form-item w-100">
-								<label class="form-label my-3">주소<sup>*</sup></label> <input
+								<label class="form-label my-3" id="sample6_address">주소<sup>*</sup></label> <input
 									type="text" class="form-control">
 							</div>
 						</div>
 						<div class="form-item">
 							<label class="form-label my-3">상세주소<sup>*</sup></label> <input
 								type="text" class="form-control"
-								placeholder="House Number Street Name">
+								placeholder="상세주소">
 						</div>
 					</div>
 					<div class="form-item">
@@ -167,3 +167,32 @@
 		</form>
 	</div>
 </div>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+function postApi(){
+	 new daum.Postcode({
+         oncomplete: function(data) {
+             // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+             // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+             // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+             var addr = ''; // 주소 변수
+
+
+             //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+             if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                 addr = data.roadAddress;
+             } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                 addr = data.jibunAddress;
+             }
+  
+             // 우편번호와 주소 정보를 해당 필드에 넣는다.
+             document.getElementById('sample6_postcode').value = data.zonecode;
+             document.getElementById("sample6_address").value = addr;
+             // 커서를 상세주소 필드로 이동한다.
+             document.getElementById("sample6_detailAddress").focus();
+         }
+     }).open();
+}
+</script>
