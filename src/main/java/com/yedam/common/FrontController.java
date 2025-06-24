@@ -15,6 +15,7 @@ import com.yedam.control.MemberControl;
 import com.yedam.control.OrderControl;
 import com.yedam.control.ProductDetailControl;
 import com.yedam.control.ProductListControl;
+import com.yedam.control.ProductManagementControl;
 import com.yedam.service.MainControl;
 
 
@@ -32,13 +33,18 @@ public class FrontController extends HttpServlet {
 		map.put("/productDetail.do", new ProductDetailControl());
 		map.put("/proudctList.do", new ProductListControl());
 		
-		//로그인 회원가입
+		// 로그인 회원가입
 		map.put("/member.do", new MemberControl());
+		
 		
 		//장바구니
 		map.put("/cart.do", new CartControl());
 		//주문페이지
 		map.put("/order.do", new OrderControl());
+
+		// 관리자
+		map.put("/productManagement.do", new ProductManagementControl());
+
 	}
 	
 	@Override
