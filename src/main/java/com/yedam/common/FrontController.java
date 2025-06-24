@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yedam.control.ProductDetailControl;
 import com.yedam.service.MainControl;
 
 
@@ -23,7 +24,8 @@ public class FrontController extends HttpServlet {
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		map.put("/main.do", new MainControl()); // 글 목록
+		map.put("/main.do", new MainControl());
+		map.put("/productDetail.do", new ProductDetailControl());
 	}
 	
 	@Override
