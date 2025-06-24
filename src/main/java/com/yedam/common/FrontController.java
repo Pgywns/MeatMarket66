@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yedam.control.CartControl;
 import com.yedam.control.MemberControl;
 import com.yedam.service.MainControl;
 
@@ -28,6 +29,9 @@ public class FrontController extends HttpServlet {
 		
 		//로그인 회원가입
 		map.put("/member.do", new MemberControl());
+		
+		//장바구니
+		map.put("/cart.do", new CartControl());
 	}
 	
 	@Override
