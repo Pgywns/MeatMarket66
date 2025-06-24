@@ -1,14 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<style>
+.page-header {
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(img/소고기헤더1.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+</style>
 	<!-- Single Page Header start -->
 	<div class="container-fluid page-header py-5">
 		<h1 class="text-center text-white display-6">Shop Detail</h1>
-		<ol class="breadcrumb justify-content-center mb-0">
-			<li class="breadcrumb-item"><a href="#">Home</a></li>
-			<li class="breadcrumb-item"><a href="#">Pages</a></li>
-			<li class="breadcrumb-item active text-white">Shop Detail</li>
-		</ol>
 	</div>
 	<!-- Single Page Header End -->
 
