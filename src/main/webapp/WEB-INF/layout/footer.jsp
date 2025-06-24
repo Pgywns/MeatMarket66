@@ -56,7 +56,6 @@
                         <!--/*** This template is free as long as you keep the below authorâs credit link/attribution link/backlink. ***/-->
                         <!--/*** If you'd like to use the template without the below authorâs credit link/attribution link/backlink, ***/-->
                         <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                        Designed By HTML Codex
                     </div>
                 </div>
             </div>
