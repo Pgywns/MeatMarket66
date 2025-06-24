@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<script type="text/javascript" src="/js/cart/cart.js">
+<script type="text/javascript" src="./js/cart/cart.js"></script>
 
-</script>
+
 
 <!-- Single Page Header start -->
 <div class="container-fluid page-header py-5">
@@ -27,9 +27,9 @@
 						<th scope="col">삭제</th>
 					</tr>
 				</thead>
-				<tbody>
-					<!-- 장바구니 목록출력 1라인 -->
-					<tr>
+				<tbody id="basketBody">
+	<!-- 장바구니 목록출력 1라인 -->
+			 		<tr>
 						<th scope="row">
 							<div class="d-flex align-items-center">
 								<input type="checkbox" id="selectdeProduct"
@@ -39,7 +39,7 @@
 							</div>
 						</th>
 						<td>
-							<p class="mb-0 mt-4"><a href= "#">Big Banana</a></p>
+							<p class="mb-0 mt-4">Big Banana</p>
 						</td>
 						<td>
 							<p class="mb-0 mt-4">3,000원</p>
@@ -71,97 +71,8 @@
 								<i class="fa fa-times text-danger"></i>
 							</button>
 						</td>
-
 					</tr>
 	<!-- 장바구니 목록출력 1라인 end. -->
-					<!-- <tr>
-						<th scope="row">
-							<div class="d-flex align-items-center">
-								<input type="checkbox" id="selectdeProduct"
-									name="selectdeProduct" /> <img src="img/vegetable-item-5.jpg"
-									class="img-fluid me-5 rounded-circle"
-									style="width: 80px; height: 80px;" alt="" alt="">
-							</div>
-						</th>
-						<td>
-							<p class="mb-0 mt-4">Potatoes</p>
-						</td>
-						<td>
-							<p class="mb-0 mt-4">2.99 $</p>
-						</td>
-						<td>
-							<div class="input-group quantity mt-4" style="width: 100px;">
-								<div class="input-group-btn">
-									<button
-										class="btn btn-sm btn-minus rounded-circle bg-light border">
-										<i class="fa fa-minus"></i>
-									</button>
-								</div>
-								<input type="text"
-									class="form-control form-control-sm text-center border-0"
-									value="1">
-								<div class="input-group-btn">
-									<button
-										class="btn btn-sm btn-plus rounded-circle bg-light border">
-										<i class="fa fa-plus"></i>
-									</button>
-								</div>
-							</div>
-						</td>
-						<td>
-							<p class="mb-0 mt-4">2.99 $</p>
-						</td>
-						<td>
-							<button class="btn btn-md rounded-circle bg-light border mt-4">
-								<i class="fa fa-times text-danger"></i>
-							</button>
-						</td>
-					</tr>
-					<tr>
-
-						 <th scope="row">
-							<div class="d-flex align-items-center">
-								<input type="checkbox" id="selectdeProduct"
-									name="selectdeProduct" /> <img src="img/vegetable-item-2.jpg"
-									class="img-fluid me-5 rounded-circle"
-									style="width: 80px; height: 80px;" alt="" alt="">
-							</div>
-						</th>
-						<td>
-							<p class="mb-0 mt-4">Awesome Brocoli</p>
-						</td>
-						<td>
-							<p class="mb-0 mt-4">2.99 $</p>
-						</td>
-						<td>
-							<div class="input-group quantity mt-4" style="width: 100px;">
-								<div class="input-group-btn">
-									<button
-										class="btn btn-sm btn-minus rounded-circle bg-light border">
-										<i class="fa fa-minus"></i>
-									</button>
-								</div>
-								<input type="text"
-									class="form-control form-control-sm text-center border-0"
-									value="1">
-								<div class="input-group-btn">
-									<button
-										class="btn btn-sm btn-plus rounded-circle bg-light border">
-										<i class="fa fa-plus"></i>
-									</button>
-								</div>
-							</div>
-						</td>
-						<td>
-							<p class="mb-0 mt-4">2.99 $</p>
-						</td>
-						<td>
-							<button class="btn btn-md rounded-circle bg-light border mt-4">
-								<i class="fa fa-times text-danger"></i>
-							</button>
-						</td>
-					</tr>  -->
-					<!-- 장바구니목록 -->
 				</tbody>
 			</table>
 		</div>

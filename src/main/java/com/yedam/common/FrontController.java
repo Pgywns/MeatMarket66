@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.control.CartControl;
 import com.yedam.control.MemberControl;
+import com.yedam.control.OrderControl;
 import com.yedam.control.ProductDetailControl;
 import com.yedam.control.ProductListControl;
 import com.yedam.service.MainControl;
@@ -36,6 +37,8 @@ public class FrontController extends HttpServlet {
 		
 		//장바구니
 		map.put("/cart.do", new CartControl());
+		//주문페이지
+		map.put("/order.do", new OrderControl());
 	}
 	
 	@Override
