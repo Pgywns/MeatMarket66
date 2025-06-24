@@ -14,12 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.control.BoardControl;
 
 import com.yedam.control.CartControl;
+import com.yedam.control.MainControl;
 import com.yedam.control.MemberControl;
 import com.yedam.control.OrderControl;
 import com.yedam.control.ProductDetailControl;
 import com.yedam.control.ProductListControl;
 import com.yedam.control.ProductManagementControl;
-import com.yedam.service.MainControl;
 
 
 // 서블릿
