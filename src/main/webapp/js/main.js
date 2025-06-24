@@ -50,7 +50,7 @@
         smartSpeed: 2000,
         center: false,
         dots: true,
-        loop: true,
+        //loop: true,
         margin: 25,
         nav : true,
         navText : [
@@ -84,7 +84,7 @@
         smartSpeed: 1500,
         center: false,
         dots: true,
-        loop: true,
+        //loop: true,
         margin: 25,
         nav : true,
         navText : [
