@@ -2,15 +2,6 @@
 	pageEncoding="UTF-8"%>
 
 <!-- Single Page Header start -->
-<style>
-.page-header {
-    position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(img/소고기헤더1.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-</style>
 
 <div class="container-fluid page-header py-5">
 	<h1 class="text-center text-white display-6">Shop List</h1>
