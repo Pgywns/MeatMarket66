@@ -61,11 +61,11 @@
 
   <div class="login-switcher">
     <div class="login-switcher-signin" ng-show="showSignIn">
-      <h3>계정을 가지고 있습니까?</h3>
+      <h3>육월육일에 오신 적이 있나요?</h3>
       <button ng-click="showSignIn=false">로그인 하기</button>
     </div>
     <div class="login-switcher-signup" ng-hide="showSignIn">
-      <h3>계정이 없습니까?</h3>
+      <h3>육월육일이 처음이신가요?</h3>
       <button ng-click="showSignIn=true">회원가입 하기</button>
     </div>
   </div>
