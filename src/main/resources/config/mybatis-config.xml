@@ -10,8 +10,10 @@
 	</settings>
 
 	<typeAliases>
-		<typeAlias alias="Product" type="com.yedam.vo.ProductVO"/>
-		<typeAlias alias="Board" type="com.yedam.vo.BoardVO"/>
+		<typeAlias alias="Product" type="com.yedam.vo.ProductVO" />
+		<typeAlias alias="Board" type="com.yedam.vo.BoardVO" />
+		<typeAlias alias="Cart" type="com.yedam.vo.CartVO" />
+		<typeAlias alias="CartList" type="com.yedam.vo.CartListVO" />
 	</typeAliases>
 
 	<environments default="development">
@@ -31,6 +33,7 @@
 	<mappers>
 		<mapper resource="com/yedam/mapper/ProductMapper.xml"></mapper>
 		<mapper resource="com/yedam/mapper/BoardMapper.xml"></mapper>
+		<mapper resource="com/yedam/mapper/CartMapper.xml"></mapper>
 	</mappers>
-	
+
 </configuration>

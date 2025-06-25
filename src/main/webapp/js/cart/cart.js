@@ -3,6 +3,23 @@
 */
 
 
+
+//페이지로드시 장바구니 목록출력
+window.addEventListener('DOMContentLoaded', cartList);
+
+function cartList() {
+	fetch(`${CONTEXT_PATH}/cart.do`) //frontcontroller
+	.then(result => result.json())
+	.then(data => {
+		console.log(data)
+	})
+	.catch(err => console.log(err));
+}
+
+
+
+
+
 //장바구니 상품목록출력
 let basketBody = document.querySelector('#basketBody');
 let productList = makeTemplet();
@@ -29,16 +46,16 @@ function makeTemplet(){
 				<div class="input-group quantity mt-4" style="width: 100px;">
 					<div class="input-group-btn">
 						<button
-							class="btn btn-sm btn-minus rounded-circle bg-light border">
-							<i class="fa fa-minus"></i>
+							class="btn btn-sm btn-minus rounded-circle bg-light border" onclick="btnChange(event, -1)">
+							<i class="fa fa-minus" ></i>
 						</button>
 					</div>
 					<input type="text"
 						class="form-control form-control-sm text-center border-0"
-						value="1" id="productQcy" onkeyup=""/> 
+						 id="productQcy" value="1" oninput="keyChange(event)"/> 
 					<div class="input-group-btn">
 						<button
-							class="btn btn-sm btn-plus rounded-circle bg-light border">
+							class="btn btn-sm btn-plus rounded-circle bg-light border" onclick="btnChange(event, 1)">
 							<i class="fa fa-plus"></i>
 						</button>
 					</div>
@@ -71,13 +88,25 @@ function delAll(){
 	document.querySelector('#basketBody').remove();
 }
 
-//수량*금액
-function changeQcy(){
+//수량변경
+//1)+/-버튼수량변겅
+function btnChange(event, upDown){
+	let changeBtn = event.target;
+	let row = changeBtn.closest('.cartProduct');
+	let qtyValue = row.querySelector('#productQcy').value; //value 디폴트 1. 
+	let qty = parseInt(qtyValue); 
+	qty = Math.max(1, qty+upDown);
+	console.log(qty);
 	
 }
 
-
-function qcyPricr(){
-	let qcy = document.querySelector('#productQcy').value;
-	console.log(qcy);
+//2) 키보드입력 수량변경
+function keyChange(event){   //숫자지우면 안됨... 오류!!!!!!!!! 수정할 것! 
+	let keyQty = event.target;
+	console.log(keyQty);
+	let qty = parseInt(keyQty.value);
+	qty = Math.max(1, qty);  //입력구간지정. 
+	keyQty.value = qty;
+	console.log(keyQty.value);	
 }
+
