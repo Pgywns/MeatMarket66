@@ -8,8 +8,6 @@
 
 </div>
 <!-- Single Page Header End -->
-
-
 <!-- Cart Page Start -->
 <div class="container-fluid py-5">
 	<div class="container py-5">
@@ -69,7 +67,7 @@
 				<br>
 				<button
 					class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
-					type="button">주문계속진행</button>
+					type="button" onclick="location.href='order.do'">주문계속진행</button>
 			</div>
 		</div>
 	</div>
