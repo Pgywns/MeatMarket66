@@ -36,7 +36,7 @@
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">상품관리</a>
                                 <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                    <a href="addProduct.do" class="dropdown-item">상품등록</a>
+                                    <a href="addProductForm.do" class="dropdown-item">상품등록</a>
                                     <a href="stockList.do" class="dropdown-item">상품목록</a>
                                 </div>
                             </div>
