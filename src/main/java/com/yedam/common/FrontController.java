@@ -10,8 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import com.yedam.control.AddProductControl;
+import com.yedam.control.AddProductFormControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.CartControl;
 import com.yedam.control.CompleteOrder;
@@ -54,7 +53,7 @@ public class FrontController extends HttpServlet {
 		map.put("/order.do", new OrderControl());
 		map.put("/complete.do", new CompleteOrder());
 		// 관리자
-		map.put("/addProduct.do", new AddProductControl());
+		map.put("/addProductForm.do", new AddProductFormControl());
 		map.put("/stockList.do", new StockListControl());
 		
 		//고객센터
