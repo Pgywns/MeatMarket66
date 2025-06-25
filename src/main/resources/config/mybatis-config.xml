@@ -12,6 +12,8 @@
 	<typeAliases>
 		<typeAlias alias="Product" type="com.yedam.vo.ProductVO"/>
 		<typeAlias alias="CsBoard" type="com.yedam.vo.BoardVO"/>
+		<typeAlias alias="Member" type="com.yedam.vo.MemberVO"/>
+		<typeAlias alias="Address" type="com.yedam.vo.AddressVO"/>
 	</typeAliases>
 
 	<environments default="development">
@@ -31,6 +33,8 @@
 	<mappers>
 		<mapper resource="com/yedam/mapper/ProductMapper.xml"></mapper>
 		<mapper resource="com/yedam/mapper/BoardMapper.xml"></mapper>
+		<mapper resource="com/yedam/mapper/MemberMapper.xml"></mapper>
+		<mapper resource="com/yedam/mapper/AddressMapper.xml"></mapper>
 	</mappers>
 	
 </configuration>
