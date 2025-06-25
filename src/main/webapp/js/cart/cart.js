@@ -3,8 +3,6 @@
 */
 
 
-
-
 //장바구니 상품목록출력
 let basketBody = document.querySelector('#basketBody');
 let productList = makeTemplet();
@@ -37,7 +35,7 @@ function makeTemplet(){
 					</div>
 					<input type="text"
 						class="form-control form-control-sm text-center border-0"
-						value="1"/> 
+						value="1" id="productQcy" onkeyup=""/> 
 					<div class="input-group-btn">
 						<button
 							class="btn btn-sm btn-plus rounded-circle bg-light border">
@@ -60,7 +58,6 @@ function makeTemplet(){
 }
 
 
-
 //delbtn 상품목록 삭제버튼
 function delitem(event){
 	let delbtn = event.target;
@@ -72,4 +69,15 @@ function delitem(event){
 //전체삭제
 function delAll(){
 	document.querySelector('#basketBody').remove();
+}
+
+//수량*금액
+function changeQcy(){
+	
+}
+
+
+function qcyPricr(){
+	let qcy = document.querySelector('#productQcy').value;
+	console.log(qcy);
 }
