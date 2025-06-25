@@ -14,5 +14,6 @@ public class ProductVO {
 	private int price;
 	private String pSort;
 	private Date pDate;
+	private int pCount;
 		
 }

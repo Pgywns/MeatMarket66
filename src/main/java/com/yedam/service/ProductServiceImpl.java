@@ -26,4 +26,17 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.selectListPaging(page);
 	}
 
+	// 카테고리
+	@Override
+	public List<ProductVO> productListCategory(String pSort) {
+		
+		return mapper.selectCategory(pSort);
+	}
+
+	@Override
+	public List<ProductVO> productCount() {
+		
+		return mapper.selectCount();
+	}
+
 }

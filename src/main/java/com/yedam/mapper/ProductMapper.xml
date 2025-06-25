@@ -6,10 +6,22 @@
 
 	<!-- 상품 전체 -->
 	<select id="selectList" resultType="Product">
-		select p_no, p_name, p_image,
-		p_content, price, p_sort, p_date
+		select *
 		from tbl_product
-		order by p_no
+		order by prd_no
+	</select>
+	
+	<!-- 상품 카테고리별 수량 -->
+	<select id="selectCount" resultType="Product">
+		select count(prd_sort) "prdCount", p_sort "prdSort" 
+		from tbl_product
+		group by p_sort
+	</select>
+	
+	<!-- 상품 목록 카테고리 -->
+	<select id="selectCategory">
+		select * from tbl_product
+		where p_sort = ${pSort}
 	</select>
 
 	<!-- 상품목록 페이징 -->
