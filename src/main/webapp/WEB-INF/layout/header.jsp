@@ -30,7 +30,7 @@
                                     <a href="cart.do" class="dropdown-item">Cart</a>
                                     <a href="order.do" class="dropdown-item">Chackout</a>
                                     <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                    <a href="productManagement.do" class="dropdown-item">상품관리</a>
+                                    <a href="addProduct.do" class="dropdown-item">상품관리</a>
                                 </div>
                             </div>
                             <a href="contact.html" class="nav-item nav-link">My page</a>

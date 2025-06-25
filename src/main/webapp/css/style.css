@@ -300,25 +300,36 @@
 }
 
 .fruite .fruite-item {
-    height: 100%;
-    transition: 0.5s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.5s;
 }
+
 .fruite .fruite-item:hover {
-    box-shadow: 0 0 55px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 55px rgba(0, 0, 0, 0.4);
 }
 
 .fruite .fruite-item .fruite-img {
-    overflow: hidden;
-    transition: 0.5s;
-    border-radius: 10px 10px 0 0;
+  overflow: hidden;
+  transition: 0.5s;
+  border-radius: 10px 10px 0 0;
 }
 
 .fruite .fruite-item .fruite-img img {
-    transition: 0.5s;
+  width: 100%;
+  transition: 0.5s;
+  object-fit: cover;
+  height: 200px; /* 일정 높이로 통일 */
 }
 
 .fruite .fruite-item .fruite-img img:hover {
-    transform: scale(1.3);
+  transform: scale(1.3);
+}
+
+.fruite .fruite-item .p-4 {
+  min-height: 180px; /* 본문 높이 고정 */
 }
 /*** Fruits End ***/
 

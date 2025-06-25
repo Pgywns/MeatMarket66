@@ -4,9 +4,24 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yedam.mapper.ProductMapper">
 
-<!-- 상품 전체 -->
-<select id="selectList" resultType="Product">
-	select * from tbl_product;
-</select> 
+	<!-- 상품 전체 -->
+	<select id="selectList" resultType="Product">
+		select p_no, p_name, p_image,
+		p_content, price, p_sort, p_date
+		from tbl_product
+		order by p_no
+	</select>
 
+	<!-- 상품목록 페이징 -->
+	<select id="selectListPaging">
+		SELECT a.*
+		from (SELECT p_no pn, r.*
+		FROM TBL_PRODUCT r
+		order by p_no) a
+		where a.pn > (${page} - 1 ) * 9 * 0
+		<![CDATA[
+		and a.pn <= (${page} * 9)
+		]]>
+
+	</select>
 </mapper>
