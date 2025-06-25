@@ -27,7 +27,7 @@
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                                    <a href="cart.do" class="dropdown-item">Cart</a>
+                                    <a href="cartPage.do" class="dropdown-item">Cart</a>
                                     <a href="order.do" class="dropdown-item">Chackout</a>
                                     <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                                     <a href="addProductForm.do" class="dropdown-item">상품관리</a>

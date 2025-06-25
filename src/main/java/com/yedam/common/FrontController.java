@@ -17,6 +17,7 @@ import com.yedam.control.AddProductFormControl;
 
 import com.yedam.control.BoardControl;
 import com.yedam.control.CartControl;
+import com.yedam.control.CartPageControl;
 import com.yedam.control.CompleteOrder;
 import com.yedam.control.MainControl;
 import com.yedam.control.MemberControl;
@@ -51,6 +52,7 @@ public class FrontController extends HttpServlet {
 		
 		
 		//장바구니
+		map.put("/cartPage.do", new CartPageControl());
 		map.put("/cart.do", new CartControl());
 		//주문페이지
 		map.put("/order.do", new OrderControl());
