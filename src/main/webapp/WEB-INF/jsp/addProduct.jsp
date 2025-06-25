@@ -9,7 +9,10 @@ input[type=file]::file-selector-button {
 	margin-right: 50px;
 }
 </style>
-<div class="container-fluid py-5 mb-5 hero-header">
+<div class="container-fluid page-header py-5">
+</div>
+
+<div class="container-fluid py-5 mt-5">
 	<div class="container py-5">
 		<form action="addBoard.do" method="post">
 			<input type="hidden" class="form-control" name="writer" value="">
