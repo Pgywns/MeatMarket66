@@ -1,7 +1,8 @@
+<%@page import="java.util.List"%>
+<%@page import="com.yedam.vo.ProductVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!-- Single Page Header start -->
 
 <div class="container-fluid page-header py-5">
@@ -46,29 +47,31 @@
 								<div class="mb-3">
 									<h4>카테고리</h4>
 									<ul class="list-unstyled fruite-categorie">
+									  <c:forEach var="item" items="${cList }">
 										<li>
 											<div class="d-flex justify-content-between fruite-name">
-												<a id="beef" href="#"><i class="fas fa-apple-alt me-2"></i>소고기</a> <span>(3)</span>
+												<a href="#" onclick="javascript:svc.categoryList(event, '소')"><i class="fas fa-apple-alt me-2"></i>${item.pSort }</a> <span>${item.pCount }</span>
+											</div>
+										</li>
+									  </c:forEach>
+										<li>
+											<div class="d-flex justify-content-between fruite-name">
+												<a href="#" onclick="javascript:svc.categoryList(event, '돼지')"><i class="fas fa-apple-alt me-2"></i>돼지고기</a> <span></span>
 											</div>
 										</li>
 										<li>
 											<div class="d-flex justify-content-between fruite-name">
-												<a id="pork" href="#"><i class="fas fa-apple-alt me-2"></i>돼지고기</a> <span>(5)</span>
+												<a  href="#" onclick="javascript:svc.categoryList(event, '닭')"><i  class="fas fa-apple-alt me-2"></i>닭고기</a> <span></span>
 											</div>
 										</li>
 										<li>
 											<div class="d-flex justify-content-between fruite-name">
-												<a id="chicken" href="#"><i  class="fas fa-apple-alt me-2"></i>닭고기</a> <span>(2)</span>
+												<a href="#" onclick="javascript:svc.categoryList(event, '채소류')"><i class="fas fa-apple-alt me-2"></i>채소</a> <span></span>
 											</div>
 										</li>
 										<li>
 											<div class="d-flex justify-content-between fruite-name">
-												<a  id="vege" href="#"><i class="fas fa-apple-alt me-2"></i>채소</a> <span>(8)</span>
-											</div>
-										</li>
-										<li>
-											<div class="d-flex justify-content-between fruite-name">
-												<a id="kit" href="#"><i class="fas fa-apple-alt me-2"></i>밀키트</a> <span>(5)</span>
+												<a href="#" onclick="javascript:svc.categoryList(event, '밀키트')"><i class="fas fa-apple-alt me-2"></i>밀키트</a> <span>(5)</span>
 											</div>
 										</li>
 									</ul>
@@ -117,6 +120,10 @@
 		</div>
 	</div>
 </div>
+
 <script src="js/product/productList.js"></script>
+<script>
+
+</script>
 <!-- Fruits Shop End-->
 
