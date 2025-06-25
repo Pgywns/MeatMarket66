@@ -11,7 +11,7 @@
 
 	<typeAliases>
 		<typeAlias alias="Product" type="com.yedam.vo.ProductVO"/>
-		<typeAlias alias="CsBoard" type="com.yedam.vo.CsBoardVO"/>
+		<typeAlias alias="CsBoard" type="com.yedam.vo.BoardVO"/>
 	</typeAliases>
 
 	<environments default="development">
@@ -30,6 +30,7 @@
 
 	<mappers>
 		<mapper resource="com/yedam/mapper/ProductMapper.xml"></mapper>
+		<mapper resource="com/yedam/mapper/BoardMapper.xml"></mapper>
 	</mappers>
 	
 </configuration>
