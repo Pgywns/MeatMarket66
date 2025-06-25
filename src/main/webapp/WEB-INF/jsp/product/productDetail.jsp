@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<style>
+.rounded {
+	margin: 0 auto;
+	display: block;
+	margin-bottom: 5px;
+}
 
+</style>
 	<!-- Single Page Header start -->
 	<div class="container-fluid page-header py-5">
 		<h1 class="text-center text-white display-6">Shop Detail</h1>
@@ -16,7 +24,7 @@
 						<div class="col-lg-6">
 							<div class="border rounded">
 								<img src="img/초신선 돼지 목살(19800).png"
-									class="img-fluid rounded" alt="Image" style="margin: 0 auto; display: block;">
+									class="img-fluid rounded" alt="Image">
 							</div>
 						</div>
 						<div class="col-lg-6 d-flex flex-column">
@@ -61,7 +69,7 @@
 									<button class="nav-link active border-white border-bottom-0"
 										type="button" role="tab" id="nav-about-tab"
 										data-bs-toggle="tab" data-bs-target="#nav-about"
-										aria-controls="nav-about" aria-selected="true">Description</button>
+										aria-controls="nav-about" aria-selected="true">About</button>
 									<button class="nav-link border-white border-bottom-0"
 										type="button" role="tab" id="nav-mission-tab"
 										data-bs-toggle="tab" data-bs-target="#nav-mission"
@@ -71,19 +79,18 @@
 							<div class="tab-content mb-5">
 								<div class="tab-pane active" id="nav-about" role="tabpanel"
 									aria-labelledby="nav-about-tab">
-									<p>The generated Lorem Ipsum is therefore always free from
-										repetition injected humour, or non-characteristic words etc.
-										Susp endisse ultricies nisi vel quam suscipit</p>
-									<p>Sabertooth peacock flounder; chain pickerel hatchetfish,
-										pencilfish snailfish filefish Antarctic icefish goldeye
-										aholehole trumpetfish pilot fish airbreathing catfish,
-										electric ray sweeper.</p>
 									<div class="px-2">
-										<img src="img/초신선 돼지 목살(19800).png" class="img-fluid rounded" alt="Image">
-										<img src="img/초신선 돼지 목살(19800).png" class="img-fluid rounded" alt="Image">
-										<img src="img/초신선 돼지 목살(19800).png" class="img-fluid rounded" alt="Image">
-										<img src="img/초신선 돼지 목살(19800).png" class="img-fluid rounded" alt="Image">
+										<img src="img/productDetail/pork/porkMain.png" class="img-fluid rounded" alt="Image">
+										<img src="img/productDetail/pork/pork1.png" class="img-fluid rounded" alt="Image">
+										<img src="img/productDetail/pork/pork2.png" class="img-fluid rounded" alt="Image">
+										<img src="img/productDetail/pork/pork3.png" class="img-fluid rounded" alt="Image">
+										<img src="img/productDetail/pork/pork4.png" class="img-fluid rounded" alt="Image">
+										<img src="img/productDetail/pork/pork5.png" class="img-fluid rounded" alt="Image">
+										<img src="img/productDetail/pork/pork6.png" class="img-fluid rounded" alt="Image">
+										<img src="img/productDetail/pork/pork7.png" class="img-fluid rounded" alt="Image">
 									</div>
+										
+										
 								</div>
 								<div class="tab-pane" id="nav-mission" role="tabpanel"
 									aria-labelledby="nav-mission-tab">

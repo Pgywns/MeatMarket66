@@ -22,7 +22,7 @@
                     </button>
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
-                            <a href="shop.html" class="nav-item nav-link">Shop</a>
+                            <a href="proudctList.do" class="nav-item nav-link">Shop</a>
                             <a href="productDetail.do" class="nav-item nav-link">Shop Detail</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
@@ -30,10 +30,16 @@
                                     <a href="cart.html" class="dropdown-item">Cart</a>
                                     <a href="chackout.html" class="dropdown-item">Chackout</a>
                                     <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                    <a href="productManagement.do" class="dropdown-item">상품관리</a>
+                                    <a href="addProduct.do" class="dropdown-item">상품관리</a>
                                 </div>
                             </div>
-                            <a href="contact.html" class="nav-item nav-link">상품관리</a>
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">상품관리</a>
+                                <div class="dropdown-menu m-0 bg-secondary rounded-0">
+                                    <a href="addProduct.do" class="dropdown-item">상품등록</a>
+                                    <a href="stockList.do" class="dropdown-item">상품목록</a>
+                                </div>
+                            </div>
                         </div>
                         <div class="d-flex m-3 me-0">
                             <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>
