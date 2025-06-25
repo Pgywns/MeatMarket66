@@ -2,8 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yedam.mapper.CsBoardMapper">
 <!-- 전체조회 -->
-	<select id="selctcsList">
-		select * 
+	<select id="boardList" resultType="Board">
+		select b_no,
+			   u_id,
+			   b_title,
+			   b_content
+			   b_date,
+			   b_category,
+			   answer
 		from tbl_board;
 	</select>
 	

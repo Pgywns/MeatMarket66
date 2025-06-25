@@ -23,8 +23,10 @@
 			</ul>
 		</nav>
 	</div>
-	<div class="accordion w-50 " id="accordionExample"></div>
-	<!-- forEach반복부분 -->
-	<!-- 부트스트랩 아코디언  -->
+	<div class="container">
+		<div class="accordion w-50 " id="accordionExample"></div>
+		<!-- forEach반복부분 -->
+		<!-- 부트스트랩 아코디언  -->
+	</div>
 </div>
 <script type="text/javascript" src="./js/board/board.js"></script>

@@ -14,6 +14,6 @@ public class BoardSeviceImpl implements BoardSevice{
 	@Override
 	public List<BoardVO> list() {
 		// TODO Auto-generated method stub
-		return mapper.selctcsList();
+		return mapper.boardList();
 	}
 }
