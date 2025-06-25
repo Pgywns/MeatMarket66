@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
+import com.yedam.control.AddProductControl;
 import com.yedam.control.BoardControl;
-
 import com.yedam.control.CartControl;
 import com.yedam.control.CompleteOrder;
 import com.yedam.control.MainControl;
@@ -20,7 +20,12 @@ import com.yedam.control.MemberControl;
 import com.yedam.control.OrderControl;
 import com.yedam.control.ProductDetailControl;
 import com.yedam.control.ProductListControl;
-import com.yedam.control.ProductManagementControl;
+
+import com.yedam.control.ProductListControl2;
+
+
+import com.yedam.control.StockListControl;
+
 
 
 // 서블릿
@@ -37,6 +42,7 @@ public class FrontController extends HttpServlet {
 		//상품
 		map.put("/productDetail.do", new ProductDetailControl());
 		map.put("/proudctList.do", new ProductListControl());
+		map.put("/productList2.do",  new ProductListControl2());
 		
 		// 로그인 회원가입
 		map.put("/member.do", new MemberControl());
@@ -48,7 +54,8 @@ public class FrontController extends HttpServlet {
 		map.put("/order.do", new OrderControl());
 		map.put("/complete.do", new CompleteOrder());
 		// 관리자
-		map.put("/productManagement.do", new ProductManagementControl());
+		map.put("/addProduct.do", new AddProductControl());
+		map.put("/stockList.do", new StockListControl());
 		
 		//고객센터
 		map.put("/board.do", new BoardControl());

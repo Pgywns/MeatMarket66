@@ -13,10 +13,17 @@ public class ProductServiceImpl implements ProductService {
 	SqlSession sqlSession = DataSource.getInstance().openSession();
 	ProductMapper mapper = sqlSession.getMapper(ProductMapper.class);
 	
+	//상품 전체
 	@Override
 	public List<ProductVO> productList() {
-		
 		return mapper.selectList();
+	}
+	
+	//상품목록 페이징
+	@Override
+	public List<ProductVO> productListPaging(int page) {
+		
+		return mapper.selectListPaging(page);
 	}
 
 }

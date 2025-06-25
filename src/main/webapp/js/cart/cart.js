@@ -3,6 +3,8 @@
 */
 
 
+
+
 //장바구니 상품목록출력
 let basketBody = document.querySelector('#basketBody');
 let productList = makeTemplet();

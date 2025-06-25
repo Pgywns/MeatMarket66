@@ -12,6 +12,14 @@ public class CartControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
+		
+		
+		
+		
 		req.getRequestDispatcher("cart/cart.tiles").forward(req, resp);		
 	}
+	
+	
 }
