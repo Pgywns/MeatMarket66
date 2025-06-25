@@ -14,7 +14,7 @@ input[type=file]::file-selector-button {
 
 <div class="container-fluid py-5 mt-5">
 	<div class="container py-5">
-		<form action="addBoard.do" method="post">
+		<form action="addProductForm.do" method="post">
 			<input type="hidden" class="form-control" name="writer" value="">
 			<table class="table">
 				<tr>
