@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<link rel="stylesheet" href="./css/order/modalstyles.css" />
 
 <!-- Single Page Header start -->
 <div class="container-fluid page-header py-5">
@@ -63,34 +64,8 @@
 									<th scope="col">금액</th>
 								</tr>
 							</thead>
-							<tbody>
-								<tr>
-									<th scope="row">
-										<div class="d-flex align-items-center mt-2">
-											<img src="img/vegetable-item-2.jpg"
-												class="img-fluid rounded-circle"
-												style="width: 90px; height: 90px;" alt="">
-										</div>
-									</th>
-									<td class="py-5">Awesome Brocoli</td>
-									<td class="py-5">$69.00</td>
-									<td class="py-5">2</td>
-									<td class="py-5">$138.00</td>
-								</tr>
-								<tr>
-									<th scope="row">
-										<div class="d-flex align-items-center mt-2">
-											<img src="img/vegetable-item-5.jpg"
-												class="img-fluid rounded-circle"
-												style="width: 90px; height: 90px;" alt="">
-										</div>
-									</th>
-									<td class="py-5">Potatoes</td>
-									<td class="py-5">$69.00</td>
-									<td class="py-5">2</td>
-									<td class="py-5">$138.00</td>
-								</tr>
-								<tr>
+							<tbody id="orderlist">
+						    <!-- <tr>
 									<th scope="row">
 										<div class="d-flex align-items-center mt-2">
 											<img src="img/vegetable-item-3.png"
@@ -102,7 +77,7 @@
 									<td class="py-5">$69.00</td>
 									<td class="py-5">2</td>
 									<td class="py-5">$138.00</td>
-								</tr>
+								</tr> -->
 								<tr>
 									<th scope="row"></th>
 									<td class="py-5"></td>
@@ -116,15 +91,18 @@
 										</div>
 									</td>
 								</tr>
-								<tr>
+								<tr> 
 									<th scope="row"></th>
 									<td class="py-5">
 										<p class="mb-0 text-dark py-4">적립금</p>
 									</td>
+								<!-- 모달영역 -->
 									<td colspan="3" class="py-5">
+									 <div>
 										<button
 											class="btn border-secondary rounded-pill px-3 py-2 text-primary"
-											type="button">적립금 사용</button>
+											type="button" id="popBtn" onclick="modalPop()">적립금 사용</button>
+									</div>
 									</td>
 								</tr>
 								<tr>
@@ -168,6 +146,15 @@
 	</div>
 </div>
 
+<!-- 모달팝업 -->
+<div id="popUp">
+	<div id="modalBody">
+		<span id="closeBtn">&times;</span>
+		<P>모달내용</P>
+	</div>
+</div>
+<!-- 모달영역end -->
+
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 function postApi(){
@@ -196,3 +183,4 @@ function postApi(){
      }).open();
 }
 </script>
+<script type="text/javascript" src="./js/order/order.js"></script>
