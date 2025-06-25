@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+
 <!-- Single Page Header start -->
 
 <div class="container-fluid page-header py-5">
@@ -47,27 +48,27 @@
 									<ul class="list-unstyled fruite-categorie">
 										<li>
 											<div class="d-flex justify-content-between fruite-name">
-												<a href="#"><i class="fas fa-apple-alt me-2"></i>소고기</a> <span>(3)</span>
+												<a id="beef" href="#"><i class="fas fa-apple-alt me-2"></i>소고기</a> <span>(3)</span>
 											</div>
 										</li>
 										<li>
 											<div class="d-flex justify-content-between fruite-name">
-												<a href="#"><i class="fas fa-apple-alt me-2"></i>돼지고기</a> <span>(5)</span>
+												<a id="pork" href="#"><i class="fas fa-apple-alt me-2"></i>돼지고기</a> <span>(5)</span>
 											</div>
 										</li>
 										<li>
 											<div class="d-flex justify-content-between fruite-name">
-												<a href="#"><i class="fas fa-apple-alt me-2"></i>닭고기</a> <span>(2)</span>
+												<a id="chicken" href="#"><i  class="fas fa-apple-alt me-2"></i>닭고기</a> <span>(2)</span>
 											</div>
 										</li>
 										<li>
 											<div class="d-flex justify-content-between fruite-name">
-												<a href="#"><i class="fas fa-apple-alt me-2"></i>채소</a> <span>(8)</span>
+												<a  id="vege" href="#"><i class="fas fa-apple-alt me-2"></i>채소</a> <span>(8)</span>
 											</div>
 										</li>
 										<li>
 											<div class="d-flex justify-content-between fruite-name">
-												<a href="#"><i class="fas fa-apple-alt me-2"></i>밀키트</a> <span>(5)</span>
+												<a id="kit" href="#"><i class="fas fa-apple-alt me-2"></i>밀키트</a> <span>(5)</span>
 											</div>
 										</li>
 									</ul>
@@ -97,38 +98,17 @@
 						</div>
 					</div>
 					<div class="col-lg-9">
-						<div class="row g-4 justify-content-center">
-							<div class="col-md-6 col-lg-6 col-xl-4">
-								<div class="rounded position-relative fruite-item border border-secondary">
-									<div class="fruite-img">
-										<img src="img/productList/소/한우 분쇄육(16500).png"
-											class="img-fluid w-100 rounded-top" alt="">
-									</div>
-									<div
-										class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-										style="top: 10px; left: 10px;">소고기</div>
-									<div class="p-4 border  rounded-bottom">
-										<h4>한우 분쇄육</h4>
-										<p>다양한 요리에 활용하기 좋은 신선한 한우 분쇄육입니다.</p>
-										<div class="d-flex justify-content-between flex-lg-wrap">
-											<p class="text-dark fs-5 fw-bold mb-0">21,900원</p>
-											<a href="#"
-												class="btn border border-secondary rounded-pill px-3 text-primary"><i
-												class="fa fa-shopping-bag me-2 text-primary"></i> Add to
-												cart</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						
-							<div class="col-12">
-								<div class="pagination d-flex justify-content-center mt-5">
-									<a href="#" class="rounded">&laquo;</a> <a href="#"
-										class="active rounded">1</a> <a href="#" class="rounded">2</a>
-									<a href="#" class="rounded">3</a> <a href="#" class="rounded">4</a>
-									<a href="#" class="rounded">5</a> <a href="#" class="rounded">6</a>
-									<a href="#" class="rounded">&raquo;</a>
-								</div>
+						<div id="pList" class="row g-4 justify-content-center">
+						<!-- 페이징 -->
+							
+						</div>
+						<div class="col-12">
+							<div class="pagination d-flex justify-content-center mt-5">
+								<a href="#" class="rounded">&laquo;</a>
+								<a href="#" class="active rounded">1</a> <a href="#" class="rounded">2</a>
+								<a href="#" class="rounded">3</a> <a href="#" class="rounded">4</a>
+								<a href="#" class="rounded">5</a> <a href="#" class="rounded">6</a>
+								<a href="#" class="rounded">&raquo;</a>
 							</div>
 						</div>
 					</div>
@@ -137,5 +117,6 @@
 		</div>
 	</div>
 </div>
+<script src="js/product/productList.js"></script>
 <!-- Fruits Shop End-->
 
