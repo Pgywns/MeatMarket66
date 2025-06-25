@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.mapper.CsBoardMapper">
+<!-- 전체조회 -->
+	<select id="selctcsList">
+		select * 
+		from tbl_board;
+	</select>
+	
+	<!-- 카테고리별 조회 	<select id="">
+		select *
+		from tbl_board
+		where b_category = #{bCategory}
+	</select>-->
+
+	<!-- 1:1문의 -->
+	<insert id="insertcsBord">
+		insert into tbl_board(b_no,u_id,b_title,b_content,b_category)
+		values(#{bNo},#{uId},#{bTitle},#{bContent},#{bContent},#{bCategory})
+	</insert>
+
+</mapper>
