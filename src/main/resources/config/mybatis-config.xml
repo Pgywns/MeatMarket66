@@ -28,7 +28,7 @@
 	</environments>
 
 	<mappers>
-		
+		<mapper resource="com/yedam/mapper/ProductMapper.xml"></mapper>
 	</mappers>
 	
 </configuration>
