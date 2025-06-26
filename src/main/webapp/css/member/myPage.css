@@ -1,8 +1,8 @@
 .mypage-container {
-  width: 400px;
+  width: 1000px;
   margin: 0 auto;
   border: 2px solid #000;
-  padding: 20px;
+  padding: 30px;
   text-align: center;
   background-color: #fff;
 }
@@ -35,12 +35,15 @@
 }
 
 .menu-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  display: flex;
+  justify-content: space-between; /* 버튼 사이 간격 */
+  gap: 10px; /* 버튼 사이 여백 */
+  margin-top: 20px;
 }
 
 .menu-item {
+  flex: 1; /* 모든 버튼이 동일 너비 */
+  text-align: center;
   border: 1px solid #000;
   padding: 15px 0;
   background-color: #f9f9f9;
@@ -50,4 +53,11 @@
 
 .menu-item:hover {
   background-color: #efefef;
+}
+
+.section-content {
+  margin-top: 30px;
+  padding: 20px;
+  border-top: 1px solid #ccc;
+  text-align: left;
 }

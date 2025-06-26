@@ -8,7 +8,7 @@
 
 <div class="container-fluid py-5">
 	<div class="mypage-container">
-		<div class="user-name">홍길동님</div>
+		<div class="user-name">${user.getUserName()}님</div>
 
 		<div class="summary-boxes">
 			<div class="summary-item">
@@ -26,10 +26,40 @@
 		</div>
 
 		<div class="menu-grid">
-			<div class="menu-item">주문내역</div>
-			<div class="menu-item">적립금내역</div>
-			<div class="menu-item">내 질문</div>
-			<div class="menu-item">개인정보관리</div>
+			<button type="button" class="menu-item" onclick="showSection('order')">주문내역</button>
+			<button type="button" class="menu-item" onclick="showSection('point')">적립금내역</button>
+			<button type="button" class="menu-item" onclick="showSection('question')">내 질문</button>
+			<button type="button" class="menu-item" onclick="showSection('info')">개인정보관리</button>
+		</div>
+
+		<!-- 표시될 영역들 -->
+		<div class="section-content" id="order" style="display: block;">
+			<h3>주문내역</h3>
+			<p>여기에 주문내역이 표시됩니다.</p>
+		</div>
+		<div class="section-content" id="point" style="display: none;">
+			<h3>적립금내역</h3>
+			<p>여기에 적립금 내역이 표시됩니다.</p>
+		</div>
+		<div class="section-content" id="question" style="display: none;">
+			<h3>내 질문</h3>
+			<p>여기에 내가 남긴 질문 목록이 표시됩니다.</p>
+		</div>
+		<div class="section-content" id="info" style="display: none;">
+			<h3>개인정보관리</h3>
+			<p>여기에 개인정보 수정/관리 내용이 표시됩니다.</p>
 		</div>
 	</div>
 </div>
+
+<script>
+  function showSection(sectionId) {
+    // 모든 section-content 숨기기
+    document.querySelectorAll('.section-content').forEach(el => {
+      el.style.display = 'none';
+    });
+
+    // 선택한 section만 보이기
+    document.getElementById(sectionId).style.display = 'block';
+  }
+</script>
