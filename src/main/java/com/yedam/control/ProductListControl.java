@@ -20,6 +20,8 @@ public class ProductListControl implements Control {
 		resp.setContentType("text/json;charset=utf-8");
 		
 		ProductService svc = new ProductServiceImpl();
+		
+		// 카테고리별 수량
 		List<ProductVO> list = svc.productCount();
 		
 		req.setAttribute("cList", list);
