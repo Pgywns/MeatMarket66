@@ -51,7 +51,7 @@
 			  FROM TBL_PRODUCT r
 		<choose>
 			<when test='!prdSort.equals("df")'>
-				where prd_sort = ${prdSort}
+				where prd_sort = #{prdSort}
 			</when>
 		</choose>
 		order by prd_price ${order} ) a
@@ -59,7 +59,12 @@
 		<![CDATA[
 		and a.rn <= (${page} * 9)
 		]]>
-		
+	</select>
+	<!-- 검색 별 목록 -->
+	<select id="selectSearch" parameterType="String">
+		SELECT * FROM TBL_PRODUCT 
+		WHERE PRD_NAME LIKE '%' || #{keyword} || '%' 
+		ORDER BY PRD_NO
 	</select>
 
 </mapper>
