@@ -6,6 +6,6 @@
 
 <insert id="insertAdd" parameterType="Address">
 	insert into tbl_addr (addr_no, user_id, zip_code, addr_one, addr_two, addr_name, first_addr)
-	values (addr_seq.nextval, #{userId}, #{zipCode}, #{addrOne}, #{addrTwo}, #{addrName}, #{fisrtAddr})
+	values (addr_seq.nextval, #{userId}, #{zipCode}, #{addrOne}, #{addrTwo}, #{addrName}, #{firstAddr})
 </insert>
 </mapper>

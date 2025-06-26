@@ -10,28 +10,38 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.yedam.common.Control;
+import com.yedam.common.SearchDTO;
 import com.yedam.service.ProductService;
 import com.yedam.service.ProductServiceImpl;
 import com.yedam.vo.ProductVO;
 
-public class ProductListControlPaging implements Control {
+public class ProductOptionControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("text/json;charset=utf-8");
-
-		// 상품 전체 목록 paging
+		
 		String page = req.getParameter("page");
-	
+		String order = req.getParameter("order");
+		String prdSort = req.getParameter("prdSort");
+		
+		
+		SearchDTO search = new SearchDTO();
+		search.setOrder(order);
+		search.setPage(Integer.parseInt(page));
+		search.setPrdSort(prdSort);
+		
 		ProductService svc = new ProductServiceImpl();
-		List<ProductVO> list = svc.productListPaging(Integer.parseInt(page));
-
+		List<ProductVO> list = svc.productOption(search);
+		
+		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(list);
 		resp.getWriter().print(json);
 		System.out.println(json);
-
+		
 	}
 
 }
