@@ -10,6 +10,7 @@
 	</settings>
 
 	<typeAliases>
+		<typeAlias alias="search" type="com.yedam.common.SearchDTO"/>
 		<typeAlias alias="Product" type="com.yedam.vo.ProductVO"/>
 		<typeAlias alias="Board" type="com.yedam.vo.BoardVO"/>
 		<typeAlias alias="Member" type="com.yedam.vo.MemberVO"/>

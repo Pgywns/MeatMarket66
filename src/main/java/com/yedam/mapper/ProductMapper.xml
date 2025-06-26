@@ -37,6 +37,20 @@
 		<![CDATA[
 		and a.pn <= (${page} * 9)
 		]]>
-
 	</select>
+	
+	<!-- 옵션별 상품 목록 -->
+	<select id="selectOption" parameterType="search">
+		select *
+		from tbl_product
+		<choose>
+			<when test="keyword != null and keyword == 'desc'.toString()">
+				order by price desc
+			</when>
+			<when test="keyword != null and keyword == 'asc'.toString()">
+				order by price 
+			</when>
+		</choose>
+	</select>
+	
 </mapper>

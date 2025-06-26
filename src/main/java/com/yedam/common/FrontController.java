@@ -17,14 +17,17 @@ import com.yedam.control.CartControl;
 import com.yedam.control.CartPageControl;
 import com.yedam.control.CompleteOrder;
 import com.yedam.control.LoginControl;
+import com.yedam.control.LogoutControl;
 import com.yedam.control.MainControl;
 import com.yedam.control.OrderControl;
 import com.yedam.control.ProductCategoryControl;
 import com.yedam.control.ProductDetailControl;
 import com.yedam.control.ProductListControl;
 import com.yedam.control.ProductListControlPaging;
+import com.yedam.control.ProductOptionControl;
 import com.yedam.control.RegisterControl;
 import com.yedam.control.StockListControl;
+import com.yedam.control.UserCheckControl;
 
 
 
@@ -44,10 +47,14 @@ public class FrontController extends HttpServlet {
 		map.put("/proudctList.do", new ProductListControl());
 		map.put("/productListPaging.do",  new ProductListControlPaging());
 		map.put("/productCategory.do", new ProductCategoryControl());
+		map.put("/productListOption.do", new ProductOptionControl());
+		
 		
 		// 로그인
 		map.put("/login.do", new LoginControl());
+		map.put("/logout.do", new LogoutControl());
 		map.put("/register.do", new RegisterControl());
+		map.put("/userCheck.do", new UserCheckControl());
 		
 		//장바구니
 		map.put("/cartPage.do", new CartPageControl());

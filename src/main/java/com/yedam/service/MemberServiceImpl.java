@@ -1,5 +1,7 @@
 package com.yedam.service;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.common.DataSource;
@@ -20,6 +22,17 @@ public class MemberServiceImpl implements MemberService {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public MemberVO login(String id, String pw) {
+		return mapper.selectMemberForLogin(id, pw);
+	}
+
+	@Override
+	public boolean userCheck(String id) {
+		System.out.println(mapper.selectMember(id));
+		return mapper.selectMember(id) == null;
 	}
 
 }

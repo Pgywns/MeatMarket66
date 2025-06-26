@@ -23,22 +23,17 @@
 					<div class="row g-4">
 						<div class="col-lg-6">
 							<div class="border rounded">
-								<img src="img/productList/돼지/초신선 돼지 목살(19800).png"
+								<img src="img/productList/${prdSort }/${prdImage }"
 									class="img-fluid rounded" alt="Image">
 							</div>
 						</div>
 						<div class="col-lg-6 d-flex flex-column">
-							<h4 class="fw-bold mb-3 mt-1">초신선 돼지 목살</h4>
-							<p class="mb-3">Category: 돼지</p>
-							<h5 class="fw-bold mb-3">10,000원</h5>
-							<p class="mb-4">The generated Lorem Ipsum is therefore always
-								free from repetition injected humour, or non-characteristic
-								words etc.</p>
-							<p class="mb-4">Susp endisse ultricies nisi vel quam
-								suscipit. Sabertooth peacock flounder; chain pickerel
-								hatchetfish, pencilfish snailfish</p>
+							<h4 class="fw-bold mb-3 mt-3" style="font-size: 30px;">${prdName }</h4>
+							<p class="mb-3 mt-2" style="font-size: 20px;">Category: ${prdSort }</p>
+							<h5 class="fw-bold mb-4 mt-2" style="font-size: 28px;">${prdPrice }원</h5>
+							<p class="mb-4" style="font-size: 20px;">${prdContent }</p>
 
-							<div class="input-group quantity mt-3" style="width: 100px; margin: 0 auto;">
+							<div class="input-group quantity mt-5" style="width: 100px; margin: 0 auto;">
 								<div class="input-group-btn">
 									<button
 										class="btn btn-sm btn-minus rounded-circle bg-light border">
@@ -57,10 +52,10 @@
 							</div>
 
 							<a href="#"
-								class="btn border border-secondary rounded-pill px-4 py-2 text-primary mt-auto">
+								class="btn border border-secondary rounded-pill px-4 py-2 text-primary mt-3">
 								<i class="fa fa-shopping-bag me-2 text-primary"></i> 장바구니
 							</a>
-							<a href="#" class="btn border border-secondary rounded-pill px-4 py-2 text-primary mt-auto"> 구매하기
+							<a href="#" class="btn border border-secondary rounded-pill px-4 py-2 text-primary mt-3"> 구매하기
 							</a>
 						</div>
 						<div class="col-lg-12">
@@ -93,7 +88,7 @@
 								<div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
 									<!-- 리뷰쓰기 -->
 									<div class="d-flex">
-                                            <img src="img/avatar.jpg" class="img-fluid rounded-circle p-3" style="width: 100px; height: 100px;" alt="">
+                                            
                                             <div class="">
                                                 <p class="mb-2" style="font-size: 14px;">April 12, 2024</p>
                                                 <div class="d-flex justify-content-between">
@@ -111,18 +106,12 @@
                                             </div>
                                         </div>
                                         <div class="d-flex">
-                                            <img src="img/avatar.jpg" class="img-fluid rounded-circle p-3" style="width: 100px; height: 100px;" alt="">
+                                            
                                             <div class="">
                                                 <p class="mb-2" style="font-size: 14px;">April 12, 2024</p>
                                                 <div class="d-flex justify-content-between">
                                                     <h5>Sam Peters</h5>
-                                                    <div class="d-flex mb-3">
-                                                        <i class="fa fa-star text-secondary"></i>
-                                                        <i class="fa fa-star text-secondary"></i>
-                                                        <i class="fa fa-star text-secondary"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                    </div>
+                                                    
                                                 </div>
                                                 <p class="text-dark">The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic 
                                                     words etc. Susp endisse ultricies nisi vel quam suscipit </p>
