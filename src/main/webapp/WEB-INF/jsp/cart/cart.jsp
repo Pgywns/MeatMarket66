@@ -35,7 +35,7 @@
 			<div class="col-8">
 				<button
 					class="btn border-secondary rounded-pill px-3 py-2 text-primary"
-					type="button">선택삭제</button>
+					type="button" onclick="javascript:checkedDel()">선택삭제</button>
 				<button
 					class="btn border-secondary rounded-pill px-3 py-2 text-primary"
 					type="button" onclick="javascript:delitem()">전체삭제</button>
@@ -56,7 +56,7 @@
 						</h1>
 						<div class="d-flex justify-content-between mb-4">
 							<h5 class="mb-0 me-4">결제금액:</h5>
-							<p class="mb-0">$96.00</p>
+							<p class="mb-0 totalEl">$96.00</p>
 						</div>
 					</div>
 				</div>

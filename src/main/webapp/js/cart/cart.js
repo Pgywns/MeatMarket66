@@ -15,8 +15,11 @@ function cartList() {
 			let productList = makeTemplet(item);
 			basketBody.insertAdjacentHTML("beforeend", productList);
 		}
+		//위치중요! 
+		 updateTotal();
 	})
 	.catch(err => console.log(err));
+	
 }
 
 //장바구니 상품 단건삭제(엑스btn)
@@ -28,7 +31,20 @@ function eachDel(event){
 	.catch(err => console.log(err));
 	eachRow.remove();
 }
+//체크박스선택삭제
+function checkedDel(){
+	let checkedItems = document.querySelectorAll('input[name="selectdeProduct"]:checked'); //checked된것 모두 선택.[배열??list]
 
+	    checkedItems.forEach(checked => { //checked 1개씩 꺼내서 DB삭제진행
+	        let prdNo = checked.value;
+	        // 개별 삭제 호출
+	        fetch('cartPrdDel.do?prdNo='+prdNo)
+	            .catch(err => console.error(err));
+	        // DOM 삭제
+	        checked.closest('.cartProduct').remove();
+	    });
+	    updateTotal();
+}
 
 //전체삭제
 function delitem(){
@@ -44,17 +60,25 @@ function delitem(){
 function btnChange(event, upDown){
 	let changeBtn = event.target;
 	let eachRow = changeBtn.closest('.cartProduct');
+	
 	let qtyInput = eachRow.querySelector('#productQcy'); //value(수량) 디폴트 1. 
-	let prdNo = eachRow.querySelector('#selectdeProduct').value; //상품코드
+	//상품코드
+	let prdNo = eachRow.querySelector('#selectdeProduct').value; 
+	//수량
 	let qty = parseInt(qtyInput.value); 
-	qty = Math.max(1, qty+upDown); //여기까지 클릭시 value는 변경됨. 
+	qty = Math.max(1, qty+upDown); 
 	qtyInput.value = qty;
-	
-	
+	//단가
+	let unit = eachRow.querySelector('.unitPrice');
+	let unitPrice = parseInt(unit.textContent);
+	//단가*수량
+	let totalTag = eachRow.querySelector('.totalTag')
+	totalTag.textContent = (qty * unitPrice) + '원';
 		
 	fetch('cartUpdateQty.do?prdNo='+ prdNo +'&qty=' + qty)
 	.catch(err => console.log(err));
-	
+	//총액
+	updateTotal();
 	
 }
 
@@ -62,16 +86,36 @@ function btnChange(event, upDown){
 function keyChange(event){   //숫자지우면 안됨... 오류!!!!!!!!! 수정할 것! 
 	let keyQty = event.target;
 	let eachRow = keyQty.closest('.cartProduct');
-	let prdNo = eachRow.querySelector('#selectdeProduct').value; //상품코드
+	//상품코드
+	let prdNo = eachRow.querySelector('#selectdeProduct').value; 
+	//단가
+	let unit = eachRow.querySelector('.unitPrice');
+	let unitPrice = parseInt(unit.textContent);
+	//수량
 	let qty = parseInt(keyQty.value);
 	qty = Math.max(1, qty);  //입력구간지정. 
 	keyQty.value = qty;
 	
+	//단가*수량
+	let totalTag = eachRow.querySelector('.totalTag')
+	totalTag.textContent = (qty * unitPrice) + '원';
+	//DB반영
 	fetch('cartUpdateQty.do?prdNo='+ prdNo +'&qty=' + qty)
 	.catch(err => console.log(err));
+	//총액
+	updateTotal();
 }
 
-
+//총액계산
+function updateTotal(){
+	let total = 0;
+	document.querySelectorAll('.totalTag').forEach(tag => {
+	        let value = tag.textContent.replace(/\D/g, ''); // '원'삭제
+	        total += parseInt(value);
+	    });
+	let totalEl = document.querySelector('.totalEl');
+	totalEl.textContent = total.toLocaleString() + ' 원';
+}
 
 
 function makeTemplet(item){
@@ -89,7 +133,7 @@ function makeTemplet(item){
 				<p class="mb-0 mt-4">${item.prdName}</p>
 			</td>
 			<td>
-				<p class="mb-0 mt-4">${item.prdPrice}</p>
+				<p class="mb-0 mt-4 unitPrice">${item.prdPrice}</p>
 			</td>
 			<td>
 				<div class="input-group quantity mt-4" style="width: 100px;">
@@ -111,7 +155,7 @@ function makeTemplet(item){
 				</div>
 			</td>
 			<td>
-				<p class="mb-0 mt-4">${item.prdPrice * item.cartQty} 원</p>
+				<p class="mb-0 mt-4 totalTag">${item.prdPrice * item.cartQty} 원</p>
 			</td>
 			<td>
 				<button id="delbtn" class="btn btn-md rounded-circle bg-light border mt-4" onclick="eachDel(event)">
