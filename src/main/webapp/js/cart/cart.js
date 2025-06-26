@@ -6,8 +6,7 @@
 window.addEventListener('DOMContentLoaded', cartList);
 
 function cartList() {
-	let value = "basic";
-	fetch('cart.do?action='+ value) //frontcontroller
+	fetch('cart.do') //frontcontroller
 	.then(result => result.json())
 	.then(data => {
 		let cartItems = data;
@@ -22,11 +21,10 @@ function cartList() {
 
 //장바구니 상품 단건삭제(엑스btn)
 function eachDel(event){
-	let value = "eachDel";
 	let delbtn = event.target;
 	let eachRow = delbtn.closest('.cartProduct');
 	let prdNo = eachRow.querySelector('#selectdeProduct').value;
-	fetch('cart.do?action='+ value + '&prdNo=' + prdNo)
+	fetch('cartPrdDel.do?prdNo='+prdNo)
 	.catch(err => console.log(err));
 	eachRow.remove();
 }
@@ -35,8 +33,7 @@ function eachDel(event){
 //전체삭제
 function delitem(){
 	let cartBody = document.querySelector('#basketBody');
-	let value = "delAll";
-	fetch('cart.do?action='+ value)
+	fetch('cartEmpty.do')
 	.catch(err => console.log(err));
 	cartBody.remove();
 }
@@ -46,26 +43,32 @@ function delitem(){
 //1)+/-버튼수량변겅
 function btnChange(event, upDown){
 	let changeBtn = event.target;
-	let row = changeBtn.closest('.cartProduct');
-	let qtyValue = row.querySelector('#productQcy').value; //value(수량) 디폴트 1. 
+	let eachRow = changeBtn.closest('.cartProduct');
+	let qtyInput = eachRow.querySelector('#productQcy'); //value(수량) 디폴트 1. 
 	let prdNo = eachRow.querySelector('#selectdeProduct').value; //상품코드
-	let qty = parseInt(qtyValue); 
+	let qty = parseInt(qtyInput.value); 
 	qty = Math.max(1, qty+upDown); //여기까지 클릭시 value는 변경됨. 
+	qtyInput.value = qty;
 	
-	let value = "updateQty";
-	fetch('cart.do?action='+ value + '&prdNo=' + prdNo +'&qty=' + qty)
+	
+		
+	fetch('cartUpdateQty.do?prdNo='+ prdNo +'&qty=' + qty)
 	.catch(err => console.log(err));
+	
 	
 }
 
 //2) 키보드입력 수량변경
 function keyChange(event){   //숫자지우면 안됨... 오류!!!!!!!!! 수정할 것! 
 	let keyQty = event.target;
-	console.log(keyQty);
+	let eachRow = keyQty.closest('.cartProduct');
+	let prdNo = eachRow.querySelector('#selectdeProduct').value; //상품코드
 	let qty = parseInt(keyQty.value);
 	qty = Math.max(1, qty);  //입력구간지정. 
 	keyQty.value = qty;
-	console.log(keyQty.value);	
+	
+	fetch('cartUpdateQty.do?prdNo='+ prdNo +'&qty=' + qty)
+	.catch(err => console.log(err));
 }
 
 
@@ -98,7 +101,7 @@ function makeTemplet(item){
 					</div>
 					<input type="text"
 						class="form-control form-control-sm text-center border-0"
-						 id="productQcy" value="${item.cartQty}" oninput="keyChange(event)"/> 
+						  id="productQcy" value="${item.cartQty}" oninput="keyChange(event)"/> 
 					<div class="input-group-btn">
 						<button
 							class="btn btn-sm btn-plus rounded-circle bg-light border" onclick="btnChange(event, 1)">
@@ -108,7 +111,7 @@ function makeTemplet(item){
 				</div>
 			</td>
 			<td>
-				<p class="mb-0 mt-4">${item.prdPrice} 원</p>
+				<p class="mb-0 mt-4">${item.prdPrice * item.cartQty} 원</p>
 			</td>
 			<td>
 				<button id="delbtn" class="btn btn-md rounded-circle bg-light border mt-4" onclick="eachDel(event)">

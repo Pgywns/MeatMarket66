@@ -13,16 +13,28 @@
              on c.prd_no = p.prd_no
         where c.user_id = #{userId}
 	</select>
+	
 	<!-- 장바구니 전체비우기 -->
 	<delete id="deleteList" parameterType="String">
 		delete from tbl_cart
         where user_id = #{userId}
 	</delete>
+	
+	
 	<!-- 장바구니 상품 단건삭제 -->
 	<delete id="eachDelCart">
 		delete from tbl_cart
 		where user_id = #{userId}
 		  and prd_No= #{prdNo}
 	</delete>
+	
+	<!-- 장바구니 수량업데이트 -->
+	<update id="updateCartQty">
+		update tbl_cart
+		set cart_qty = #{cartQty}
+		where user_id = #{userId}
+		and prd_no= #{prdNo}
+	</update>
+	
 	
 </mapper>
