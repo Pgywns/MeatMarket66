@@ -1,43 +1,38 @@
-/**
- * board.js
- */
 
-const bcnt = document.querySelector('#accordionExample');
+const svc = {
+	//고객센터목록 ->변경
+	btnClickList() {
+		document.querySelector('#nav-about-tab').addEventListener('click', function(){
+			fetch('boardList.do')
+				.then(data => data.json())
+				.then(result => {
+					document.querySelector('#boardCategory').innerHTML = "";
+					result.forEach((board) => {
+						let template = `<div class="accordion-item" id="acboard">
+								<button class="accordion-button collapsed" type="button"
+			  							data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+			  							aria-expanded="false" aria-controls="flush-collapseOne"
+			  							style="height: 55px">
+			  							<h5 class="accordion-header">${board.boardTitle}</h5>
+			  							<p style="">[${board.boardCategory}]${board.boardTitle}</p>
+			  					</button>
+			  					</div>
+			  						<div>
+			  							<div id="flush-collapseOne" class="accordion-collapse collapse"
+			  								data-bs-parent="#accordionFlushExample ">
+			  								<div class="accordion-body w-50">
+			  									<p>${board.boardContent}</p>
+			  								</div>
+			  							</div>
+									</div>`;
+						document.querySelector('#boardCategory').insertAdjacentHTML('beforeend', template);
+						console.log(template);
+					})
 
-const svc ={
-	
-	boardList(){
-	const bli = document.querySelectorAll(".faq-tab__text");
-	bli.forEach(bli =>{
-		bli.addEventListener('click',function(){
-			
+				})
+				.catch(err => console.log(err));
 		})
-	})	
+
 	}
-	/*const boardList = `
-		<div class="accordion-item">
-		 <button class="accordion-button collapsed" type="button"
-				data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
-				aria-expanded="false" aria-controls="flush-collapseOne"
-				style="height: 55px">
-				<h5 class="accordion-header">상품관련</h5>
-				<p style="">[공통]이력번호는 어떻게 확인하나요?</p>
-		</button>
-		</div>
-			<div>
-				<div id="flush-collapseOne" class="accordion-collapse collapse"
-					data-bs-parent="#accordionFlushExample ">
-					<div class="accordion-body w-50">
-						<p>각 상품의 이력번호는 개별 상품 라벨에 표시되어 있으며 축산물이력제 페이지에
-							(http://aunit.mtrace.go.kr/) 이력번호를 입력하시면 해당 상품의 이력을 쉽게 조회하실 수
-							있습니다.</p>
-					</div>
-				</div>
-			</div>`;*/
 }
-
-
-
-
-
-
+svc.btnClickList();

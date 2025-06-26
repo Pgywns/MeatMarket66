@@ -5,5 +5,6 @@ import java.util.List;
 import com.yedam.vo.BoardVO;
 
 public interface BoardSevice {
-	public List<BoardVO> list();
+	public List<BoardVO> boardList();
+	public List<BoardVO> clickboardList(String boardCategory);
 }

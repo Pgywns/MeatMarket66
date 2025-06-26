@@ -12,8 +12,13 @@ public class BoardSeviceImpl implements BoardSevice{
 	SqlSession sqlSession = DataSource.getInstance().openSession();
 	BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 	@Override
-	public List<BoardVO> list() {
+	public List<BoardVO> boardList() {
 		// TODO Auto-generated method stub
-		return mapper.boardList();
+		return mapper.selectList();
+	}
+	@Override
+	public List<BoardVO> clickboardList(String boardTitle) {
+		// TODO Auto-generated method stub
+		return mapper.clickList(boardTitle);
 	}
 }
