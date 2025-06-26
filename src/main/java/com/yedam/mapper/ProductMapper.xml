@@ -6,30 +6,31 @@
 
 	<!-- 상품 전체 -->
 	<select id="selectList" resultType="Product">
-		select *
+		select prd_no, prd_name, prd_image,
+		prd_content,prd_price, prd_sort, prd_date
 		from tbl_product
 		order by prd_no
 	</select>
 	
 	<!-- 상품 카테고리별 수량 -->
 	<select id="selectCount" resultType="Product">
-		select count(prd_sort) "prdCount", p_sort "prdSort" 
+		select count(prd_sort) "prdCount" , prd_sort
 		from tbl_product
-		group by p_sort
+		group by prd_sort
 	</select>
 	
 	<!-- 상품 목록 카테고리 -->
 	<select id="selectCategory">
 		select * from tbl_product
-		where p_sort = ${pSort}
+		where prd_sort = ${prdSort}
 	</select>
 
 	<!-- 상품목록 페이징 -->
 	<select id="selectListPaging">
 		SELECT a.*
-		from (SELECT p_no pn, r.*
+		from (SELECT prd_no pn, r.*
 		FROM TBL_PRODUCT r
-		order by p_no) a
+		order by prd_no) a
 		where a.pn > (${page} - 1 ) * 9 * 0
 		<![CDATA[
 		and a.pn <= (${page} * 9)

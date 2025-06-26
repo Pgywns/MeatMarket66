@@ -50,30 +50,10 @@
 									  <c:forEach var="item" items="${cList }">
 										<li>
 											<div class="d-flex justify-content-between fruite-name">
-												<a href="#" onclick="javascript:svc.categoryList(event, '소')"><i class="fas fa-apple-alt me-2"></i>${item.pSort }</a> <span>${item.pCount }</span>
+												<a href="#" onclick="javascript:svc.categoryList(event, '소')"><i class="fas fa-apple-alt me-2"></i>${item.prdSort }</a> <span>${item.prdCount }</span>
 											</div>
 										</li>
 									  </c:forEach>
-										<li>
-											<div class="d-flex justify-content-between fruite-name">
-												<a href="#" onclick="javascript:svc.categoryList(event, '돼지')"><i class="fas fa-apple-alt me-2"></i>돼지고기</a> <span></span>
-											</div>
-										</li>
-										<li>
-											<div class="d-flex justify-content-between fruite-name">
-												<a  href="#" onclick="javascript:svc.categoryList(event, '닭')"><i  class="fas fa-apple-alt me-2"></i>닭고기</a> <span></span>
-											</div>
-										</li>
-										<li>
-											<div class="d-flex justify-content-between fruite-name">
-												<a href="#" onclick="javascript:svc.categoryList(event, '채소류')"><i class="fas fa-apple-alt me-2"></i>채소</a> <span></span>
-											</div>
-										</li>
-										<li>
-											<div class="d-flex justify-content-between fruite-name">
-												<a href="#" onclick="javascript:svc.categoryList(event, '밀키트')"><i class="fas fa-apple-alt me-2"></i>밀키트</a> <span>(5)</span>
-											</div>
-										</li>
 									</ul>
 								</div>
 							</div>

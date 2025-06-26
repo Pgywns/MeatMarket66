@@ -28,9 +28,9 @@ public class ProductServiceImpl implements ProductService {
 
 	// 카테고리
 	@Override
-	public List<ProductVO> productListCategory(String pSort) {
+	public List<ProductVO> productListCategory(String prdSort) {
 		
-		return mapper.selectCategory(pSort);
+		return mapper.selectCategory(prdSort);
 	}
 
 	@Override
