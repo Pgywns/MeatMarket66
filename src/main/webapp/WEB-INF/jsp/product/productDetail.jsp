@@ -107,7 +107,6 @@
                                                     words etc. Susp endisse ultricies nisi vel quam suscipit </p>
                                             </div>
                                         </div>
-
                                         <div class="d-flex">
                                             
                                             <div class="">
