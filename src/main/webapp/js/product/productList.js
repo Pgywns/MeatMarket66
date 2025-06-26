@@ -13,7 +13,7 @@ const svc = {
 					let str = `<div class="col-md-6 col-lg-6 col-xl-4">
 								<div id="detail" class="rounded position-relative fruite-item border border-secondary">
 									<div class="fruite-img">
-										<a href="productDetail.do?prdSort='${product.prdSort}'&prdImage='${product.prdImage}'&prdName='${product.prdName}'&prdPrice='${product.prdPrice}'&prdContent='${product.prdContent}'
+										<a href="productDetail.do?prdSort=${product.prdSort}&prdImage=${product.prdImage}&prdName=${product.prdName}&prdPrice=${product.prdPrice}&prdContent=${product.prdContent}
 											"><img src="img/productList/${product.prdSort}/${product.prdImage}"
 											class="img-fluid w-100 rounded-top" alt=""></a>
 									</div>
