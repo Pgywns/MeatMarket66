@@ -4,10 +4,18 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!-- Single Page Header start -->
+<input type="hidden" name="keyword" value="${search.keyword}">
+<input type="hidden" name="page" value="${search.page}">
+<style>
+#hidden {
+		
+		visibility : hidden;
+	}
+</style>	
 
 <div class="container-fluid page-header py-5">
 	<h1 class="text-center text-white display-6">Shop List</h1>
-	
+
 </div>
 <!-- Single Page Header End -->
 
@@ -28,14 +36,13 @@
 					</div>
 					<div class="col-6"></div>
 					<div class="col-xl-3">
-						<div class="bg-light ps-3 py-3 rounded d-flex justify-content-between mb-4">
+						<div id="hidden" class="bg-light ps-3 py-3 rounded d-flex justify-content-between mb-4" style="display:none">
 							<label for="fruits">정렬 순서:</label> <select id="fruits"
 								name="fruitlist" class="border-0 form-select-sm bg-light me-3"
 								form="fruitform">
-								<option value="beef">높은 가격순</option>
-								<option value="pork">낮은 가격순</option>
-								<option value="chicken">등록일순</option>
-								<option value="vegetable">채소</option>
+								<option value="choose">선택하세요</option>
+								<option value="desc">높은 가격순</option>
+								<option value="asc">낮은 가격순</option>
 							</select>
 						</div>
 					</div>
