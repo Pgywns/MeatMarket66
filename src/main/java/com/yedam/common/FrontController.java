@@ -45,6 +45,7 @@ public class FrontController extends HttpServlet {
 		map.put("/productListPaging.do",  new ProductListControlPaging());
 		map.put("/productCategory.do", new ProductCategoryControl());
 		
+		
 		// 로그인
 		map.put("/login.do", new LoginControl());
 		map.put("/register.do", new RegisterControl());

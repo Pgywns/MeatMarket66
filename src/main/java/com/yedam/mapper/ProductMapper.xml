@@ -37,6 +37,17 @@
 		<![CDATA[
 		and a.pn <= (${page} * 9)
 		]]>
-
 	</select>
+	
+	<!-- 옵션별 상품 목록 -->
+	<select id="selectOption" parameterType="String">
+		select * 
+		from tbl_product
+		where a.pn > (${page} - 1 ) * 9 * 0
+		<![CDATA[
+		and a.pn <= (${page} * 9)
+		]]>
+		order by prd_price #{prdOrder}
+	</select>
+	
 </mapper>

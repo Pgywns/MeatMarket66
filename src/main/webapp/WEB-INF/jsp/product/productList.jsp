@@ -32,10 +32,9 @@
 							<label for="fruits">정렬 순서:</label> <select id="fruits"
 								name="fruitlist" class="border-0 form-select-sm bg-light me-3"
 								form="fruitform">
-								<option value="beef">높은 가격순</option>
-								<option value="pork">낮은 가격순</option>
-								<option value="chicken">등록일순</option>
-								<option value="vegetable">채소</option>
+								<option value="choose">선택하세요</option>
+								<option value="desc">높은 가격순</option>
+								<option value="asc">낮은 가격순</option>
 							</select>
 						</div>
 					</div>
