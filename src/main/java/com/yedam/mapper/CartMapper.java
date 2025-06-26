@@ -6,4 +6,5 @@ import com.yedam.vo.CartListVO;
 
 public interface CartMapper {
 	public List<CartListVO> selectCartList(String userId);
+	public int deleteList(String userId);
 }

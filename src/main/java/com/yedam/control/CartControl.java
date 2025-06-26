@@ -26,20 +26,26 @@ public class CartControl implements Control {
 		//세션으료 userid 가지고 와야함. boardListControl참고.
 		//로그인control에서 session으로 전달하는 키값 가지고 와야함.
 		
-	
+		
 		String userId = "user01";
 		
 		//장바구니목록출력 DB query
 		CartService svc = new CartServiceImpl();
-		List<CartListVO> cartList = svc.cartList(userId);		
+		List<CartListVO> cartList = svc.cartList(userId);	//세션아이디 받기	
 		
 		
 		//json으로 변환
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(cartList);
-		System.out.println(json);
+
 		//데이터전달 & 이동 
 		resp.getWriter().print(json);		
-			
+		
+		String action = req.getParameter("action");
+		
+		switch(action) {
+		case "delAll":
+			svc.emptyAll(userId);  //세션값으로 아이디 
+		}
 	}	
 }

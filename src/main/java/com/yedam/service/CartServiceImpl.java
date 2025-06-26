@@ -18,4 +18,14 @@ public class CartServiceImpl implements CartService{
 		return mapper.selectCartList(userId);
 	}
 
+	@Override
+	public boolean emptyAll(String userId) {
+		int r = mapper.deleteList(userId);
+		if (r == 1) {
+			sqlSession.commit();
+			return true;
+		}
+		return false;
+	}
+
 }
