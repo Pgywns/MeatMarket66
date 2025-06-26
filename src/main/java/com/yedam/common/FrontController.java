@@ -19,7 +19,7 @@ import com.yedam.control.CompleteOrder;
 import com.yedam.control.LoginControl;
 import com.yedam.control.MainControl;
 import com.yedam.control.OrderControl;
-import com.yedam.control.ProductCategory;
+import com.yedam.control.ProductCategoryControl;
 import com.yedam.control.ProductDetailControl;
 import com.yedam.control.ProductListControl;
 import com.yedam.control.ProductListControlPaging;
@@ -43,7 +43,7 @@ public class FrontController extends HttpServlet {
 		map.put("/productDetail.do", new ProductDetailControl());
 		map.put("/proudctList.do", new ProductListControl());
 		map.put("/productListPaging.do",  new ProductListControlPaging());
-		map.put("/productCategory.do", new ProductCategory());
+		map.put("/productCategory.do", new ProductCategoryControl());
 		
 		// 로그인
 		map.put("/login.do", new LoginControl());

@@ -14,15 +14,17 @@
 	
 	<!-- 상품 카테고리별 수량 -->
 	<select id="selectCount" resultType="Product">
-		select count(prd_sort) "prdCount" , prd_sort
+		select count(prd_sort) "prdCount" ,prd_sort
 		from tbl_product
 		group by prd_sort
 	</select>
 	
 	<!-- 상품 목록 카테고리 -->
-	<select id="selectCategory">
-		select * from tbl_product
-		where prd_sort = ${prdSort}
+	<select id="selectCategory" resultType="Product" parameterType="String">
+		select prd_no, prd_name, prd_image,
+		prd_content,prd_price, prd_sort, prd_date
+		from tbl_product
+		where prd_sort = #{prdSort}
 	</select>
 
 	<!-- 상품목록 페이징 -->
