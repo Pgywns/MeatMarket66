@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
 
-public class MemberControl implements Control {
+public class LoginControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("member/member.tiles").forward(req, resp);
+		// TODO Auto-generated method stub
 
 	}
 

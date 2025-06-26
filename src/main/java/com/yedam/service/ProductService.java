@@ -13,7 +13,7 @@ public interface ProductService {
 	List<ProductVO> productListPaging(int page);
 	
 	//카테고리
-	List<ProductVO> productListCategory(String pSort);
+	List<ProductVO> productListCategory(String prdSort);
 	
 	//카테고리별 수량
 	List<ProductVO> productCount();
