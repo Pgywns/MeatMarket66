@@ -1,7 +1,6 @@
 package com.yedam.mapper;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
@@ -23,5 +22,5 @@ public interface ProductMapper {
 	public List<ProductVO> selectCount();
 
 	// 옵션별 리스트 출력
-	public List<ProductVO> selectOption(String prdOrder);
+	public List<ProductVO> selectOption(SearchDTO search);
 }
