@@ -18,11 +18,11 @@ public class ProductDetailControl implements Control {
 		String prdPrice = req.getParameter("prdPrice");
 		String prdContent = req.getParameter("prdContent");
 		
-		System.out.println(prdSort);
-		System.out.println(prdImage);
-		System.out.println(prdName);
-		System.out.println(prdPrice);
-		System.out.println(prdContent);
+		req.setAttribute("prdSort", prdSort);
+		req.setAttribute("prdImage", prdImage);
+		req.setAttribute("prdName", prdName);
+		req.setAttribute("prdPrice", prdPrice);
+		req.setAttribute("prdContent", prdContent);
 		
 		req.getRequestDispatcher("product/productDetail.tiles").forward(req, resp);
 	}
