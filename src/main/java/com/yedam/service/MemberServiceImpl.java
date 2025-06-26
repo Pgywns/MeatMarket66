@@ -31,8 +31,18 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public boolean userCheck(String id) {
-		System.out.println(mapper.selectMember(id));
 		return mapper.selectMember(id) == null;
 	}
 
+	@Override
+	public String findId(String name, String phone) {
+		return mapper.selectId(name, phone);
+	}
+
+	@Override
+	public String findPassword(String id, String name, String phone) {
+		return mapper.selectPassword(id, name, phone);
+	}
+
+	
 }

@@ -1,26 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<link
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.5/angular.min.js"></script>
+	<link href="css/member/member.css" rel="stylesheet">
+<link src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.5/angular.min.js"></script>
 <div class="login-page" ng-app="">
-
 	<div class="login-content login-content-signin" ng-hide="showSignIn">
 		<div>
 			<h2>로그인</h2>
 			<form class="wrapper-box" role="form" action="login.do" method="POST">
 				<input type="text" name="userId" class="form-control form-control-email" placeholder="아이디를 입력하세요." required> 
 				<input type="password" name="userPw" class="form-control form-control-password" placeholder="비밀번호를 입력하세요." required> 
-				<a class="outer-link pull-left" href="#">계정을 잃어버리셨나요?</a>
+				<a class="outer-link pull-left" href="findAccount.do">계정을 잃어버리셨나요?</a>
 				<button type="submit" class="btn btn-submit btn-default pull-right">로그인</button>
 			</form>
 		</div>
 	</div>
-
 	<div class="login-content login-content-signup ng-hide"
 		ng-show="showSignIn">
 		<div>
@@ -41,7 +36,6 @@
 			</form>
 		</div>
 	</div>
-
 	<div class="login-switcher">
 		<div class="login-switcher-signin" ng-show="showSignIn">
 			<h3>육월육일에 오신 적이 있나요?</h3>

@@ -82,7 +82,7 @@ document.querySelector('#check').addEventListener('click', checks);
 
 function checks() {
 	let id = document.querySelector('#userId').value;
-	console.log(id);
+	
 	fetch('userCheck.do?id=' + id)
 		.then(data => data.json())
 		.then(result => {
