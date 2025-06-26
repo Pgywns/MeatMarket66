@@ -23,16 +23,14 @@ public class ProductListControlPaging implements Control {
 
 		// 상품 전체 목록 paging
 		String page = req.getParameter("page");
-		
-		// 상품 카테고리
-		String category = req.getParameter("category");
-
+	
 		ProductService svc = new ProductServiceImpl();
 		List<ProductVO> list = svc.productListPaging(Integer.parseInt(page));
 
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(list);
 		resp.getWriter().print(json);
+		System.out.println(json);
 
 	}
 
