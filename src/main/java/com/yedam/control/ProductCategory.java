@@ -14,26 +14,20 @@ import com.yedam.service.ProductService;
 import com.yedam.service.ProductServiceImpl;
 import com.yedam.vo.ProductVO;
 
-public class ProductListControl2 implements Control {
+public class ProductCategory implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("text/json;charset=utf-8");
-
-		// 상품 전체 목록 paging
-		String page = req.getParameter("page");
 		
-		// 상품 카테고리
-		String category = req.getParameter("category");
-
+		String pSort = req.getParameter("pSort");
 		ProductService svc = new ProductServiceImpl();
-		List<ProductVO> list = svc.productListPaging(Integer.parseInt(page));
-
+		List<ProductVO>list = svc.productListCategory(pSort);
+		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(list);
 		resp.getWriter().print(json);
-
 	}
 
 }

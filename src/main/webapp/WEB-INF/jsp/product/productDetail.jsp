@@ -23,7 +23,7 @@
 					<div class="row g-4">
 						<div class="col-lg-6">
 							<div class="border rounded">
-								<img src="img/초신선 돼지 목살(19800).png"
+								<img src="img/productList/돼지/초신선 돼지 목살(19800).png"
 									class="img-fluid rounded" alt="Image">
 							</div>
 						</div>
@@ -88,49 +88,46 @@
 										<img src="img/productDetail/pork/pork5.png" class="img-fluid rounded" alt="Image">
 										<img src="img/productDetail/pork/pork6.png" class="img-fluid rounded" alt="Image">
 										<img src="img/productDetail/pork/pork7.png" class="img-fluid rounded" alt="Image">
-									</div>
-										
-										
+									</div>	
 								</div>
-																<div class="tab-pane" id="nav-mission" role="tabpanel"
-									aria-labelledby="nav-mission-tab">
+								<div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
 									<!-- 리뷰쓰기 -->
-									<form action="#">
-										<div class="row g-4">
-											<div class="col-lg-12">
-												<div class="border-bottom rounded my-4">
-												 <h4>첫 구매.</h4>
-													<textarea name="" id="" class="form-control border-0"
-														cols="30" rows="8" placeholder="맛있네요,고소해요^^"
-														spellcheck="false"></textarea>
-												</div>
-												<div class="d-flex align-items-center gap-2 mb-3">
-													<input type="file"
-														class="form-control border-0 me-2 flex-grow-1"
-														id="inputGroupFile03"
-														aria-describedby="inputGroupFileAddon03"
-														aria-label="Upload" style="width: 200px"> <a
-														href="#"
-														class="btn border border-secondary text-primary rounded-pill px-4 py-3">commit</a>
-												</div>
-												<!-- 리뷰 -->
-												<div class="col-lg-6">
-													<div class="border-bottom rounded">
-														<p>장*혜</p>
-													</div>
-												</div>
-												<div class="d-flex">
-													<div class="">
-														<img src="img/초신선 돼지 목살(19800).png" class="img-fluid rounded" alt="Image">
-														<p class="mb-2" style="font-size: 14px;">제품: 소고기 유저:
-															user01 날짜:2025-06-23</p>
-														<p>소고기 등심이 나쁘지는 않네요..</p>
-													</div>
-												</div>
-	
-											</div>
-										</div>
-									</form>
+									<div class="d-flex">
+                                            <img src="img/avatar.jpg" class="img-fluid rounded-circle p-3" style="width: 100px; height: 100px;" alt="">
+                                            <div class="">
+                                                <p class="mb-2" style="font-size: 14px;">April 12, 2024</p>
+                                                <div class="d-flex justify-content-between">
+                                                    <h5>Jason Smith</h5>
+                                                    <div class="d-flex mb-3">
+                                                        <i class="fa fa-star text-secondary"></i>
+                                                        <i class="fa fa-star text-secondary"></i>
+                                                        <i class="fa fa-star text-secondary"></i>
+                                                        <i class="fa fa-star text-secondary"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </div>
+                                                </div>
+                                                <p>The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic 
+                                                    words etc. Susp endisse ultricies nisi vel quam suscipit </p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex">
+                                            <img src="img/avatar.jpg" class="img-fluid rounded-circle p-3" style="width: 100px; height: 100px;" alt="">
+                                            <div class="">
+                                                <p class="mb-2" style="font-size: 14px;">April 12, 2024</p>
+                                                <div class="d-flex justify-content-between">
+                                                    <h5>Sam Peters</h5>
+                                                    <div class="d-flex mb-3">
+                                                        <i class="fa fa-star text-secondary"></i>
+                                                        <i class="fa fa-star text-secondary"></i>
+                                                        <i class="fa fa-star text-secondary"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </div>
+                                                </div>
+                                                <p class="text-dark">The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic 
+                                                    words etc. Susp endisse ultricies nisi vel quam suscipit </p>
+                                            </div>
+                                        </div>
 								</div>
 								<div class="tab-pane" id="nav-vision" role="tabpanel">
 									<p class="text-dark">Tempor erat elitr rebum at clita. Diam

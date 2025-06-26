@@ -1,3 +1,4 @@
+<!-- cart.jsp -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -74,5 +75,8 @@
 </div>
 
 <!-- Cart Page End -->
+<script>
+  const CONTEXT_PATH = "${pageContext.request.contextPath}";
+</script>
 
 <script type="text/javascript" src="./js/cart/cart.js"></script>

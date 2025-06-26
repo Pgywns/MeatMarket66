@@ -8,11 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
 
-public class AddProductControl implements Control {
+public class CartPageControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("admin/addProduct.tiles").forward(req, resp);
+		req.getRequestDispatcher("cart/cart.tiles").forward(req, resp);	
+
 	}
 
 }

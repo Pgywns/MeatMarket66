@@ -10,25 +10,30 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.yedam.common.Control;
-import com.yedam.service.BoardSevice;
-import com.yedam.service.BoardSeviceImpl;
-import com.yedam.vo.BoardVO;
+import com.yedam.service.ProductService;
+import com.yedam.service.ProductServiceImpl;
+import com.yedam.vo.ProductVO;
 
-public class BoardControl implements Control {
+public class ProductListControlPaging implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("text/json;charset=utf-8");
-		req.getRequestDispatcher("board/board.tiles").forward(req, resp);
+
+		// 상품 전체 목록 paging
+		String page = req.getParameter("page");
 		
-		BoardSevice svc = new BoardSeviceImpl();
-		List<BoardVO> list = svc.list(); 
-		System.out.println(list);
+		// 상품 카테고리
+		String category = req.getParameter("category");
+
+		ProductService svc = new ProductServiceImpl();
+		List<ProductVO> list = svc.productListPaging(Integer.parseInt(page));
+
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(list);
 		resp.getWriter().print(json);
-	
-	
+
 	}
 
 }

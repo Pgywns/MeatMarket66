@@ -14,6 +14,8 @@
 		<typeAlias alias="CsBoard" type="com.yedam.vo.BoardVO"/>
 		<typeAlias alias="Member" type="com.yedam.vo.MemberVO"/>
 		<typeAlias alias="Address" type="com.yedam.vo.AddressVO"/>
+		<typeAlias alias="Cart" type="com.yedam.vo.CartVO" />
+		<typeAlias alias="CartList" type="com.yedam.vo.CartListVO" />
 	</typeAliases>
 
 	<environments default="development">
@@ -35,6 +37,7 @@
 		<mapper resource="com/yedam/mapper/BoardMapper.xml"></mapper>
 		<mapper resource="com/yedam/mapper/MemberMapper.xml"></mapper>
 		<mapper resource="com/yedam/mapper/AddressMapper.xml"></mapper>
+		<mapper resource="com/yedam/mapper/CartMapper.xml"></mapper>
 	</mappers>
-	
+
 </configuration>
