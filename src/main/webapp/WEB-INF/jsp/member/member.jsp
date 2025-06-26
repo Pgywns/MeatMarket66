@@ -8,7 +8,7 @@
 	<div class="login-content login-content-signin" ng-hide="showSignIn">
 		<div>
 			<h2>로그인</h2>
-			<form class="wrapper-box" role="form" ng-submit="login()">
+			<form class="wrapper-box" role="form" ng-submit="login()" action="login.do">
 				<input type="text" ng-model="id"
 					class="form-control form-control-email" placeholder="아이디를 입력하세요."
 					required> <input type="password" ng-model="password"
@@ -24,7 +24,7 @@
 		ng-show="showSignIn">
 		<div>
 			<h2>회원가입</h2>
-			<form class="wrapper-box" role="form" ng-submit="register()">
+			<form class="wrapper-box" role="form" ng-submit="register()" action="register.do">
 				<input type="text" ng-model="uName" class="form-control form-control-username" placeholder="이름" required> 
 				<input type="text" ng-model="uId" class="form-control form-control-email" placeholder="아이디" required>
 				<input type="password" ng-model="uPw" class="form-control form-control-password" placeholder="비밀번호" required> 
