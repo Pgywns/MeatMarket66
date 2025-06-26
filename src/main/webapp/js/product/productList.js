@@ -122,6 +122,11 @@ const svc = {
 
 			console.log(prdSort);
 		})
+	},
+	
+	//리뷰 목록
+	reviewList(){
+		
 	}
 
 }//end svc

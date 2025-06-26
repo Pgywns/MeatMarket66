@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.mapper.ReviewMapper" >
+	<select id="selectReviewList" resultType="Review">
+		select prd_no,
+		       user_id,
+		       rvw_no,
+		       rvw_content,
+		       rvw_image,
+		       rvw_date
+		from tbl_review;
+	</select>
+</mapper>
