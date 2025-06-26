@@ -87,6 +87,8 @@
 								</div>
 								<div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
 									<!-- 리뷰쓰기 -->
+
+
 									<div class="d-flex">
                                             
                                             <div class="">
@@ -105,13 +107,17 @@
                                                     words etc. Susp endisse ultricies nisi vel quam suscipit </p>
                                             </div>
                                         </div>
+
                                         <div class="d-flex">
                                             
                                             <div class="">
                                                 <p class="mb-2" style="font-size: 14px;">April 12, 2024</p>
                                                 <div class="d-flex justify-content-between">
                                                     <h5>Sam Peters</h5>
+
+
                                                     
+
                                                 </div>
                                                 <p class="text-dark">The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic 
                                                     words etc. Susp endisse ultricies nisi vel quam suscipit </p>
@@ -128,7 +134,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> 
 				<div class="col-lg-4 col-xl-3"></div>
 			</div>
 		</div>

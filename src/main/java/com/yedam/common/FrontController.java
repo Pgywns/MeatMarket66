@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.control.AddProductFormControl;
 import com.yedam.control.BoardControl;
+import com.yedam.control.BoardListControl;
 import com.yedam.control.CartControl;
 import com.yedam.control.CartEmpty;
 import com.yedam.control.CartPageControl;
@@ -91,6 +92,9 @@ public class FrontController extends HttpServlet {
 		
 		//고객센터
 		map.put("/board.do", new BoardControl());
+
+		map.put("/boardList.do", new BoardListControl());
+
 	}
 	
 	@Override
