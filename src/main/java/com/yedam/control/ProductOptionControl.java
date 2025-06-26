@@ -24,15 +24,18 @@ public class ProductOptionControl implements Control {
 		resp.setContentType("text/json;charset=utf-8");
 		
 		String page = req.getParameter("page");
-		String kw = req.getParameter("keyword");
+		String order = req.getParameter("order");
+		String prdSort = req.getParameter("prdSort");
+		
 		
 		SearchDTO search = new SearchDTO();
+		search.setOrder(order);
 		search.setPage(Integer.parseInt(page));
-		search.setKeyword(kw);
+		search.setPrdSort(prdSort);
 		
-
 		ProductService svc = new ProductServiceImpl();
 		List<ProductVO> list = svc.productOption(search);
+		
 		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(list);

@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.control.AddProductFormControl;
-
 import com.yedam.control.BoardControl;
 import com.yedam.control.CartControl;
 import com.yedam.control.CartEmpty;
@@ -19,9 +18,13 @@ import com.yedam.control.CartPageControl;
 import com.yedam.control.CartPrdDel;
 import com.yedam.control.CartUpdateQty;
 import com.yedam.control.CompleteOrder;
+import com.yedam.control.FindAccountControl;
+import com.yedam.control.FindIdControl;
+import com.yedam.control.FindPasswordControl;
 import com.yedam.control.LoginControl;
 import com.yedam.control.LogoutControl;
 import com.yedam.control.MainControl;
+import com.yedam.control.MyPageControl;
 import com.yedam.control.OrderControl;
 import com.yedam.control.ProductCategoryControl;
 import com.yedam.control.ProductDetailControl;
@@ -52,12 +55,23 @@ public class FrontController extends HttpServlet {
 		map.put("/productCategory.do", new ProductCategoryControl());
 		map.put("/productListOption.do", new ProductOptionControl());
 		
+
 		
+		
+
 		// 로그인
 		map.put("/login.do", new LoginControl());
 		map.put("/logout.do", new LogoutControl());
 		map.put("/register.do", new RegisterControl());
 		map.put("/userCheck.do", new UserCheckControl());
+		
+		// 아이디 비밀번호찾기
+		map.put("/findAccount.do", new FindAccountControl());
+		map.put("/findId.do", new FindIdControl());
+		map.put("/findPassword.do", new FindPasswordControl());
+		
+		// 마이페이지
+		map.put("/myPage.do", new MyPageControl());
 		
 		//장바구니
 		map.put("/cartPage.do", new CartPageControl()); 
@@ -65,10 +79,12 @@ public class FrontController extends HttpServlet {
 		map.put("/cartEmpty.do", new CartEmpty());
 		map.put("/cartPrdDel.do", new CartPrdDel());
 		map.put("/cartUpdateQty.do", new CartUpdateQty());
+
 		
 		//주문페이지
 		map.put("/order.do", new OrderControl()); 
 		map.put("/complete.do", new CompleteOrder());
+		
 		// 관리자
 		map.put("/addProductForm.do", new AddProductFormControl());
 		map.put("/stockList.do", new StockListControl());
