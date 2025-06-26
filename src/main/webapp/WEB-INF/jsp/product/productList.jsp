@@ -50,7 +50,7 @@
 									  <c:forEach var="item" items="${cList }">
 										<li>
 											<div class="d-flex justify-content-between fruite-name">
-												<a href="#" onclick="javascript:svc.categoryList(event, '소')"><i class="fas fa-apple-alt me-2"></i>${item.prdSort }</a> <span>${item.prdCount }</span>
+												<a href="#" onclick="javascript:svc.categoryList('${item.prdSort}')"><i class="fas fa-apple-alt me-2"></i>${item.prdSort }</a> <span>${item.prdCount }</span>
 											</div>
 										</li>
 									  </c:forEach>

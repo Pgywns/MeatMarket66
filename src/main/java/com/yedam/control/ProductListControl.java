@@ -21,11 +21,10 @@ public class ProductListControl implements Control {
 		
 		ProductService svc = new ProductServiceImpl();
 		
-		// 카테고리별 수량
+		// 카테고리별 수량 (JSTL)
 		List<ProductVO> list = svc.productCount();
-		
 		req.setAttribute("cList", list);
-		System.out.println(list);
+
 		req.getRequestDispatcher("product/productList.tiles").forward(req, resp);
 		
 	}

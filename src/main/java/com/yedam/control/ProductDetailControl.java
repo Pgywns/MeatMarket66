@@ -12,6 +12,8 @@ public class ProductDetailControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
+		
 		req.getRequestDispatcher("product/productDetail.tiles").forward(req, resp);
 	}
 
