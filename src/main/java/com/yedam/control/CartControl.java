@@ -42,10 +42,20 @@ public class CartControl implements Control {
 		resp.getWriter().print(json);		
 		
 		String action = req.getParameter("action");
+		int prdNo = Integer.parseInt(req.getParameter("prdNo")); //단건삭제위한 상품코드를 받음. 
+		int eachP = Integer.parseInt(req.getParameter("qty")); //수량변경위해 수량을 파라미터로 받음. 
 		
 		switch(action) {
 		case "delAll":
 			svc.emptyAll(userId);  //세션값으로 아이디 
+			break;
+		case "eachDel": 
+			//System.out.println(prdNo);
+			svc.eachDel(userId, prdNo);
+			break;
+		case "updateQty":
+			svc.updateQty(userId, prdNo, eachP);
+			
 		}
 	}	
 }

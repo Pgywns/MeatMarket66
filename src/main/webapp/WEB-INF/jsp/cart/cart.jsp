@@ -38,7 +38,7 @@
 					type="button">선택삭제</button>
 				<button
 					class="btn border-secondary rounded-pill px-3 py-2 text-primary"
-					type="button" onclick="delAll()">전체삭제</button>
+					type="button" onclick="javascript:delitem()">전체삭제</button>
 			</div>
 			<div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
 				<button

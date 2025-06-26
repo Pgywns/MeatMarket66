@@ -5,8 +5,8 @@
 
 	<!-- 장바구니목록출력 -->
 	<!-- 세션은로 받아오는 user id -->
-	<select id="selectCartList" parameterType="string" resultType="CartList">
-		select c.cart_qty, 
+	<select id="selectCartList" parameterType="String" resultType="CartList">
+		select c.cart_qty, c.prd_no,
                p.prd_name, p.prd_image, p.prd_price, p.prd_sort
         from tbl_cart c
         join tbl_product p
@@ -14,9 +14,15 @@
         where c.user_id = #{userId}
 	</select>
 	<!-- 장바구니 전체비우기 -->
-	<delete id="deleteList" parameterType="string">
-		DELETE from tbl_cart
+	<delete id="deleteList" parameterType="String">
+		delete from tbl_cart
         where user_id = #{userId}
+	</delete>
+	<!-- 장바구니 상품 단건삭제 -->
+	<delete id="eachDelCart">
+		delete from tbl_cart
+		where user_id = #{userId}
+		  and prd_No= #{prdNo}
 	</delete>
 	
 </mapper>

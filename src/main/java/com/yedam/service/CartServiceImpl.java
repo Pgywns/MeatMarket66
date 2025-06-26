@@ -21,7 +21,17 @@ public class CartServiceImpl implements CartService{
 	@Override
 	public boolean emptyAll(String userId) {
 		int r = mapper.deleteList(userId);
-		if (r == 1) {
+		if (r > 1) {  //1건이상 삭제되면 성공! 
+			sqlSession.commit();
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean eachDel(String userId, int prdNo) {
+		int r = mapper.eachDelCart(userId, prdNo);
+		if(r == 1) {
 			sqlSession.commit();
 			return true;
 		}
