@@ -17,6 +17,7 @@
 		<typeAlias alias="Address" type="com.yedam.vo.AddressVO"/>
 		<typeAlias alias="Cart" type="com.yedam.vo.CartVO" />
 		<typeAlias alias="CartList" type="com.yedam.vo.CartListVO" />
+		<typeAlias alias="Review" type="com.yedam.vo.ReviewVO"/>
 	</typeAliases>
 
 	<environments default="development">

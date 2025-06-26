@@ -36,9 +36,8 @@ const svc = {
 					document.querySelector('#pList').insertAdjacentHTML('beforeend', str);
 
 				})
-			})
+			}) 
 	},//end productList();
-
 	categoryList(str) {
 		fetch("productCategory.do?prdSort=" + str)
 			.then(response => response.json())
@@ -122,6 +121,11 @@ const svc = {
 
 			console.log(prdSort);
 		})
+	},
+	
+	//리뷰 목록
+	reviewList(){
+		
 	}
 
 }//end svc

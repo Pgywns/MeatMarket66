@@ -90,7 +90,6 @@ public class FrontController extends HttpServlet {
 		
 		//고객센터
 		map.put("/board.do", new BoardControl());
-
 		map.put("/boardList.do", new BoardListControl());
 
 	}
