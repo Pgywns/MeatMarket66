@@ -5,12 +5,13 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.common.DataSource;
+import com.yedam.common.SearchDTO;
 import com.yedam.mapper.ProductMapper;
 import com.yedam.vo.ProductVO;
 
 public class ProductServiceImpl implements ProductService {
 
-	SqlSession sqlSession = DataSource.getInstance().openSession();
+	SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	ProductMapper mapper = sqlSession.getMapper(ProductMapper.class);
 	
 	//상품 전체
@@ -32,11 +33,17 @@ public class ProductServiceImpl implements ProductService {
 		
 		return mapper.selectCategory(prdSort);
 	}
-
+	// 카테고리 수량체크
 	@Override
 	public List<ProductVO> productCount() {
 		
 		return mapper.selectCount();
+	}
+	// 옵션별 목록
+	@Override
+	public List<ProductVO> productOption(SearchDTO search) {
+		
+		return mapper.selectOption(search);
 	}
 
 }

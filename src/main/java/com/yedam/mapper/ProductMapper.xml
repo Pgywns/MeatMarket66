@@ -40,14 +40,17 @@
 	</select>
 	
 	<!-- 옵션별 상품 목록 -->
-	<select id="selectOption" parameterType="String">
-		select * 
+	<select id="selectOption" parameterType="search">
+		select *
 		from tbl_product
-		where a.pn > (${page} - 1 ) * 9 * 0
-		<![CDATA[
-		and a.pn <= (${page} * 9)
-		]]>
-		order by prd_price #{prdOrder}
+		<choose>
+			<when test="keyword != null and keyword == 'desc'.toString()">
+				order by price desc
+			</when>
+			<when test="keyword != null and keyword == 'asc'.toString()">
+				order by price 
+			</when>
+		</choose>
 	</select>
 	
 </mapper>

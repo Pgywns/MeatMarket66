@@ -40,7 +40,6 @@ const svc = {
 	},//end productList();
 
 	categoryList(str) {
-		console.log(str);
 		fetch("productCategory.do?prdSort=" + str)
 			.then(response => response.json())
 			.then(result => {
@@ -49,8 +48,9 @@ const svc = {
 					let str1 = `<div class="col-md-6 col-lg-6 col-xl-4">
 							<div class="rounded position-relative fruite-item border border-secondary">
 								<div class="fruite-img">
+								<a href="productDetail.do?prdSort=${product.prdSort}&prdImage=${product.prdImage}&prdName=${product.prdName}&prdPrice=${product.prdPrice}&prdContent${product.prdContent}">
 									<img src="img/productList/${product.prdSort}/${product.prdImage}"
-										class="img-fluid w-100 rounded-top" alt="">
+										class="img-fluid w-100 rounded-top" alt=""></a>
 								</div>
 								<div
 									class="text-white bg-secondary px-3 py-1 rounded position-absolute"
@@ -75,13 +75,21 @@ const svc = {
 			})
 
 	},//end categoryList
-
-
+	
+	optionList(){
+		document.querySelector('#fruits').addEventListener('change',function(search){
+			document.querySelector('#pList').innerHTML = "";
+			fetch("productOption.do?keyword=")
+		})
+			
+		
+		
+	}
 	
 //회원아이디, 상품번호, 갯수(default 1)
 
 }
 
 
-
+svc.optionList();
 svc.productList();
