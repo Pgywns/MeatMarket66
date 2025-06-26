@@ -114,7 +114,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> 
 				<div class="col-lg-4 col-xl-3"></div>
 			</div>
 		</div>
