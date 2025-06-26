@@ -6,51 +6,60 @@
 
 	<!-- 상품 전체 -->
 	<select id="selectList" resultType="Product">
-		select prd_no, prd_name, prd_image,
+		select prd_no, prd_name,
+		prd_image,
 		prd_content,prd_price, prd_sort, prd_date
 		from tbl_product
 		order by prd_no
 	</select>
-	
+
 	<!-- 상품 카테고리별 수량 -->
 	<select id="selectCount" resultType="Product">
-		select count(prd_sort) "prdCount" ,prd_sort
+		select count(prd_sort)
+		"prdCount" ,prd_sort
 		from tbl_product
 		group by prd_sort
 	</select>
-	
+
 	<!-- 상품 목록 카테고리 -->
-	<select id="selectCategory" resultType="Product" parameterType="String">
+	<select id="selectCategory" resultType="Product"
+		parameterType="String">
 		select prd_no, prd_name, prd_image,
 		prd_content,prd_price, prd_sort, prd_date
 		from tbl_product
-		where prd_sort = #{prdSort}
+		where
+		prd_sort = #{prdSort}
 	</select>
 
 	<!-- 상품목록 페이징 -->
 	<select id="selectListPaging">
 		SELECT a.*
-		from (SELECT prd_no pn, r.*
+		from (SELECT rownum rn, r.*
 		FROM TBL_PRODUCT r
-		order by prd_no) a
-		where a.pn > (${page} - 1 ) * 9 * 0
+		order by
+		prd_price) a
+		where a.rn > (${page} - 1 ) * 9 * 0
 		<![CDATA[
-		and a.pn <= (${page} * 9)
+		and a.rn <= (${page} * 9)
 		]]>
 	</select>
-	
+
 	<!-- 옵션별 상품 목록 -->
 	<select id="selectOption" parameterType="search">
-		select *
-		from tbl_product
+		SELECT a.*
+		from (SELECT rownum rn, r.*
+			  FROM TBL_PRODUCT r
 		<choose>
-			<when test="keyword != null and keyword == 'desc'.toString()">
-				order by price desc
-			</when>
-			<when test="keyword != null and keyword == 'asc'.toString()">
-				order by price 
+			<when test='!prdSort.equals("df")'>
+				where prd_sort = ${prdSort}
 			</when>
 		</choose>
+		order by prd_price ${order} ) a
+		where a.rn > (${page} - 1 ) * 9 * 0
+		<![CDATA[
+		and a.rn <= (${page} * 9)
+		]]>
+		
 	</select>
-	
+
 </mapper>
