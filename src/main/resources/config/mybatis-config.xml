@@ -11,7 +11,7 @@
 
 	<typeAliases>
 		<typeAlias alias="Product" type="com.yedam.vo.ProductVO"/>
-		<typeAlias alias="CsBoard" type="com.yedam.vo.BoardVO"/>
+		<typeAlias alias="Board" type="com.yedam.vo.BoardVO"/>
 		<typeAlias alias="Member" type="com.yedam.vo.MemberVO"/>
 		<typeAlias alias="Address" type="com.yedam.vo.AddressVO"/>
 		<typeAlias alias="Cart" type="com.yedam.vo.CartVO" />
