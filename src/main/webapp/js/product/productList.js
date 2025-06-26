@@ -38,7 +38,6 @@ const svc = {
 				})
 			})
 	},//end productList();
-
 	categoryList(str) {
 		fetch("productCategory.do?prdSort=" + str)
 			.then(response => response.json())
