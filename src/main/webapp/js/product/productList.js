@@ -36,7 +36,7 @@ const svc = {
 					document.querySelector('#pList').insertAdjacentHTML('beforeend', str);
 
 				})
-			})
+			}) 
 	},//end productList();
 	categoryList(str) {
 		fetch("productCategory.do?prdSort=" + str)
