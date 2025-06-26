@@ -31,14 +31,14 @@
 						</div>
 						<div class="col-md-12 col-lg-6">
 							<div class="form-item w-100">
-								<label class="form-label my-3" id="sample6_postcode">우편번호<sup>*</sup></label> <input
-									type="text" class="form-control">
+								 <label class="form-label my-3">우편번호<sup>*</sup></label> <input
+									type="text" class="form-control" id="sample6_postcode"> 
 							</div>
 						</div>
 						<div class="col-md-12 col-lg-6">
 							<div class="form-item w-100">
-								<label class="form-label my-3" id="sample6_address">주소<sup>*</sup></label> <input
-									type="text" class="form-control">
+								<label class="form-label my-3">주소<sup>*</sup></label> <input
+									type="text" class="form-control" id="sample6_address">
 							</div>
 						</div>
 						<div class="form-item">
@@ -178,7 +178,7 @@ function postApi(){
              document.getElementById('sample6_postcode').value = data.zonecode;
              document.getElementById("sample6_address").value = addr;
              // 커서를 상세주소 필드로 이동한다.
-             document.getElementById("sample6_detailAddress").focus();
+             /* document.getElementById("sample6_detailAddress").focus(); */
          }
      }).open();
 }

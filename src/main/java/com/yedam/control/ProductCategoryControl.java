@@ -14,20 +14,21 @@ import com.yedam.service.ProductService;
 import com.yedam.service.ProductServiceImpl;
 import com.yedam.vo.ProductVO;
 
-public class ProductCategory implements Control {
+public class ProductCategoryControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("text/json;charset=utf-8");
 		
-		String pSort = req.getParameter("pSort");
+		String prdSort = req.getParameter("prdSort");
 		ProductService svc = new ProductServiceImpl();
-		List<ProductVO>list = svc.productListCategory(pSort);
+		List<ProductVO>list = svc.productListCategory(prdSort);
 		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(list);
 		resp.getWriter().print(json);
+		System.out.println(json);
 	}
 
 }

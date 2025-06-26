@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.common.DataSource;
 import com.yedam.mapper.CartMapper;
-import com.yedam.vo.CartVO;
+import com.yedam.vo.CartListVO;
 
 public class CartServiceImpl implements CartService{
 
@@ -14,9 +14,18 @@ public class CartServiceImpl implements CartService{
 	CartMapper mapper = sqlSession.getMapper(CartMapper.class);
 	
 	@Override
-	public List<CartVO> cartList(String userId) {
-		// TODO Auto-generated method stub
+	public List<CartListVO> cartList(String userId) {
 		return mapper.selectCartList(userId);
+	}
+
+	@Override
+	public boolean emptyAll(String userId) {
+		int r = mapper.deleteList(userId);
+		if (r == 1) {
+			sqlSession.commit();
+			return true;
+		}
+		return false;
 	}
 
 }

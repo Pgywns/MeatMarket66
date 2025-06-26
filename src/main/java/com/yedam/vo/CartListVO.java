@@ -12,4 +12,5 @@ public class CartListVO { //상품테이블: 이미지, 상품명, 가격, 코�
 	private String prdName;
 	private String prdImage;
 	private int prdPrice;
+	private String prdSort;
 }
