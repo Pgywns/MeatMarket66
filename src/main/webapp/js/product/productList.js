@@ -165,7 +165,6 @@ const svc = {
 
 }//end svc
 
-//회원아이디, 상품번호, 갯수(default 1)
 
 svc.searchList();
 svc.productList();
@@ -177,9 +176,9 @@ svc.optionList();
 function productCart(no){
 	console.log("hi");	
 	let cartQty = 1;
-	let userId = 'user01';
 	let prdNo = no;
-	fetch("cartAdd.do?userId="+userId+"&prdNo="+prdNo+"&cartQty="+cartQty)
+	//if(prdNo ){};
+	fetch("cartAdd.do?prdNo="+prdNo+"&cartQty="+cartQty)
 	.catch(err=> console.log(err));
 	
 };

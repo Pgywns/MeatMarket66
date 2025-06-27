@@ -25,6 +25,7 @@ public class CartPrdDel implements Control {
 		int prdNo = Integer.parseInt(req.getParameter("prdNo")); 
 		
 		svc.eachDel(userId, prdNo);
+		
 	}
 
 }
