@@ -81,18 +81,21 @@
 							<div class="tab-pane" id="nav-mission" role="tabpanel"
 								aria-labelledby="nav-mission-tab">
 								<!-- 리뷰쓰기 -->
-								<div class="d-flex" id="reviewBox">
-										
-									<div class="">
-										<p class="mb-2" style="font-size: 14px;">April 12, 2024</p>
-										<div class="d-flex justify-content-between">
-											<h5>Jason Smith</h5>
+								<div id="reviewBox">
+									<div class="d-flex">
+											
+										<div class="">
+											<p class="mb-2" style="font-size: 14px;">April 12, 2024</p>
+											<div class="d-flex justify-content-between">
+												<h5>Jason Smith</h5>
+											</div>
+											<p>The generated Lorem Ipsum is therefore always free from
+												repetition injected humour, or non-characteristic words etc.
+												Susp endisse ultricies nisi vel quam suscipit</p>
 										</div>
-										<p>The generated Lorem Ipsum is therefore always free from
-											repetition injected humour, or non-characteristic words etc.
-											Susp endisse ultricies nisi vel quam suscipit</p>
 									</div>
 								</div>
+								
 							</div>
 							<div class="tab-pane" id="nav-vision" role="tabpanel">
 								<p class="text-dark">Tempor erat elitr rebum at clita. Diam
@@ -110,6 +113,5 @@
 	</div>
 </div>
 <!-- Single Product End -->
-<script type="text/javascript" src="js/cart/headerCartIcon.js"></script>
-
-<script src="js/product/productDetail.js"></script>
+<script src="js/product/productDetail.js">
+</script>
