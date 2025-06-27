@@ -3,7 +3,7 @@ table {
   border-collapse: collapse;
   font-family: 'Pretendard', sans-serif;
   font-size: 15px;
-  margin-top: 20px;
+  margin: 30px 0 30px 0;
 }
 
 thead {
@@ -14,31 +14,15 @@ thead th {
 	color: #fff;
 }
 
+table tr th {
+	  background-color: #81c408;
+	  color: #fff;
+}
+
 th, td {
   border: 1px solid #ddd;
   padding: 12px 10px;
   text-align: center;
-}
-
-/* 가장 왼쪽 셀의 border-left 제거 */
-th:first-child,
-td:first-child {
-  border-left: none;
-}
-
-/* 가장 오른쪽 셀의 border-right 제거 */
-th:last-child,
-td:last-child {
-  border-right: none;
-}
-
-/* 마지막 행의 td border-bottom 제거 */
-tr:last-child td {
-  border-bottom: none;
-}
-
-tbody tr:hover {
-  background-color: #f9f9f9;
 }
 
 th {
@@ -50,19 +34,77 @@ td {
   color: #444;
 }
 
+.btn {
+  text-align: center;
+  padding: 2px 10px;
+  margin-right: 10px; 
+  color: #fff;
+  border: 2px solid #7ac142;
+  background: #7ac142;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold; 
+  letter-spacing: 0px;
+  transition: all 0.1s ease-out;	
+}
+
+.btn-delete {
+  text-align: center;
+  padding: 2px 10px;
+  margin-right: 10px; 
+  color: #fff;
+  border: 2px solid #e82a2a;
+  background: #e82a2a;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold; 
+  letter-spacing: 0px;
+  transition: all 0.1s ease-out;	
+}
+
+.btn-add {
+  text-align: center;
+  padding: 5px 12px;
+  margin-right: 5px; 
+  color: #fff;
+  border: 2px solid #7ac142;
+  background: #7ac142;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold; 
+  letter-spacing: 0px;
+  transition: all 0.1s ease-out;	
+}
+
+.btn:hover,
+.btn-add:hover {
+	color: #7ac142;
+	background: #fff;
+	border: 2px solid #7ac142;
+}
+
+.btn-delete:hover {
+	color: #e82a2a;
+	background: #fff;
+	border: 2px solid #e82a2a;
+}
+
 /* 내용 칸 스타일 (3번째 열) */
-th:nth-child(3),
-td:nth-child(3) {
-  width: 650px;                 /* 너비 넓게 고정 */
-  max-width: 650px;             /* 최대 너비 제한 */
+#reviewTotalTable th:nth-child(3),
+#reviewTotalTable td:nth-child(3) {
+  width: 600px;                 /* 너비 넓게 고정 */
+  max-width: 600px;             /* 최대 너비 제한 */
   overflow: hidden;             /* 넘치는 내용 숨기기 */
   text-overflow: ellipsis;      /* ...으로 생략 */
   white-space: nowrap;          /* 줄바꿈 금지 */
   text-align: center;             /* 가독성 위해 왼쪽 정렬 */
 }
 
-th:nth-child(1),
-td:nth-child(1) {
+#reviewTotalTable th:nth-child(1),
+#reviewTotalTable td:nth-child(1) {
   width: 200px;                 /* 너비 넓게 고정 */
   max-width: 200px;             /* 최대 너비 제한 */
   overflow: hidden;             /* 넘치는 내용 숨기기 */
@@ -151,4 +193,58 @@ table caption {
 
 h1, h2, h3, h4, h5, h6 {
 	color: #000;
+}
+
+/* 모달창 */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+#popUp {
+  position: fixed; /* 화면에 고정 */
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7); /* 반투명한 배경색 */
+  display: none; /* 초기에는 숨김 */
+}
+#modalBody {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 정중앙 이동 */
+  width: 500px;
+  height: 350px;
+  padding: 30px 30px;
+  margin: 0 auto;
+  border: 1px solid #777;
+  background-color: #fff;
+}
+
+#closeBtn {
+  float: right;
+  font-weight: bold;
+  color: #777;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+#modalBody input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  box-sizing: border-box; /* 중요: border, padding 포함해 고정 너비 유지 */
+  margin-bottom: 10px;
+}
+
+/* 비밀번호 일치 메시지 */
+#pwMatchMsg {
+  height: 20px; /* 고정 높이로 아래 요소 안 밀리게 */
+  font-size: 14px;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
 }

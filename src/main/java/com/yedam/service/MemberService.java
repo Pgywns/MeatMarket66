@@ -16,4 +16,9 @@ public interface MemberService {
 	public String findId(String name, String phone);
 	// 비밀번호 찾기
 	public String findPassword(String id, String name, String phone);
+	
+	// 회원 한 명 조회
+	public MemberVO userSelect(String id);
+	// 정보 수정
+	public boolean updateUser(MemberVO member);
 }

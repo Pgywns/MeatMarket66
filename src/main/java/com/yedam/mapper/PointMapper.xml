@@ -11,5 +11,12 @@
 	where user_id = #{userId}
 </select>
 
-
+<!-- 포인트 전체 조회 -->
+<select id="selectPoint" parameterType="String" resultType="Point">
+	select user_id,
+	       point,
+	       od_date
+	from   tbl_point
+	where  user_id = #{userId}
+</select>
 </mapper>
