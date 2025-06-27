@@ -36,5 +36,10 @@
 		and prd_no= #{prdNo}
 	</update>
 	
+	<!-- 등록누를시 장바구니로 -->
+	<insert id="insertCart" parameterType="Cart">
+		insert into tbl_cart
+		values(#{userId},#{prdNo},#{cartQty})
+	</insert>
 	
 </mapper>
