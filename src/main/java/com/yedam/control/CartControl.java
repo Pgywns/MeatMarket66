@@ -22,8 +22,6 @@ public class CartControl implements Control {
 		resp.setContentType("text/json;charset=utf-8");	
 		
 		//세선에서 아이디 요청
-		//HttpSession session = req.getSession();
-		//String userId = session.getAttribute(""); 
 		HttpSession session = req.getSession();
 		String userId = (String)session.getAttribute("userId");
 		

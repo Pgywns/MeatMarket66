@@ -75,40 +75,16 @@
 						<div class="tab-content mb-5">
 							<div class="tab-pane active" id="nav-about" role="tabpanel"
 								aria-labelledby="nav-about-tab">
-								<div class="px-2">
-									<img src="img/productDetail/pork/porkMain.png"
-										class="img-fluid rounded" alt="Image"> <img
-										src="img/productDetail/pork/pork1.png"
-										class="img-fluid rounded" alt="Image"> <img
-										src="img/productDetail/pork/pork2.png"
-										class="img-fluid rounded" alt="Image"> <img
-										src="img/productDetail/pork/pork3.png"
-										class="img-fluid rounded" alt="Image"> <img
-										src="img/productDetail/pork/pork4.png"
-										class="img-fluid rounded" alt="Image"> <img
-										src="img/productDetail/pork/pork5.png"
-										class="img-fluid rounded" alt="Image"> <img
-										src="img/productDetail/pork/pork6.png"
-										class="img-fluid rounded" alt="Image"> <img
-										src="img/productDetail/pork/pork7.png"
-										class="img-fluid rounded" alt="Image">
+								<div class="px-2" id="detailImage" data-sort="${prdSort}" data-no="${prdNo}">					
 								</div>
 							</div>
 							<div class="tab-pane" id="nav-mission" role="tabpanel"
 								aria-labelledby="nav-mission-tab">
 								<!-- 리뷰쓰기 -->
-								<div class="d-flex">
-										
-									<div class="">
-										<p class="mb-2" style="font-size: 14px;">April 12, 2024</p>
-										<div class="d-flex justify-content-between">
-											<h5>Jason Smith</h5>
-										</div>
-										<p>The generated Lorem Ipsum is therefore always free from
-											repetition injected humour, or non-characteristic words etc.
-											Susp endisse ultricies nisi vel quam suscipit</p>
-									</div>
+								<div id="reviewBox">
+									
 								</div>
+								
 							</div>
 							<div class="tab-pane" id="nav-vision" role="tabpanel">
 								<p class="text-dark">Tempor erat elitr rebum at clita. Diam
@@ -126,3 +102,5 @@
 	</div>
 </div>
 <!-- Single Product End -->
+<script src="js/product/productDetail.js">
+</script>

@@ -27,7 +27,7 @@ function newMil() {
               <p class="truncate-line" style="max-height: 50px; overflow: hidden;">${mil.prdContent}</p>
               <div class="d-flex justify-content-between flex-lg-wrap">
                 <p class="text-dark fs-5 fw-bold mb-0">${mil.prdPrice}원</p>
-                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary">
+                <a href="#" onclick="javascript:productCart(${mil.prdNo});" class="btn border border-secondary rounded-pill px-3 text-primary">
                   <i class="fa fa-shopping-bag me-2 text-primary"></i>장바구니
                 </a>
               </div>
@@ -64,3 +64,31 @@ function newMil() {
       }, 100); // 0.1초 후 실행
     });
 }
+
+
+// 장바구니 누르면 등록.
+async function  productCart(productNo){
+	console.log("hi");	
+	let cartQty = 1;
+	let prdNo = productNo;
+	let boolean1 = true;
+	let data = await fetch("cart.do")
+	let result = await data.json();
+		result.forEach(cart =>{
+			if(cart.prdNo == productNo){
+				alert("장바구니에 이미 있습니다")
+				boolean1 = false;
+				return;
+			} else{
+				boolean1 = true;
+			}
+		})
+		if(!boolean1){
+			return;
+		} else{
+			
+		await fetch("cartAdd.do?prdNo="+prdNo+"&cartQty="+cartQty)
+		}
+	
+};
+	

@@ -11,5 +11,18 @@
 	where user_id = #{userId}
 </select>
 
+<!-- 포인트 전체 조회 -->
+<select id="selectPoint" parameterType="String" resultType="Point">
+	select user_id,
+	       point,
+	       od_date
+	from   tbl_point
+	where  user_id = #{userId}
+</select>
 
+<!-- 포인트사용 -->
+<insert id="usingPoint" parameterType="map">
+	insert into tbl_point (user_id, point)
+    values (#{userId} , #{usingPoint})
+</insert>
 </mapper>

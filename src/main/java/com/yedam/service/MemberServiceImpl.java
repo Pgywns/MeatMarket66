@@ -44,5 +44,18 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.selectPassword(id, name, phone);
 	}
 
-	
+	@Override
+	public MemberVO userSelect(String id) {
+		return mapper.userSelect(id);
+	}
+
+	@Override
+	public boolean updateUser(MemberVO member) {
+		int r = mapper.updateUser(member);
+		if (r == 1) {
+			sqlSession.commit();
+			return true;
+		}
+		return false;
+	}
 }

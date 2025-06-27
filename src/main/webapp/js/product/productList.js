@@ -15,7 +15,7 @@ const svc = {
 					let str = `<div class="col-md-6 col-lg-6 col-xl-4">
 								<div id="detail" class="rounded position-relative fruite-item border border-secondary">
 									<div class="fruite-img">
-										<a href="productDetail.do?prdSort=${product.prdSort}&prdImage=${product.prdImage}&prdName=${product.prdName}&prdPrice=${product.prdPrice}&prdContent=${product.prdContent}
+										<a href="productDetail.do?prdSort=${product.prdSort}&prdNo=${product.prdNo}&prdImage=${product.prdImage}&prdName=${product.prdName}&prdPrice=${product.prdPrice}&prdContent=${product.prdContent}
 											"><img src="img/productList/${product.prdSort}/${product.prdImage}"
 											class="img-fluid w-100 rounded-top" alt=""></a>
 									</div>
@@ -27,8 +27,8 @@ const svc = {
 										<p>${product.prdContent}</p>
 										<div class="d-flex justify-content-between flex-lg-wrap">
 											<p class="text-dark fs-5 fw-bold mb-0">${product.prdPrice}원</p>
-											<a href=""
-												class="btn border border-secondary rounded-pill px-3 text-primary"><i
+											<a onclick="javascript:productCart(${product.prdNo});"
+											id="cartbtn" class="btn border border-secondary rounded-pill px-3 text-primary"><i
 												class="fa fa-shopping-bag me-2 text-primary"></i>장바구니
 												</a>
 										</div>
@@ -51,7 +51,7 @@ const svc = {
 					let str = `<div class="col-md-6 col-lg-6 col-xl-4">
 								<div id="detail" class="rounded position-relative fruite-item border border-secondary">
 									<div class="fruite-img">
-										<a href="productDetail.do?prdSort=${product.prdSort}&prdImage=${product.prdImage}&prdName=${product.prdName}&prdPrice=${product.prdPrice}&prdContent=${product.prdContent}
+										<a href="productDetail.do?prdSort=${product.prdSort}&prdNo=${product.prdNo}&prdImage=${product.prdImage}&prdName=${product.prdName}&prdPrice=${product.prdPrice}&prdContent=${product.prdContent}
 											"><img src="img/productList/${product.prdSort}/${product.prdImage}"
 											class="img-fluid w-100 rounded-top" alt=""></a>
 									</div>
@@ -63,7 +63,7 @@ const svc = {
 										<p>${product.prdContent}</p>
 										<div class="d-flex justify-content-between flex-lg-wrap">
 											<p class="text-dark fs-5 fw-bold mb-0">${product.prdPrice}원</p>
-											<a href=""
+											<a onclick="javascript:productCart(${product.prdNo});"
 												class="btn border border-secondary rounded-pill px-3 text-primary"><i
 												class="fa fa-shopping-bag me-2 text-primary"></i> Add to
 												cart</a>
@@ -93,7 +93,7 @@ const svc = {
 							let str1 = `<div class="col-md-6 col-lg-6 col-xl-4">
 											<div class="rounded position-relative fruite-item border border-secondary">
 												<div class="fruite-img">
-												<a href="productDetail.do?prdSort=${product.prdSort}&prdImage=${product.prdImage}&prdName=${product.prdName}&prdPrice=${product.prdPrice}&prdContent${product.prdContent}">
+												<a href="productDetail.do?prdSort=${product.prdSort}&prdNo=${product.prdNo}&prdImage=${product.prdImage}&prdName=${product.prdName}&prdPrice=${product.prdPrice}&prdContent${product.prdContent}">
 													<img src="img/productList/${product.prdSort}/${product.prdImage}"
 														class="img-fluid w-100 rounded-top" alt=""></a>
 												</div>
@@ -105,7 +105,7 @@ const svc = {
 													<p>${product.prdContent}</p>
 													<div class="d-flex justify-content-between flex-lg-wrap">
 														<p class="text-dark fs-5 fw-bold mb-0">${product.prdPrice}원</p>
-														<a href=""
+														<a onclick="javascript:productCart(${product.prdNo});"
 															class="btn border border-secondary rounded-pill px-3 text-primary"><i
 															class="fa fa-shopping-bag me-2 text-primary"></i>장바구니
 															</a>
@@ -133,7 +133,7 @@ const svc = {
 						let str1 = `<div class="col-md-6 col-lg-6 col-xl-4">
 									<div class="rounded position-relative fruite-item border border-secondary">
 										<div class="fruite-img">
-										<a href="productDetail.do?prdSort=${product.prdSort}&prdImage=${product.prdImage}&prdName=${product.prdName}&prdPrice=${product.prdPrice}&prdContent${product.prdContent}">
+										<a href="productDetail.do?prdSort=${product.prdSort}&prdNo=${product.prdNo}&prdImage=${product.prdImage}&prdName=${product.prdName}&prdPrice=${product.prdPrice}&prdContent${product.prdContent}">
 											<img src="img/productList/${product.prdSort}/${product.prdImage}"
 												class="img-fluid w-100 rounded-top" alt=""></a>
 										</div>
@@ -145,8 +145,8 @@ const svc = {
 											<p>${product.prdContent}</p>
 											<div class="d-flex justify-content-between flex-lg-wrap">
 												<p class="text-dark fs-5 fw-bold mb-0">${product.prdPrice}원</p>
-												<a href=""
-													class="btn border border-secondary rounded-pill px-3 text-primary"><i
+												<a onclick="javascript:productCart(${product.prdNo});"
+												 class="btn border border-secondary rounded-pill px-3 text-primary"><i
 													class="fa fa-shopping-bag me-2 text-primary"></i>장바구니
 													</a>
 											</div>
@@ -165,8 +165,35 @@ const svc = {
 
 }//end svc
 
-//회원아이디, 상품번호, 갯수(default 1)
 
 svc.searchList();
 svc.productList();
 svc.optionList();
+
+// 장바구니 등록  onclick="javascript:productCart(cart)
+
+
+async function  productCart(productNo){
+	console.log("hi");	
+	let cartQty = 1;
+	let prdNo = productNo;
+	let boolean1 = true;
+	let data = await fetch("cart.do")
+	let result = await data.json();
+		result.forEach(cart =>{
+			if(cart.prdNo == productNo){
+				alert("장바구니에 이미 있습니다")
+				boolean1 = false;
+				return;
+			} else{
+				boolean1 = true;
+			}
+		})
+		if(!boolean1){
+			return;
+		} else{
+			
+		await fetch("cartAdd.do?prdNo="+prdNo+"&cartQty="+cartQty)
+		}
+	
+};

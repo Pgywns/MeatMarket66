@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.yedam.common.DataSource;
 import com.yedam.mapper.CartMapper;
 import com.yedam.vo.CartListVO;
+import com.yedam.vo.CartVO;
 
 public class CartServiceImpl implements CartService{
 
@@ -46,6 +47,24 @@ public class CartServiceImpl implements CartService{
 			return true;
 		}
 		return false;
+	}
+
+	@Override // 장바구니아이콘 클릭시 추가
+	public boolean addCart(CartVO cart) {
+		
+		int r = mapper.insertCart(cart);
+		if( r == 1) {
+			sqlSession.commit();
+			return true;
+		}
+		return false;
+	}
+	
+
+	@Override
+	public int CountCartList(String userId) {
+		return mapper.selectCountCart(userId);
+
 	}
 
 }

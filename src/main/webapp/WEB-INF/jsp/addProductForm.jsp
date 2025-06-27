@@ -8,8 +8,14 @@ th {
 input[type=file]::file-selector-button {
 	margin-right: 50px;
 }
+
+input::-webkit-inner-spin-button {
+  	-webkit-appearance: none;
+  	margin: 0;
+}
 </style>
 <div class="container-fluid page-header py-5">
+	<h1 class="text-center text-white display-6">상품 등록</h1>
 </div>
 
 <div class="container-fluid py-5 mt-5">
@@ -32,6 +38,11 @@ input[type=file]::file-selector-button {
 						name="price"></td>
 				</tr>
 				<tr>
+					<th>개수</th>
+					<td><input type="number" class="form-control" required
+						name="qty"></td>
+				</tr>
+				<tr>
 					<th>카테고리</th>
 					<td><select name="category" id="category">
 							<option value="pork">돼지고기</option>
@@ -42,8 +53,8 @@ input[type=file]::file-selector-button {
 					</select></td>
 				</tr>
 				<tr>
-					<th>첨부파일</th>
-					<td><input type="file" name="file"></td>
+					<th>상품 사진</th>
+					<td><input type="file" name="file" accept=".png, .jpg"></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><input type="submit" value="등록">
@@ -53,3 +64,4 @@ input[type=file]::file-selector-button {
 		</form>
 	</div>
 </div>
+<script src="js/addProduct.js"></script>

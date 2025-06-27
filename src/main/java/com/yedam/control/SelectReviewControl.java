@@ -35,7 +35,6 @@ public class SelectReviewControl implements Control {
 		
 		PrintWriter out = resp.getWriter();
 		out.print(json);
-
 	}
 
 }

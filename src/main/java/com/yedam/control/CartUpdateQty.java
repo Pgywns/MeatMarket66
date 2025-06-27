@@ -24,9 +24,7 @@ public class CartUpdateQty implements Control {
 		
 		int prdNo = Integer.parseInt(req.getParameter("prdNo"));  
 		int cartQty = Integer.parseInt(req.getParameter("qty")); 
-		System.out.println(userId);
-		System.out.println(prdNo);
-		System.out.println(cartQty);
+		
 		svc.updateQty(userId, prdNo, cartQty);
 	}
 

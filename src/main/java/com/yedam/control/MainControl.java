@@ -17,7 +17,7 @@ public class MainControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+	
 		// 인기상품
 		MainService svc = new MainServiceImpl();
 		List<ProductVO> list = svc.hotProductList();
@@ -25,7 +25,16 @@ public class MainControl implements Control {
 		
 		// 리뷰 목록
 		List<ReviewVO> listR = svc.mainReview();
+		
+		// Image가 null일 경우
+		for(ReviewVO review : listR) {
+			if(review.getRvwImage() == null || review.getRvwImage().isEmpty()) {
+				review.setRvwImage("보노보노.png");
+			}
+		}
+		
 		req.setAttribute("Rlist", listR);
+		
 		req.getRequestDispatcher("user/main.tiles").forward(req, resp);
 	}
 

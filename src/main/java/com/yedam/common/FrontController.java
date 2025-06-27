@@ -13,21 +13,30 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.control.AddProductFormControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardListControl;
+
 import com.yedam.control.BoardinsertControl;
+
+import com.yedam.control.CartAddControl;
+
 import com.yedam.control.CartControl;
 import com.yedam.control.CartEmpty;
 import com.yedam.control.CartPageControl;
 import com.yedam.control.CartPrdDel;
 import com.yedam.control.CartUpdateQty;
 import com.yedam.control.CompleteOrder;
+import com.yedam.control.CountCart;
+import com.yedam.control.DeleteAddressControl;
+import com.yedam.control.DetailReviewControl;
 import com.yedam.control.FindAccountControl;
 import com.yedam.control.FindIdControl;
 import com.yedam.control.FindPasswordControl;
+import com.yedam.control.InsertAddressControl;
 import com.yedam.control.LoginControl;
 import com.yedam.control.LogoutControl;
 import com.yedam.control.MainControl;
 import com.yedam.control.MainMilControl;
 import com.yedam.control.MyPageControl;
+import com.yedam.control.OrderMyPoint;
 import com.yedam.control.OrderControl;
 import com.yedam.control.ProductCategoryControl;
 import com.yedam.control.ProductDetailControl;
@@ -36,10 +45,18 @@ import com.yedam.control.ProductListControlPaging;
 import com.yedam.control.ProductOptionControl;
 import com.yedam.control.ProductSearchControl;
 import com.yedam.control.RegisterControl;
+
 import com.yedam.control.ReviewListControl;
+
+import com.yedam.control.SelectAddressControl;
+import com.yedam.control.SelectPointControl;
+
 import com.yedam.control.SelectReviewControl;
+import com.yedam.control.SelectUserControl;
 import com.yedam.control.StockListControl;
+import com.yedam.control.UpdateUserControl;
 import com.yedam.control.UserCheckControl;
+import com.yedam.control.UsingPoint;
 
 // 서블릿
 public class FrontController extends HttpServlet {
@@ -62,6 +79,7 @@ public class FrontController extends HttpServlet {
 		map.put("/productCategory.do", new ProductCategoryControl());
 		map.put("/productListOption.do", new ProductOptionControl());
 		map.put("/productSearch.do", new ProductSearchControl());
+		map.put("/detailReview.do", new DetailReviewControl());
 
 		// 로그인
 		map.put("/login.do", new LoginControl());
@@ -77,6 +95,12 @@ public class FrontController extends HttpServlet {
 		// 마이페이지
 		map.put("/myPage.do", new MyPageControl());
 		map.put("/selectReveiw.do", new SelectReviewControl());
+		map.put("/selectPoint.do", new SelectPointControl());
+		map.put("/selectUser.do", new SelectUserControl());
+		map.put("/selectAddress.do", new SelectAddressControl());
+		map.put("/updateUser.do", new UpdateUserControl());
+		map.put("/insertAddress.do", new InsertAddressControl());
+		map.put("/deleteAddress.do", new DeleteAddressControl());
 		
 		//장바구니
 		map.put("/cartPage.do", new CartPageControl());
@@ -85,8 +109,16 @@ public class FrontController extends HttpServlet {
 		map.put("/cartPrdDel.do", new CartPrdDel());
 		map.put("/cartUpdateQty.do", new CartUpdateQty());
 
+		map.put("/cartAdd.do", new CartAddControl());
+
 		// 주문페이지
+		map.put("/cartIcon.do", new CountCart());
+		
+		//주문페이지
 		map.put("/order.do", new OrderControl());
+		map.put("/myPoint.do", new OrderMyPoint());
+		map.put("/usingPoint.do", new UsingPoint());
+		
 		// 주문완료
 		map.put("/complete.do", new CompleteOrder());
 
