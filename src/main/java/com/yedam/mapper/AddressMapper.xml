@@ -22,6 +22,13 @@
 	where  user_id = #{userId}
 </select>
 
+<!-- 기본배송지 true인지 false인지 조회 -->
+<select id="firstAddrSelect" parameterType="String" resultType="String">
+	select first_addr
+	from   tbl_addr
+	where  user_id = #{userId}
+</select>
+
 <!-- 주소 삭제 -->
 <delete id="deleteAddress" parameterType="Address">
 	delete

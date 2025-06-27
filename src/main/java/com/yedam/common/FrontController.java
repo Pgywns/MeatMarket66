@@ -21,9 +21,11 @@ import com.yedam.control.CartPrdDel;
 import com.yedam.control.CartUpdateQty;
 import com.yedam.control.CompleteOrder;
 import com.yedam.control.CountCart;
+import com.yedam.control.DeleteAddressControl;
 import com.yedam.control.FindAccountControl;
 import com.yedam.control.FindIdControl;
 import com.yedam.control.FindPasswordControl;
+import com.yedam.control.InsertAddressControl;
 import com.yedam.control.LoginControl;
 import com.yedam.control.LogoutControl;
 import com.yedam.control.MainControl;
@@ -87,6 +89,8 @@ public class FrontController extends HttpServlet {
 		map.put("/selectUser.do", new SelectUserControl());
 		map.put("/selectAddress.do", new SelectAddressControl());
 		map.put("/updateUser.do", new UpdateUserControl());
+		map.put("/insertAddress.do", new InsertAddressControl());
+		map.put("/deleteAddress.do", new DeleteAddressControl());
 		
 		//장바구니
 		map.put("/cartPage.do", new CartPageControl());
