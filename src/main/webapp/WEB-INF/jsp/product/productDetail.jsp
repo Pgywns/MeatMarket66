@@ -110,5 +110,6 @@
 	</div>
 </div>
 <!-- Single Product End -->
-<script src="js/product/productDetail.js">
-</script>
+<script type="text/javascript" src="js/cart/headerCartIcon.js"></script>
+
+<script src="js/product/productDetail.js"></script>

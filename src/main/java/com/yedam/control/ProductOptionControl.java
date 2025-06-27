@@ -40,7 +40,7 @@ public class ProductOptionControl implements Control {
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(list);
 		resp.getWriter().print(json);
-		System.out.println(json);
+		
 		
 	}
 

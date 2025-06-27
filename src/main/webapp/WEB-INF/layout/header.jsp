@@ -60,4 +60,4 @@
                 </nav>
             </div>
         </div>
-<!-- <script type="text/javascript" src="./js/cart/headerCartIcon.js"></script> -->
+ <script type="text/javascript" src="js/cart/headerCartIcon.js"></script>
