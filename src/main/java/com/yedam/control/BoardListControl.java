@@ -21,8 +21,12 @@ public class BoardListControl implements Control {
 		// TODO Auto-generated method stub
 		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("text/json;charset=utf-8");
+		//String boardCategory = "이벤트";
+		String  boardCategory = req.getParameter("boardCategory");
 		
-		String  boardCategory = "상품";
+		BoardVO bvo = new BoardVO();
+		bvo.setBoardCategory(boardCategory);
+		
 		BoardSevice svc = new BoardSeviceImpl();
 		List<BoardVO> list = svc.clickboardList(boardCategory); 
 		
