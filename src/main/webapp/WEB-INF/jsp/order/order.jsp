@@ -65,19 +65,9 @@
 								</tr>
 							</thead>
 							<tbody id="orderlist">
-						    <!-- <tr>
-									<th scope="row">
-										<div class="d-flex align-items-center mt-2">
-											<img src="img/vegetable-item-3.png"
-												class="img-fluid rounded-circle"
-												style="width: 90px; height: 90px;" alt="">
-										</div>
-									</th>
-									<td class="py-5">Big Banana</td>
-									<td class="py-5">$69.00</td>
-									<td class="py-5">2</td>
-									<td class="py-5">$138.00</td>
-								</tr> -->
+						   	<!-- 주문상품출력 -->
+						   	<!-- 주문상품출력 -->
+						   	<!-- 주문상품출력 -->
 								<tr>
 									<th scope="row"></th>
 									<td class="py-5"></td>
@@ -87,17 +77,17 @@
 									</td>
 									<td class="py-5">
 										<div class="py-3 border-bottom border-top">
-											<p class="mb-0 text-dark">$414.00</p>
+											<p class="mb-0 text-dark subTotal">subTotal금액영역</p>
 										</div>
 									</td>
 								</tr>
 								<tr> 
 									<th scope="row"></th>
-									<td class="py-5">
-										<p class="mb-0 text-dark py-4">적립금</p>
+									<td class="py-5 align-middle">
+										<p class="mb-0 text-dark">적립금</p>
 									</td>
 								<!-- 모달영역 -->
-									<td colspan="3" class="py-5">
+									<td colspan="3" class="py-5 align-middle">
 									 <div>
 										<button
 											class="btn border-secondary rounded-pill px-3 py-2 text-primary"

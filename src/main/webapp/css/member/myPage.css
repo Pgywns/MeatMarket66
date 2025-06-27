@@ -1,8 +1,8 @@
 .mypage-container {
-  width: 400px;
+  width: 1200px;
   margin: 0 auto;
-  border: 2px solid #000;
-  padding: 20px;
+  border: 2px solid #81c408;
+  padding: 30px;
   text-align: center;
   background-color: #fff;
 }
@@ -35,19 +35,36 @@
 }
 
 .menu-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  display: flex;
+  justify-content: space-between; /* 버튼 사이 간격 */
+  gap: 10px; /* 버튼 사이 여백 */
+  margin-top: 20px;
 }
 
 .menu-item {
-  border: 1px solid #000;
+  flex: 1; /* 모든 버튼이 동일 너비 */
+  text-align: center;
   padding: 15px 0;
-  background-color: #f9f9f9;
+  color: #fff;
+  border: 2px solid #7ac142;
+  background: #7ac142;
+  border-radius: 25px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  font-size: 14px;
+  font-weight: bold; 
+  letter-spacing: 0px;
+  transition: all 0.1s ease-out;
 }
 
 .menu-item:hover {
-  background-color: #efefef;
+ color: #7ac142;
+	background: #fff;
+	border: 2px solid #7ac142;
+}
+
+.section-content {
+  margin-top: 30px;
+  padding: 20px;
+  border-top: 1px solid #ccc;
+  text-align: center;
 }

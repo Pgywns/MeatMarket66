@@ -25,5 +25,5 @@ public interface ProductMapper {
 	public List<ProductVO> selectOption(SearchDTO search);
 	
 	// 검색 리스트
-	
+	public List<ProductVO> selectSearch(String keyword);
 }

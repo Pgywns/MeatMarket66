@@ -16,6 +16,8 @@ public class LoginControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		
 		if (req.getMethod().equals("GET")) {			
 			req.getRequestDispatcher("member/member.tiles").forward(req, resp);
 		} else if (req.getMethod().equals("POST")) {
@@ -28,6 +30,7 @@ public class LoginControl implements Control {
 			if (member != null) {
 				HttpSession session = req.getSession();
 				session.setAttribute("userId", member.getUserId());
+				session.setAttribute("userName", member.getUserName());
 				session.setAttribute("auth", member.getUserRes());
 				
 				if (member.getUserRes().equals("user")) {

@@ -32,7 +32,7 @@
 				<button type="button" class="button-self" onclick="javascript:execDaumPostcode();">우편번호 찾기</button>
 				<input type="text" name="addOne" class="form-control form-control-email" id="sample6_address" placeholder="주소" required readonly> 
 				<input type="text" name="addTwo" class="form-control form-control-email" id="sample6_detailAddress" placeholder="상세주소" required>
-				<button type="submit" class="btn btn-submit btn-default pull-right">회원가입</button>
+				<button type="submit" id="registerBtn" class="btn btn-submit btn-default pull-right" disabled>회원가입</button>
 			</form>
 		</div>
 	</div>

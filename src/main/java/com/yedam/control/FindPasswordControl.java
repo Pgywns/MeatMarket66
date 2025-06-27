@@ -21,7 +21,6 @@ public class FindPasswordControl implements Control {
 		MemberService svc = new MemberServiceImpl();
 		
 		String password = svc.findPassword(id, name, phone);
-		System.out.println(password);
 		
 		if (password != null) {
 			resp.getWriter().print("{\"retCode\":\"Success\", \"userPassword\":\"" + password + "\"}");
