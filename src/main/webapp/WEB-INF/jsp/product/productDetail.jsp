@@ -111,5 +111,4 @@
 </div>
 <!-- Single Product End -->
 <script src="js/product/productDetail.js">
-	const prdSort = "${prdSort}";
 </script>
