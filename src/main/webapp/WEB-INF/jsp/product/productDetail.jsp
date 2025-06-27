@@ -13,6 +13,8 @@
 	<h1 class="text-center text-white display-6">Shop Detail</h1>
 </div>
 <!-- Single Page Header End -->
+<input type="hidden" id="prdSort" value="${prdSort }">
+<input type="hidden" id="prdNo" value="${prdNo }">
 
 <!-- Single Product Start -->
 <div class="container-fluid py-5 mt-5">
@@ -43,7 +45,7 @@
 							</div>
 							<input type="text"
 								class="form-control form-control-sm text-center border-0"
-								value="1">
+								value="1" id="prdQty">
 							<div class="input-group-btn">
 								<button
 									class="btn btn-sm btn-plus rounded-circle bg-light border">
@@ -52,10 +54,10 @@
 							</div>
 						</div>
 
-						<a href="#"
+						<a href="#" onclick="javascript:addCart();"
 							class="btn border border-secondary rounded-pill px-4 py-2 text-primary mt-3">
 							<i class="fa fa-shopping-bag me-2 text-primary"></i> 장바구니
-						</a> <a href="#"
+						</a> <a href="order.do" onclick="javascript:productOrder();"
 							class="btn border border-secondary rounded-pill px-4 py-2 text-primary mt-3">
 							구매하기 </a>
 					</div>
@@ -69,7 +71,7 @@
 								<button class="nav-link border-white border-bottom-0"
 									type="button" role="tab" id="nav-mission-tab"
 									data-bs-toggle="tab" data-bs-target="#nav-mission"
-									aria-controls="nav-mission" aria-selected="false">Reviews</button>
+									aria-controls="nav-mission" aria-selected="false">Reviews<span id="reviewNum"></span></button>
 							</div>
 						</nav>
 						<div class="tab-content mb-5">
