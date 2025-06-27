@@ -1,5 +1,7 @@
 package com.yedam.service;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.common.DataSource;
@@ -22,4 +24,19 @@ public class AddressServiceImpl implements AddressService {
 		return false;
 	}
 
+	@Override
+	public List<AddressVO> selectAddress(String id) {
+		return mapper.selectAddress(id);
+	}
+	
+	@Override
+	public boolean deleteAddress(AddressVO add) {
+		int r = mapper.deleteAddress(add);
+		
+		if (r == 1) {
+			sqlSession.commit();
+			return true;
+		}
+		return false;
+	}
 }
