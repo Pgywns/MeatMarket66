@@ -27,8 +27,8 @@ const svc = {
 										<p>${product.prdContent}</p>
 										<div class="d-flex justify-content-between flex-lg-wrap">
 											<p class="text-dark fs-5 fw-bold mb-0">${product.prdPrice}원</p>
-											<a href=""
-												class="btn border border-secondary rounded-pill px-3 text-primary"><i
+											<a onclick="javascript:productCart(${product.prdNo});"
+											id="cartbtn" class="btn border border-secondary rounded-pill px-3 text-primary"><i
 												class="fa fa-shopping-bag me-2 text-primary"></i>장바구니
 												</a>
 										</div>
@@ -63,7 +63,7 @@ const svc = {
 										<p>${product.prdContent}</p>
 										<div class="d-flex justify-content-between flex-lg-wrap">
 											<p class="text-dark fs-5 fw-bold mb-0">${product.prdPrice}원</p>
-											<a href=""
+											<a onclick="javascript:productCart(${product.prdNo});"
 												class="btn border border-secondary rounded-pill px-3 text-primary"><i
 												class="fa fa-shopping-bag me-2 text-primary"></i> Add to
 												cart</a>
@@ -105,7 +105,7 @@ const svc = {
 													<p>${product.prdContent}</p>
 													<div class="d-flex justify-content-between flex-lg-wrap">
 														<p class="text-dark fs-5 fw-bold mb-0">${product.prdPrice}원</p>
-														<a href=""
+														<a onclick="javascript:productCart(${product.prdNo});"
 															class="btn border border-secondary rounded-pill px-3 text-primary"><i
 															class="fa fa-shopping-bag me-2 text-primary"></i>장바구니
 															</a>
@@ -145,8 +145,8 @@ const svc = {
 											<p>${product.prdContent}</p>
 											<div class="d-flex justify-content-between flex-lg-wrap">
 												<p class="text-dark fs-5 fw-bold mb-0">${product.prdPrice}원</p>
-												<a href=""
-													class="btn border border-secondary rounded-pill px-3 text-primary"><i
+												<a onclick="javascript:productCart(${product.prdNo});"
+												 class="btn border border-secondary rounded-pill px-3 text-primary"><i
 													class="fa fa-shopping-bag me-2 text-primary"></i>장바구니
 													</a>
 											</div>
@@ -158,7 +158,6 @@ const svc = {
 				})
 		})
 	},
-
 	//리뷰 목록
 	reviewList() {
 
@@ -171,3 +170,18 @@ const svc = {
 svc.searchList();
 svc.productList();
 svc.optionList();
+
+// 장바구니 등록  onclick="javascript:productCart(cart)
+
+
+function productCart(no){
+	console.log("hi");	
+	let cartQty = 1;
+	let userId = 'user01';
+	let prdNo = no;
+	fetch("cartAdd.do?userId="+userId+"&prdNo="+prdNo+"&cartQty="+cartQty)
+	.catch(err=> console.log(err));
+	
+};
+	
+	

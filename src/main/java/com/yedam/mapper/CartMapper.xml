@@ -36,11 +36,19 @@
 		and prd_no= #{prdNo}
 	</update>
 	
+
+	<!-- 등록누를시 장바구니로 -->
+	<insert id="insertCart" parameterType="Cart">
+		insert into tbl_cart
+		values(#{userId},#{prdNo},#{cartQty})
+	</insert>
+
 	<!-- 장바구니 수량(icon반영) -->
 	<select id="selectCountCart" parameterType="String" resultType="int">
 		select count(prd_no)
         from tbl_cart
         where user_id = #{userId}
 	</select>
+
 	
 </mapper>
