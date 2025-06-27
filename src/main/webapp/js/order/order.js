@@ -21,12 +21,53 @@ function orderList() {
 	
 //버튼클릭시 현적립금 받아오기.
 function myPoint(){
-	fetch()
-	.then
+	fetch('myPoint.do')
+	.then(resp => resp.text())
+	.then(data => {
+		let myPoint = data;
+		let myPointEl = document.querySelector('#myPoint');
+		myPointEl.textContent = myPoint;
+	})
 }
 
+//사용하기 버튼클릭시. 
+//1)subTotal - 사용할 적립금.
+function usePoint(){
+	let usingPoint = 0;
+	let usePointEl = document.querySelector('#usePoint');
+	usingPoint = usePointEl.value;
+	console.log(usingPoint);
+	
+	//이영역을 orderBtn클릭시 반영되도록해야
+	fetch('usingPoint.do?usingPoint='+usingPoint)
+	.catch(err => console.log(err));
+	
+	//사용적립금반영
+	let printUsePointEl = document.querySelector('#myPointPreview');
+	printUsePointEl.textContent = usingPoint + " p";
+	
+	//subtotal금액가지고 오기
+	let subTotalEl = document.querySelector('.subTotal')
+	let subtotalPrice = subTotalEl.textContent;
+	console.log(subtotalPrice)
+	//total금액반영
+	let totalEl = document.querySelector('#amount');
+	let total = (subtotalPrice - usingPoint)
+	
+	totalEl.textContent = total.toLocaleString()+'원';
+	
+}
 
- 
+//기본주소불러오기
+
+
+
+//주문버튼
+function Order(){
+	
+	
+}
+
 
 
 
@@ -38,7 +79,7 @@ function myPoint(){
 		subtotal += parseInt(eachTotal);
 	})
 	let subtotalEl = document.querySelector('.subTotal');
-	subtotalEl.textContent = subtotal.toLocaleString()+'원';
+	subtotalEl.textContent = subtotal
  }
  
 
