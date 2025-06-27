@@ -40,6 +40,7 @@
 		<mapper resource="com/yedam/mapper/MemberMapper.xml"></mapper>
 		<mapper resource="com/yedam/mapper/AddressMapper.xml"></mapper>
 		<mapper resource="com/yedam/mapper/CartMapper.xml"></mapper>
+		<mapper resource="com/yedam/mapper/MainMapper.xml"></mapper>
 	</mappers>
 
 </configuration>

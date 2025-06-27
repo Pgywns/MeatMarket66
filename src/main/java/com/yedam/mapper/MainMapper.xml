@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.mapper.MainMapper">
+
+
+<!-- 한끼뚝딱 밀키트 -->
+<select id="selectMil" resultType="Product">
+	SELECT rownum, a.*
+    FROM(SELECT *
+         FROM TBL_PRODUCT
+         WHERE PRD_SORT = '밀키트'
+         ORDER BY PRD_DATE DESC) a
+    <![CDATA[     
+    WHERE rownum <= 8
+	]]>
+</select>
+
+<!-- 인기상품 -->
+<select id="selectHot" resultType="Product">
+	SELECT rownum, a.*
+    FROM(SELECT *
+         FROM TBL_PRODUCT
+         WHERE PRD_PRICE > 20000
+         ORDER BY PRD_DATE DESC) a
+    <![CDATA[     
+    WHERE rownum <= 6
+	]]>
+</select>
+
+<!-- 리뷰 목록 -->
+<select id="selectReview" resultType="Review">
+	select rownum, a.*
+	from   (select * 
+            from tbl_review
+            order by sysdate desc) a
+    <![CDATA[
+	where rownum <= 4
+    ]]>
+</select>
+</mapper>
