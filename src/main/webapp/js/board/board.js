@@ -1,9 +1,9 @@
- 
+let boardCategory="상품";
 const svc = {
 	//고객센터목록 ->변경
 	btnClickList() {
-		document.querySelector('#nav-about-tab').addEventListener('click', function(){
-			fetch('boardList.do')
+		document.querySelector('#boardLis').addEventListener('click', function(){
+			fetch('boardList.do?boardCategory='+boardCategory)
 				.then(data => data.json())
 				.then(result => {
 					document.querySelector('#boardCategory').innerHTML = "";
@@ -28,11 +28,17 @@ const svc = {
 						document.querySelector('#boardCategory').insertAdjacentHTML('beforeend', template);
 						console.log(template);
 					})
-
 				})
 				.catch(err => console.log(err));
 		})
 
+	},
+	btnclickinsert(){
+		document.querySelector(".btn btn-dark").addEventListener('click',function(){
+			fetch('')
+			.then()
+			.then()
+		})
 	}
 }
 svc.btnClickList();
