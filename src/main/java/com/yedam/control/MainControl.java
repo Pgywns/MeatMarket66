@@ -25,6 +25,14 @@ public class MainControl implements Control {
 		
 		// 리뷰 목록
 		List<ReviewVO> listR = svc.mainReview();
+		
+		// Image가 null일 경우
+		for(ReviewVO review : listR) {
+			if(review.getRvwImage() == null || review.getRvwImage().isEmpty()) {
+				review.setRvwImage("보노보노.png");
+			}
+		}
+		
 		req.setAttribute("Rlist", listR);
 		
 		req.getRequestDispatcher("user/main.tiles").forward(req, resp);
