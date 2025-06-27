@@ -43,7 +43,7 @@
 		<mapper resource="com/yedam/mapper/CartMapper.xml"></mapper>
 		<mapper resource="com/yedam/mapper/BoardMapper.xml"></mapper>
 		<mapper resource="com/yedam/mapper/PointMapper.xml"></mapper>
-
+		<mapper resource="com/yedam/mapper/ReviewMapper.xml"></mapper>
 	</mappers>
 
 </configuration>

@@ -11,5 +11,5 @@ public class ReviewVO {
 	private String rvwContent;
 	private String rvwImage;
 	private Date rvwDate;
-	
+	private String prdName;
 }
