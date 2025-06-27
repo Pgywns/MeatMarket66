@@ -1,23 +1,57 @@
 /**
  * order.js
  */
-window.addEventListener('DOMContentLoaded', orderList);
+window.addEventListener('DOMContentLoaded', function(){
+	orderList();
+	displayAdd();
+	
+})
+
+let addrNo = 0; //주문서제출시 넘겨줄 주소번호 
+
+//주문버튼
+function submitOrderForm(){
+	let name = document.querySelector('#name').value;
+	let phone = document.querySelector('#phone').value;
+	let totalEl = document.querySelector('#amount');
+	let total = totalEl.textContent
+	let amount = parseInt(total.replace(/[^\d]/g, ''), 10);
+	fetch('SubmitOderForm.do?name='+ name +'&addr='+ addrNo +'&amount='+amount+'&phone=' + phone)
+	.catch(err => console.log(err));	
+	
+	location.href = 'complete.do';  
+}
+
+//기본주소불러오기
+function displayAdd(){
+	fetch('displayAddress.do')
+	.then(result => result.json())
+	.then(data =>{
+		let address = data;
+		document.querySelector('#sample6_postcode').value = address[0].zipCode;
+		document.querySelector('#sample6_address').value = address[0].addrOne;
+		document.querySelector('#addrTwo').value = address[0].addrTwo;
+		addrNo = address[0].addrNo;
+	})
+	.catch(err => console.log(err));
+}
+
+//선택주소불러오기
 
 //주문목록출력
 function orderList() {
 	fetch('cart.do')
-		.then(result => result.json())
-		.then(data => {
-			let orderItem = data;
-			let orderList = document.querySelector('#orderlist');
-			for(let item of orderItem){
+	.then(result => result.json())
+	.then(data => {
+		let orderItem = data;
+		let orderList = document.querySelector('#orderlist');
+		for(let item of orderItem){
 			let orderProList = orderListTemplete(item);
 			orderList.insertAdjacentHTML("beforebegin", orderProList);
-			}
-			//서브금액 출력
-			subtotal()	
-			
-		})
+		}
+		//서브금액 출력
+		subtotal()	
+	})
 		.catch(err => console.log(err));
  }
 	
@@ -55,19 +89,8 @@ function usePoint(){
 	let totalEl = document.querySelector('#amount');
 	let total = (subtotalPrice - usingPoint)
 	
-	totalEl.textContent = total.toLocaleString()+'원';
-	
+	totalEl.textContent = total.toLocaleString()+'원';	
 }
-
-//기본주소불러오기
-
-
-//주문버튼
-function Order(){
-	
-	
-}
-
 
 
 

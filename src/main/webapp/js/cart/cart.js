@@ -166,5 +166,3 @@ function makeTemplet(item){
 	return tempelet;	
 }
 
-
-

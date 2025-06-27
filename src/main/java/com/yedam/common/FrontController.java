@@ -27,6 +27,7 @@ import com.yedam.control.CompleteOrder;
 import com.yedam.control.CountCart;
 import com.yedam.control.DeleteAddressControl;
 import com.yedam.control.DetailReviewControl;
+import com.yedam.control.DispayAddressControl;
 import com.yedam.control.FindAccountControl;
 import com.yedam.control.FindIdControl;
 import com.yedam.control.FindPasswordControl;
@@ -37,6 +38,7 @@ import com.yedam.control.MainControl;
 import com.yedam.control.MainMilControl;
 import com.yedam.control.MyPageControl;
 import com.yedam.control.OrderMyPoint;
+import com.yedam.control.SubmitOrderForm;
 import com.yedam.control.OrderControl;
 import com.yedam.control.ProductCategoryControl;
 import com.yedam.control.ProductDetailControl;
@@ -118,6 +120,8 @@ public class FrontController extends HttpServlet {
 		map.put("/order.do", new OrderControl());
 		map.put("/myPoint.do", new OrderMyPoint());
 		map.put("/usingPoint.do", new UsingPoint());
+		map.put("/displayAddress.do", new DispayAddressControl());
+		map.put("/SubmitOderForm.do", new SubmitOrderForm());
 		
 		// 주문완료
 		map.put("/complete.do", new CompleteOrder());

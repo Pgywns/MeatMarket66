@@ -45,6 +45,7 @@
 		<mapper resource="com/yedam/mapper/BoardMapper.xml"></mapper>
 		<mapper resource="com/yedam/mapper/PointMapper.xml"></mapper>
 		<mapper resource="com/yedam/mapper/ReviewMapper.xml"></mapper>
+		<mapper resource="com/yedam/mapper/OrderMapper.xml"></mapper>
 	</mappers>
 
 </configuration>
