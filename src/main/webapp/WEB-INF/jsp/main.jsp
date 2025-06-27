@@ -152,25 +152,23 @@
                     <h1 class="display-5 mb-5 text-dark">😍고객님들의 성원에 감사😍</h1>
                 </div>
                 <div class="owl-carousel testimonial-carousel">
-                <c:forEach var="review" items="Rlist">
                     <div class="testimonial-item img-border-radius bg-light rounded p-4">
                         <div class="position-relative">
                             <i class="fa fa-quote-right fa-2x text-secondary position-absolute" style="bottom: 30px; right: 0;"></i>
                             <div class="mb-4 pb-4 border-bottom border-secondary">
-                                <p class="mb-0">${review.rvwContent }</p>
+                                <p class="mb-0">작업완료</p>
                             </div>
                             <div class="d-flex align-items-center flex-nowrap">
                                 <div class="bg-secondary rounded">
                                     <img src="img/존윅.jpg" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
                                 </div>
                                 <div class="ms-4 d-block">
-                                    <h4 class="text-dark">${review.userId}</h4>
-                                    <p class="m-0 pb-3">${review.rvwDate }</p>
+                                    <h4 class="text-dark">작업완료</h4>
+                                    <p class="m-0 pb-3">작업완료</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    </c:forEach>
                 </div>
             </div>
         </div>

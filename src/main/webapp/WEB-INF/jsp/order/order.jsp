@@ -69,31 +69,32 @@
 						   	<!-- 주문상품출력 -->
 						   	<!-- 주문상품출력 -->
 								<tr>
-									<th scope="row"></th>
-									<td class="py-5"></td>
-									<td class="py-5"></td>
-									<td class="py-5">
+									<th scope="row" colspan="3"></th>
+									<td class="py-5 text-end">
 										<p class="mb-0 text-dark py-3">Subtotal</p>
 									</td>
 									<td class="py-5">
-										<div class="py-3 border-bottom border-top">
-											<p class="mb-0 text-dark subTotal">subTotal금액영역</p>
+										<div class="py-3 border-top border-bottom">
+											<p class="mb-0 text-dark subTotal">100,000원</p>
 										</div>
 									</td>
 								</tr>
-								<tr> 
+								<tr>
 									<th scope="row"></th>
-									<td class="py-5 align-middle">
-										<p class="mb-0 text-dark">적립금</p>
-									</td>
-								<!-- 모달영역 -->
-									<td colspan="3" class="py-5 align-middle">
-									 <div>
+									<td colspan="2" class="py-5 align-middle">
 										<button
 											class="btn border-secondary rounded-pill px-3 py-2 text-primary"
-											type="button" id="popBtn" onclick="modalPop()">적립금 사용</button>
-									</div>
+											type="button" id="popBtn" onclick="myPoint(); modalPop();">
+											적립금 사용</button>
 									</td>
+									<td class="py-5 align-middle">
+										<p class="mb-0 text-dark">사용적립금</p>
+									</td>
+									<td class="py-5 align-middle">
+										<p id="myPointPreview" class="mb-0 text-secondary">0 P</p>
+									</td>
+
+									
 								</tr>
 								<tr>
 									<th scope="row"></th>
@@ -103,7 +104,7 @@
 									<td class="py-5"></td>
 									<td class="py-5"></td>
 									<td class="py-5">
-										<div class="py-3 border-bottom border-top">
+										<div class="py-3 border-bottom border-top" id="amount">
 											<p class="mb-0 text-dark">$135.00</p>
 										</div>
 									</td>
@@ -138,10 +139,29 @@
 
 <!-- 모달팝업 -->
 <div id="popUp">
-	<div id="modalBody">
-		<span id="closeBtn">&times;</span>
-		<P>모달내용</P>
-	</div>
+  <div id="modalBody">
+    <span id="closeBtn">&times;</span>
+
+    <div class="mb-4">
+      <p class="fw-bold fs-5 mb-2">나의 적립금</p>
+      <p id="myPoint" class="text-secondary">10,000P</p>
+    </div>
+
+    <div class="mb-4">
+      <label for="usePoint" class="form-label">사용할 적립금</label>
+      <input type="number" id="usePoint" class="form-control" placeholder="1,000원 단위로 사용할 수 있습니다." min="0" value=""/>
+    </div>
+
+    <div class="text-end">
+      <button
+        class="btn border-secondary rounded-pill px-3 py-2 text-primary"
+        type="button"
+        onclick="usePoint()"
+      >
+        사용하기
+      </button>
+    </div>
+  </div>
 </div>
 <!-- 모달영역end -->
 

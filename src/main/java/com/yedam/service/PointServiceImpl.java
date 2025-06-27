@@ -22,4 +22,13 @@ public class PointServiceImpl implements PointService {
 	public List<PointVO> selectPoint(String id) {
 		return mapper.selectPoint(id);
 	}
+
+	public boolean usingPoint(String userId, int usingPoint) {
+		int r = mapper.usingPoint(userId, usingPoint);
+		if(r == 1) {
+			sqlSession.commit();
+			return true;
+		}
+		return false;
+	}
 }

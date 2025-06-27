@@ -19,7 +19,6 @@ function cartList() {
 		 updateTotal();
 	})
 	.catch(err => console.log(err));
-	
 }
 
 //장바구니 상품 단건삭제(엑스btn)

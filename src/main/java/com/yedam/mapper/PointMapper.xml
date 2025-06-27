@@ -19,4 +19,10 @@
 	from   tbl_point
 	where  user_id = #{userId}
 </select>
+
+<!-- 포인트사용 -->
+<insert id="usingPoint" parameterType="map">
+	insert into tbl_point (user_id, point)
+    values (#{userId} , #{usingPoint})
+</insert>
 </mapper>

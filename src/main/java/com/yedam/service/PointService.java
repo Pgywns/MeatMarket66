@@ -10,4 +10,7 @@ public interface PointService {
 	
 	// 조회
 	public List<PointVO> selectPoint(String id);
+
+	public boolean usingPoint(String userId, int usingPoint);
+
 }
