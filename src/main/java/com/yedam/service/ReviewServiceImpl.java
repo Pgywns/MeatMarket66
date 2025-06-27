@@ -16,5 +16,13 @@ public class ReviewServiceImpl implements ReviewService{
 		// TODO Auto-generated method stub
 		return mapper.selectReviewList(prdNo);
 	}
+	@Override
+	public int totalReview(String id) {
+		return mapper.totalReivew(id);
+	}
 
+	@Override
+	public List<ReviewVO> selectReviewToUserId(String id) {
+		return mapper.selectReviewToUserId(id);
+	}
 }

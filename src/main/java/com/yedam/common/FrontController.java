@@ -26,6 +26,7 @@ import com.yedam.control.FindPasswordControl;
 import com.yedam.control.LoginControl;
 import com.yedam.control.LogoutControl;
 import com.yedam.control.MainControl;
+import com.yedam.control.MainMilControl;
 import com.yedam.control.MyPageControl;
 import com.yedam.control.OrderMyPoint;
 import com.yedam.control.OrderControl;
@@ -36,27 +37,29 @@ import com.yedam.control.ProductListControlPaging;
 import com.yedam.control.ProductOptionControl;
 import com.yedam.control.ProductSearchControl;
 import com.yedam.control.RegisterControl;
+import com.yedam.control.SelectReviewControl;
 import com.yedam.control.StockListControl;
 import com.yedam.control.UserCheckControl;
 import com.yedam.control.UsingPoint;
 
-
-
 // 서블릿
 public class FrontController extends HttpServlet {
 	Map<String, Control> map;
-	
+
 	public FrontController() {
 		map = new HashMap<String, Control>();
 	}
-	
+
 	@Override
 	public void init(ServletConfig config) throws ServletException {
+		// 메인화면
 		map.put("/main.do", new MainControl());
-		//상품
+		map.put("/mainMil.do", new MainMilControl());
+		
+		// 상품
 		map.put("/productDetail.do", new ProductDetailControl());
 		map.put("/proudctList.do", new ProductListControl());
-		map.put("/productListPaging.do",  new ProductListControlPaging());
+		map.put("/productListPaging.do", new ProductListControlPaging());
 		map.put("/productCategory.do", new ProductCategoryControl());
 		map.put("/productListOption.do", new ProductOptionControl());
 		map.put("/productSearch.do", new ProductSearchControl());
@@ -66,17 +69,18 @@ public class FrontController extends HttpServlet {
 		map.put("/logout.do", new LogoutControl());
 		map.put("/register.do", new RegisterControl());
 		map.put("/userCheck.do", new UserCheckControl());
-		
+
 		// 아이디 비밀번호찾기
 		map.put("/findAccount.do", new FindAccountControl());
 		map.put("/findId.do", new FindIdControl());
 		map.put("/findPassword.do", new FindPasswordControl());
-		
+
 		// 마이페이지
 		map.put("/myPage.do", new MyPageControl());
+		map.put("/selectReveiw.do", new SelectReviewControl());
 		
 		//장바구니
-		map.put("/cartPage.do", new CartPageControl()); 
+		map.put("/cartPage.do", new CartPageControl());
 		map.put("/cart.do", new CartControl());
 		map.put("/cartEmpty.do", new CartEmpty());
 		map.put("/cartPrdDel.do", new CartPrdDel());
@@ -88,20 +92,19 @@ public class FrontController extends HttpServlet {
 		map.put("/myPoint.do", new OrderMyPoint());
 		map.put("/usingPoint.do", new UsingPoint());
 		
-		
-		//주문완료
+		// 주문완료
 		map.put("/complete.do", new CompleteOrder());
-		
+
 		// 관리자
 		map.put("/addProductForm.do", new AddProductFormControl());
 		map.put("/stockList.do", new StockListControl());
-		
-		//고객센터
+
+		// 고객센터
 		map.put("/board.do", new BoardControl());
 		map.put("/boardList.do", new BoardListControl());
 
 	}
-	
+
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// url이 호출(http://localhots:8080/Project66/main.do) -> 페이지 호출 -> Control

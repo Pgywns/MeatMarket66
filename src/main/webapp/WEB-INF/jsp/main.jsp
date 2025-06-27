@@ -1,15 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
    <style>
    .hero-header {
     background: linear-gradient(rgba(248, 248, 248, 0.5), rgba(248, 248, 248, 0.5)), url(img/6월6일.png);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    
 }
    </style>
-
         <!-- Hero Start -->
         <div class="container-fluid py-5 mb-5 hero-header">
             <div class="container py-5">
@@ -23,16 +22,15 @@
                             <div class="carousel-inner" role="listbox">
                                 <div class="carousel-item active rounded">
                                     <img src="img/main_소.png" class="img-fluid w-100 h-100 rounded" alt="First slide">
-                                    <a href="#" class="btn px-4 py-2 text-white rounded">소고기</a>
+                                   
                                 </div>
                                 <div class="carousel-item rounded">
                                     <img src="img/main_돼지.png" class="img-fluid w-100 h-100 rounded" alt="Second slide">
-                                    <a href="#" class="btn px-4 py-2 text-white rounded">돼지고기</a>
+                                   
                                 </div>
                                  <div class="carousel-item rounded">
                                     <img src="img/main_닭.png" class="img-fluid w-100 h-100 rounded" alt="Second slide">
-                                    <a href="#" class="btn px-4 py-2 text-white rounded">닭고기</a>
-                                </div>
+	                                </div>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -102,27 +100,13 @@
         </div>
         <!-- Featurs Section End -->
 
-       
         <!-- Vesitable Shop Start-->
         <div class="container-fluid vesitable py-5">
             <div class="container py-5">
-                <h1 class="mb-0">💕따끈따근 신제품💕</h1>
-                <div class="owl-carousel vegetable-carousel justify-content-center">
+                <h1 class="mb-0">💕한끼뚝딱 밀키트💕</h1>
+                <div class="owl-carousel vegetable-carousel justify-content-center" id="mil">
                    <!-- 반복 -->
-                    <div class="border border-primary rounded position-relative vesitable-item">
-                        <div class="vesitable-img">
-                            <img src="img/productList/소/한우 등심(51000).png" class="img-fluid w-100 rounded-top" alt="">
-                        </div>
-                        <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">Vegetable</div>
-                        <div class="p-4 rounded-bottom">
-                            <h4>Parsely</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                            <div class="d-flex justify-content-between flex-lg-wrap">
-                                <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-                            </div>
-                        </div>
-                    </div>
+                
                     <!-- 반복 -->
                 </div>
             </div>
@@ -137,29 +121,24 @@
                     <p>정육달인들이 추천하는 인기 상품이에요</p>
                 </div>
                 <div class="row g-4">
+                <c:forEach var="hot" items="${Hlist}">
                     <div class="col-lg-6 col-xl-4">
                         <div class="p-4 rounded bg-light">
                             <div class="row align-items-center">
                                 <div class="col-6">
-                                    <img src="img/productList/소/한우 분쇄육(16500).png" class="img-fluid rounded-circle w-100" alt="">
+                                    <img src="img/productList/${hot.prdSort }/${hot.prdImage}" class="img-fluid rounded-circle w-100" alt="">
                                 </div>
                                 <div class="col-6">
-                                    <a href="#" class="h5">한우 분쇄육</a>
-                                    <div class="d-flex my-3">
-                                        <i class="fas fa-star text-primary"></i>
-                                        <i class="fas fa-star text-primary"></i>
-                                        <i class="fas fa-star text-primary"></i>
-                                        <i class="fas fa-star text-primary"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <h4 class="mb-3">3.12 $</h4>
-                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                    <a href="#" class="h4">${hot.prdName }</a>
+                                    <p></p>
+                                    <h4 class="mb-3">${hot.prdPrice }원</h4>
+                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>장바구니</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    </c:forEach>
                    <!-- 반복 6개 -->
-               
                 </div>
             </div>
         </div>
@@ -173,45 +152,25 @@
                     <h1 class="display-5 mb-5 text-dark">😍고객님들의 성원에 감사😍</h1>
                 </div>
                 <div class="owl-carousel testimonial-carousel">
+                <c:forEach var="review" items="Rlist">
                     <div class="testimonial-item img-border-radius bg-light rounded p-4">
                         <div class="position-relative">
                             <i class="fa fa-quote-right fa-2x text-secondary position-absolute" style="bottom: 30px; right: 0;"></i>
                             <div class="mb-4 pb-4 border-bottom border-secondary">
-                                <p class="mb-0">Lorem Ipsum is simply dummy text of the printing Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                </p>
+                                <p class="mb-0">${review.rvwContent }</p>
                             </div>
                             <div class="d-flex align-items-center flex-nowrap">
                                 <div class="bg-secondary rounded">
                                     <img src="img/존윅.jpg" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
                                 </div>
                                 <div class="ms-4 d-block">
-                                    <h4 class="text-dark">Client Name</h4>
-                                    <p class="m-0 pb-3">Profession</p>
-                                   
+                                    <h4 class="text-dark">${review.userId}</h4>
+                                    <p class="m-0 pb-3">${review.rvwDate }</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="testimonial-item img-border-radius bg-light rounded p-4">
-                        <div class="position-relative">
-                            <i class="fa fa-quote-right fa-2x text-secondary position-absolute" style="bottom: 30px; right: 0;"></i>
-                            <div class="mb-4 pb-4 border-bottom border-secondary">
-                                <p class="mb-0">Lorem Ipsum is simply dummy text of the printing Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                </p>
-                            </div>
-                            <div class="d-flex align-items-center flex-nowrap">
-                                <div class="bg-secondary rounded">
-                                    <img src="img/트럼프.jpg" class="img-fluid rounded" style="width: 100px; height: 100px;" alt="">
-                                </div>
-                                <div class="ms-4 d-block">
-                                    <h4 class="text-dark">Client Name</h4>
-                                    <p class="m-0 pb-3">Profession</p>
-                                   
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                   
+                    </c:forEach>
                 </div>
             </div>
         </div>

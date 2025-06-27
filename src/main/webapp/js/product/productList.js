@@ -29,8 +29,8 @@ const svc = {
 											<p class="text-dark fs-5 fw-bold mb-0">${product.prdPrice}원</p>
 											<a href=""
 												class="btn border border-secondary rounded-pill px-3 text-primary"><i
-												class="fa fa-shopping-bag me-2 text-primary"></i> Add to
-												cart</a>
+												class="fa fa-shopping-bag me-2 text-primary"></i>장바구니
+												</a>
 										</div>
 									</div>
 								</div>
@@ -107,8 +107,8 @@ const svc = {
 														<p class="text-dark fs-5 fw-bold mb-0">${product.prdPrice}원</p>
 														<a href=""
 															class="btn border border-secondary rounded-pill px-3 text-primary"><i
-															class="fa fa-shopping-bag me-2 text-primary"></i> Add to
-															cart</a>
+															class="fa fa-shopping-bag me-2 text-primary"></i>장바구니
+															</a>
 													</div>
 												</div>
 											</div>
@@ -147,8 +147,8 @@ const svc = {
 												<p class="text-dark fs-5 fw-bold mb-0">${product.prdPrice}원</p>
 												<a href=""
 													class="btn border border-secondary rounded-pill px-3 text-primary"><i
-													class="fa fa-shopping-bag me-2 text-primary"></i> Add to
-													cart</a>
+													class="fa fa-shopping-bag me-2 text-primary"></i>장바구니
+													</a>
 											</div>
 										</div>
 									</div>

@@ -329,6 +329,13 @@
 .vesitable .vesitable-item:hover {
 	box-shadow: 0 0 55px rgba(0, 0, 0, 0.4);
 }
+.vesitable-img img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
 
 .vesitable .vesitable-item .vesitable-img {
 	overflow: hidden;
@@ -347,6 +354,7 @@
 .vesitable .owl-stage {
 	margin: 50px 0;
 	position: relative;
+	height: 180px;
 }
 
 .vesitable .owl-nav .owl-prev {

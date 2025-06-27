@@ -75,29 +75,13 @@
 						<div class="tab-content mb-5">
 							<div class="tab-pane active" id="nav-about" role="tabpanel"
 								aria-labelledby="nav-about-tab">
-								<div class="px-2">
-									<img src="img/productDetail/pork/porkMain.png"
-										class="img-fluid rounded" alt="Image"> <img
-										src="img/productDetail/pork/pork1.png"
-										class="img-fluid rounded" alt="Image"> <img
-										src="img/productDetail/pork/pork2.png"
-										class="img-fluid rounded" alt="Image"> <img
-										src="img/productDetail/pork/pork3.png"
-										class="img-fluid rounded" alt="Image"> <img
-										src="img/productDetail/pork/pork4.png"
-										class="img-fluid rounded" alt="Image"> <img
-										src="img/productDetail/pork/pork5.png"
-										class="img-fluid rounded" alt="Image"> <img
-										src="img/productDetail/pork/pork6.png"
-										class="img-fluid rounded" alt="Image"> <img
-										src="img/productDetail/pork/pork7.png"
-										class="img-fluid rounded" alt="Image">
+								<div class="px-2" id="detailImage" data-sort="${prdSort}">					
 								</div>
 							</div>
 							<div class="tab-pane" id="nav-mission" role="tabpanel"
 								aria-labelledby="nav-mission-tab">
 								<!-- 리뷰쓰기 -->
-								<div class="d-flex">
+								<div class="d-flex" id="reviewBox">
 										
 									<div class="">
 										<p class="mb-2" style="font-size: 14px;">April 12, 2024</p>
@@ -126,4 +110,7 @@
 	</div>
 </div>
 <!-- Single Product End -->
+
 <script type="text/javascript" src="js/cart/headerCartIcon.js"></script>
+
+<script src="js/product/productDetail.js"></script>
