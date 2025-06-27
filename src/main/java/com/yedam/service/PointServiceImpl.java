@@ -15,4 +15,14 @@ public class PointServiceImpl implements PointService {
 		return mapper.selectTotalPoint(id);
 	}
 
+	@Override
+	public boolean usingPoint(String userId, int usingPoint) {
+		int r = mapper.usingPoint(userId, usingPoint);
+		if(r == 1) {
+			sqlSession.commit();
+			return true;
+		}
+		return false;
+	}
+
 }

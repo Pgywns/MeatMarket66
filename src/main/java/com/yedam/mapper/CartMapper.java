@@ -11,4 +11,5 @@ public interface CartMapper {
 	public int deleteList(String userId);
 	public int eachDelCart(@Param("userId")String userId, @Param("prdNo")int prdNo);
 	public int updateCartQty(@Param("userId")String userId, @Param("prdNo")int prdNo, @Param("cartQty")int cartQty);
+	public int selectCountCart(String userId);
 }
