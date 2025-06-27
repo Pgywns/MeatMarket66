@@ -18,6 +18,7 @@
 		<typeAlias alias="Cart" type="com.yedam.vo.CartVO" />
 		<typeAlias alias="CartList" type="com.yedam.vo.CartListVO" />
 		<typeAlias alias="Review" type="com.yedam.vo.ReviewVO"/>
+		<typeAlias alias="Point" type="com.yedam.vo.PointVO"/>
 	</typeAliases>
 
 	<environments default="development">
@@ -40,6 +41,9 @@
 		<mapper resource="com/yedam/mapper/MemberMapper.xml"></mapper>
 		<mapper resource="com/yedam/mapper/AddressMapper.xml"></mapper>
 		<mapper resource="com/yedam/mapper/CartMapper.xml"></mapper>
+		<mapper resource="com/yedam/mapper/BoardMapper.xml"></mapper>
+		<mapper resource="com/yedam/mapper/PointMapper.xml"></mapper>
+
 	</mappers>
 
 </configuration>

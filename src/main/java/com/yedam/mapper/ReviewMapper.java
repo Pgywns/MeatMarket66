@@ -6,5 +6,5 @@ import com.yedam.vo.ReviewVO;
 
 public interface ReviewMapper {
 	//리뷰전체
-	public List<ReviewVO> selectReviewList(); 
+	public List<ReviewVO> selectReviewList(int prdNo); 
 }

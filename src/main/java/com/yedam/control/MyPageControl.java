@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.yedam.common.Control;
+import com.yedam.service.PointService;
+import com.yedam.service.PointServiceImpl;
 
 public class MyPageControl implements Control {
 
@@ -16,7 +18,16 @@ public class MyPageControl implements Control {
 		req.setCharacterEncoding("utf-8");
 		
 		HttpSession session = req.getSession();
-		String user = (String) session.getAttribute("userId");
+		String userId = (String) session.getAttribute("userId");
+		
+		//리뷰 조회
+		
+		
+		// 적립금 조회
+		PointService psv = new PointServiceImpl();
+		int totalPoint = psv.totalPoint(userId);
+		req.setAttribute("totalPoint", totalPoint);
+		
 		
 		req.getRequestDispatcher("member/myPage.tiles").forward(req, resp);
 	}
