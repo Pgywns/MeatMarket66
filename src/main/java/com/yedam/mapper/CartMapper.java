@@ -15,4 +15,7 @@ public interface CartMapper {
 	
 	//장바구니 클릭시 
 	public int insertCart(CartVO cart);
+
+	public int selectCountCart(String userId);
+
 }

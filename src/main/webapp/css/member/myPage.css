@@ -1,3 +1,83 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 15px;
+  margin-top: 20px;
+}
+
+thead {
+  background-color: #81c408;
+}
+
+thead th {
+	color: #fff;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 10px;
+  text-align: center;
+}
+
+/* 가장 왼쪽 셀의 border-left 제거 */
+th:first-child,
+td:first-child {
+  border-left: none;
+}
+
+/* 가장 오른쪽 셀의 border-right 제거 */
+th:last-child,
+td:last-child {
+  border-right: none;
+}
+
+/* 마지막 행의 td border-bottom 제거 */
+tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+th {
+  color: #333;
+  font-weight: 600;
+}
+
+td {
+  color: #444;
+}
+
+/* 내용 칸 스타일 (3번째 열) */
+th:nth-child(3),
+td:nth-child(3) {
+  width: 650px;                 /* 너비 넓게 고정 */
+  max-width: 650px;             /* 최대 너비 제한 */
+  overflow: hidden;             /* 넘치는 내용 숨기기 */
+  text-overflow: ellipsis;      /* ...으로 생략 */
+  white-space: nowrap;          /* 줄바꿈 금지 */
+  text-align: center;             /* 가독성 위해 왼쪽 정렬 */
+}
+
+th:nth-child(1),
+td:nth-child(1) {
+  width: 200px;                 /* 너비 넓게 고정 */
+  max-width: 200px;             /* 최대 너비 제한 */
+  overflow: hidden;             /* 넘치는 내용 숨기기 */
+  text-overflow: ellipsis;      /* ...으로 생략 */
+  white-space: nowrap;          /* 줄바꿈 금지 */
+  text-align: center;             /* 가독성 위해 왼쪽 정렬 */
+}
+
+table caption {
+  caption-side: top;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
 .mypage-container {
   width: 1200px;
   margin: 0 auto;
@@ -67,4 +147,8 @@
   padding: 20px;
   border-top: 1px solid #ccc;
   text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #000;
 }

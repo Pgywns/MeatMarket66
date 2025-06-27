@@ -20,6 +20,7 @@ import com.yedam.control.CartPageControl;
 import com.yedam.control.CartPrdDel;
 import com.yedam.control.CartUpdateQty;
 import com.yedam.control.CompleteOrder;
+import com.yedam.control.CountCart;
 import com.yedam.control.FindAccountControl;
 import com.yedam.control.FindIdControl;
 import com.yedam.control.FindPasswordControl;
@@ -28,6 +29,7 @@ import com.yedam.control.LogoutControl;
 import com.yedam.control.MainControl;
 import com.yedam.control.MainMilControl;
 import com.yedam.control.MyPageControl;
+import com.yedam.control.OrderMyPoint;
 import com.yedam.control.OrderControl;
 import com.yedam.control.ProductCategoryControl;
 import com.yedam.control.ProductDetailControl;
@@ -36,8 +38,10 @@ import com.yedam.control.ProductListControlPaging;
 import com.yedam.control.ProductOptionControl;
 import com.yedam.control.ProductSearchControl;
 import com.yedam.control.RegisterControl;
+import com.yedam.control.SelectReviewControl;
 import com.yedam.control.StockListControl;
 import com.yedam.control.UserCheckControl;
+import com.yedam.control.UsingPoint;
 
 // 서블릿
 public class FrontController extends HttpServlet {
@@ -74,17 +78,25 @@ public class FrontController extends HttpServlet {
 
 		// 마이페이지
 		map.put("/myPage.do", new MyPageControl());
-
-		// 장바구니
+		map.put("/selectReveiw.do", new SelectReviewControl());
+		
+		//장바구니
 		map.put("/cartPage.do", new CartPageControl());
 		map.put("/cart.do", new CartControl());
 		map.put("/cartEmpty.do", new CartEmpty());
 		map.put("/cartPrdDel.do", new CartPrdDel());
 		map.put("/cartUpdateQty.do", new CartUpdateQty());
+
 		map.put("/cartAdd.do", new CartAddControl());
 
 		// 주문페이지
+		map.put("/cartIcon.do", new CountCart());
+		
+		//주문페이지
 		map.put("/order.do", new OrderControl());
+		map.put("/myPoint.do", new OrderMyPoint());
+		map.put("/usingPoint.do", new UsingPoint());
+		
 		// 주문완료
 		map.put("/complete.do", new CompleteOrder());
 

@@ -10,10 +10,8 @@ import javax.servlet.http.HttpSession;
 import com.yedam.common.Control;
 import com.yedam.service.PointService;
 import com.yedam.service.PointServiceImpl;
-import com.yedam.service.ReviewService;
-import com.yedam.service.ReviewServiceImpl;
 
-public class MyPageControl implements Control {
+public class OrderMyPoint implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -22,18 +20,11 @@ public class MyPageControl implements Control {
 		HttpSession session = req.getSession();
 		String userId = (String) session.getAttribute("userId");
 		
-		//리뷰 조회
-		ReviewService rsv = new ReviewServiceImpl();
-		int totalReview = rsv.totalReview(userId);
-		req.setAttribute("totalReview", totalReview);
-		
-		// 적립금 조회
 		PointService psv = new PointServiceImpl();
 		int totalPoint = psv.totalPoint(userId);
-		req.setAttribute("totalPoint", totalPoint);
 		
-		
-		req.getRequestDispatcher("member/myPage.tiles").forward(req, resp);
+		System.out.println(totalPoint);
+		resp.getWriter().print(totalPoint);
 	}
 
 }

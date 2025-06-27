@@ -10,7 +10,11 @@ public interface CartService {
 	public boolean emptyAll(String userId);
 	public boolean eachDel(String userId,  int prdNo);
 	public boolean updateQty(String userId, int prdNo, int cartQty);
+
 	
 	//장바구니 추가
 	public boolean addCart(CartVO cart);
+
+	public int CountCartList(String userId);
+
 }
