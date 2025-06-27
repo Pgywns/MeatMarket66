@@ -14,6 +14,7 @@
 <div class="container-fluid py-5">
 	<div class="container py-5">
 		<h1 class="mb-4">Billing details</h1>
+		<!-- 폼영역 -->
 		<form action="#">
 			<div class="row g-5">
 				<div class="col-md-12 col-lg-6 col-xl-7">
@@ -25,9 +26,7 @@
 					<div class="row my-3">
 						<div>
 							<input type="radio" id="defaultAdd" name="address">
-							<label for="defaultAdd">기본 배송지</label>
-							<input type="radio" id="newtAdd" name="address" onclick="postApi()">
-							<label for="newAdd">새로운 배송지 등록</label>
+							<label for="defaultAdd">등록된 배송지 선택</label>
 						</div>
 						<div class="col-md-12 col-lg-6">
 							<div class="form-item w-100">
