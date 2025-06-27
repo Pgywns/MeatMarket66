@@ -1,12 +1,16 @@
 package com.yedam.control;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.common.Control;
+import com.yedam.service.ReviewService;
+import com.yedam.service.ReviewServiceImpl;
+import com.yedam.vo.ReviewVO;
 
 public class ProductDetailControl implements Control {
 

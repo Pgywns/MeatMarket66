@@ -160,7 +160,7 @@ const svc = {
 	},
 	//리뷰 목록
 	reviewList() {
-
+		document.querySelector('').innerHTML = "";
 	}
 
 }//end svc

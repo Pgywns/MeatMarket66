@@ -32,7 +32,7 @@ public class CartControl implements Control {
 		//json으로 변환
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(cartList);
-
+		
 		//데이터전달
 		resp.getWriter().print(json);		
 	

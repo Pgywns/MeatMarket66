@@ -25,4 +25,6 @@ public class ReviewServiceImpl implements ReviewService{
 	public List<ReviewVO> selectReviewToUserId(String id) {
 		return mapper.selectReviewToUserId(id);
 	}
+
+
 }

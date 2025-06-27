@@ -21,4 +21,16 @@ public class BoardSeviceImpl implements BoardSevice{
 		// TODO Auto-generated method stub
 		return mapper.clickList(boardTitle);
 	}
+	@Override
+	public boolean insertBoard(String userId) {
+		int r = mapper.addBoard(userId);
+		if(r == 1) {
+			sqlSession.commit();
+			return true;
+		}
+		return false;
+	}
+
+
+
 }

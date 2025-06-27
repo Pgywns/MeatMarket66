@@ -13,7 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.yedam.control.AddProductFormControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardListControl;
+
+import com.yedam.control.BoardinsertControl;
+
 import com.yedam.control.CartAddControl;
+
 import com.yedam.control.CartControl;
 import com.yedam.control.CartEmpty;
 import com.yedam.control.CartPageControl;
@@ -41,8 +45,12 @@ import com.yedam.control.ProductListControlPaging;
 import com.yedam.control.ProductOptionControl;
 import com.yedam.control.ProductSearchControl;
 import com.yedam.control.RegisterControl;
+
+import com.yedam.control.ReviewListControl;
+
 import com.yedam.control.SelectAddressControl;
 import com.yedam.control.SelectPointControl;
+
 import com.yedam.control.SelectReviewControl;
 import com.yedam.control.SelectUserControl;
 import com.yedam.control.StockListControl;
@@ -121,6 +129,10 @@ public class FrontController extends HttpServlet {
 		// 고객센터
 		map.put("/board.do", new BoardControl());
 		map.put("/boardList.do", new BoardListControl());
+		map.put("/boardinsert.do", new BoardinsertControl());
+		
+		//리뷰
+		map.put("/reviewList.do", new ReviewListControl());
 
 	}
 
