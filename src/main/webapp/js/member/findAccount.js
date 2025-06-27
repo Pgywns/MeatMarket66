@@ -11,6 +11,12 @@ function findIdCheck() {
 	fetch('findId.do?name=' + fidName + '&phone=' + fidPhone)
 		.then(data => data.json())
 		.then(result => {
+			if (fidPhone != 13) {
+				alert("전화번호가 올바르지 않습니다. '-'까지 입력해주세요.")
+				document.querySelector('input[name=fidPhone]').value = "";
+				document.querySelector('input[name=fidPhone]').focus();
+				return;
+			}
 			if (result.retCode == 'Success') {
 				msg.innerHTML = '일치하는 아이디는 <span style="color: green;">' + result.userId + '</span> 입니다.';
 				msg.style.color = "black";
@@ -31,6 +37,12 @@ function findPasswordCheck() {
 	fetch('findPassword.do?id=' + userId + '&name=' + userName + '&phone=' + userPhone)
 	.then(data => data.json())
 	.then(result => {
+		if (userPhone.length != 13) {
+			alert("전화번호가 올바르지 않습니다. '-'까지 입력해주세요.")
+			document.querySelector('input[name=userPhone]').value = "";
+			document.querySelector('input[name=userPhone]').focus();
+			return;
+		}
 		if (result.retCode == 'Success') {
 						msg.innerHTML = '일치하는 비밀번호는 <span style="color: green;">' + result.userPassword + '</span> 입니다.';
 						msg.style.color = "black";

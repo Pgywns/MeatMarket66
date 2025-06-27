@@ -10,6 +10,6 @@ public interface BoardMapper {
 	public List<BoardVO> clickList(String boardCategory);
 	
 	//1:1문의 글 추가
-	//public int insertcsBord();
+	public int insertcsBord();
 	
 }
