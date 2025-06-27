@@ -8,7 +8,7 @@
 
 <div class="container-fluid py-5">
 	<div class="mypage-container">
-		<div class="user-name">${user.getUserName()}님</div>
+		<div class="user-name">${userName } 님</div>
 
 		<div class="summary-boxes">
 			<div class="summary-item">
@@ -16,8 +16,12 @@
 				<div>0건</div>
 			</div>
 			<div class="summary-item">
+				<div>리뷰</div>
+				<div>0건</div>
+			</div>
+			<div class="summary-item">
 				<div>적립금</div>
-				<div>0원</div>
+				<div>${totalPoint } 원</div>
 			</div>
 			<div class="summary-item">
 				<div>문의</div>

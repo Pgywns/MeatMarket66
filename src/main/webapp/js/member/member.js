@@ -89,8 +89,10 @@ function checks() {
 			if (result.retCode == 'Success') {
 				console.log(result)
 				alert("사용할 수 있는 아이디 입니다.");
+				document.querySelector('#registerBtn').disabled = false;
 			} else if (result.retCode == 'Failure') {
 				alert("사용할 수 없는 아이디 입니다.");
+				document.querySelector('#registerBtn').disabled = true;
 				document.querySelector('#userId').value = "";
 				document.querySelector('#userId').focus();
 			}
