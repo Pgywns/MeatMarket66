@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	} else {
 		detailIMeat();
 	}
+	
+	review();
 });
 
 // 돼지, 소, 닭
@@ -72,6 +74,7 @@ function detailVege() {
 function review() {
 	
 	let str = `
+		<div class="d-flex">
 			<div class="">
 				<p class="mb-2" style="font-size: 14px;">April 12, 2024</p>
 				<div class="d-flex justify-content-between">
@@ -81,6 +84,7 @@ function review() {
 					repetition injected humour, or non-characteristic words etc.
 					Susp endisse ultricies nisi vel quam suscipit</p>
 			</div>
+		</div>
 			`;
 			
 			document.querySelector('#reviewBox').insertAdjacentHTML('beforeend', str);
