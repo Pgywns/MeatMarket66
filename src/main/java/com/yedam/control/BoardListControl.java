@@ -15,7 +15,7 @@ import com.yedam.service.BoardSeviceImpl;
 import com.yedam.vo.BoardVO;
 
 public class BoardListControl implements Control {
-
+	
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
