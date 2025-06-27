@@ -19,7 +19,7 @@
 			<div class="row g-5">
 				<div class="col-md-12 col-lg-6 col-xl-7">
 					<div class="form-item">
-						<label class="form-label my-3">받으시는 분<sup>*</sup></label> <input
+						<label class="form-label my-3" id="name">받으시는 분<sup>*</sup></label> <input
 							type="text" class="form-control">
 					</div>
 					<!-- 주소영역 -->
@@ -36,18 +36,18 @@
 						</div>
 						<div class="col-md-12 col-lg-6">
 							<div class="form-item w-100">
-								<label class="form-label my-3">주소<sup>*</sup></label> <input
+								<label class="form-label my-3" >주소<sup>*</sup></label> <input
 									type="text" class="form-control" id="sample6_address">
 							</div>
 						</div>
 						<div class="form-item">
-							<label class="form-label my-3">상세주소<sup>*</sup></label> <input
+							<label class="form-label my-3" >상세주소<sup>*</sup></label> <input
 								type="text" class="form-control"
-								placeholder="상세주소">
+								placeholder="상세주소" id="addrTwo" >
 						</div>
 					</div>
 					<div class="form-item">
-						<label class="form-label my-3">연락처<sup>*</sup></label> <input
+						<label class="form-label my-3" id="phone">연락처<sup>*</sup></label> <input
 							type="tel" class="form-control">
 					</div>
 				</div>
@@ -68,10 +68,12 @@
 						   	<!-- 주문상품출력 -->
 						   	<!-- 주문상품출력 -->
 								<tr>
-									<th scope="row" colspan="3"></th>
-									<td class="py-5 text-end">
-										<p class="mb-0 text-dark py-3">Subtotal</p>
+									<th scope="row"></th>
+									<td class="py-5">
+										<p class="mb-0 text-dark text-uppercase py-3">SUBTOTAL</p>
 									</td>
+									<td class="py-5"></td>
+									<td class="py-5"></td>
 									<td class="py-5">
 										<div class="py-3 border-top border-bottom">
 											<p class="mb-0 text-dark subTotal">100,000원</p>
@@ -127,7 +129,7 @@
 					<div
 						class="row g-4 text-center align-items-center justify-content-center pt-4">
 						<button type="button"
-							class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary" onclick="location.href='complete.do'">Place
+							class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary" onclick="submitOrderForm()">Place
 							Order</button>
 					</div>
 				</div>
