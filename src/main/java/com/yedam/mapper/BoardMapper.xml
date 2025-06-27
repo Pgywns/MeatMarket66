@@ -14,11 +14,11 @@ select board_no,
        answer
 from tbl_board
 </select>
-	<!-- 1:1문의 
-	<insert id="insertcsBord">
-		insert into tbl_board(b_no,u_id,b_title,b_content,b_category)
-		values(#{bNo},#{uId},#{bTitle},#{bContent},#{bContent},#{bCategory})
-	</insert>-->
+	<!-- 1:1문의 -->
+	<insert id="addBoard">
+		insert into tbl_board(board_no,user_id,board_title,board_content)
+		values(board_no_seq.nextval,#{userId},#{boardTitle},#{boardContent})
+	</insert>
 <select id="clickList" resultType="Board" parameterType="String">
 select board_no,
        user_id,
