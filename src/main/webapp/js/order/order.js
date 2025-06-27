@@ -14,7 +14,9 @@ function orderList() {
 			let orderProList = orderListTemplete(item);
 			orderList.insertAdjacentHTML("beforebegin", orderProList);
 			}
-			subtotal()
+			//서브금액 출력
+			subtotal()	
+			
 		})
 		.catch(err => console.log(err));
  }
@@ -36,9 +38,8 @@ function usePoint(){
 	let usingPoint = 0;
 	let usePointEl = document.querySelector('#usePoint');
 	usingPoint = usePointEl.value;
-	console.log(usingPoint);
 	
-	//이영역을 orderBtn클릭시 반영되도록해야
+	//이영역을 orderBtn클릭시 반영되도록해야(시간나면수정)
 	fetch('usingPoint.do?usingPoint='+usingPoint)
 	.catch(err => console.log(err));
 	
@@ -49,7 +50,7 @@ function usePoint(){
 	//subtotal금액가지고 오기
 	let subTotalEl = document.querySelector('.subTotal')
 	let subtotalPrice = subTotalEl.textContent;
-	console.log(subtotalPrice)
+	
 	//total금액반영
 	let totalEl = document.querySelector('#amount');
 	let total = (subtotalPrice - usingPoint)
@@ -59,7 +60,6 @@ function usePoint(){
 }
 
 //기본주소불러오기
-
 
 
 //주문버튼
@@ -80,9 +80,12 @@ function Order(){
 	})
 	let subtotalEl = document.querySelector('.subTotal');
 	subtotalEl.textContent = subtotal
+//첫로드시 토탈금액 반영
+	let totalEl = document.querySelector('#amount');
+	totalEl.textContent = subtotal.toLocaleString()+'원';
+	
  }
  
-
  
 //주문목록템플릿
 function orderListTemplete(item) {
