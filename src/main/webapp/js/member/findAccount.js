@@ -11,7 +11,7 @@ function findIdCheck() {
 	fetch('findId.do?name=' + fidName + '&phone=' + fidPhone)
 		.then(data => data.json())
 		.then(result => {
-			if (fidPhone != 13) {
+			if (fidPhone.length != 13) {
 				alert("전화번호가 올바르지 않습니다. '-'까지 입력해주세요.")
 				document.querySelector('input[name=fidPhone]').value = "";
 				document.querySelector('input[name=fidPhone]').focus();

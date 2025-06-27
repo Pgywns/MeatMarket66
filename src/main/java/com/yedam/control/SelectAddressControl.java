@@ -12,11 +12,11 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.yedam.common.Control;
-import com.yedam.service.ReviewService;
-import com.yedam.service.ReviewServiceImpl;
-import com.yedam.vo.ReviewVO;
+import com.yedam.service.AddressService;
+import com.yedam.service.AddressServiceImpl;
+import com.yedam.vo.AddressVO;
 
-public class SelectReviewControl implements Control {
+public class SelectAddressControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,8 +26,8 @@ public class SelectReviewControl implements Control {
 		HttpSession session = req.getSession();
 		String userId = (String) session.getAttribute("userId");
 		
-		ReviewService svc = new ReviewServiceImpl();
-		List<ReviewVO> list = svc.selectReviewToUserId(userId);
+		AddressService svc = new AddressServiceImpl();
+		List<AddressVO> list = svc.selectAddress(userId);
 		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(list);

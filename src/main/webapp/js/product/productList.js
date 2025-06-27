@@ -165,7 +165,6 @@ const svc = {
 
 }//end svc
 
-//회원아이디, 상품번호, 갯수(default 1)
 
 svc.searchList();
 svc.productList();
@@ -174,14 +173,27 @@ svc.optionList();
 // 장바구니 등록  onclick="javascript:productCart(cart)
 
 
-function productCart(no){
+async function  productCart(productNo){
 	console.log("hi");	
 	let cartQty = 1;
-	let userId = 'user01';
-	let prdNo = no;
-	fetch("cartAdd.do?userId="+userId+"&prdNo="+prdNo+"&cartQty="+cartQty)
-	.catch(err=> console.log(err));
+	let prdNo = productNo;
+	let boolean1 = true;
+	let data = await fetch("cart.do")
+	let result = await data.json();
+		result.forEach(cart =>{
+			if(cart.prdNo == productNo){
+				alert("장바구니에 이미 있습니다")
+				boolean1 = false;
+				return;
+			} else{
+				boolean1 = true;
+			}
+		})
+		if(!boolean1){
+			return;
+		} else{
+			
+		await fetch("cartAdd.do?prdNo="+prdNo+"&cartQty="+cartQty)
+		}
 	
 };
-	
-	

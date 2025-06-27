@@ -31,10 +31,14 @@
 		</div>
 
 		<div class="menu-grid">
-			<button type="button" class="menu-item" onclick="showSection('order')">주문내역</button>
-			<button type="button" class="menu-item" onclick="showSection('point')">적립금내역</button>
-			<button type="button" class="menu-item" onclick="showSection('review')">내 리뷰</button>
-			<button type="button" class="menu-item" onclick="showSection('question')">내 질문</button>
+			<button type="button" class="menu-item"
+				onclick="showSection('order')">주문내역</button>
+			<button type="button" class="menu-item"
+				onclick="showSection('point')">적립금내역</button>
+			<button type="button" class="menu-item"
+				onclick="showSection('review')">내 리뷰</button>
+			<button type="button" class="menu-item"
+				onclick="showSection('question')">내 질문</button>
 			<button type="button" class="menu-item" onclick="showSection('info')">개인정보관리</button>
 		</div>
 
@@ -45,11 +49,20 @@
 		</div>
 		<div class="section-content" id="point" style="display: none;">
 			<h3>적립금내역</h3>
-			<p>여기에 적립금 내역이 표시됩니다.</p>
+			<table>
+				<thead>
+					<tr>
+						<th>날짜</th>
+						<th>내역</th>
+					</tr>
+				</thead>
+				<tbody id="pointTable">
+				</tbody>
+			</table>
 		</div>
 		<div class="section-content" id="review" style="display: none;">
 			<h3>내 리뷰</h3>
-			<table>
+			<table id="reviewTotalTable">
 				<thead>
 					<tr>
 						<th>상품</th>
@@ -68,9 +81,50 @@
 		</div>
 		<div class="section-content" id="info" style="display: none;">
 			<h3>개인정보관리</h3>
-			<p>여기에 개인정보 수정/관리 내용이 표시됩니다.</p>
+			<table id="userTable">
+			</table>
+
+			<h4>배송지 관리</h4>
+			<div id="addressList">
+				<table>
+					<thead>
+						<tr>
+							<th>배송지</th>
+							<th>우편번호</th>
+							<th>주소</th>
+							<th>수정</th>
+						</tr>
+					</thead>	
+					<tbody id="addressTable">				
+					</tbody>
+				</table>
+			</div>
+			<button class="btn-add" onclick="addAddress()">배송지 추가</button>
 		</div>
 	</div>
+</div>
+
+<!-- 모달 팝업 -->
+<div id="popUp">
+  <div id="modalBody">
+    <span id="closeBtn" onclick="closePopUp()">&times;</span>
+    <h3 id="modalTitle" style="margin-bottom: 20px;">정보 수정</h3>
+
+    <label id="modalLabel" for="modalInput" style="display: block; margin-bottom: 10px;">값 입력</label>
+    <input type="text" id="modalInput" style="width: 100%; padding: 10px; font-size: 16px;" />
+
+    <!-- 비밀번호 확인용 input: 필요 시만 보이게 -->
+    <input type="password" id="confirmPwInput" placeholder="비밀번호 확인"
+      style="width: 100%; padding: 10px; font-size: 16px; margin-top: 10px; display: none;" 
+      oninput="checkPwMatch()" />
+
+    <!-- 비밀번호 일치 여부 메시지 -->
+    <div id="pwMatchMsg" style="font-size: 14px; margin-top: 5px;"></div>
+
+    <div style="margin-top: 30px; text-align: center;">
+      <button onclick="confirmEdit()" style="padding: 10px 20px; background-color: #81c408; border: none; color: white; font-size: 16px; border-radius: 5px;">확인</button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -86,6 +140,11 @@
     // 만약 선택된 섹션이 'review'라면 리뷰 목록 불러오기
     if (sectionId === 'review') {
       selectReviews();
+    } else if (sectionId === 'point') {
+    	selectPoints();
+    } else if (sectionId === 'info') {
+    	selectUser();
+    	selectAddress();
     }
   }
 </script>
