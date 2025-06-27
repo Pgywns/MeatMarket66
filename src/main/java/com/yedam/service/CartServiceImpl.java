@@ -49,7 +49,6 @@ public class CartServiceImpl implements CartService{
 		return false;
 	}
 
-
 	@Override // 장바구니아이콘 클릭시 추가
 	public boolean addCart(CartVO cart) {
 		
@@ -59,7 +58,9 @@ public class CartServiceImpl implements CartService{
 			return true;
 		}
 		return false;
+
 	}	
+
 	@Override
 	public int CountCartList(String userId) {
 		return mapper.selectCountCart(userId);

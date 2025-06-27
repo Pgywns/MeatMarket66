@@ -8,4 +8,25 @@
 	insert into tbl_addr (addr_no, user_id, zip_code, addr_one, addr_two, addr_name, first_addr)
 	values (addr_seq.nextval, #{userId}, #{zipCode}, #{addrOne}, #{addrTwo}, #{addrName}, #{firstAddr})
 </insert>
+
+<!-- 주소 조회 -->
+<select id="selectAddress" parameterType="String" resultType="Address">
+	select addr_no,
+	       user_id,
+	       zip_code,
+	       addr_one,
+	       addr_two,
+	       addr_name,
+	       first_addr
+	from   tbl_addr
+	where  user_id = #{userId}
+</select>
+
+<!-- 주소 삭제 -->
+<delete id="deleteAddress" parameterType="Address">
+	delete
+	from   tbl_addr
+	where  user_id = #{userId}
+	  and  addr_no = #{addrNo}
+</delete>
 </mapper>
