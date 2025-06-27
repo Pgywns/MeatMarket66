@@ -19,22 +19,13 @@ function orderList() {
 		.catch(err => console.log(err));
  }
 	
-
- 
- 
-//적립금 모달
-let pointBtn = document.querySelector("#popBtn");
-let modal = document.querySelector("#popUp");
-let popClose = document.querySelector("#closeBtn");
-
-function modalPop() {
-	modal.style.display = "block";
+//버튼클릭시 현적립금 받아오기.
+function myPoint(){
+	fetch()
+	.then
 }
 
-popClose.addEventListener("click", () => {
-	modal.style.display = "none";
-});
- 
+
  
 
 
@@ -68,4 +59,18 @@ function orderListTemplete(item) {
 	return orderList;
 }
 
+
+ 
+//적립금 모달
+let pointBtn = document.querySelector("#popBtn");
+let modal = document.querySelector("#popUp");
+let popClose = document.querySelector("#closeBtn");
+
+function modalPop() {
+	modal.style.display = "block";
+}
+
+popClose.addEventListener("click", () => {
+	modal.style.display = "none";
+});
 

@@ -138,10 +138,29 @@
 
 <!-- 모달팝업 -->
 <div id="popUp">
-	<div id="modalBody">
-		<span id="closeBtn">&times;</span>
-		<P>모달내용</P>
-	</div>
+  <div id="modalBody">
+    <span id="closeBtn">&times;</span>
+
+    <div class="mb-4">
+      <p class="fw-bold fs-5 mb-2">나의 적립금</p>
+      <p id="myPoint" class="text-secondary">10,000P</p>
+    </div>
+
+    <div class="mb-4">
+      <label for="usePoint" class="form-label">사용할 적립금</label>
+      <input type="number" id="usePoint" class="form-control" placeholder="0" min="0" />
+    </div>
+
+    <div class="text-end">
+      <button
+        class="btn border-secondary rounded-pill px-3 py-2 text-primary"
+        type="button"
+        onclick="applyPoint()"
+      >
+        사용하기
+      </button>
+    </div>
+  </div>
 </div>
 <!-- 모달영역end -->
 

@@ -9,4 +9,5 @@ public interface CartService {
 	public boolean emptyAll(String userId);
 	public boolean eachDel(String userId,  int prdNo);
 	public boolean updateQty(String userId, int prdNo, int cartQty);
+	public int CountCartList(String userId);
 }

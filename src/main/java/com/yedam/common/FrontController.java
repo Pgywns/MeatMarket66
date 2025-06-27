@@ -19,6 +19,7 @@ import com.yedam.control.CartPageControl;
 import com.yedam.control.CartPrdDel;
 import com.yedam.control.CartUpdateQty;
 import com.yedam.control.CompleteOrder;
+import com.yedam.control.CountCart;
 import com.yedam.control.FindAccountControl;
 import com.yedam.control.FindIdControl;
 import com.yedam.control.FindPasswordControl;
@@ -78,9 +79,11 @@ public class FrontController extends HttpServlet {
 		map.put("/cartEmpty.do", new CartEmpty());
 		map.put("/cartPrdDel.do", new CartPrdDel());
 		map.put("/cartUpdateQty.do", new CartUpdateQty());
-
+		map.put("/cartIcon.do", new CountCart());
+		
 		//주문페이지
 		map.put("/order.do", new OrderControl());
+		
 		//주문완료
 		map.put("/complete.do", new CompleteOrder());
 		

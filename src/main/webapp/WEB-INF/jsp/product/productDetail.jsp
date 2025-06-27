@@ -126,3 +126,4 @@
 	</div>
 </div>
 <!-- Single Product End -->
+<script type="text/javascript" src="js/cart/headerCartIcon.js"></script>
