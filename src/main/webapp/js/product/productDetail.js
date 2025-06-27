@@ -6,6 +6,7 @@ let prdSort = "";
 document.addEventListener("DOMContentLoaded", function () {
     const productMeta = document.getElementById("detailImage");
     prdSort = productMeta.dataset.sort;
+	prdNo = productMeta.dataset.no;
 	
 	if (prdSort == "밀키트") {
 		detailMealkit();
@@ -15,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		detailIMeat();
 	}
 	
-	review();
+	review(prdNo);
 });
 
 // 돼지, 소, 닭
@@ -71,21 +72,25 @@ function detailVege() {
 			document.querySelector('#detailImage').insertAdjacentHTML('beforeend', str);
 }
 
-function review() {
-	
-	let str = `
-		<div class="d-flex">
-			<div class="">
-				<p class="mb-2" style="font-size: 14px;">April 12, 2024</p>
-				<div class="d-flex justify-content-between">
-					<h5>Jason Smith</h5>
-				</div>
-				<p>The generated Lorem Ipsum is therefore always free from
-					repetition injected humour, or non-characteristic words etc.
-					Susp endisse ultricies nisi vel quam suscipit</p>
-			</div>
-		</div>
-			`;
+function review(prdNo) {
+	console.log(prdNo);
+	fetch("detailReview.do?prdNo=" + prdNo)
+	.then(data => data.json())
+	.then(result => {
+		result.forEach(review => {
+			let str = `
+					<div class="d-flex">
+						<div class="">
+							<p class="mb-2" style="font-size: 14px;">${review.rvwDate}</p>
+							<div class="d-flex justify-content-between">
+								<h5>${review.userId}</h5>
+							</div>
+							<p>${review.rvwContent}</p>
+						</div>
+					</div>
+						`;
 			
-			document.querySelector('#reviewBox').insertAdjacentHTML('beforeend', str);
+		document.querySelector('#reviewBox').insertAdjacentHTML('beforeend', str);
+		})
+	})
 }

@@ -75,25 +75,14 @@
 						<div class="tab-content mb-5">
 							<div class="tab-pane active" id="nav-about" role="tabpanel"
 								aria-labelledby="nav-about-tab">
-								<div class="px-2" id="detailImage" data-sort="${prdSort}">					
+								<div class="px-2" id="detailImage" data-sort="${prdSort}" data-no="${prdNo}">					
 								</div>
 							</div>
 							<div class="tab-pane" id="nav-mission" role="tabpanel"
 								aria-labelledby="nav-mission-tab">
 								<!-- 리뷰쓰기 -->
 								<div id="reviewBox">
-									<div class="d-flex">
-											
-										<div class="">
-											<p class="mb-2" style="font-size: 14px;">April 12, 2024</p>
-											<div class="d-flex justify-content-between">
-												<h5>Jason Smith</h5>
-											</div>
-											<p>The generated Lorem Ipsum is therefore always free from
-												repetition injected humour, or non-characteristic words etc.
-												Susp endisse ultricies nisi vel quam suscipit</p>
-										</div>
-									</div>
+									
 								</div>
 								
 							</div>
