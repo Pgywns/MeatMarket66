@@ -91,6 +91,7 @@ function selectAddress() {
 									<td>${addr.zipCode}</td>
 									<td>${addr.addrOne} ${addr.addrTwo}</td>
 									<td>
+										<input id="inputAddr" type="hidden" value=${addr.addrNo}>
 										<button class="btn-delete" onclick="deleteAddress()">삭제</button>
 										<button class="btn" onclick="updateAddress()">변경</button>
 									</td>
@@ -187,4 +188,22 @@ function checkPwMatch() {
 		msg.innerText = "비밀번호가 일치하지 않습니다.";
 		msg.style.color = "red";
 	}
+}
+
+// 배송지 삭제
+function deleteAddress() {
+	let addrNo = document.getElementById("inputAddr").value;
+	
+	fetch('deleteAddress.do?addrNo=' + addrNo)
+	.then(data => data.json())
+	.then(result => {
+		if (result.retCode == 'Success') {
+			alert("성공적으로 삭제하였습니다.");
+			location.reload;
+			return;
+		} else if (result.retCode == 'Failure') {
+			alert("삭제하지 못하였습니다. 다시 시도해 주세요.");
+			return;
+		}
+	})
 }

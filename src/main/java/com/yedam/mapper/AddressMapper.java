@@ -9,6 +9,8 @@ public interface AddressMapper {
 	
 	// 주소 조회
 	public List<AddressVO> selectAddress(String id);
+	// 기본배송지가 true인지 false인지 조회
+	public int firstAddrSelect(String id);
 	// 주소 삭제
 	public int deleteAddress(AddressVO add);
 }
