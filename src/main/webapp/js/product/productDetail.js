@@ -1,23 +1,18 @@
 /**
  * 
  */
-let prdSort = "";
+let prdSort = document.querySelector("#prdSort").value;
+let prdNo = document.querySelector("#prdNo").value;
 
-document.addEventListener("DOMContentLoaded", function () {
-    const productMeta = document.getElementById("detailImage");
-    prdSort = productMeta.dataset.sort;
-	prdNo = productMeta.dataset.no;
+if (prdSort == "밀키트") {
+	detailMealkit();
+} else if (prdSort == "채소류") {
+	detailVege();
+} else {
+	detailIMeat();
+}
 	
-	if (prdSort == "밀키트") {
-		detailMealkit();
-	} else if (prdSort == "채소류") {
-		detailVege();
-	} else {
-		detailIMeat();
-	}
-	
-	review(prdNo);
-});
+review(prdNo);
 
 // 돼지, 소, 닭
 function detailIMeat() {
@@ -73,24 +68,64 @@ function detailVege() {
 }
 
 function review(prdNo) {
-	console.log(prdNo);
 	fetch("detailReview.do?prdNo=" + prdNo)
 	.then(data => data.json())
 	.then(result => {
-		result.forEach(review => {
+		let reviewNum = result.length;
+		if (result.length == 0) {
+			
 			let str = `
 					<div class="d-flex">
-						<div class="">
-							<p class="mb-2" style="font-size: 14px;">${review.rvwDate}</p>
-							<div class="d-flex justify-content-between">
-								<h5>${review.userId}</h5>
-							</div>
-							<p>${review.rvwContent}</p>
-						</div>
+						<h5>리뷰가 없습니다.</h5>
 					</div>
 						`;
-			
-		document.querySelector('#reviewBox').insertAdjacentHTML('beforeend', str);
-		})
+						
+			document.querySelector('#reviewBox').insertAdjacentHTML('beforeend', str);
+			document.querySelector('#reviewNum').textContent = " (" + reviewNum + ")";
+		} else {
+			result.forEach(review => {
+				let str = `
+						<div class="d-flex">
+							<div class="">
+								<p class="mb-2" style="font-size: 14px;">${review.rvwDate}</p>
+								<div class="d-flex justify-content-between">
+									<h5 style="font-family: none;">${review.userId}</h5>
+								</div>
+								<p>${review.rvwContent}</p>
+							</div>
+						</div>
+							`;
+				
+			document.querySelector('#reviewBox').insertAdjacentHTML('beforeend', str);
+			})
+			document.querySelector('#reviewNum').textContent = " (" + reviewNum + ")";			
+		}
 	})
+}
+
+async function addCart() {
+	let prdQty = document.querySelector("#prdQty").value;
+	let chkCart = true;
+	
+	let data = await fetch("cart.do");
+	let result = await data.json();
+	result.forEach(cart =>{
+		if(cart.prdNo == prdNo){
+			alert("장바구니에 이미 있습니다")
+			chkCart = false;
+			return;
+		} else{
+			chkCart = true;
+		}
+	})
+	
+	if(!chkCart){
+		return;
+	} else{		
+		await fetch("cartAdd.do?prdNo=" + prdNo + "&cartQty=" + prdQty);
+	}
+}
+
+function productOrder() {
+	addCart();
 }
