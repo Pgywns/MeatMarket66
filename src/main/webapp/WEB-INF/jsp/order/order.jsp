@@ -19,8 +19,8 @@
 			<div class="row g-5">
 				<div class="col-md-12 col-lg-6 col-xl-7">
 					<div class="form-item">
-						<label class="form-label my-3" id="name">받으시는 분<sup>*</sup></label> <input
-							type="text" class="form-control">
+						<label class="form-label my-3">받으시는 분<sup>*</sup></label> <input
+							type="text" class="form-control" id="name">
 					</div>
 					<!-- 주소영역 -->
 					<div class="row my-3">
@@ -47,8 +47,8 @@
 						</div>
 					</div>
 					<div class="form-item">
-						<label class="form-label my-3" id="phone">연락처<sup>*</sup></label> <input
-							type="tel" class="form-control">
+						<label class="form-label my-3">연락처<sup>*</sup></label> <input
+							type="tel" class="form-control" id="phone">
 					</div>
 				</div>
 				<div class="col-md-12 col-lg-6 col-xl-5">

@@ -19,6 +19,7 @@
 		<typeAlias alias="CartList" type="com.yedam.vo.CartListVO" />
 		<typeAlias alias="Review" type="com.yedam.vo.ReviewVO"/>
 		<typeAlias alias="Point" type="com.yedam.vo.PointVO"/>
+		<typeAlias alias="Order" type="com.yedam.vo.OrderVO"/>
 	</typeAliases>
 
 	<environments default="development">
