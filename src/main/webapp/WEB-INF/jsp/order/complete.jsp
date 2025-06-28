@@ -23,10 +23,10 @@
 			<div class="col-md-8 col-lg-7">
 				<div class="border rounded-3 p-4 bg-light">
 					<h5 class="fw-bold mb-3">주문 정보</h5>
-					<p><strong>주문일자:</strong> <span class="text-secondary">2025-06-27</span></p>
-					<p><strong>받는 분:</strong> <span class="text-secondary">홍길동</span></p>
-					<p><strong>배송지:</strong> <span class="text-secondary">서울특별시 중구 세종대로 110</span></p>
-					<p><strong>연락처:</strong> <span class="text-secondary">010-1234-5678</span></p>
+					<p><strong>주문일자:</strong> <span class="text-secondary" id="orderDate">2025-06-27</span></p>
+					<p><strong>받는 분:</strong> <span class="text-secondary" id="name">홍길동</span></p>
+					<p><strong>배송지:</strong> <span class="text-secondary" id="addr">서울특별시 중구 세종대로 110</span></p> 
+					<p><strong>연락처:</strong> <span class="text-secondary" id="phone">010-1234-5678</span></p>
 				</div>
 			</div>
 		</div>
@@ -45,25 +45,23 @@
 								<th scope="col">금액</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr>
+						<tbody id="orderList">
+						<!-- 반복영역 -->
+						<!-- 	<tr>
 								<td><img src="./img/찌개용.png" alt="상품이미지" style="width: 50px;"></td>
 								<td>초신선 돼지 찌개용</td>
 								<td>7,500</td>
 								<td>2</td>
 								<td>15,000</td>
+							</tr> -->
+							<!-- 반복영역 -->
+							<tr id="lowListlo">
+								<th scope="row" colspan="4" class="text-end text-uppercase">결제금액</th>
+								<td ><strong id="amount">15,000원</strong></td>
 							</tr>
 							<tr>
-								<th scope="row" colspan="4" class="text-end">Subtotal</th>
-								<td>15,000</td>
-							</tr>
-							<tr>
-								<th scope="row" colspan="4" class="text-end">사용적립금</th>
-								<td>0 P</td>
-							</tr>
-							<tr>
-								<th scope="row" colspan="4" class="text-end text-uppercase">Total</th>
-								<td><strong>15,000원</strong></td>
+								<th scope="row" colspan="4" class="text-end">잔여 적립금</th>
+								<td id="myPoint">0 P</td>
 							</tr>
 						</tbody>
 					</table>
@@ -76,3 +74,4 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript" src="./js/order/complete.js"></script>

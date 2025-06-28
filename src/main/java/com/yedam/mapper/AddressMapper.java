@@ -13,4 +13,6 @@ public interface AddressMapper {
 	public int firstAddrUpdate(String id);
 	// 주소 삭제
 	public int deleteAddress(AddressVO add);
+	// 주소조최 by 시퀀스
+	public AddressVO selectAddrBySeq(int addrNo);
 }

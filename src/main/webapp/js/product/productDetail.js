@@ -116,6 +116,7 @@ async function addCart() {
 			return;
 		} else{
 			chkCart = true;
+			countCartlist();
 		}
 	})
 	

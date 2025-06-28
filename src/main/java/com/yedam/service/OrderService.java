@@ -17,5 +17,8 @@ public interface OrderService {
 	public List<CartVO> OrderList(String userId);
 	//상세주문등록
 	public boolean sumitOrderInfo(int odNo, int prdNo, int orderQty);
+	//상품출고
 	public boolean outStock(int prdNo, int orderQty);
+	//적립금 적립
+	public boolean addPoint(String userId, int addPoint);
 }
