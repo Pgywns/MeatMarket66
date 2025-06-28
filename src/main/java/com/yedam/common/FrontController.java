@@ -113,8 +113,6 @@ public class FrontController extends HttpServlet {
 		map.put("/cartIcon.do", new CountCart());
 		map.put("/cartAdd.do", new CartAddControl());
 
-		
-		
 		//주문페이지
 		map.put("/order.do", new OrderControl());
 		map.put("/myPoint.do", new OrderMyPoint());
