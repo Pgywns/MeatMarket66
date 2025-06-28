@@ -18,4 +18,9 @@ public interface OrderService {
 	//상세주문등록
 	public boolean sumitOrderInfo(int odNo, int prdNo, int orderQty);
 	public boolean outStock(int prdNo, int orderQty);
+	
+	// 내 아이디 주문 카운트
+	public int selectOrderCount(String id);
+	// 내 아이디 주문 조회
+	public List<OrderVO> selectUserOrder(String id);
 }

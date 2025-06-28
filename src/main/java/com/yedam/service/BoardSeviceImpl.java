@@ -31,6 +31,14 @@ public class BoardSeviceImpl implements BoardSevice{
 		return false;
 	}
 
-
+	@Override
+	public int BoardToTalCount(String id) {
+		return mapper.BoardToTalCount(id);
+	}
+	
+	@Override
+	public List<BoardVO> selectBoards(String id) {
+		return mapper.selectBoards(id);
+	}
 
 }

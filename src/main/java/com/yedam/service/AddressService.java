@@ -12,4 +12,7 @@ public interface AddressService {
 	public List<AddressVO> selectAddress(String id);
 	// 주소 삭제
 	public boolean deleteAddress(AddressVO add);
+	// 기본 배송지 변경
+	public boolean firstAddrChangeTrue(AddressVO add);
+	public boolean firstAddrChangeFalse(String id);
 }

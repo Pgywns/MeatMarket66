@@ -13,4 +13,7 @@ public interface AddressMapper {
 	public int firstAddrUpdate(String id);
 	// 주소 삭제
 	public int deleteAddress(AddressVO add);
+	// 기본 배송지 변경
+	public int firstAddrChangeTrue(AddressVO add);
+	public int firstAddrChangeFalse(String id);
 }
