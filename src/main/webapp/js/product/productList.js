@@ -187,6 +187,7 @@ async function  productCart(productNo){
 				return;
 			} else{
 				boolean1 = true;
+				countCartlist();
 			}
 		})
 		if(!boolean1){
