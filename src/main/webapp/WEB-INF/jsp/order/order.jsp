@@ -26,7 +26,7 @@
 					<div class="row my-3">
 						<div>
 							<input type="radio" id="defaultAdd" name="address">
-							<label for="defaultAdd" onclick="modalPop();">등록된 배송지 선택</label>
+							<label for="defaultAdd" onclick="openAddressModal();">등록된 배송지 선택</label>
 						</div>
 						<div class="col-md-12 col-lg-6">
 							<div class="form-item w-100">
@@ -139,6 +139,19 @@
 </div>
 
 
+<!-- 배송지 선택 모달 -->
+<div id="addressPopUp" class="modal">
+  <div id="addressModalBody" class="modal-body">
+    <span id="addressCloseBtn" class="close">&times;</span>
+
+    <div class="mb-4">
+      <p class="fw-bold fs-5 mb-2">등록된 배송지 목록</p>
+      <div id="addressList">
+        <!-- 주소 목록을 자바스크립트로 삽입 -->
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- 모달팝업 -->
 <div id="popUp">

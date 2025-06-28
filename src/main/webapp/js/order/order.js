@@ -141,3 +141,42 @@ popClose.addEventListener("click", () => {
 	modal.style.display = "none";
 });
 
+
+
+// 배송지 모달 열기
+function openAddressModal() {
+	document.querySelector('#addressPopUp').style.display = 'block';
+
+	// 주소 목록 불러오기
+	fetch('addressPop.do') 
+	.then(res => res.json())
+	.then(addresses => {
+		let list = '';
+		addresses.forEach(addr => {
+			list += `
+			<div class="border p-2 my-2">
+				<label>
+					<input type="radio" name="selectAddress" value="${addr.addrNo}"
+					onchange="selectAddress(${addr.addrNo}, '${addr.zipCode}', '${addr.addrOne}', '${addr.addrTwo}')">
+					(${addr.zipCode}) ${addr.addrOne} ${addr.addrTwo}
+				</label>
+			</div>`;
+		});
+		document.querySelector('#addressList').innerHTML = list;
+	});
+}
+
+// 배송지 모달 닫기
+document.querySelector('#addressCloseBtn').addEventListener("click", () => {
+	document.querySelector('#addressPopUp').style.display = "none";
+});
+
+// 주소 선택 시 값 반영
+function selectAddress(addrNoParam, zip, addr1, addr2) {
+	document.querySelector('#sample6_postcode').value = zip;
+	document.querySelector('#sample6_address').value = addr1;
+	document.querySelector('#addrTwo').value = addr2;
+	addrNo = addrNoParam;
+	document.querySelector('#addressPopUp').style.display = "none";
+}
+
