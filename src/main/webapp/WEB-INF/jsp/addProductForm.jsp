@@ -20,41 +20,33 @@ input::-webkit-inner-spin-button {
 
 <div class="container-fluid py-5 mt-5">
 	<div class="container py-5">
-		<form action="addProductForm.do" method="post">
-			<input type="hidden" class="form-control" name="writer" value="">
+		<form method="post" enctype="multipart/form-data" onsubmit="javascript:addProduct(event);">
 			<table class="table">
 				<tr>
 					<th>품명</th>
-					<td><input type="text" class="form-control" required
-						name="p_name"></td>
+					<td><input type="text" class="form-control" name="pName" id="pName"></td>
 				</tr>
 				<tr>
 					<th>설명</th>
-					<td><textarea class="form-control" required name="p_content"></textarea></td>
+					<td><textarea class="form-control" name="pContent" id="pContent"></textarea></td>
 				</tr>
 				<tr>
 					<th>가격</th>
-					<td><input type="number" class="form-control" required
-						name="price"></td>
-				</tr>
-				<tr>
-					<th>개수</th>
-					<td><input type="number" class="form-control" required
-						name="qty"></td>
+					<td><input type="number" class="form-control" name="pPrice" id="pPrice"></td>
 				</tr>
 				<tr>
 					<th>카테고리</th>
-					<td><select name="category" id="category">
-							<option value="pork">돼지고기</option>
-							<option value="beef">소고기</option>
-							<option value="chicken">닭고기</option>
-							<option value="mealkit">밀키트</option>
-							<option value="vegetable">채소</option>
+					<td><select name="pCategory" id="pCategory">
+							<option value="돼지">돼지고기</option>
+							<option value="소">소고기</option>
+							<option value="닭">닭고기</option>
+							<option value="밀키트">밀키트</option>
+							<option value="채소류">채소</option>
 					</select></td>
 				</tr>
 				<tr>
 					<th>상품 사진</th>
-					<td><input type="file" name="file" accept=".png, .jpg"></td>
+					<td><input type="file" name="pFile" accept=".png, .jpg" id="pFile"></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><input type="submit" value="등록">
@@ -64,4 +56,4 @@ input::-webkit-inner-spin-button {
 		</form>
 	</div>
 </div>
-<script src="js/addProduct.js"></script>
+<script src="js/admin/addProduct.js"></script>

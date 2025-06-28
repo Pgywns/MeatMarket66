@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.yedam.common.Control;
 import com.yedam.service.ReviewService;
@@ -30,7 +31,17 @@ public class ProductDetailControl implements Control {
 		req.setAttribute("prdContent", prdContent);
 		req.setAttribute("prdNo", prdNo);
 		
-		req.getRequestDispatcher("product/productDetail.tiles").forward(req, resp);
+		String auth = null;
+		HttpSession session = req.getSession();
+		if (session.getAttribute("auth") != null) {
+			auth = (String) session.getAttribute("auth");			
+		}
+		
+		if (auth == null || auth.equals("user")) {
+			req.getRequestDispatcher("product/productDetail.tiles").forward(req, resp);
+		} else if (auth != null || auth.equals("admin")) {
+			req.getRequestDispatcher("admin/product/productDetail.tiles").forward(req, resp);
+		}
 	}
 
 }
