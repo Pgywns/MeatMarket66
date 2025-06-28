@@ -15,11 +15,11 @@ function submitOrderForm(){
 	let phone = document.querySelector('#phone').value;
 	let totalEl = document.querySelector('#amount');
 	let total = totalEl.textContent
-	let amount = parseInt(total.replace(/[^\d]/g, ''), 10);
+	let amount = total.replace(/[^\d]/g, '');
 	fetch('SubmitOderForm.do?name='+ name +'&addr='+ addrNo +'&amount='+amount+'&phone=' + phone)
-	.catch(err => console.log(err));	
+	.catch(err => console.log(err));
 	
-	location.href = 'complete.do';  
+	location.href = 'complete.do'; 
 }
 
 //기본주소불러오기

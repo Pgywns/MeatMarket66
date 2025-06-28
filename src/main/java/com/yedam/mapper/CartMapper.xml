@@ -4,7 +4,6 @@
 <mapper namespace="com.yedam.mapper.CartMapper">
 
 	<!-- 장바구니목록출력 -->
-	<!-- 세션은로 받아오는 user id -->
 	<select id="selectCartList" parameterType="String" resultType="CartList">
 		select c.cart_qty, c.prd_no,
                p.prd_name, p.prd_image, p.prd_price, p.prd_sort

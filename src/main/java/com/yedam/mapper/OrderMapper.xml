@@ -2,16 +2,50 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="com.yedam.mapper.OrderMapper">
+
 	<!-- 회원정보내 기본주소 -->
 	<select id="selectFirstAddress" parameterType="String" resultType="Address">
 		select addr_no,
-		zip_code,
-		addr_one,
-		addr_two
+			   zip_code,
+			   addr_one,
+			   addr_two
 		from tbl_addr
 		where user_id = #{userId}
 		and first_addr='true'
 	</select>
+	
+	<!-- 주문테이블등록 -->
+	<insert id="insesrtOrderForm" parameterType="Order">
+		insert into tbl_order (user_id, addr_no, amount, od_name, phone)
+	    values (#{userId}, #{addrNo}, #{amount}, #{odName}, #{phone})
+	</insert>
+	<!-- 주문테이블 번호 -->
+	
+	<select id="selectOrderNo" resultType="int">
+		select max(od_no)
+		from tbl_order
+		where user_id = #{userId}
+	</select>
+	
+	<!-- 주문목록출력 -->
+	<select id="selectOrderList" resultType="Cart">
+		select prd_no,
+               cart_qty
+        from tbl_cart
+        where user_id = #{userId}
+	</select>
+	
+	<!-- 주문상세등록 -->
+	<insert id="insertOrderInfo" parameterType="map">
+		insert into tbl_order_info (od_no, prd_no, od_qty)
+        values (#{odNo}, #{prdNo}, #{orderQty})
+	</insert>
+	
+	<!-- 출고재고등록 -->
+	<insert id="insertOutStock" parameterType="map">
+		insert into tbl_stock (prd_no, prd_stock)
+	    values (#{prdNo}, #{orderQty})
+	</insert>
+	
 </mapper>
