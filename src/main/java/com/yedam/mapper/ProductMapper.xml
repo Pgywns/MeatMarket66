@@ -67,5 +67,37 @@
 		ORDER BY PRD_NO
 	</select>
 
-
+	<!-- 상품 추가 -->
+	<insert id="insertProduct" parameterType="Product">
+		insert into tbl_product (prd_name, prd_image, prd_content, prd_price, prd_sort)
+		values (#{prdName}, #{prdImage}, #{prdContent}, #{prdPrice}, #{prdSort})
+	</insert>
+	
+	<!-- 재고 최초 등록 -->
+	<insert id="firstStock" parameterType="int">
+		insert into tbl_stock (prd_no, prd_stock)
+		values (prd_no_seq.CURRVAL, #{prdStock})
+	</insert>
+	
+	<!-- 재고포함 상품 -->
+	<select id="stockList" resultType="Product">
+		SELECT   p.prd_no,
+		         p.prd_name,
+		         p.prd_sort,
+		         p.prd_image,
+		         p.prd_price,
+		         p.prd_content,
+		         p.prd_date,
+		         SUM(s.prd_stock) AS prd_stock
+		FROM     tbl_product p
+		JOIN     tbl_stock s ON p.prd_no = s.prd_no
+		GROUP BY p.prd_no, p.prd_name, p.prd_sort, p.prd_image, p.prd_price, p.prd_content, p.prd_date
+		ORDER BY p.prd_no
+	</select>
+	
+	<!-- 재고 변경 -->
+	<insert id="insertStock" parameterType="Stock">
+		insert into tbl_stock (prd_no, prd_stock)
+		values (#{prdNo}, #{prdStock})
+	</insert>
 </mapper>

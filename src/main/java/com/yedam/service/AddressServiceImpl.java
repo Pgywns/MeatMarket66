@@ -57,4 +57,14 @@ public class AddressServiceImpl implements AddressService {
 		}
 		return false;
 	}
+
+	@Override
+	public AddressVO selectAddrBySeq(int addrNo) {
+		return mapper.selectAddrBySeq(addrNo);
+	}
+
+
+
+	
+	
 }

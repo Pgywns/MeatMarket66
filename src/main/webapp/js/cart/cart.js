@@ -27,8 +27,11 @@ function eachDel(event){
 	let eachRow = delbtn.closest('.cartProduct');
 	let prdNo = eachRow.querySelector('#selectdeProduct').value;
 	fetch('cartPrdDel.do?prdNo='+prdNo)
+	.then(() => {
+			eachRow.remove();     // DOM에서 항목 제거
+			countCartlist();      // 헤더 수량 업데이트
+		})
 	.catch(err => console.log(err));
-	eachRow.remove();
 }
 //체크박스선택삭제
 function checkedDel(){
@@ -38,9 +41,11 @@ function checkedDel(){
 	        let prdNo = checked.value;
 	        // 개별 삭제 호출
 	        fetch('cartPrdDel.do?prdNo='+prdNo)
+			.then(() => {
+					countCartlist();      // 헤더 수량 업데이트
+			        checked.closest('.cartProduct').remove();
+				})
 	            .catch(err => console.error(err));
-	        // DOM 삭제
-	        checked.closest('.cartProduct').remove();
 	    });
 	    updateTotal();
 }
@@ -49,6 +54,9 @@ function checkedDel(){
 function delitem(){
 	let cartBody = document.querySelector('#basketBody');
 	fetch('cartEmpty.do')
+	.then(() => {
+			countCartlist();      // 헤더 수량 업데이트
+		})
 	.catch(err => console.log(err));
 	cartBody.remove();
 }

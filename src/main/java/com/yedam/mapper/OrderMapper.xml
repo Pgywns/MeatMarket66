@@ -70,4 +70,11 @@
 		on    o.addr_no = a.addr_no
 		where  o.user_id = #{userId}
 	</select>
+
+	<!-- 포인트적립 -->
+	<insert id="insertAddPoint" parameterType="map">
+		insert into tbl_point (user_id, point)
+	    values (#{userId}, #{addPoint})
+	</insert>
+
 </mapper>

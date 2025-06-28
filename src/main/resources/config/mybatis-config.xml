@@ -20,6 +20,9 @@
 		<typeAlias alias="Review" type="com.yedam.vo.ReviewVO"/>
 		<typeAlias alias="Point" type="com.yedam.vo.PointVO"/>
 		<typeAlias alias="Order" type="com.yedam.vo.OrderVO"/>
+		<typeAlias alias="Stock" type="com.yedam.vo.StockVO"/>
+		<typeAlias alias="CompleteList" type="com.yedam.vo.CompleteListVO"/>
+
 	</typeAliases>
 
 	<environments default="development">
@@ -47,6 +50,7 @@
 		<mapper resource="com/yedam/mapper/PointMapper.xml"></mapper>
 		<mapper resource="com/yedam/mapper/ReviewMapper.xml"></mapper>
 		<mapper resource="com/yedam/mapper/OrderMapper.xml"></mapper>
+		<mapper resource="com/yedam/mapper/CompleteMapper.xml"></mapper>
 	</mappers>
 
 </configuration>
