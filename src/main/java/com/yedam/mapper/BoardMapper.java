@@ -12,4 +12,8 @@ public interface BoardMapper {
 	//1:1문의 글 추가
 	public int addBoard(String userId);
 	
+	// 내문의 카운트
+	public int BoardToTalCount(String id);
+	// 내문의 전체조회
+	public List<BoardVO> selectBoards(String id);
 }

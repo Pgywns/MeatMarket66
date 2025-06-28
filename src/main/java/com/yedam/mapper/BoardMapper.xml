@@ -30,4 +30,24 @@ select board_no,
 from tbl_board
 where board_category = #{boardCategory}
 </select>
+
+<!-- 문의 카운트 -->
+<select id="BoardToTalCount" parameterType="String" resultType="int">
+	select COUNT(*)
+	from   tbl_board
+	where  user_id = #{userId}
+</select>
+
+<!-- 로그인한 아이디의 질문 조회 -->
+<select id="selectBoards" parameterType="String" resultType="Board">
+	select board_no,
+       user_id,
+       board_title,
+       board_content,
+       board_date,
+       board_category,
+       answer
+from tbl_board
+where user_id = #{userId}
+</select>
 </mapper>

@@ -24,4 +24,8 @@ public interface OrderMapper {
 	//포인트적립
 	public int insertAddPoint(@Param("userId")String userId, @Param("addPoint")int addPoint);
 	
+	// 내 아이디 주문 카운트
+	public int selectOrderCount(String id);
+	// 내 아이디 주문 조회
+	public List<OrderVO> selectUserOrder(String id);
 }

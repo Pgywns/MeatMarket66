@@ -37,7 +37,6 @@ td {
 .btn {
   text-align: center;
   padding: 2px 10px;
-  margin-right: 10px; 
   color: #fff;
   border: 2px solid #7ac142;
   background: #7ac142;
@@ -51,8 +50,8 @@ td {
 
 .btn-delete {
   text-align: center;
-  padding: 2px 10px;
-  margin-right: 10px; 
+   padding: 2px 10px;
+  margin-right: 10px;
   color: #fff;
   border: 2px solid #e82a2a;
   background: #e82a2a;
@@ -111,6 +110,16 @@ td {
   text-overflow: ellipsis;      /* ...으로 생략 */
   white-space: nowrap;          /* 줄바꿈 금지 */
   text-align: center;             /* 가독성 위해 왼쪽 정렬 */
+}
+
+#boardTotalTable th:nth-chlid(4),
+#boardTotalTable td:nth-chlid(4) {
+  width: 100px;                 /* 너비 넓게 고정 */
+  max-width: 100px;             /* 최대 너비 제한 */
+  overflow: hidden;             /* 넘치는 내용 숨기기 */
+  text-overflow: ellipsis;      /* ...으로 생략 */
+  white-space: nowrap;          /* 줄바꿈 금지 */
+  text-align: center;  
 }
 
 table caption {
@@ -247,4 +256,42 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 14px;
   margin-bottom: 10px;
   transition: color 0.3s ease;
+}
+
+#addressInputs .zip {
+	width: 400px;
+	padding: 6px 12px 6px 0px;
+	border: 2px solid #eeeeee;
+	border-radius: 10px;
+	padding-left: 0;
+	box-shadow: none;
+	transition: all 0.1s ease-out;
+	background-color: #e9ecef;
+}
+
+#addressInputs .zip:hover {
+	outline: none;
+}
+
+#addressInputs .zip:focus {
+	outline: none;
+}
+
+#addressInputs div .checkbox {
+	width: 30px;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+.button-self {
+	margin-left: 10px;
+	border: 2px solid #7ac142;
+	background: #7ac142;
+	border-radius: 25px;
+	padding: 3px 12px 5px 12px;
+	color: #fff;
+	font-size: 16px;
+	font-weight: bold;
+	letter-spacing: 0px;
+	transition: all 0.1s ease-out;
 }

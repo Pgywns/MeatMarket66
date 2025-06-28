@@ -26,6 +26,8 @@ import com.yedam.control.CartEmpty;
 import com.yedam.control.CartPageControl;
 import com.yedam.control.CartPrdDel;
 import com.yedam.control.CartUpdateQty;
+import com.yedam.control.ChangeFalseControl;
+import com.yedam.control.ChangeFirstAddrControl;
 import com.yedam.control.CompleteInfo;
 import com.yedam.control.CompleteList;
 import com.yedam.control.CompleteOrder;
@@ -57,6 +59,8 @@ import com.yedam.control.RegisterControl;
 import com.yedam.control.ReviewListControl;
 
 import com.yedam.control.SelectAddressControl;
+import com.yedam.control.SelectBoardControl;
+import com.yedam.control.SelectOrderControl;
 import com.yedam.control.SelectPointControl;
 
 import com.yedam.control.SelectReviewControl;
@@ -102,13 +106,17 @@ public class FrontController extends HttpServlet {
 
 		// 마이페이지
 		map.put("/myPage.do", new MyPageControl());
+		map.put("/selectOrder.do", new SelectOrderControl());
 		map.put("/selectReveiw.do", new SelectReviewControl());
 		map.put("/selectPoint.do", new SelectPointControl());
+		map.put("/selectBoard.do", new SelectBoardControl());
 		map.put("/selectUser.do", new SelectUserControl());
 		map.put("/selectAddress.do", new SelectAddressControl());
 		map.put("/updateUser.do", new UpdateUserControl());
 		map.put("/insertAddress.do", new InsertAddressControl());
 		map.put("/deleteAddress.do", new DeleteAddressControl());
+		map.put("/changeFirstAddr.do", new ChangeFirstAddrControl());
+		map.put("/changeFalse.do", new ChangeFalseControl());
 		
 		//장바구니
 		map.put("/cartPage.do", new CartPageControl());
