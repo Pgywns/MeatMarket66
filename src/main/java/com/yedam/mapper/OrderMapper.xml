@@ -47,5 +47,10 @@
 		insert into tbl_stock (prd_no, prd_stock)
 	    values (#{prdNo}, #{orderQty})
 	</insert>
+	<!-- 포인트적립 -->
+	<insert id="insertAddPoint" parameterType="map">
+		insert into tbl_point (user_id, point)
+	    values (#{userId}, #{addPoint})
+	</insert>
 	
 </mapper>
