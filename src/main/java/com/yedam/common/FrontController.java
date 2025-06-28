@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yedam.control.AddProductControl;
 import com.yedam.control.AddProductFormControl;
+import com.yedam.control.AdminProductListControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardListControl;
 
@@ -32,6 +34,7 @@ import com.yedam.control.FindAccountControl;
 import com.yedam.control.FindIdControl;
 import com.yedam.control.FindPasswordControl;
 import com.yedam.control.InsertAddressControl;
+import com.yedam.control.InsertStockControl;
 import com.yedam.control.LoginControl;
 import com.yedam.control.LogoutControl;
 import com.yedam.control.MainControl;
@@ -125,8 +128,11 @@ public class FrontController extends HttpServlet {
 
 		// 관리자
 		map.put("/addProductForm.do", new AddProductFormControl());
+		map.put("/addProduct.do", new AddProductControl());
 		map.put("/stockList.do", new StockListControl());
-
+		map.put("/adminProductList.do", new AdminProductListControl());
+		map.put("/insertStock.do", new InsertStockControl());
+		
 		// 고객센터
 		map.put("/board.do", new BoardControl());
 		map.put("/boardList.do", new BoardListControl());

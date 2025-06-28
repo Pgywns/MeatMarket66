@@ -20,6 +20,7 @@
 		<typeAlias alias="Review" type="com.yedam.vo.ReviewVO"/>
 		<typeAlias alias="Point" type="com.yedam.vo.PointVO"/>
 		<typeAlias alias="Order" type="com.yedam.vo.OrderVO"/>
+		<typeAlias alias="Stock" type="com.yedam.vo.StockVO"/>
 	</typeAliases>
 
 	<environments default="development">
