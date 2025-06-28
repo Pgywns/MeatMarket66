@@ -34,9 +34,9 @@ public class LoginControl implements Control {
 				session.setAttribute("auth", member.getUserRes());
 				
 				if (member.getUserRes().equals("user")) {
-					resp.sendRedirect("main.do");
+					req.getRequestDispatcher("user/main.tiles").forward(req, resp);
 				} else if (member.getUserRes().equals("admin")) {
-					resp.sendRedirect("main.do");
+					req.getRequestDispatcher("admin/main.tiles").forward(req, resp);
 				}
 			} else {
 				req.setAttribute("msg", "아이디와 비밀번호를 확인하세요.");

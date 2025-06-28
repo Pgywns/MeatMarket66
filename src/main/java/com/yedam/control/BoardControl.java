@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -21,7 +22,17 @@ public class BoardControl implements Control {
 		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("text/json;charset=utf-8");
 		
-		req.getRequestDispatcher("board/board.tiles").forward(req, resp);
+		String auth = null;
+		HttpSession session = req.getSession();
+		if (session.getAttribute("auth") != null) {
+			auth = (String) session.getAttribute("auth");			
+		}
+		
+		if (auth == null || auth.equals("user")) {
+			req.getRequestDispatcher("board/board.tiles").forward(req, resp);
+		} else if (auth != null || auth.equals("admin")) {
+			req.getRequestDispatcher("admin/board/board.tiles").forward(req, resp);
+		}
 	}
 
 }
