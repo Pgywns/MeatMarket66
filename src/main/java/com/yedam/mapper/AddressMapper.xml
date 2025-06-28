@@ -22,6 +22,15 @@
 	where  user_id = #{userId}
 </select>
 
+<!-- 주소조회 by sequence -->
+<select id="selectAddrBySeq" parameterType="int" resultType="Address">
+	select zip_code,
+           addr_one,
+           addr_two
+    from tbl_addr
+    where addr_no = #{addrNo}
+</select>
+
 <!-- 로그인한 아이디의 기본 배송지를 변경할 때 -->
 <update id="firstAddrUpdate" parameterType="String">
 	update tbl_addr

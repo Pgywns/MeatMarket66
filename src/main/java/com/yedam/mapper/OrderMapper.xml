@@ -52,5 +52,4 @@
 		insert into tbl_point (user_id, point)
 	    values (#{userId}, #{addPoint})
 	</insert>
-	
 </mapper>

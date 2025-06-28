@@ -23,6 +23,8 @@ import com.yedam.control.CartEmpty;
 import com.yedam.control.CartPageControl;
 import com.yedam.control.CartPrdDel;
 import com.yedam.control.CartUpdateQty;
+import com.yedam.control.CompleteInfo;
+import com.yedam.control.CompleteList;
 import com.yedam.control.CompleteOrder;
 import com.yedam.control.CountCart;
 import com.yedam.control.DeleteAddressControl;
@@ -122,6 +124,8 @@ public class FrontController extends HttpServlet {
 		
 		// 주문완료
 		map.put("/complete.do", new CompleteOrder());
+		map.put("/completeInfo.do", new CompleteInfo());
+		map.put("/completeList.do", new CompleteList());
 
 		// 관리자
 		map.put("/addProductForm.do", new AddProductFormControl());

@@ -26,7 +26,7 @@
 					<div class="row my-3">
 						<div>
 							<input type="radio" id="defaultAdd" name="address">
-							<label for="defaultAdd">등록된 배송지 선택</label>
+							<label for="defaultAdd" onclick="modalPop();">등록된 배송지 선택</label>
 						</div>
 						<div class="col-md-12 col-lg-6">
 							<div class="form-item w-100">
@@ -137,6 +137,8 @@
 		</form>
 	</div>
 </div>
+
+
 
 <!-- 모달팝업 -->
 <div id="popUp">
