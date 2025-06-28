@@ -34,7 +34,6 @@
                                 </div>
                             </div>
                             <a href="board.do" class="nav-item nav-link">고객센터</a>
-                            <a href="contact.html" class="nav-item nav-link">My page</a>
                             <a href="logout.do" class="nav-item nav-link">Logout</a>
                         </div>
                         <div class="d-flex m-3 me-0">
