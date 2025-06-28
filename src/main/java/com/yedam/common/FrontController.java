@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.control.AddProductControl;
 import com.yedam.control.AddProductFormControl;
+import com.yedam.control.AddressPop;
 import com.yedam.control.AdminProductListControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardListControl;
@@ -124,6 +125,7 @@ public class FrontController extends HttpServlet {
 		map.put("/usingPoint.do", new UsingPoint());
 		map.put("/displayAddress.do", new DispayAddressControl());
 		map.put("/SubmitOderForm.do", new SubmitOrderForm());
+		map.put("/addressPop.do", new AddressPop());
 		
 		// 주문완료
 		map.put("/complete.do", new CompleteOrder());
