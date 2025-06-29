@@ -5,7 +5,6 @@
 //페이지로드시 장바구니 목록출력
 window.addEventListener('DOMContentLoaded', cartList);
 
-let isCartEmpty = 'no'
 
 function cartList() {
 	fetch('cart.do') //frontcontroller
@@ -34,12 +33,18 @@ function isCartEmptyCheck(){
 			alert("상기 주문내역을 확인해주세요.");
 			return; //미체크시 종료
 		}
-	
-	if(isCartEmpty === 'yes'){
-		alert("장바구니에 상품을 담아주세요.")
-	} else{
-	    location.href = 'order.do'; 
-	}
+		fetch('cartIcon.do')//카트수량확인
+			.then(result => result.json())
+			.then(data => {
+				let cartCount = data;
+				if (cartCount == 0) {
+					alert("장바구니에 상품을 담아주세요.")
+					return; //종료
+				} else{
+					location.href = 'order.do'; 
+				}
+			})
+			.catch(err => console.log(err));		
 }
 
 
@@ -51,6 +56,7 @@ function eachDel(event){
 	fetch('cartPrdDel.do?prdNo='+prdNo)
 	.then(() => {
 			eachRow.remove();     // DOM에서 항목 제거
+			updateTotal()
 			countCartlist();      // 헤더 수량 업데이트
 		})
 	.catch(err => console.log(err));
@@ -66,21 +72,20 @@ function checkedDel(){
 			.then(() => {
 					countCartlist();      // 헤더 수량 업데이트
 			        checked.closest('.cartProduct').remove();
+				    updateTotal();
 				})
 	            .catch(err => console.error(err));
 	    });
-	    updateTotal();
 }
 
 //전체삭제
-function delitem(){
+function delitem() {
 	let cartBody = document.querySelector('#basketBody');
 	fetch('cartEmpty.do')
-	.then(() => {
+		.then(() => {
 			countCartlist();      // 헤더 수량 업데이트
-		})
-	.catch(err => console.log(err));
-	cartBody.remove();
+			cartBody.remove();
+		});
 }
 
 //장바구니수량변경
