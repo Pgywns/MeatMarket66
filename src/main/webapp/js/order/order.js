@@ -102,7 +102,7 @@ function myPointCheck(){
 function usePoint(){
 	let usePointEl = document.querySelector('#usePoint');
 	usingPoint = parseInt(usePointEl.value);
-	
+  
 	//사용할 적립금 비교
 	if (usingPoint > myPoint) {
 		alert("보유한 적립금보다 많이 사용할 수 없습니다.");
