@@ -64,7 +64,7 @@
 		and a.rn <= (${page} * 9)
 		]]>
 	</select>
-	<!-- 검색 별 목록 -->
+	<!-- 목록 검색 -->
 	<select id="selectSearch">
 		select a.*
 		from(SELECT r.* ,rownum rn
@@ -77,12 +77,18 @@
 		]]>
 	</select>
 	
+	<!-- 검색 목록 갯수 -->
+	<select id="selectCountSearch">
+		select count(*)
+		from tbl_product
+		where prd_name like '%' || # {keyword} || '%'
+	</select>
+	
 	<!-- 상품 전체 갯수 -->
 	<select id="selectCountPage" resultType="int">
 		select count(prd_no)
 		from tbl_product
 	</select>
-
 
 	<!-- 상품 추가 -->
 	<insert id="insertProduct" parameterType="Product">
@@ -117,7 +123,7 @@
 		insert into tbl_stock (prd_no, prd_stock)
 		values (#{prdNo}, #{prdStock})
 	</insert>
-	
+
 	<!-- 재고조회(by Prd_no -->
 	<select id="selectStockByPrdNo" parameterType="int" resultType="int">		
 		select COALESCE(SUM(prd_stock), 0) stock
@@ -126,3 +132,4 @@
 	</select>
 
 </mapper>
+

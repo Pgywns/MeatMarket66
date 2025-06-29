@@ -23,13 +23,12 @@ public interface ProductService {
 	List<ProductVO> productOption(SearchDTO search);
 	
 	// 검색 기능
-
 	List<ProductVO> productSearch(String keyword, int page);
 	
+	// 검색 페이지네이션
+	int productSearchPage(String keyword);
 	//페이지네이션..
 	int productPage();
-
-	List<ProductVO> productSearch(String keyword);
 	
 	// 상품 추가
 	boolean addProduct(ProductVO product);
