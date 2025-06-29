@@ -8,18 +8,26 @@ window.addEventListener('DOMContentLoaded', function(){
 })
 
 let addrNo = 0; //주문서제출시 넘겨줄 주소번호 
+let usingPoint = 0; //사용할 포인트
 
-//주문버튼
+//주문버튼 (주문등록+사용적립금)
 function submitOrderForm(){
 	let name = document.querySelector('#name').value;
 	let phone = document.querySelector('#phone').value;
 	let totalEl = document.querySelector('#amount');
 	let total = totalEl.textContent
 	let amount = total.replace(/[^\d]/g, '');
+	upDateUsingPoint()
 	fetch('SubmitOderForm.do?name='+ name +'&addr='+ addrNo +'&amount='+amount+'&phone=' + phone)
 	.catch(err => console.log(err));
 	
 	location.href = 'complete.do'; 
+}
+
+//사용한 포인트 DB반영
+function upDateUsingPoint(){
+	fetch('usingPoint.do?usingPoint=' + usingPoint)
+		.catch(err => console.log(err));
 }
 
 //기본주소불러오기
@@ -35,8 +43,6 @@ function displayAdd(){
 	})
 	.catch(err => console.log(err));
 }
-
-//선택주소불러오기
 
 //주문목록출력
 function orderList() {
@@ -54,13 +60,15 @@ function orderList() {
 	})
 		.catch(err => console.log(err));
  }
-	
+ 
+ 
+let myPoint = 0; // 내 적립금 받아오기
 //버튼클릭시 현적립금 받아오기.
-function myPoint(){
+function myPointCheck(){
 	fetch('myPoint.do')
 	.then(resp => resp.text())
 	.then(data => {
-		let myPoint = data;
+		myPoint = data;
 		let myPointEl = document.querySelector('#myPoint');
 		myPointEl.textContent = myPoint;
 	})
@@ -69,13 +77,15 @@ function myPoint(){
 //사용하기 버튼클릭시. 
 //1)subTotal - 사용할 적립금.
 function usePoint(){
-	let usingPoint = 0;
 	let usePointEl = document.querySelector('#usePoint');
-	usingPoint = usePointEl.value;
+	usingPoint = parseInt(usePointEl.value);
 	
-	//이영역을 orderBtn클릭시 반영되도록해야(시간나면수정)
-	fetch('usingPoint.do?usingPoint='+usingPoint)
-	.catch(err => console.log(err));
+	//사용할 적립금 비교
+	if (usingPoint > myPoint) {
+			alert("보유한 적립금보다 많이 사용할 수 없습니다.");
+			usePointEl.value = "";  // 입력 초기화
+			return;
+		}
 	
 	//사용적립금반영
 	let printUsePointEl = document.querySelector('#myPointPreview');
@@ -91,8 +101,6 @@ function usePoint(){
 	
 	totalEl.textContent = total.toLocaleString()+'원';	
 }
-
-
 
  //subtoal계산
  function subtotal(){
@@ -179,4 +187,3 @@ function selectAddress(addrNoParam, zip, addr1, addr2) {
 	addrNo = addrNoParam;
 	document.querySelector('#addressPopUp').style.display = "none";
 }
-

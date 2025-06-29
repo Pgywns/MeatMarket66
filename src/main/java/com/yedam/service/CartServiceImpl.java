@@ -22,6 +22,7 @@ public class CartServiceImpl implements CartService{
 	@Override //장바구니 비우기
 	public boolean emptyAll(String userId) {
 		int r = mapper.deleteList(userId);
+		System.out.println(r);
 		if (r > 1) {  //1건이상 삭제되면 성공! 
 			sqlSession.commit();
 			return true;
