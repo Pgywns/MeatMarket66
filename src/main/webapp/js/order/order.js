@@ -12,13 +12,36 @@ let usingPoint = 0; //사용할 포인트
 
 //주문버튼 (주문등록+사용적립금)
 function submitOrderForm(){
+	
+	let checkbox = document.querySelector('#Transfer-1');
+	if (!checkbox.checked) {
+		alert("상기 주문내역을 확인해주세요.");
+		return;
+	}
+	
 	let name = document.querySelector('#name').value;
 	let phone = document.querySelector('#phone').value;
+	
+	if (name == '') {
+		alert("받으시는 분 성함은 필수 항목입니다!");
+		return;
+	}
+	
+	if (phone == '') {
+		alert("연락처는 필수 항목입니다!");
+		return;
+	}
+	
+	if (phone.length != 13) {
+		alert("전화번호가 올바르지 않습니다. '-'까지 입력해주세요.")
+		return false;
+	}
+	
 	let totalEl = document.querySelector('#amount');
 	let total = totalEl.textContent
 	let amount = total.replace(/[^\d]/g, '');
 	upDateUsingPoint()
-	fetch('SubmitOderForm.do?name='+ name +'&addr='+ addrNo +'&amount='+amount+'&phone=' + phone)
+	fetch('SubmitOrderForm.do?name='+ name +'&addr='+ addrNo +'&amount='+amount+'&phone=' + phone)
 	.catch(err => console.log(err));
 	
 	location.href = 'complete.do'; 

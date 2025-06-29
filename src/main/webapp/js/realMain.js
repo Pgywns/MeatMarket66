@@ -71,6 +71,15 @@ async function  productCart(productNo){
 	let cartQty = 1;
 	let prdNo = productNo;
 
+	//재고확인
+	let checkStock = await fetch('checkStock.do?prdNo=' + prdNo);
+	let stock = await checkStock.text();
+	let nowStock = parseInt(stock);
+	if (cartQty > nowStock ) {
+		alert("재고가 부족합니다. 현재 " + nowStock + "개까지 구매가능 합니다.");
+		return; // 더 진행하지 않음
+    }
+	
 	let data = await fetch("cart.do");
 	let result = await data.json();
 
