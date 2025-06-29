@@ -8,6 +8,7 @@ import com.yedam.common.DataSource;
 import com.yedam.common.SearchDTO;
 import com.yedam.mapper.ProductMapper;
 import com.yedam.vo.ProductVO;
+import com.yedam.vo.StockVO;
 
 public class ProductServiceImpl implements ProductService {
 
@@ -56,6 +57,47 @@ public class ProductServiceImpl implements ProductService {
 	public int productPage() {
 		
 		return mapper.selectCountPage();
+	}
+
+	@Override
+	public boolean addProduct(ProductVO product) {
+		int r = mapper.insertProduct(product);
+		
+		if (r == 1) {
+			sqlSession.commit();
+			return true;
+		}
+		
+		return false;
+	}
+
+	@Override
+	public boolean firstStock(int prdStock) {
+		int r = mapper.firstStock(prdStock);
+		
+		if (r == 1) {
+			sqlSession.commit();
+			return true;
+		}
+		
+		return false;
+	}
+
+	@Override
+	public List<ProductVO> stockList() {
+		return mapper.stockList();
+	}
+
+	@Override
+	public boolean insertStock(StockVO stock) {
+		int r = mapper.insertStock(stock);
+		
+		if (r == 1) {
+			sqlSession.commit();
+			return true;
+		}
+		
+		return false;
 	}
 
 

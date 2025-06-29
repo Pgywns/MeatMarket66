@@ -59,7 +59,7 @@ public class SubmitOrderForm implements Control {
 		}
 		
 		//포인트 적립
-		int addPoint = (int)(amount * 0.03);
+		int addPoint = (int)(amount * 0.01);
 		svc.addPoint(userId, addPoint);
 		
 		//장바구니 비우기

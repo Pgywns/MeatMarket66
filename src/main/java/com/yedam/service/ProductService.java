@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.yedam.common.SearchDTO;
 import com.yedam.vo.ProductVO;
+import com.yedam.vo.StockVO;
 
 public interface ProductService {
 	// 상품전체
@@ -22,8 +23,24 @@ public interface ProductService {
 	List<ProductVO> productOption(SearchDTO search);
 	
 	// 검색 기능
+
 	List<ProductVO> productSearch(String keyword, int page);
 	
 	//페이지네이션..
 	int productPage();
+
+	List<ProductVO> productSearch(String keyword);
+	
+	// 상품 추가
+	boolean addProduct(ProductVO product);
+	
+	// 재고 최초 추가
+	boolean firstStock(int prdStock);
+	
+	// 재고를 포함한 상품조회
+	List<ProductVO> stockList();
+	
+	// 입출고
+	boolean insertStock(StockVO stock);
+
 }

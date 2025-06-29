@@ -47,10 +47,34 @@
 		insert into tbl_stock (prd_no, prd_stock)
 	    values (#{prdNo}, #{orderQty})
 	</insert>
+	
+	<!-- 주문 카운트 -->
+	<select id="selectOrderCount" parameterType="String">
+		select COUNT(*)
+		from   tbl_order
+		where  user_id = #{userId}
+	</select>
+	
+	<!-- 로그인한 아이디로 주문 조회 -->
+	<select id="selectUserOrder" parameterType="String" resultType="Order">
+		select o.od_no,
+		       o.user_id,
+		       o.addr_no,
+		       o.od_date,
+		       o.amount,
+		       o.od_name,
+		       o.phone,
+		       a.addr_one,
+		       a.addr_two
+		from   tbl_order o join tbl_addr a
+		on    o.addr_no = a.addr_no
+		where  o.user_id = #{userId}
+	</select>
+
 	<!-- 포인트적립 -->
 	<insert id="insertAddPoint" parameterType="map">
 		insert into tbl_point (user_id, point)
 	    values (#{userId}, #{addPoint})
 	</insert>
-	
+
 </mapper>

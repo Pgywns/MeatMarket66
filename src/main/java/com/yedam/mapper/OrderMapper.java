@@ -22,5 +22,10 @@ public interface OrderMapper {
 	//출고재고등록
 	public int insertOutStock(@Param("prdNo")int prdNo, @Param("orderQty")int orderQty);
 	//포인트적립
-	public int insertAddPoint(@Param("userId")String userId, @Param("addPoint")int addPoint);	
+	public int insertAddPoint(@Param("userId")String userId, @Param("addPoint")int addPoint);
+	
+	// 내 아이디 주문 카운트
+	public int selectOrderCount(String id);
+	// 내 아이디 주문 조회
+	public List<OrderVO> selectUserOrder(String id);
 }
