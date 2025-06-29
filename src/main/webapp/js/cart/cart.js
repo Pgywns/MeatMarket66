@@ -85,6 +85,7 @@ function delitem() {
 		.then(() => {
 			countCartlist();      // 헤더 수량 업데이트
 			cartBody.remove();
+			updateTotal()
 		});
 }
 
