@@ -19,10 +19,13 @@ public class MainControl implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
+		HttpSession session = req.getSession();
+		
 		// 인기상품
 		MainService svc = new MainServiceImpl();
 		List<ProductVO> list = svc.hotProductList();
 		req.setAttribute("Hlist", list);
+		session.setAttribute("Hlist", list);
 		
 		// 리뷰 목록
 		List<ReviewVO> listR = svc.mainReview();
@@ -35,9 +38,9 @@ public class MainControl implements Control {
 		}
 		
 		req.setAttribute("Rlist", listR);
+		session.setAttribute("Rlist", listR);
 		
 		String auth = null;
-		HttpSession session = req.getSession();
 		if (session.getAttribute("auth") != null) {
 			auth = (String) session.getAttribute("auth");			
 		}

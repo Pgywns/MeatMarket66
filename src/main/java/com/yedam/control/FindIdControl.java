@@ -15,7 +15,6 @@ public class FindIdControl implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		
 		String name = req.getParameter("name");
 		String phone = req.getParameter("phone");
 		

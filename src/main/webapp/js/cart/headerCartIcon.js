@@ -15,3 +15,11 @@ function countCartlist(){
 	.catch(err => console.log(err));
 }
 
+function cartPage(id) {
+	if (id == null || id == '') {
+		alert("로그인 후 가능합니다.");
+	} else {
+		window.location.href = "cartPage.do";
+	}
+	
+}

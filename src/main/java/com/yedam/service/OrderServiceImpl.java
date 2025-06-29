@@ -52,5 +52,23 @@ public class OrderServiceImpl implements OrderService {
 		}
 		return false;
 	}
+	@Override
+	public boolean addPoint(String userId, int addPoint) { //포인트적립
+		int r = mapper.insertAddPoint(userId, addPoint);
+		if(r == 1) {
+			sqlSession.commit();
+			return true;
+		}
+		return false;
+	}
 	
+	@Override
+	public int selectOrderCount(String id) {
+		return mapper.selectOrderCount(id);
+	}
+	
+	@Override
+	public List<OrderVO> selectUserOrder(String id) {
+		return mapper.selectUserOrder(id);
+	}
 }

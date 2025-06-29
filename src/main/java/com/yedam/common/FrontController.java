@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yedam.control.AddProductControl;
 import com.yedam.control.AddProductFormControl;
+import com.yedam.control.AddressPop;
+import com.yedam.control.AdminProductListControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardListControl;
 
@@ -22,6 +25,11 @@ import com.yedam.control.CartEmpty;
 import com.yedam.control.CartPageControl;
 import com.yedam.control.CartPrdDel;
 import com.yedam.control.CartUpdateQty;
+import com.yedam.control.ChangeFalseControl;
+import com.yedam.control.ChangeFirstAddrControl;
+import com.yedam.control.CheckStock;
+import com.yedam.control.CompleteInfo;
+import com.yedam.control.CompleteList;
 import com.yedam.control.CompleteOrder;
 import com.yedam.control.CountCart;
 import com.yedam.control.DeleteAddressControl;
@@ -31,6 +39,7 @@ import com.yedam.control.FindAccountControl;
 import com.yedam.control.FindIdControl;
 import com.yedam.control.FindPasswordControl;
 import com.yedam.control.InsertAddressControl;
+import com.yedam.control.InsertStockControl;
 import com.yedam.control.LoginControl;
 import com.yedam.control.LogoutControl;
 import com.yedam.control.MainControl;
@@ -44,12 +53,15 @@ import com.yedam.control.ProductDetailControl;
 import com.yedam.control.ProductListControl;
 import com.yedam.control.ProductListControlPaging;
 import com.yedam.control.ProductOptionControl;
+import com.yedam.control.ProductPageControl;
 import com.yedam.control.ProductSearchControl;
 import com.yedam.control.RegisterControl;
-
-import com.yedam.control.ReviewListControl;
+import com.yedam.control.ReviewFormControl;
 
 import com.yedam.control.SelectAddressControl;
+import com.yedam.control.SelectBoardControl;
+import com.yedam.control.SelectOrderControl;
+import com.yedam.control.SelectOrderInfoControl;
 import com.yedam.control.SelectPointControl;
 
 import com.yedam.control.SelectReviewControl;
@@ -81,6 +93,8 @@ public class FrontController extends HttpServlet {
 		map.put("/productListOption.do", new ProductOptionControl());
 		map.put("/productSearch.do", new ProductSearchControl());
 		map.put("/detailReview.do", new DetailReviewControl());
+		map.put("/productPage.do", new ProductPageControl());
+		
 
 		// 로그인
 		map.put("/login.do", new LoginControl());
@@ -95,13 +109,18 @@ public class FrontController extends HttpServlet {
 
 		// 마이페이지
 		map.put("/myPage.do", new MyPageControl());
+		map.put("/selectOrder.do", new SelectOrderControl());
+		map.put("/selectOrderInfo.do", new SelectOrderInfoControl());
 		map.put("/selectReveiw.do", new SelectReviewControl());
 		map.put("/selectPoint.do", new SelectPointControl());
+		map.put("/selectBoard.do", new SelectBoardControl());
 		map.put("/selectUser.do", new SelectUserControl());
 		map.put("/selectAddress.do", new SelectAddressControl());
 		map.put("/updateUser.do", new UpdateUserControl());
 		map.put("/insertAddress.do", new InsertAddressControl());
 		map.put("/deleteAddress.do", new DeleteAddressControl());
+		map.put("/changeFirstAddr.do", new ChangeFirstAddrControl());
+		map.put("/changeFalse.do", new ChangeFalseControl());
 		
 		//장바구니
 		map.put("/cartPage.do", new CartPageControl());
@@ -111,28 +130,35 @@ public class FrontController extends HttpServlet {
 		map.put("/cartUpdateQty.do", new CartUpdateQty());
 		map.put("/cartIcon.do", new CountCart());
 		map.put("/cartAdd.do", new CartAddControl());
+		map.put("/checkStock.do", new CheckStock());
 
 		//주문페이지
 		map.put("/order.do", new OrderControl());
 		map.put("/myPoint.do", new OrderMyPoint());
 		map.put("/usingPoint.do", new UsingPoint());
 		map.put("/displayAddress.do", new DispayAddressControl());
-		map.put("/SubmitOderForm.do", new SubmitOrderForm());
+		map.put("/SubmitOrderForm.do", new SubmitOrderForm());
+		map.put("/addressPop.do", new AddressPop());
 		
 		// 주문완료
 		map.put("/complete.do", new CompleteOrder());
+		map.put("/completeInfo.do", new CompleteInfo());
+		map.put("/completeList.do", new CompleteList());
 
 		// 관리자
 		map.put("/addProductForm.do", new AddProductFormControl());
+		map.put("/addProduct.do", new AddProductControl());
 		map.put("/stockList.do", new StockListControl());
-
+		map.put("/adminProductList.do", new AdminProductListControl());
+		map.put("/insertStock.do", new InsertStockControl());
+		
 		// 고객센터
 		map.put("/board.do", new BoardControl());
 		map.put("/boardList.do", new BoardListControl());
 		map.put("/boardinsert.do", new BoardinsertControl());
 		
 		//리뷰
-		map.put("/reviewList.do", new ReviewListControl());
+		map.put("/reviewForm.do", new ReviewFormControl());
 
 	}
 

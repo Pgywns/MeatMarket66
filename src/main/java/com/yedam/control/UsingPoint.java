@@ -22,9 +22,11 @@ public class UsingPoint implements Control {
 		
 		int usingPoint = Integer.parseInt(req.getParameter("usingPoint")); 
 		usingPoint = (-1) * usingPoint;
-				
+		
+		if(usingPoint != 0) {
 		PointService svc = new PointServiceImpl(); 
 		svc.usingPoint(userId, usingPoint);
+		}
 	}
 
 }

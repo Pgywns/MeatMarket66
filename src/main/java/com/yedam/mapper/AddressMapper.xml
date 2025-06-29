@@ -4,22 +4,60 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yedam.mapper.AddressMapper">
 
-<insert id="insertAdd" parameterType="Address">
-	insert into tbl_addr (addr_no, user_id, zip_code, addr_one, addr_two, addr_name, first_addr)
-	values (addr_seq.nextval, #{userId}, #{zipCode}, #{addrOne}, #{addrTwo}, #{addrName}, #{firstAddr})
-</insert>
+	<insert id="insertAdd" parameterType="Address">
+		insert into tbl_addr
+		(addr_no, user_id, zip_code, addr_one, addr_two,
+		addr_name, first_addr)
+		values (addr_seq.nextval, #{userId}, #{zipCode}, #{addrOne},
+		#{addrTwo},
+		#{addrName}, #{firstAddr})
+	</insert>
 
-<!-- 주소 조회 -->
-<select id="selectAddress" parameterType="String" resultType="Address">
-	select addr_no,
-	       user_id,
-	       zip_code,
-	       addr_one,
-	       addr_two,
-	       addr_name,
-	       first_addr
-	from   tbl_addr
-	where  user_id = #{userId}
+	<!-- 주소 조회 -->
+	<select id="selectAddress" parameterType="String"
+		resultType="Address">
+		select addr_no,
+		user_id,
+		zip_code,
+		addr_one,
+		addr_two,
+		addr_name,
+		first_addr
+		from tbl_addr
+		where user_id = #{userId}
+	</select>
+
+	<!-- 주소 삭제 -->
+	<delete id="deleteAddress" parameterType="Address">
+		delete
+		from tbl_addr
+		where user_id = #{userId}
+		and addr_no = #{addrNo}
+	</delete>
+
+	<!-- 기본배송지 변경 -->
+	<update id="firstAddrChangeTrue" parameterType="Address">
+		update tbl_addr
+		set first_addr = 'true'
+		where user_id = #{userId}
+		and addr_no = #{addrNo}
+	</update>
+
+	<!-- 기본배송지 변경 -->
+	<update id="firstAddrChangeFalse" parameterType="String">
+		update tbl_addr
+		set first_addr = 'false'
+		where user_id = #{userId}
+		  and first_addr = 'true'
+	</update>
+
+<!-- 주소조회 by sequence -->
+<select id="selectAddrBySeq" parameterType="int" resultType="Address">
+	select zip_code,
+           addr_one,
+           addr_two
+    from tbl_addr
+    where addr_no = #{addrNo}
 </select>
 
 <!-- 로그인한 아이디의 기본 배송지를 변경할 때 -->
@@ -30,11 +68,4 @@
 	  and  first_ddr = 'true'
 </update>
 
-<!-- 주소 삭제 -->
-<delete id="deleteAddress" parameterType="Address">
-	delete
-	from   tbl_addr
-	where  user_id = #{userId}
-	  and  addr_no = #{addrNo}
-</delete>
 </mapper>

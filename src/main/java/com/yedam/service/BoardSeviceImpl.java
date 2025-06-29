@@ -36,6 +36,14 @@ public class BoardSeviceImpl implements BoardSevice{
 		// TODO Auto-generated method stub
 		return mapper.selectBoardToUserId(userId);
 	}
-	
 
+	@Override
+	public int BoardToTalCount(String id) {
+		return mapper.BoardToTalCount(id);
+	}
+	
+	@Override
+	public List<BoardVO> selectBoards(String id) {
+		return mapper.selectBoards(id);
+	}
 }

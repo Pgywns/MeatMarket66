@@ -15,4 +15,10 @@ public interface BoardMapper {
 	public int addBoard(@Param("userId")String userId,@Param("boardTitle")String boardTitle,@Param("boardContent")String boardContent,@Param("boardCategory")String boardCategory);
 	// 로그인아이디로 게시글 조회
 	public List<ReviewVO> selectBoardToUserId(String userId);
+	public int addBoard(String userId);
+	
+	// 내문의 카운트
+	public int BoardToTalCount(String id);
+	// 내문의 전체조회
+	public List<BoardVO> selectBoards(String id);
 }

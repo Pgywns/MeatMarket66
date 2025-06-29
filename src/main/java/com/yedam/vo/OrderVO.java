@@ -13,4 +13,6 @@ public class OrderVO {
 	private int amount;
 	private String odName;
 	private String phone;
+	private String addrOne;
+	private String addrTwo;
 }

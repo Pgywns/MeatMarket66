@@ -21,9 +21,10 @@ public class ProductCategoryControl implements Control {
 		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("text/json;charset=utf-8");
 		
+		String page = req.getParameter("page");
 		String prdSort = req.getParameter("prdSort");
 		ProductService svc = new ProductServiceImpl();
-		List<ProductVO>list = svc.productListCategory(prdSort);
+		List<ProductVO>list = svc.productListCategory(Integer.parseInt(page),prdSort);
 		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(list);
