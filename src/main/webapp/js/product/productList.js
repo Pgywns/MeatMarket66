@@ -201,7 +201,7 @@ async function productCart(productNo) {
         alert("장바구니에 이미 있습니다");
         return;
     } else {
-		countCartlist();	
+		//countCartlist();	
 	}
 
     let addCart = await fetch(`cartAdd.do?prdNo=${prdNo}&cartQty=${cartQty}`);

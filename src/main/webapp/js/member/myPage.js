@@ -154,7 +154,7 @@ function selectAddress() {
 									<td>${addr.addrOne} ${addr.addrTwo}</td>
 									<td>
 										<input id="inputAddr" type="hidden" value=${addr.addrNo}>
-										<button class="btn-delete" onclick="deleteAddress()">삭제</button>
+										<button class="btn-delete" onclick="deleteAddress('${addr.firstAddr}')">삭제</button>
 										<button class="btn" onclick="changeFisrtAddr(${addr.addrNo}, ${addr.firstAddr})">기본 배송지 설정</button>
 									</td>
 								</tr>
@@ -323,9 +323,13 @@ function checkPwMatch() {
 }
 
 // 배송지 삭제
-function deleteAddress() {
+function deleteAddress(firstAddr) {
 	let addrNo = document.getElementById("inputAddr").value;
-	console.log(addrNo)
+	console.log(firstAddr)
+	if (firstAddr === 'true') {
+		alert("기본 배송지는 삭제할 수 없습니다.")
+		return;
+	}
 
 	fetch('deleteAddress.do?addrNo=' + addrNo)
 		.then(data => data.json())
@@ -350,7 +354,7 @@ async function changeFisrtAddr(addrNo, firstAddr) {
 		let result = await data.json();
 		if (result.retCode == 'Success') {
 			alert("기본 배송지로 설정하였습니다.");
-			location.reload;
+			location.reload();
 			return;
 		} else if (result.retCode == 'Failure') {
 			alert("기본 배송지로 설정하지 못하였습니다. 다시 시도해 주세요.");
