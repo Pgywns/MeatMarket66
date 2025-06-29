@@ -22,8 +22,8 @@ public class ProductListControlPaging implements Control {
 		resp.setContentType("text/json;charset=utf-8");
 
 		// 상품 전체 목록 paging
+		
 		String page = req.getParameter("page");
-	
 		ProductService svc = new ProductServiceImpl();
 		List<ProductVO> list = svc.productListPaging(Integer.parseInt(page));
 
