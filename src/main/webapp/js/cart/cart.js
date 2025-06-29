@@ -17,11 +17,11 @@ function cartList() {
 			basketBody.insertAdjacentHTML("beforeend", productList);
 		}
 		//위치중요! 
-		 updateTotal();
+	updateTotal();
 		 
-		 if(!cartItems || cartItems.length === 0){
-			isCartEmpty= 'yes';
-		 }
+		if (!cartItems || cartItems.length === 0) {
+			isCartEmpty = 'yes';
+		}
 	})
 	.catch(err => console.log(err));
 }
@@ -34,17 +34,17 @@ function isCartEmptyCheck(){
 			return; //미체크시 종료
 		}
 		fetch('cartIcon.do')//카트수량확인
-			.then(result => result.json())
-			.then(data => {
-				let cartCount = data;
-				if (cartCount == 0) {
-					alert("장바구니에 상품을 담아주세요.")
-					return; //종료
-				} else{
-					location.href = 'order.do'; 
-				}
+		.then(result => result.json())
+		.then(data => {
+			let cartCount = data;
+			if (cartCount == 0) {
+				alert("장바구니에 상품을 담아주세요.")
+				return; //종료
+			} else{
+				location.href = 'order.do'; 
+			}
 			})
-			.catch(err => console.log(err));		
+		.catch(err => console.log(err));		
 }
 
 
@@ -60,6 +60,8 @@ function eachDel(event){
 			countCartlist();      // 헤더 수량 업데이트
 		})
 	.catch(err => console.log(err));
+	
+	updateTotal();
 }
 //체크박스선택삭제
 function checkedDel(){
@@ -81,9 +83,16 @@ function checkedDel(){
 //전체삭제
 function delitem() {
 	let cartBody = document.querySelector('#basketBody');
+	
+	if (cartBody == null || cartBody.innerHTML == '') {
+		alert("장바구니에 상품이 없습니다.");
+		return;	
+	}
+	
 	fetch('cartEmpty.do')
 		.then(() => {
 			countCartlist();      // 헤더 수량 업데이트
+
 			cartBody.remove();
 			updateTotal()
 		});
@@ -92,47 +101,44 @@ function delitem() {
 //장바구니수량변경
 //수량변경
 //1)+/-버튼수량변겅
-function btnChange(event, upDown){
+async function btnChange(event, upDown){
 	let changeBtn = event.target;
 	let eachRow = changeBtn.closest('.cartProduct');
 	
 	let qtyInput = eachRow.querySelector('#productQcy'); //value(수량) 디폴트 1. 
 	//상품코드
 	let prdNo = eachRow.querySelector('#selectdeProduct').value; 
-	//수량
-	let qty = parseInt(qtyInput.value); //입력된 수량가지고옴
-	qty = Math.max(1, qty+upDown);  //수량변경
-	qtyInput.value = qty; //변경된 수량 화면출력
 	
 	//재고 조회
-	fetch('checkStock.do?prdNo=' + prdNo)
-		.then(res => res.text())
-		.then(data => {
-			let stock = parseInt(data);
+	let res = await fetch('checkStock.do?prdNo=' + prdNo);
+	let data = await res.text();
+	let stock = parseInt(data);
 
-			if ( qty > stock ) {   
-				alert("재고가 부족합니다. 현재 구매가능한 수량은 "+ stock +"개 입니다.");
-				qtyInput.value = stock; //변경된 수량 화면출력
-				qty = stock
-				return;
-			} else{
-				let unit = eachRow.querySelector('.unitPrice');
-				let unitPrice = parseInt(unit.textContent);
-				//단가*수량
-				let totalTag = eachRow.querySelector('.totalTag')
-				totalTag.textContent = (qty * unitPrice) + '원';
-					
-				fetch('cartUpdateQty.do?prdNo='+ prdNo +'&qty=' + qty)
-				.catch(err => console.log(err));
-				//총액
-				updateTotal();
-			}
-		});
+	let qty = parseInt(qtyInput.value); //입력된 수량가지고옴		
+	if ((qty + upDown) > stock) {   //현 재고에서 수량 못넘게
+		alert("재고가 부족합니다.");
+		return;
+	}
+
+	//수량
+	qty = Math.max(1, qty+upDown);  //수량변경
+	qtyInput.value = qty; //변경된 수량 화면출력
+		
+	//단가
+	let unit = eachRow.querySelector('.unitPrice');
+	let unitPrice = parseInt(unit.textContent);
+	//단가*수량
+	let totalTag = eachRow.querySelector('.totalTag')
+	totalTag.textContent = (qty * unitPrice) + '원';
+		
+	await fetch('cartUpdateQty.do?prdNo='+ prdNo +'&qty=' + qty)
+	//총액
+	updateTotal();
 	
 }
 
 //2) 키보드입력 수량변경
-function keyChange(event){   //숫자지우면 안됨... 오류!!!!!!!!! 수정할 것! 
+function keyChange(event){   //
 	let keyQty = event.target;
 	let eachRow = keyQty.closest('.cartProduct');
 	//상품코드
@@ -165,7 +171,7 @@ function updateTotal(){
 	document.querySelectorAll('.totalTag').forEach(tag => {
 	        let value = tag.textContent.replace(/\D/g, ''); // '원'삭제
 	        total += parseInt(value);
-	    });
+	});
 	let totalEl = document.querySelector('.totalEl');
 	totalEl.textContent = total.toLocaleString() + ' 원';
 }

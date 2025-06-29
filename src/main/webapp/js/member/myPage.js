@@ -147,7 +147,7 @@ function selectAddress() {
 			document.getElementById("addressTable").innerHTML = "";
 			result.forEach(addr => {
 				let template = `
-									<tr>
+									<tr id="addrListTr">
 									<td>${addr.firstAddr === 'true' ? '✔️' : ''}</td>
 									<td>${addr.addrName}</td>
 									<td>${addr.zipCode}</td>
@@ -336,7 +336,7 @@ function deleteAddress(firstAddr) {
 		.then(result => {
 			if (result.retCode == 'Success') {
 				alert("성공적으로 삭제하였습니다.");
-				location.reload();
+				document.querySelector("#addrListTr").remove();
 				return;
 			} else if (result.retCode == 'Failure') {
 				alert("삭제하지 못하였습니다. 다시 시도해 주세요.");

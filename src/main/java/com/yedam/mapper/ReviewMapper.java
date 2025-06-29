@@ -10,7 +10,7 @@ public interface ReviewMapper {
 	//리뷰전체
 	public List<ReviewVO> selectReviewList(int prdNo); 
 	//리뷰 입력
-	public int insertReview(@Param("userId")String userId);
+	public int insertReview(ReviewVO review);
 
 	// 리뷰 건수 카운트
 	public int totalReivew(String id);

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.control.AddProductControl;
 import com.yedam.control.AddProductFormControl;
+import com.yedam.control.AddReviewControl;
 import com.yedam.control.AddressPop;
 import com.yedam.control.AdminProductListControl;
 import com.yedam.control.BoardControl;
@@ -159,7 +160,7 @@ public class FrontController extends HttpServlet {
 		
 		//리뷰
 		map.put("/reviewForm.do", new ReviewFormControl());
-
+		map.put("/addReview.do", new AddReviewControl());
 	}
 
 	@Override

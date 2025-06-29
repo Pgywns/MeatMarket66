@@ -24,11 +24,7 @@
 						<th scope="col">삭제</th>
 					</tr>
 				</thead>
-				<tbody id="basketBody">
-	<!-- 장바구니 목록출력. -->
-	<!-- 장바구니 목록출력. -->
-	<!-- 장바구니 목록출력. -->
-				</tbody>
+				<tbody id="basketBody"></tbody>
 			</table>
 		</div>
 		<div class="row g-4 justify-content-end pb-3">
