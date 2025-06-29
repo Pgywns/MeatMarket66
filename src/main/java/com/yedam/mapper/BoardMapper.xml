@@ -34,7 +34,7 @@ where board_category = #{boardCategory}
 <!-- 로그인한 아이디로 게시글 조회 -->
 <select id="selectBoardToUserId" parameterType="String" resultType="Board">
 select board_no,
-
+</select>
 <!-- 문의 카운트 -->
 <select id="BoardToTalCount" parameterType="String" resultType="int">
 	select COUNT(*)

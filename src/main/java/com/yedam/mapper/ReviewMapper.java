@@ -2,8 +2,6 @@ package com.yedam.mapper;
  
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.yedam.vo.ReviewVO;
 
 public interface ReviewMapper {
@@ -16,5 +14,4 @@ public interface ReviewMapper {
 	public int totalReivew(String id);
 	// 로그인한 아이디로 리뷰 조회
 	public List<ReviewVO> selectReviewToUserId(String id);
-
 }

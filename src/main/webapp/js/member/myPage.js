@@ -21,11 +21,12 @@ async function selectOrders() {
 					`;
 		let data = await fetch('selectOrderInfo.do?odNo=' + order.odNo)
 		let result = await data.json()
+		
 		result.forEach(orderInfo => {
 			if (order.odNo == orderInfo.odNo) {
-				template += `
-							<p>${orderInfo.prdName} ${orderInfo.odQty}개 <button class="btn" onclick="location.href='reviewForm.do?prdNo=${orderInfo.prdNo}&prdName=${orderInfo.prdName}'">리뷰쓰기</button></p>
-							`;
+					template += `
+				<p>${orderInfo.prdName} ${orderInfo.odQty}개 <button class="btn" onclick="location.href='reviewForm.do?prdNo=${orderInfo.prdNo}&prdName=${orderInfo.prdName}'">리뷰쓰기</button></p>
+				`;					
 			}
 		})
 		template += `
@@ -354,7 +355,7 @@ async function changeFisrtAddr(addrNo, firstAddr) {
 		let result = await data.json();
 		if (result.retCode == 'Success') {
 			alert("기본 배송지로 설정하였습니다.");
-			location.reload();
+			showSection('info');
 			return;
 		} else if (result.retCode == 'Failure') {
 			alert("기본 배송지로 설정하지 못하였습니다. 다시 시도해 주세요.");
