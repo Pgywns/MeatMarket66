@@ -89,7 +89,7 @@ async function  productCart(productNo){
 	    alert("장바구니에 이미 있습니다");
 	    return;
 	} else {
-		countCartlist();	
+		
 	}
 
 	let addCart = await fetch(`cartAdd.do?prdNo=${prdNo}&cartQty=${cartQty}`);
@@ -97,6 +97,7 @@ async function  productCart(productNo){
 
 	if (cartResult.retCode == 'Success') {
 	    alert("장바구니에 추가하였습니다.");
+		countCartlist();
 	} else if (cartResult.retCode == 'admin') {
 	    alert("관리자 권한으로는 할 수 없습니다.");
 	} else if (cartResult.retCode == 'guest') {
