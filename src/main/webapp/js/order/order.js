@@ -117,7 +117,15 @@ function usePoint(){
 	
 	//사용적립금반영
 	let printUsePointEl = document.querySelector('#myPointPreview');
-	printUsePointEl.textContent = usingPoint + " p";
+	if (usePointEl.value == '') {
+		alert("적립금을 입력해주세요!");
+		return;
+	} else if (usingPoint < 1000) {
+		alert("적립금은 1000원부터 사용할 수 있습니다.");
+		return;		
+	} else if (usingPoint >= 1000) {
+		printUsePointEl.textContent = usingPoint + " p";
+	}
 	
 	//subtotal금액가지고 오기
 	let subTotalEl = document.querySelector('.subTotal')
@@ -128,6 +136,8 @@ function usePoint(){
 	let total = (subtotalPrice - usingPoint)
 	
 	totalEl.textContent = total.toLocaleString()+'원';	
+	
+	modal.style.display = "none";
 }
 
  //subtoal계산

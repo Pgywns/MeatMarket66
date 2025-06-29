@@ -177,6 +177,15 @@ async function productCart(productNo) {
 	//재고확인
 	let checkStock = await fetch('checkStock.do?prdNo=' + prdNo);
 	let stock = await checkStock.text();
+	
+	if (stock == "guest") {
+		alert("로그인 후 가능합니다.");
+		return;
+	} else if (stock == "admin") {
+		alert("관리자 권한으로는 할 수 없습니다.");
+		return;
+	}
+	
 	let nowStock = parseInt(stock);
 	if (cartQty > nowStock ) {
 		alert("재고가 부족합니다. 현재 " + nowStock + "개까지 구매가능 합니다.");
@@ -200,10 +209,5 @@ async function productCart(productNo) {
 
     if (cartResult.retCode == 'Success') {
         alert("장바구니에 추가하였습니다.");
-		countCartlist();
-    } else if (cartResult.retCode == 'admin') {
-        alert("관리자 권한으로는 할 수 없습니다.");
-    } else if (cartResult.retCode == 'guest') {
-        alert("로그인 후 가능합니다.");
-	}
+    } 
 }

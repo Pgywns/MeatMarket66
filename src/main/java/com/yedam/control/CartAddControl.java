@@ -22,15 +22,6 @@ public class CartAddControl implements Control {
 		// session에서 로그인 정보가져오기
 		HttpSession session = req.getSession();
 		String userId = (String) session.getAttribute("userId");
-		String auth = (String) session.getAttribute("auth");
-		
-		if (auth == null) {
-			resp.getWriter().print("{\"retCode\":\"guest\"}");
-			return;
-		} else if (auth.equals("admin")) {
-			resp.getWriter().print("{\"retCode\":\"admin\"}");
-			return;
-		} 
 		
 		// 파라미터 불러오기
 		String prdNo = req.getParameter("prdNo");

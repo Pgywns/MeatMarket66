@@ -94,6 +94,7 @@ function review(prdNo) {
 								<p>${review.rvwContent}</p>
 							</div>
 						</div>
+						<img src="img/review/${review.rvwImage}" style="width:300px; height:300px; margin-bottom: 80px;"/>
 							`;
 
 					document.querySelector('#reviewBox').insertAdjacentHTML('beforeend', str);
@@ -109,6 +110,15 @@ async function addCart(orderChk) {
 	//재고확인
 	let checkStock = await fetch('checkStock.do?prdNo=' + prdNo);
 	let stock = await checkStock.text();
+	
+	if (stock == "guest") {
+		alert("로그인 후 가능합니다.");
+		return;
+	} else if (stock == "admin") {
+		alert("관리자 권한으로는 할 수 없습니다.");
+		return;
+	}
+	
 	let nowStock = parseInt(stock);
 	if (prdQty > nowStock ) {
 		alert("재고가 부족합니다. 현재 " + nowStock + "개까지 구매가능 합니다.");
@@ -137,9 +147,5 @@ async function addCart(orderChk) {
 		} else if (orderChk == 'order') {
 			window.location.href = "cartPage.do";
 		}
-	} else if (cartResult.retCode == 'admin') {
-	    alert("관리자 권한으로는 할 수 없습니다.");
-	} else if (cartResult.retCode == 'guest') {
-	    alert("로그인 후 가능합니다.");
-	}
+	} 
 }
