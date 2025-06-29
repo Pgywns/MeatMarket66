@@ -100,6 +100,11 @@ public class ProductServiceImpl implements ProductService {
 		return false;
 	}
 
+	@Override
+	public List<ProductVO> productSearch(String keyword) {
+		return null;
+	}
+
 
 
 

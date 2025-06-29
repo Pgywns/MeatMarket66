@@ -92,10 +92,12 @@ body {
 			<h3>상품 리뷰 작성</h3>
 
 			<form>
-				<label for="nickname">이름</label>
-				<input type="text" id="nickname" name="nickname" value="${userName }" readonly/> 
+				<label for="userName">상품</label>
+				<input type="text" id="prdName" name="prdName" value="${prdName }" readonly/>
+				<label for="userName">이름</label>
+				<input type="text" id="userName" name="userName" value="${userName }" readonly/> 
 				<label for="content">리뷰 내용</label>
-				<textarea id="content" name="content" placeholder="예) 신선하고 맛있네요 ^^"></textarea>
+				<textarea id="content" name="content" placeholder="예) 신선하고 맛있네요 ^^" required></textarea>
 				<button type="submit" class="submit-btn">리뷰 등록</button>
 			</form>
 
