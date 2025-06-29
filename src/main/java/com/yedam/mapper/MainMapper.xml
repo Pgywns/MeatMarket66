@@ -34,7 +34,7 @@
 	select rownum, a.*
 	from   (select * 
             from tbl_review
-            order by sysdate desc) a
+            order by rvw_date desc) a
     <![CDATA[
 	where rownum <= 4
     ]]>

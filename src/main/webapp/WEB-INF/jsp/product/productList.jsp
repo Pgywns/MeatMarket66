@@ -21,7 +21,7 @@
 <!-- Fruits Shop Start-->
 <div class="container-fluid fruite py-5">
 	<div class="container py-5">
-		<h1 class="mb-4">탱탱한 상품들</h1>
+		<h1 class="mb-4">당신을 감동시킬 상품</h1>
 		<div class="row g-4">
 			<div class="col-lg-12">
 				<div class="row g-4">
