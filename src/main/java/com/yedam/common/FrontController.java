@@ -55,6 +55,7 @@ import com.yedam.control.ProductListControlPaging;
 import com.yedam.control.ProductOptionControl;
 import com.yedam.control.ProductPageControl;
 import com.yedam.control.ProductSearchControl;
+import com.yedam.control.ProductSearchPageControl;
 import com.yedam.control.RegisterControl;
 
 import com.yedam.control.ReviewListControl;
@@ -94,6 +95,7 @@ public class FrontController extends HttpServlet {
 		map.put("/productSearch.do", new ProductSearchControl());
 		map.put("/detailReview.do", new DetailReviewControl());
 		map.put("/productPage.do", new ProductPageControl());
+		map.put("/productSearchPage.do",new ProductSearchPageControl());
 		
 
 		// 로그인

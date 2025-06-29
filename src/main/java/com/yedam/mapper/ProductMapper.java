@@ -26,13 +26,13 @@ public interface ProductMapper {
 	public List<ProductVO> selectOption(SearchDTO search);
 	
 	// 검색 리스트
-
 	public List<ProductVO> selectSearch(@Param("keyword")String keyword,@Param("page") int page);
-	
+
 	//상품전체 갯수 int
 	public int selectCountPage();
 
-	public List<ProductVO> selectSearch(String keyword);
+	// 검색 상품 페이징
+	public int selectCountSearch (@Param("keyword") String keyword);
 	
 	// 상품 추가
 	public int insertProduct(ProductVO product);

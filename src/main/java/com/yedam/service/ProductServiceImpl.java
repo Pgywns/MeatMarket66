@@ -100,6 +100,12 @@ public class ProductServiceImpl implements ProductService {
 		return false;
 	}
 
+	// 상품 검색 목록 페이징
+	@Override
+	public int productSearchPage(String keyword) {
+		
+		return mapper.selectCountSearch(keyword);
+	}
 
 
 
