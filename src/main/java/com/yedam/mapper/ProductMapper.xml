@@ -22,13 +22,17 @@
 	</select>
 
 	<!-- 상품 목록 카테고리 -->
-	<select id="selectCategory" resultType="Product"
-		parameterType="String">
-		select prd_no, prd_name, prd_image,
+	<select id="selectCategory" resultType="Product" >
+		Select a.*
+		from (select rownum rn, prd_no, prd_name, prd_image,
 		prd_content,prd_price, prd_sort, prd_date
-		from tbl_product
+		from tbl_product 
 		where
-		prd_sort = #{prdSort}
+		prd_sort = #{prdSort}) a
+		where a.rn > (${page} - 1 ) * 9 
+		<![CDATA[
+		and a.rn <= (${page} * 9)
+		]]>
 	</select>
 
 	<!-- 상품목록 페이징 -->
@@ -38,7 +42,7 @@
 		FROM TBL_PRODUCT r
 		order by
 		prd_price) a
-		where a.rn > (${page} - 1 ) * 9 * 0
+		where a.rn > (${page} - 1 ) * 9 
 		<![CDATA[
 		and a.rn <= (${page} * 9)
 		]]>
@@ -61,11 +65,24 @@
 		]]>
 	</select>
 	<!-- 검색 별 목록 -->
-	<select id="selectSearch" parameterType="String">
-		SELECT * FROM TBL_PRODUCT 
+	<select id="selectSearch">
+		select a.*
+		from(SELECT r.* ,rownum rn
+		FROM TBL_PRODUCT r
 		WHERE PRD_NAME LIKE '%' || #{keyword} || '%' 
-		ORDER BY PRD_NO
+		ORDER BY PRD_NO ) a
+		where a.rn > (${page} - 1 ) * 9 
+		<![CDATA[
+		and a.rn <= (${page} * 9)
+		]]>
 	</select>
+	
+	<!-- 상품 전체 갯수 -->
+	<select id="selectCountPage" resultType="int">
+		select count(prd_no)
+		from tbl_product
+	</select>
+
 
 	<!-- 상품 추가 -->
 	<insert id="insertProduct" parameterType="Product">
@@ -100,4 +117,5 @@
 		insert into tbl_stock (prd_no, prd_stock)
 		values (#{prdNo}, #{prdStock})
 	</insert>
+>>>>>>> master
 </mapper>

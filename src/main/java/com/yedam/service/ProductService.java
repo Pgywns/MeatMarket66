@@ -10,11 +10,11 @@ public interface ProductService {
 	// 상품전체
 	List<ProductVO> productList();
 
-	// 페이징
+	// 상품전체 페이징
 	List<ProductVO> productListPaging(int page);
 
 	// 카테고리
-	List<ProductVO> productListCategory(String prdSort);
+	List<ProductVO> productListCategory(int page, String prdSort);
 
 	// 카테고리별 수량
 	List<ProductVO> productCount();
@@ -23,6 +23,12 @@ public interface ProductService {
 	List<ProductVO> productOption(SearchDTO search);
 	
 	// 검색 기능
+
+	List<ProductVO> productSearch(String keyword, int page);
+	
+	//페이지네이션..
+	int productPage();
+
 	List<ProductVO> productSearch(String keyword);
 	
 	// 상품 추가
@@ -36,4 +42,5 @@ public interface ProductService {
 	
 	// 입출고
 	boolean insertStock(StockVO stock);
+
 }

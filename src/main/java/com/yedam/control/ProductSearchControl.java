@@ -22,9 +22,9 @@ public class ProductSearchControl implements Control {
 		resp.setContentType("text/json;charset=utf-8");
 		
 		String keyword = req.getParameter("keyword");
-		
+		String page = req.getParameter("page");
 		ProductService svc = new ProductServiceImpl();
-		List<ProductVO> list =svc.productSearch(keyword);
+		List<ProductVO> list =svc.productSearch(keyword,Integer.parseInt(page));
 		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String json = gson.toJson(list);

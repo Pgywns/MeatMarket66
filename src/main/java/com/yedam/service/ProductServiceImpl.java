@@ -30,9 +30,9 @@ public class ProductServiceImpl implements ProductService {
 
 	// 카테고리
 	@Override
-	public List<ProductVO> productListCategory(String prdSort) {
+	public List<ProductVO> productListCategory(int page, String prdSort) {
 		
-		return mapper.selectCategory(prdSort);
+		return mapper.selectCategory(page, prdSort);
 	}
 	// 카테고리 수량체크
 	@Override
@@ -48,9 +48,15 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductVO> productSearch(String keyword) {
+	public List<ProductVO> productSearch(String keyword ,int page) {
 		
-		return mapper.selectSearch(keyword);
+		return mapper.selectSearch(keyword, page);
+	}
+
+	@Override
+	public int productPage() {
+		
+		return mapper.selectCountPage();
 	}
 
 	@Override
