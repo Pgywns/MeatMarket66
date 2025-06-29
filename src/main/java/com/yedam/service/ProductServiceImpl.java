@@ -106,6 +106,13 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 
+	@Override
+	public int checkStockByPrdNO(int prdNo) {
+		
+		return mapper.selectStockByPrdNo(prdNo);
+	}
+
+
 
 
 }

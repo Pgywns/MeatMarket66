@@ -170,8 +170,6 @@ const svc = {
 
 
 // 장바구니 등록  onclick="javascript:productCart(cart)
-
-
 async function productCart(productNo) {
     let cartQty = 1;
     let prdNo = productNo;

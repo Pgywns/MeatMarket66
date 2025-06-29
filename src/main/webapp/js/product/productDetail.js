@@ -104,8 +104,18 @@ function review(prdNo) {
 }
 
 async function addCart(orderChk) {
-	let prdQty = document.querySelector("#prdQty").value;
+	let prdQty = parseInt(document.querySelector("#prdQty").value);
+	let chkCart = true;
+
 	
+	//재고확인
+	let checkStock = await fetch('checkStock.do?prdNo=' + prdNo);
+	let stock = await checkStock.text();
+	let nowStock = parseInt(stock);
+	if (prdQty > nowStock ) {
+		alert("재고가 부족합니다. 현재 " + nowStock + "개까지 구매가능 합니다.");
+		return; // 더 진행하지 않음
+    
 	let data = await fetch("cart.do");
     let result = await data.json();
 
