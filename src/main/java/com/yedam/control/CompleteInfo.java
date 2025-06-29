@@ -36,6 +36,7 @@ public class CompleteInfo implements Control {
 		CompleteService completeSvc = new CompleteServiceImpl();
 		
 		OrderVO orderInfo = completeSvc.orderInfo(userId);
+		
 		Date orderDate = orderInfo.getOdDate();
 		String reciveName = orderInfo.getOdName();
 		String phone = orderInfo.getPhone();

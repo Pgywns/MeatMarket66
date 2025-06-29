@@ -197,6 +197,7 @@ async function  productCart(productNo){
 			let result = await data.json();			
 			if (result.retCode == 'Success') {
 				alert("장바구니에 추가하였습니다.");
+				countCartlist();      // 헤더카드수량 업데이트
 			} else if (result.retCode == 'admin') {
 				alert("관리자 권한으로는 할 수 없습니다.");
 			} else if (result.retCode == 'guest') {

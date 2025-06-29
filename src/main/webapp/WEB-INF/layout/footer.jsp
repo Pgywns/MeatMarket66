@@ -19,10 +19,10 @@
                         </div>
                     </div>
                     
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-3 col-md-6 text-end">
                         <div class="footer-item">
-                            <p>Email: Example@gmail.com</p>
-                            <p>Phone: +0123 4567 8910</p>
+                            <p>Email: 0606@6mont6day.com</p>
+                            <p>Phone: +0606 0606 0606</p>
                             <img src="img/payment.png" class="img-fluid" alt="">
                         </div>
                     </div>

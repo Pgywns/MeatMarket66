@@ -62,7 +62,7 @@ function orderList() {
  }
  
  
-let myPoint = 0; // 내 적립금 받아오기
+let myPoint = 0; // 내 적립금 받아서 사용할 금액비교용
 //버튼클릭시 현적립금 받아오기.
 function myPointCheck(){
 	fetch('myPoint.do')
@@ -153,7 +153,7 @@ popClose.addEventListener("click", () => {
 
 // 배송지 모달 열기
 function openAddressModal() {
-	document.querySelector('#addressPopUp').style.display = 'block';
+document.querySelector('#addressPopUp').style.display = 'block';
 
 	// 주소 목록 불러오기
 	fetch('addressPop.do') 
@@ -169,7 +169,7 @@ function openAddressModal() {
 					(${addr.zipCode}) ${addr.addrOne} ${addr.addrTwo}
 				</label>
 			</div>`;
-		});
+		}); //주소선택시 폼에 반영.
 		document.querySelector('#addressList').innerHTML = list;
 	});
 }
@@ -184,6 +184,6 @@ function selectAddress(addrNoParam, zip, addr1, addr2) {
 	document.querySelector('#sample6_postcode').value = zip;
 	document.querySelector('#sample6_address').value = addr1;
 	document.querySelector('#addrTwo').value = addr2;
-	addrNo = addrNoParam;
 	document.querySelector('#addressPopUp').style.display = "none";
+	addrNo = addrNoParam;
 }

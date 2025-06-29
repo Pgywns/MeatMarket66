@@ -81,6 +81,7 @@ async function  productCart(productNo){
 				return;
 			} else{
 				boolean1 = true;
+				countCartlist();      // 헤더 수량 업데이트
 			}
 		})
 		if(!boolean1){
