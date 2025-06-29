@@ -43,5 +43,7 @@ public interface ProductService {
 	// 입출고
 	boolean insertStock(StockVO stock);
 	
+	//상품코드 재고조회
+	int checkStockByPrdNO(int prdNo);
 
 }
