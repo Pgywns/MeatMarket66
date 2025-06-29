@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import com.yedam.common.DataSource;
 import com.yedam.mapper.BoardMapper;
 import com.yedam.vo.BoardVO;
+import com.yedam.vo.ReviewVO;
 
 public class BoardSeviceImpl implements BoardSevice{
 	SqlSession sqlSession = DataSource.getInstance().openSession();
@@ -22,13 +23,18 @@ public class BoardSeviceImpl implements BoardSevice{
 		return mapper.clickList(boardTitle);
 	}
 	@Override
-	public boolean insertBoard(String userId) {
-		int r = mapper.addBoard(userId);
+	public boolean insertBoard(String userId, String boardTitle, String boardContent,String boardCategory) {
+		int r = mapper.addBoard(userId,boardTitle,boardContent,boardCategory);
 		if(r == 1) {
 			sqlSession.commit();
 			return true;
 		}
 		return false;
+	}
+	@Override
+	public List<ReviewVO> selectBoardToUserId(String userId) {
+		// TODO Auto-generated method stub
+		return mapper.selectBoardToUserId(userId);
 	}
 
 	@Override
@@ -40,5 +46,4 @@ public class BoardSeviceImpl implements BoardSevice{
 	public List<BoardVO> selectBoards(String id) {
 		return mapper.selectBoards(id);
 	}
-
 }
