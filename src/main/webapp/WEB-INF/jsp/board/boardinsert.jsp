@@ -1,22 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
 <style>
 /* 네가 작성한 스타일 유지하되 body, html 태그에 주는 스타일은 제거해라 */
-.container {
-	width: 100%;
-	max-width: 1200px;
-	margin: 0 auto;
-	padding: 40px 20px;
-	box-sizing: border-box;
-}
-
-h2 {
-	text-align: center;
-	margin-bottom: 30px;
-	color: #333;
-	font-weight: bold;
-}
-
 table {
 	width: 100%;
 	border-spacing: 0;
@@ -99,51 +85,51 @@ textarea {
 }
 </style>
 <div class="container-fluid page-header py-5">
-	<h1 class="text-center text-white display-6">고객센터</h1>
+	<h1 class="text-center text-white display-6">1:1문의</h1>
 </div>
-<div class="container">
 <div class="container-fluid py-5 mt-5">
-	<h2>1:1 문의 작성</h2>
-	<form action="${pageContext.request.contextPath}/boardinsert.do" method="POST">
-		<table>
-			<tr>
-				<th>사용자 ID</th>
-				<td><input type="text" name="userId" value="${userId}" readonly /></td>
-			</tr>
-			<tr>
-				<th>제목</th>
-				<td><input type="text" name="boardTitle" placeholder="문의 제목을 입력하세요." required /></td>
-			</tr>
-			<tr>
-				<th>내용</th>
-				<td><textarea name="boardContent" placeholder="문의 내용을 입력하세요." required></textarea></td>
-			</tr>
-			<tr>
-				<th>카테고리</th>
-				<td>
-					<div class="category-toggle">
-						<input type="radio" id="cat1" name="boardCategory" value="상품" checked>
-						<label for="cat1">상품</label>
+	<div class="container">
+		<form action="${pageContext.request.contextPath}/boardinsert.do"
+			method="POST">
+			<table>
+				<tr>
+					<th>사용자 ID</th>
+					<td><input type="text" name="userId" value="${userId}"
+						readonly /></td>
+				</tr>
+				<tr>
+					<th>제목</th>
+					<td><input type="text" name="boardTitle"
+						placeholder="문의 제목을 입력하세요." required /></td>
+				</tr>
+				<tr>
+					<th>내용</th>
+					<td><textarea name="boardContent" placeholder="문의 내용을 입력하세요."
+							required></textarea></td>
+				</tr>
+				<tr>
+					<th>카테고리</th>
+					<td>
+						<div class="category-toggle">
+							<input type="radio" id="cat1" name="boardCategory" value="상품"
+								checked> <label for="cat1">상품</label> <input
+								type="radio" id="cat2" name="boardCategory" value="배송">
+							<label for="cat2">배송</label> <input type="radio" id="cat3"
+								name="boardCategory" value="포장"> <label for="cat3">포장</label>
 
-						<input type="radio" id="cat2" name="boardCategory" value="배송">
-						<label for="cat2">배송</label>
-
-						<input type="radio" id="cat3" name="boardCategory" value="포장">
-						<label for="cat3">포장</label>
-
-						<input type="radio" id="cat4" name="boardCategory" value="변경/취소/반품">
-						<label for="cat4">변경/취소/반품</label>
-
-						<input type="radio" id="cat5" name="boardCategory" value="회원">
-						<label for="cat5">회원</label>
-					</div>
-				</td>
-			</tr>
-		</table>
-		<div class="btns">
-			<button type="submit">등록</button>
-			<button type="button" class="cancel" onclick="location.href='board.do'">취소</button>
-		</div>
-	</form>
-</div>
+							<input type="radio" id="cat4" name="boardCategory"
+								value="변경/취소/반품"> <label for="cat4">변경/취소/반품</label> <input
+								type="radio" id="cat5" name="boardCategory" value="회원">
+							<label for="cat5">회원</label>
+						</div>
+					</td>
+				</tr>
+			</table>
+			<div class="btns">
+				<button type="submit">등록</button>
+				<button type="button" class="cancel"
+					onclick="location.href='board.do'">취소</button>
+			</div>
+		</form>
+	</div>
 </div>

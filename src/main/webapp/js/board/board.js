@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded",()=>{
 	console.log(userId);
 })
 
-
 let boardCategory = "상품";
 let idx = 0;
 const svc = {
@@ -43,6 +42,7 @@ const svc = {
 			})
 			.catch(err => console.log(err));
 	},
+	
 	btnclickMine(userId){
 		fetch('boardList.do')
 		.then(data=>data.json())
@@ -75,10 +75,10 @@ const svc = {
 			})
 		})
 	},
+	
 	btnclickinsert(){
 		location.href = 'boardinsert.do';
 	}
-	,
 }
 svc.btnClickList(boardCategory);
 svc.btnclickMine(userId);

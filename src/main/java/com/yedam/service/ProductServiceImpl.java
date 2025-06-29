@@ -108,12 +108,6 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductVO> productSearch(String keyword) {
-		return null;
-	}
-
-
-	@Override
 	public int checkStockByPrdNO(int prdNo) {
 		
 		return mapper.selectStockByPrdNo(prdNo);
