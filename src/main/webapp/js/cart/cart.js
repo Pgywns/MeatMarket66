@@ -30,7 +30,7 @@ function cartList() {
 function isCartEmptyCheck(){
 	let checkbox = document.querySelector('#orderCheck');
 		if (!checkbox.checked) {
-			alert("상기 주문내역을 확인해주세요.");
+			alert("주문목록을 확인해주세요.");
 			return; //미체크시 종료
 		}
 		fetch('cartIcon.do')//카트수량확인
@@ -110,23 +110,24 @@ function btnChange(event, upDown){
 		.then(data => {
 			let stock = parseInt(data);
 
-			if ( qty > (stock-1)) {   //현 재고에서 수량 못넘게
-				alert("재고가 부족합니다.");
+			if ( qty > stock ) {   
+				alert("재고가 부족합니다. 현재 구매가능한 수량은 "+ stock +"개 입니다.");
+				qtyInput.value = stock; //변경된 수량 화면출력
+				qty = stock
 				return;
+			} else{
+				let unit = eachRow.querySelector('.unitPrice');
+				let unitPrice = parseInt(unit.textContent);
+				//단가*수량
+				let totalTag = eachRow.querySelector('.totalTag')
+				totalTag.textContent = (qty * unitPrice) + '원';
+					
+				fetch('cartUpdateQty.do?prdNo='+ prdNo +'&qty=' + qty)
+				.catch(err => console.log(err));
+				//총액
+				updateTotal();
 			}
 		});
-	
-	//단가
-	let unit = eachRow.querySelector('.unitPrice');
-	let unitPrice = parseInt(unit.textContent);
-	//단가*수량
-	let totalTag = eachRow.querySelector('.totalTag')
-	totalTag.textContent = (qty * unitPrice) + '원';
-		
-	fetch('cartUpdateQty.do?prdNo='+ prdNo +'&qty=' + qty)
-	.catch(err => console.log(err));
-	//총액
-	updateTotal();
 	
 }
 
