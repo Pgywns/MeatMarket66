@@ -24,15 +24,15 @@ input::-webkit-inner-spin-button {
 			<table class="table">
 				<tr>
 					<th>품명</th>
-					<td><input type="text" class="form-control" name="pName" id="pName"></td>
+					<td><input type="text" class="form-control" name="pName" id="pName" required></td>
 				</tr>
 				<tr>
 					<th>설명</th>
-					<td><textarea class="form-control" name="pContent" id="pContent"></textarea></td>
+					<td><textarea class="form-control" name="pContent" id="pContent" required></textarea></td>
 				</tr>
 				<tr>
 					<th>가격</th>
-					<td><input type="number" class="form-control" name="pPrice" id="pPrice"></td>
+					<td><input type="number" class="form-control" name="pPrice" id="pPrice" required></td>
 				</tr>
 				<tr>
 					<th>카테고리</th>
@@ -46,7 +46,7 @@ input::-webkit-inner-spin-button {
 				</tr>
 				<tr>
 					<th>상품 사진</th>
-					<td><input type="file" name="pFile" accept=".png, .jpg" id="pFile"></td>
+					<td><input type="file" name="pFile" accept=".png, .jpg" id="pFile" required></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><input type="submit" value="등록">
