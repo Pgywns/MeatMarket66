@@ -16,7 +16,7 @@ public interface ProductMapper {
 	public List<ProductVO> selectListWithPaging(SearchDTO search);
 
 	// 사이드 카테고리
-	public List<ProductVO> selectCategory(String prdSort);
+	public List<ProductVO> selectCategory(@Param("page") int page,@Param("prdSort")String prdSort);
 
 	// 사이드 카테고리 수량
 	public List<ProductVO> selectCount();
@@ -25,5 +25,8 @@ public interface ProductMapper {
 	public List<ProductVO> selectOption(SearchDTO search);
 	
 	// 검색 리스트
-	public List<ProductVO> selectSearch(String keyword);
+	public List<ProductVO> selectSearch(@Param("keyword")String keyword,@Param("page") int page);
+	
+	//상품전체 갯수 int
+	public int selectCountPage();
 }
