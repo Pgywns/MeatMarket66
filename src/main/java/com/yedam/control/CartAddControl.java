@@ -24,10 +24,13 @@ public class CartAddControl implements Control {
 		String userId = (String) session.getAttribute("userId");
 		String auth = (String) session.getAttribute("auth");
 		
-		if (auth.equals("admin")) {
+		if (auth == null) {
+			resp.getWriter().print("{\"retCode\":\"guest\"}");
+			return;
+		} else if (auth.equals("admin")) {
 			resp.getWriter().print("{\"retCode\":\"admin\"}");
 			return;
-		}
+		} 
 		
 		// 파라미터 불러오기
 		String prdNo = req.getParameter("prdNo");

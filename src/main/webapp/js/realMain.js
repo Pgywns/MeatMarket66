@@ -68,7 +68,7 @@ function newMil() {
 
 // 장바구니 누르면 등록.
 async function  productCart(productNo){
-	console.log("hi");	
+	
 	let cartQty = 1;
 	let prdNo = productNo;
 	let boolean1 = true;
@@ -85,9 +85,16 @@ async function  productCart(productNo){
 		})
 		if(!boolean1){
 			return;
-		} else{
-			
-		await fetch("cartAdd.do?prdNo="+prdNo+"&cartQty="+cartQty)
+		} else {
+			let data = await fetch("cartAdd.do?prdNo="+prdNo+"&cartQty="+cartQty);
+			let result = await data.json();			
+			if (result.retCode == 'Success') {
+				alert("장바구니에 추가하였습니다.");
+			} else if (result.retCode == 'admin') {
+				alert("관리자 권한으로는 할 수 없습니다.");
+			} else if (result.retCode == 'guest') {
+				alert("장바구니 담기는 로그인 후 가능합니다.");
+			}
 		}
 	
 };

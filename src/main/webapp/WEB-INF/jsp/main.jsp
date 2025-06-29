@@ -145,7 +145,7 @@
 								<a href="#" class="h4">${hot.prdName }</a>
 								<p></p>
 								<h4 class="mb-3">${hot.prdPrice }원</h4>
-								<a href="#"
+								<a href="#" onclick="javascript:productCart(${hot.prdNo });"
 									class="btn border border-secondary rounded-pill px-3 text-primary"><i
 									class="fa fa-shopping-bag me-2 text-primary"></i>장바구니</a>
 							</div>
