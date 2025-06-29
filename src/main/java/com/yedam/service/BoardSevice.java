@@ -14,7 +14,6 @@ public interface BoardSevice {
 	public boolean insertBoard(String userId, String boardTitle, String boardContent,String boardCategory);
 	//로그인아이디로 게시글 조회
 	public List<ReviewVO> selectBoardToUserId(String userId);
-	public boolean insertBoard(@Param("userId")String userId);
 	
 	// 내 문의 카운트
 	public int BoardToTalCount(String id);

@@ -17,8 +17,11 @@ import com.yedam.service.OrderInfoService;
 import com.yedam.service.OrderInfoServiceImpl;
 import com.yedam.service.OrderService;
 import com.yedam.service.OrderServiceImpl;
+import com.yedam.service.ReviewService;
+import com.yedam.service.ReviewServiceImpl;
 import com.yedam.vo.OrderInfoVO;
 import com.yedam.vo.OrderVO;
+import com.yedam.vo.ReviewVO;
 
 public class SelectOrderInfoControl implements Control {
 
@@ -35,15 +38,16 @@ public class SelectOrderInfoControl implements Control {
 	    if (orderList == null) orderList = new ArrayList<>();
 
 	    OrderInfoService svc = new OrderInfoServiceImpl();
+	    ReviewService rvc = new ReviewServiceImpl();
 	    List<OrderInfoVO> list = new ArrayList<>();
 
+	    ReviewVO review = new ReviewVO();
+	    review.setUserId(userId);
+	    
 	    for (OrderVO order : orderList) {
 	        int odNo = order.getOdNo();
 	        System.out.println("odNo:" + odNo);
 	        List<OrderInfoVO> tempList = svc.orderInfoList(odNo);
-	        for (int i = 0; i < tempList.size(); i++) {
-	        	System.out.println(tempList);
-			}
 	        System.out.println("tmepList: " + tempList);
 	        if (tempList != null) {
 	            list.addAll(tempList);

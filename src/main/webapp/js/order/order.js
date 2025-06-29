@@ -101,26 +101,24 @@ function myPointCheck(){
 //1)subTotal - 사용할 적립금.
 function usePoint(){
 	let usePointEl = document.querySelector('#usePoint');
-		
+	usingPoint = parseInt(usePointEl.value);
+  
 	//사용할 적립금 비교
 	if (usingPoint > myPoint) {
-			alert("보유한 적립금보다 많이 사용할 수 없습니다.");
-			usePointEl.value = "";  // 입력 초기화
-			return;
-		}
-	usingPoint = parseInt(usePointEl.value);
+		alert("보유한 적립금보다 많이 사용할 수 없습니다.");
+		usePointEl.value = "";  // 입력 초기화
+		return;
+	}
+	
+	if(usingPoint < 1000 || usePointEl.value == '') {
+		alert("1,000P부터 사용가능합니다.");
+		usePointEl.value = "";  // 입력 초기화
+		return;
+	}
 	
 	//사용적립금반영
 	let printUsePointEl = document.querySelector('#myPointPreview');
-	if (usePointEl.value == '') {
-		alert("적립금을 입력해주세요!");
-		return;
-	} else if (usingPoint < 1000) {
-		alert("적립금은 1000원부터 사용할 수 있습니다.");
-		return;		
-	} else if (usingPoint >= 1000) {
-		printUsePointEl.textContent = usingPoint + " p";
-	}
+	printUsePointEl.textContent = usingPoint + " p";
 	
 	//subtotal금액가지고 오기
 	let subTotalEl = document.querySelector('.subTotal')
