@@ -101,12 +101,7 @@ function myPointCheck(){
 //1)subTotal - 사용할 적립금.
 function usePoint(){
 	let usePointEl = document.querySelector('#usePoint');
-	if(usingPoint < 1000){
-			alert("1,000P부터 사용가능합니다.");
-			usePointEl.value = "";  // 입력 초기화
-			return;
-	}
-	
+		
 	//사용할 적립금 비교
 	if (usingPoint > myPoint) {
 			alert("보유한 적립금보다 많이 사용할 수 없습니다.");
