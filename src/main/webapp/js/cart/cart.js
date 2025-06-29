@@ -1,5 +1,5 @@
 /*
-* cart.js   fetch로 DB랑 연동필요. 기능만구현했음. 
+* cart.js   
 */
 
 //페이지로드시 장바구니 목록출력
@@ -85,7 +85,6 @@ function delitem(){
 
 //장바구니수량변경
 //수량변경
-//0)재고조회
 //1)+/-버튼수량변겅
 function btnChange(event, upDown){
 	let changeBtn = event.target;
