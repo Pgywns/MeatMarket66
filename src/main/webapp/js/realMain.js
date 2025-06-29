@@ -106,6 +106,7 @@ async function  productCart(productNo){
 
 	if (cartResult.retCode == 'Success') {
 	    alert("장바구니에 추가하였습니다.");
+		countCartlist(); //헤더 장바구니아이콘 수량반영
 	}
 };
 	
