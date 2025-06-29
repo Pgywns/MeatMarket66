@@ -54,7 +54,7 @@
 							</div>
 						</div>
 
-						<a href="#" onclick="javascript:addCart('cart');"
+						<a onclick="javascript:addCart('cart');"
 							class="btn border border-secondary rounded-pill px-4 py-2 text-primary mt-3">
 							<i class="fa fa-shopping-bag me-2 text-primary"></i> 장바구니
 						</a> <a onclick="javascript:addCart('order');"

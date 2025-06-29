@@ -27,7 +27,7 @@ function newMil() {
               <p class="truncate-line" style="max-height: 50px; overflow: hidden;">${mil.prdContent}</p>
               <div class="d-flex justify-content-between flex-lg-wrap">
                 <p class="text-dark fs-5 fw-bold mb-0">${mil.prdPrice}원</p>
-                <a href="#" onclick="javascript:productCart(${mil.prdNo});" class="btn border border-secondary rounded-pill px-3 text-primary">
+                <a onclick="javascript:productCart(${mil.prdNo});" class="btn border border-secondary rounded-pill px-3 text-primary">
                   <i class="fa fa-shopping-bag me-2 text-primary"></i>장바구니
                 </a>
               </div>
@@ -68,35 +68,30 @@ function newMil() {
 
 // 장바구니 누르면 등록.
 async function  productCart(productNo){
-	
 	let cartQty = 1;
 	let prdNo = productNo;
-	let boolean1 = true;
-	let data = await fetch("cart.do")
+
+	let data = await fetch("cart.do");
 	let result = await data.json();
-		result.forEach(cart =>{
-			if(cart.prdNo == productNo){
-				alert("장바구니에 이미 있습니다")
-				boolean1 = false;
-				return;
-			} else{
-				boolean1 = true;
-				countCartlist();      // 헤더 수량 업데이트
-			}
-		})
-		if(!boolean1){
-			return;
-		} else {
-			let data = await fetch("cartAdd.do?prdNo="+prdNo+"&cartQty="+cartQty);
-			let result = await data.json();			
-			if (result.retCode == 'Success') {
-				alert("장바구니에 추가하였습니다.");
-			} else if (result.retCode == 'admin') {
-				alert("관리자 권한으로는 할 수 없습니다.");
-			} else if (result.retCode == 'guest') {
-				alert("장바구니 담기는 로그인 후 가능합니다.");
-			}
-		}
-	
+
+	let cartChk = result.some(cart => cart.prdNo == productNo);
+
+	if (cartChk) {
+	    alert("장바구니에 이미 있습니다");
+	    return;
+	} else {
+		countCartlist();	
+	}
+
+	let addCart = await fetch(`cartAdd.do?prdNo=${prdNo}&cartQty=${cartQty}`);
+	let cartResult = await addCart.json();
+
+	if (cartResult.retCode == 'Success') {
+	    alert("장바구니에 추가하였습니다.");
+	} else if (cartResult.retCode == 'admin') {
+	    alert("관리자 권한으로는 할 수 없습니다.");
+	} else if (cartResult.retCode == 'guest') {
+	    alert("로그인 후 가능합니다.");
+	}
 };
 	

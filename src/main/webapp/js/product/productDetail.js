@@ -103,8 +103,7 @@ function review(prdNo) {
 		})
 }
 
-
-async function addCart() {
+async function addCart(orderChk) {
 	let prdQty = parseInt(document.querySelector("#prdQty").value);
 	let chkCart = true;
 
@@ -116,37 +115,36 @@ async function addCart() {
 	if (prdQty > nowStock ) {
 		alert("재고가 부족합니다. 현재 " + nowStock + "개까지 구매가능 합니다.");
 		return; // 더 진행하지 않음
+    
+	let data = await fetch("cart.do");
+    let result = await data.json();
+
+    let cartChk = result.some(cart => cart.prdNo == prdNo);
+
+    if (cartChk) {
+		if (orderChk == 'cart') {
+			alert("장바구니에 이미 있습니다");
+			return;
+		} else if (orderChk == 'order') {
+			alert("기존 장바구니 항목과 함께 구매 페이지로 이동합니다.");
+		}
+    } else {
+		countCartlist();	
 	}
 
-	let data = await fetch("cart.do");
-	let result = await data.json();
-	result.forEach(cart => {
-		if (cart.prdNo == prdNo) {
-			alert("장바구니에 이미 있습니다")
-			chkCart = false;
-			return;
-		} else {
-			chkCart = true;
-			countCartlist();
-		}
-	})
+	let addCart = await fetch(`cartAdd.do?prdNo=${prdNo}&cartQty=${prdQty}`);
+	let cartResult = await addCart.json();
 
-	if (!chkCart) {
-		return;
-	} else {
-		let data = await fetch("cartAdd.do?prdNo=" + prdNo + "&cartQty=" + prdQty);
-		let result = await data.json();
-		if (result.retCode == 'Success') {
-			if (orderChk == 'cart') {
-				alert("장바구니에 추가하였습니다.");
-				location.reload();
-			} else if (orderChk == 'order') {
-				window.location.href = "order.do";
-			}
-		} else if (result.retCode == 'admin') {
-			alert("관리자 권한으로는 할 수 없습니다.");
-		} else if (result.retCode == 'guest') {
-			alert("장바구니 담기는 로그인 후 가능합니다.");
+	if (cartResult.retCode == 'Success') {
+		if (orderChk == 'cart') {
+			alert("장바구니에 추가하였습니다.");
+			location.reload();
+		} else if (orderChk == 'order') {
+			window.location.href = "order.do";
 		}
+	} else if (cartResult.retCode == 'admin') {
+	    alert("관리자 권한으로는 할 수 없습니다.");
+	} else if (cartResult.retCode == 'guest') {
+	    alert("로그인 후 가능합니다.");
 	}
 }
