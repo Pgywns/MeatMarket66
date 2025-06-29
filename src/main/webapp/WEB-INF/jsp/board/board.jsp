@@ -34,7 +34,7 @@
 				<button class="nav-link border-white border-bottom-0" type="button"
 					role="tab" data-bs-toggle="tab"
 					data-bs-target="#nav-mission" aria-controls="nav-mission"
-					aria-selected="false" id="userBtn">내 문의</button>
+					aria-selected="false" id="userBtn" onclick="javascript:svc.btnClickList('내문의');">내 문의</button>
 			</div>
 		</nav>
 	</div>
