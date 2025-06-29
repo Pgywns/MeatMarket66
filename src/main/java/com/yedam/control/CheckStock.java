@@ -19,11 +19,10 @@ public class CheckStock implements Control {
 		int prdNo = Integer.parseInt(req.getParameter("prdNo")); 
 		
 		ProductService svc = new ProductServiceImpl();
-		//int stock =  svc.searchStock(prdNo);
+		int stock =  svc.checkStockByPrdNO(prdNo);
 		
+		resp.getWriter().print(stock);
 		
-
-	
 	}
 
 }

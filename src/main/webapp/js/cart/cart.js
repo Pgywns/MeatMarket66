@@ -85,6 +85,7 @@ function delitem(){
 
 //장바구니수량변경
 //수량변경
+//0)재고조회
 //1)+/-버튼수량변겅
 function btnChange(event, upDown){
 	let changeBtn = event.target;
@@ -94,9 +95,22 @@ function btnChange(event, upDown){
 	//상품코드
 	let prdNo = eachRow.querySelector('#selectdeProduct').value; 
 	//수량
-	let qty = parseInt(qtyInput.value); 
-	qty = Math.max(1, qty+upDown); 
-	qtyInput.value = qty;
+	let qty = parseInt(qtyInput.value); //입력된 수량가지고옴
+	qty = Math.max(1, qty+upDown);  //수량변경
+	qtyInput.value = qty; //변경된 수량 화면출력
+	
+	//재고 조회
+	fetch('checkStock.do?prdNo=' + prdNo)
+		.then(res => res.text())
+		.then(data => {
+			let stock = parseInt(data);
+
+			if ( qty > (stock-1)) {   //현 재고에서 수량 못넘게
+				alert("재고가 부족합니다.");
+				return;
+			}
+		});
+	
 	//단가
 	let unit = eachRow.querySelector('.unitPrice');
 	let unitPrice = parseInt(unit.textContent);
