@@ -54,6 +54,8 @@ function eachDel(event){
 			countCartlist();      // 헤더 수량 업데이트
 		})
 	.catch(err => console.log(err));
+	
+	updateTotal();
 }
 //체크박스선택삭제
 function checkedDel(){
@@ -75,42 +77,49 @@ function checkedDel(){
 //전체삭제
 function delitem(){
 	let cartBody = document.querySelector('#basketBody');
+	
+	if (cartBody == null || cartBody.innerHTML == '') {
+		alert("장바구니에 상품이 없습니다.");
+		return;	
+	}
+	
 	fetch('cartEmpty.do')
 	.then(() => {
 			countCartlist();      // 헤더 수량 업데이트
 		})
 	.catch(err => console.log(err));
 	cartBody.remove();
+	
+	updateTotal();
 }
 
 //장바구니수량변경
 //수량변경
 //0)재고조회
 //1)+/-버튼수량변겅
-function btnChange(event, upDown){
+async function btnChange(event, upDown){
 	let changeBtn = event.target;
 	let eachRow = changeBtn.closest('.cartProduct');
 	
 	let qtyInput = eachRow.querySelector('#productQcy'); //value(수량) 디폴트 1. 
 	//상품코드
 	let prdNo = eachRow.querySelector('#selectdeProduct').value; 
-	//수량
-	let qty = parseInt(qtyInput.value); //입력된 수량가지고옴
-	qty = Math.max(1, qty+upDown);  //수량변경
-	qtyInput.value = qty; //변경된 수량 화면출력
 	
 	//재고 조회
-	fetch('checkStock.do?prdNo=' + prdNo)
-		.then(res => res.text())
-		.then(data => {
-			let stock = parseInt(data);
+	let res = await fetch('checkStock.do?prdNo=' + prdNo);
+	let data = await res.text();
+	let stock = parseInt(data);
 
-			if ( qty > (stock-1)) {   //현 재고에서 수량 못넘게
-				alert("재고가 부족합니다.");
-				return;
-			}
-		});
+	let qty = parseInt(qtyInput.value); //입력된 수량가지고옴		
+	if ((qty + upDown) > stock) {   //현 재고에서 수량 못넘게
+		alert("재고가 부족합니다.");
+		return;
+	}
 	
+	//수량
+	qty = Math.max(1, qty+upDown);  //수량변경
+	qtyInput.value = qty; //변경된 수량 화면출력
+		
 	//단가
 	let unit = eachRow.querySelector('.unitPrice');
 	let unitPrice = parseInt(unit.textContent);
@@ -118,8 +127,7 @@ function btnChange(event, upDown){
 	let totalTag = eachRow.querySelector('.totalTag')
 	totalTag.textContent = (qty * unitPrice) + '원';
 		
-	fetch('cartUpdateQty.do?prdNo='+ prdNo +'&qty=' + qty)
-	.catch(err => console.log(err));
+	await fetch('cartUpdateQty.do?prdNo='+ prdNo +'&qty=' + qty)
 	//총액
 	updateTotal();
 	
