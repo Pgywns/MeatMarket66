@@ -5,7 +5,7 @@
   
 <mapper namespace="com.yedam.mapper.CompleteMapper">
 	<!-- 주문정보 -->
-	<select id="selectOrderInfo" parameterType="String" resultType="Order">
+	<select id="selectOrderInfo" parameterType="String" resultType="Order">	
 		select *
         from tbl_order
         where user_id = #{userId}

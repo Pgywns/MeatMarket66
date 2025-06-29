@@ -2,27 +2,44 @@
  * 
  */
 // 주문 조회
-function selectOrders() {
-	fetch('selectOrder.do')
-	.then(data => data.json())
-	.then(result => {
-		document.getElementById("orderTable").innerHTML = "";
-		result.forEach(order => {
-			let template = `
-					<tr>
+async function selectOrders() {
+	let data = await fetch('selectOrder.do')
+	let result = await data.json()
+	document.getElementById("orderTable").innerHTML = "";
+	result.forEach(async order => {
+		let template = `
+					<tr onclick="toggleDetail(this)">
 						<td>${order.odNo}</td>
 						<td>${order.addrOne} ${order.addrTwo}</td>
 						<td>${order.amount}원</td>
 						<td>${order.odName}님</td>
 						<td>${order.odDate}</td>
-						<td>
-							<button class="btn" onclick="href=#">리뷰쓰기</button>
-						</td>
 					</tr>
-			`;
-			document.getElementById("orderTable").insertAdjacentHTML("beforeend", template);
+					<tr class="detail-row">
+				<td id="orderInfoTd" colspan="5">
+							<div class="detail-content">
+					`;
+		let data = await fetch('selectOrderInfo.do?odNo=' + order.odNo)
+		let result = await data.json()
+		result.forEach(orderInfo => {
+			if (order.odNo == orderInfo.odNo) {
+				template += `
+							<p>${orderInfo.prdName} ${orderInfo.odQty}개 <button class="btn" onclick="location.href='reviewForm.do?prdNo=${orderInfo.prdNo}&prdName=${orderInfo.prdName}'">리뷰쓰기</button></p>
+							`;
+			}
 		})
+		template += `
+							</div>
+							</td>
+					 </tr>`;
+		document.getElementById("orderTable").insertAdjacentHTML("beforeend", template);
 	})
+}
+
+function toggleDetail(row) {
+	const detailRow = row.nextElementSibling;
+	const content = detailRow.querySelector(".detail-content");
+	content.classList.toggle("open");
 }
 
 /*리뷰 조회 */
@@ -130,14 +147,14 @@ function selectAddress() {
 			document.getElementById("addressTable").innerHTML = "";
 			result.forEach(addr => {
 				let template = `
-									<tr>
+									<tr id="addrListTr">
 									<td>${addr.firstAddr === 'true' ? '✔️' : ''}</td>
 									<td>${addr.addrName}</td>
 									<td>${addr.zipCode}</td>
 									<td>${addr.addrOne} ${addr.addrTwo}</td>
 									<td>
 										<input id="inputAddr" type="hidden" value=${addr.addrNo}>
-										<button class="btn-delete" onclick="deleteAddress()">삭제</button>
+										<button class="btn-delete" onclick="deleteAddress('${addr.firstAddr}')">삭제</button>
 										<button class="btn" onclick="changeFisrtAddr(${addr.addrNo}, ${addr.firstAddr})">기본 배송지 설정</button>
 									</td>
 								</tr>
@@ -306,16 +323,20 @@ function checkPwMatch() {
 }
 
 // 배송지 삭제
-function deleteAddress() {
+function deleteAddress(firstAddr) {
 	let addrNo = document.getElementById("inputAddr").value;
-	console.log(addrNo)
+	console.log(firstAddr)
+	if (firstAddr === 'true') {
+		alert("기본 배송지는 삭제할 수 없습니다.")
+		return;
+	}
 
 	fetch('deleteAddress.do?addrNo=' + addrNo)
 		.then(data => data.json())
 		.then(result => {
 			if (result.retCode == 'Success') {
 				alert("성공적으로 삭제하였습니다.");
-				location.reload;
+				document.querySelector("#addrListTr").remove();
 				return;
 			} else if (result.retCode == 'Failure') {
 				alert("삭제하지 못하였습니다. 다시 시도해 주세요.");
@@ -333,7 +354,7 @@ async function changeFisrtAddr(addrNo, firstAddr) {
 		let result = await data.json();
 		if (result.retCode == 'Success') {
 			alert("기본 배송지로 설정하였습니다.");
-			location.reload;
+			location.reload();
 			return;
 		} else if (result.retCode == 'Failure') {
 			alert("기본 배송지로 설정하지 못하였습니다. 다시 시도해 주세요.");

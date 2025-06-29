@@ -8,18 +8,49 @@ window.addEventListener('DOMContentLoaded', function(){
 })
 
 let addrNo = 0; //주문서제출시 넘겨줄 주소번호 
+let usingPoint = 0; //사용할 포인트
 
-//주문버튼
+//주문버튼 (주문등록+사용적립금)
 function submitOrderForm(){
+	
+	let checkbox = document.querySelector('#Transfer-1');
+	if (!checkbox.checked) {
+		alert("상기 주문내역을 확인해주세요.");
+		return;
+	}
+	
 	let name = document.querySelector('#name').value;
 	let phone = document.querySelector('#phone').value;
+	
+	if (name == '') {
+		alert("받으시는 분 성함은 필수 항목입니다!");
+		return;
+	}
+	
+	if (phone == '') {
+		alert("연락처는 필수 항목입니다!");
+		return;
+	}
+	
+	if (phone.length != 13) {
+		alert("전화번호가 올바르지 않습니다. '-'까지 입력해주세요.")
+		return false;
+	}
+	
 	let totalEl = document.querySelector('#amount');
 	let total = totalEl.textContent
 	let amount = total.replace(/[^\d]/g, '');
-	fetch('SubmitOderForm.do?name='+ name +'&addr='+ addrNo +'&amount='+amount+'&phone=' + phone)
+	upDateUsingPoint()
+	fetch('SubmitOrderForm.do?name='+ name +'&addr='+ addrNo +'&amount='+amount+'&phone=' + phone)
 	.catch(err => console.log(err));
 	
 	location.href = 'complete.do'; 
+}
+
+//사용한 포인트 DB반영
+function upDateUsingPoint(){
+	fetch('usingPoint.do?usingPoint=' + usingPoint)
+		.catch(err => console.log(err));
 }
 
 //기본주소불러오기
@@ -35,8 +66,6 @@ function displayAdd(){
 	})
 	.catch(err => console.log(err));
 }
-
-//선택주소불러오기
 
 //주문목록출력
 function orderList() {
@@ -54,13 +83,15 @@ function orderList() {
 	})
 		.catch(err => console.log(err));
  }
-	
+ 
+ 
+let myPoint = 0; // 내 적립금 받아서 사용할 금액비교용
 //버튼클릭시 현적립금 받아오기.
-function myPoint(){
+function myPointCheck(){
 	fetch('myPoint.do')
 	.then(resp => resp.text())
 	.then(data => {
-		let myPoint = data;
+		myPoint = data;
 		let myPointEl = document.querySelector('#myPoint');
 		myPointEl.textContent = myPoint;
 	})
@@ -69,17 +100,32 @@ function myPoint(){
 //사용하기 버튼클릭시. 
 //1)subTotal - 사용할 적립금.
 function usePoint(){
-	let usingPoint = 0;
 	let usePointEl = document.querySelector('#usePoint');
-	usingPoint = usePointEl.value;
+	if(usingPoint < 1000){
+			alert("1,000P부터 사용가능합니다.");
+			usePointEl.value = "";  // 입력 초기화
+			return;
+	}
 	
-	//이영역을 orderBtn클릭시 반영되도록해야(시간나면수정)
-	fetch('usingPoint.do?usingPoint='+usingPoint)
-	.catch(err => console.log(err));
+	//사용할 적립금 비교
+	if (usingPoint > myPoint) {
+			alert("보유한 적립금보다 많이 사용할 수 없습니다.");
+			usePointEl.value = "";  // 입력 초기화
+			return;
+		}
+	usingPoint = parseInt(usePointEl.value);
 	
 	//사용적립금반영
 	let printUsePointEl = document.querySelector('#myPointPreview');
-	printUsePointEl.textContent = usingPoint + " p";
+	if (usePointEl.value == '') {
+		alert("적립금을 입력해주세요!");
+		return;
+	} else if (usingPoint < 1000) {
+		alert("적립금은 1000원부터 사용할 수 있습니다.");
+		return;		
+	} else if (usingPoint >= 1000) {
+		printUsePointEl.textContent = usingPoint + " p";
+	}
 	
 	//subtotal금액가지고 오기
 	let subTotalEl = document.querySelector('.subTotal')
@@ -90,9 +136,9 @@ function usePoint(){
 	let total = (subtotalPrice - usingPoint)
 	
 	totalEl.textContent = total.toLocaleString()+'원';	
+	
+	modal.style.display = "none";
 }
-
-
 
  //subtoal계산
  function subtotal(){
@@ -145,7 +191,7 @@ popClose.addEventListener("click", () => {
 
 // 배송지 모달 열기
 function openAddressModal() {
-	document.querySelector('#addressPopUp').style.display = 'block';
+document.querySelector('#addressPopUp').style.display = 'block';
 
 	// 주소 목록 불러오기
 	fetch('addressPop.do') 
@@ -161,7 +207,7 @@ function openAddressModal() {
 					(${addr.zipCode}) ${addr.addrOne} ${addr.addrTwo}
 				</label>
 			</div>`;
-		});
+		}); //주소선택시 폼에 반영.
 		document.querySelector('#addressList').innerHTML = list;
 	});
 }
@@ -176,7 +222,6 @@ function selectAddress(addrNoParam, zip, addr1, addr2) {
 	document.querySelector('#sample6_postcode').value = zip;
 	document.querySelector('#sample6_address').value = addr1;
 	document.querySelector('#addrTwo').value = addr2;
-	addrNo = addrNoParam;
 	document.querySelector('#addressPopUp').style.display = "none";
+	addrNo = addrNoParam;
 }
-

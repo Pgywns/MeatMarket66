@@ -123,4 +123,13 @@
 		insert into tbl_stock (prd_no, prd_stock)
 		values (#{prdNo}, #{prdStock})
 	</insert>
+
+	<!-- 재고조회(by Prd_no -->
+	<select id="selectStockByPrdNo" parameterType="int" resultType="int">		
+		select COALESCE(SUM(prd_stock), 0) stock
+		from  tbl_stock
+		where  prd_no = #{prdNo}
+	</select>
+
 </mapper>
+

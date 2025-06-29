@@ -27,7 +27,7 @@ function newMil() {
               <p class="truncate-line" style="max-height: 50px; overflow: hidden;">${mil.prdContent}</p>
               <div class="d-flex justify-content-between flex-lg-wrap">
                 <p class="text-dark fs-5 fw-bold mb-0">${mil.prdPrice}원</p>
-                <a href="#" onclick="javascript:productCart(${mil.prdNo});" class="btn border border-secondary rounded-pill px-3 text-primary">
+                <a onclick="javascript:productCart(${mil.prdNo});" class="btn border border-secondary rounded-pill px-3 text-primary">
                   <i class="fa fa-shopping-bag me-2 text-primary"></i>장바구니
                 </a>
               </div>
@@ -68,27 +68,44 @@ function newMil() {
 
 // 장바구니 누르면 등록.
 async function  productCart(productNo){
-	console.log("hi");	
 	let cartQty = 1;
 	let prdNo = productNo;
-	let boolean1 = true;
-	let data = await fetch("cart.do")
-	let result = await data.json();
-		result.forEach(cart =>{
-			if(cart.prdNo == productNo){
-				alert("장바구니에 이미 있습니다")
-				boolean1 = false;
-				return;
-			} else{
-				boolean1 = true;
-			}
-		})
-		if(!boolean1){
-			return;
-		} else{
-			
-		await fetch("cartAdd.do?prdNo="+prdNo+"&cartQty="+cartQty)
-		}
+
+	//재고확인
+	let checkStock = await fetch('checkStock.do?prdNo=' + prdNo);
+	let stock = await checkStock.text();
 	
+	if (stock == "guest") {
+		alert("로그인 후 가능합니다.");
+		return;
+	} else if (stock == "admin") {
+		alert("관리자 권한으로는 할 수 없습니다.");
+		return;
+	}
+	
+	let nowStock = parseInt(stock);
+	if (cartQty > nowStock ) {
+		alert("재고가 부족합니다. 현재 " + nowStock + "개까지 구매가능 합니다.");
+		return; // 더 진행하지 않음
+    };
+	
+	let data = await fetch("cart.do");
+	let result = await data.json();
+
+	let cartChk = result.some(cart => cart.prdNo == productNo);
+
+	if (cartChk) {
+	    alert("장바구니에 이미 있습니다");
+	    return;
+	} else {
+		
+	}
+
+	let addCart = await fetch(`cartAdd.do?prdNo=${prdNo}&cartQty=${cartQty}`);
+	let cartResult = await addCart.json();
+
+	if (cartResult.retCode == 'Success') {
+	    alert("장바구니에 추가하였습니다.");
+	}
 };
 	

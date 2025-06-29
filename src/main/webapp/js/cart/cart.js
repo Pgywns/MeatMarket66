@@ -1,9 +1,10 @@
 /*
-* cart.js   fetch로 DB랑 연동필요. 기능만구현했음. 
+* cart.js   
 */
 
 //페이지로드시 장바구니 목록출력
 window.addEventListener('DOMContentLoaded', cartList);
+
 
 function cartList() {
 	fetch('cart.do') //frontcontroller
@@ -17,9 +18,35 @@ function cartList() {
 		}
 		//위치중요! 
 		 updateTotal();
+		 
+		 if(!cartItems || cartItems.length === 0){
+			isCartEmpty= 'yes';
+		 }
 	})
 	.catch(err => console.log(err));
 }
+
+//장바구니check
+function isCartEmptyCheck(){
+	let checkbox = document.querySelector('#orderCheck');
+		if (!checkbox.checked) {
+			alert("상기 주문내역을 확인해주세요.");
+			return; //미체크시 종료
+		}
+		fetch('cartIcon.do')//카트수량확인
+			.then(result => result.json())
+			.then(data => {
+				let cartCount = data;
+				if (cartCount == 0) {
+					alert("장바구니에 상품을 담아주세요.")
+					return; //종료
+				} else{
+					location.href = 'order.do'; 
+				}
+			})
+			.catch(err => console.log(err));		
+}
+
 
 //장바구니 상품 단건삭제(엑스btn)
 function eachDel(event){
@@ -29,9 +56,12 @@ function eachDel(event){
 	fetch('cartPrdDel.do?prdNo='+prdNo)
 	.then(() => {
 			eachRow.remove();     // DOM에서 항목 제거
+			updateTotal()
 			countCartlist();      // 헤더 수량 업데이트
 		})
 	.catch(err => console.log(err));
+	
+	updateTotal();
 }
 //체크박스선택삭제
 function checkedDel(){
@@ -44,37 +74,56 @@ function checkedDel(){
 			.then(() => {
 					countCartlist();      // 헤더 수량 업데이트
 			        checked.closest('.cartProduct').remove();
+				    updateTotal();
 				})
 	            .catch(err => console.error(err));
 	    });
-	    updateTotal();
 }
 
 //전체삭제
-function delitem(){
+function delitem() {
 	let cartBody = document.querySelector('#basketBody');
+	
+	if (cartBody == null || cartBody.innerHTML == '') {
+		alert("장바구니에 상품이 없습니다.");
+		return;	
+	}
+	
 	fetch('cartEmpty.do')
-	.then(() => {
+		.then(() => {
 			countCartlist();      // 헤더 수량 업데이트
-		})
-	.catch(err => console.log(err));
-	cartBody.remove();
+
+			cartBody.remove();
+			updateTotal()
+		});
 }
 
 //장바구니수량변경
 //수량변경
 //1)+/-버튼수량변겅
-function btnChange(event, upDown){
+async function btnChange(event, upDown){
 	let changeBtn = event.target;
 	let eachRow = changeBtn.closest('.cartProduct');
 	
 	let qtyInput = eachRow.querySelector('#productQcy'); //value(수량) 디폴트 1. 
 	//상품코드
 	let prdNo = eachRow.querySelector('#selectdeProduct').value; 
+	
+	//재고 조회
+	let res = await fetch('checkStock.do?prdNo=' + prdNo);
+	let data = await res.text();
+	let stock = parseInt(data);
+
+	let qty = parseInt(qtyInput.value); //입력된 수량가지고옴		
+	if ((qty + upDown) > stock) {   //현 재고에서 수량 못넘게
+		alert("재고가 부족합니다.");
+		return;
+	}
+	
 	//수량
-	let qty = parseInt(qtyInput.value); 
-	qty = Math.max(1, qty+upDown); 
-	qtyInput.value = qty;
+	qty = Math.max(1, qty+upDown);  //수량변경
+	qtyInput.value = qty; //변경된 수량 화면출력
+		
 	//단가
 	let unit = eachRow.querySelector('.unitPrice');
 	let unitPrice = parseInt(unit.textContent);
@@ -82,8 +131,7 @@ function btnChange(event, upDown){
 	let totalTag = eachRow.querySelector('.totalTag')
 	totalTag.textContent = (qty * unitPrice) + '원';
 		
-	fetch('cartUpdateQty.do?prdNo='+ prdNo +'&qty=' + qty)
-	.catch(err => console.log(err));
+	await fetch('cartUpdateQty.do?prdNo='+ prdNo +'&qty=' + qty)
 	//총액
 	updateTotal();
 	
@@ -100,7 +148,11 @@ function keyChange(event){   //숫자지우면 안됨... 오류!!!!!!!!! 수정�
 	let unitPrice = parseInt(unit.textContent);
 	//수량
 	let qty = parseInt(keyQty.value);
-	qty = Math.max(1, qty);  //입력구간지정. 
+	// NaN일 경우 처리
+	if (isNaN(qty) || qty < 1) {
+		alert("수량은 1개 이상 입력해야 합니다.");
+		qty = 1; // 최소 1로 설정
+	}
 	keyQty.value = qty;
 	
 	//단가*수량
@@ -150,9 +202,8 @@ function makeTemplet(item){
 							<i class="fa fa-minus" ></i>
 						</button>
 					</div>
-					<input type="text"
-						class="form-control form-control-sm text-center border-0"
-						  id="productQcy" value="${item.cartQty}" oninput="keyChange(event)"/> 
+					<input type="text" class="form-control form-control-sm text-center border-0" id="productQcy" value="${item.cartQty}" oninput="keyChange(event)"
+						onblur="finalizeQty(event)" />
 					<div class="input-group-btn">
 						<button
 							class="btn btn-sm btn-plus rounded-circle bg-light border" onclick="btnChange(event, 1)">

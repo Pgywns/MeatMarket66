@@ -23,10 +23,10 @@
 			<div class="col-md-8 col-lg-7">
 				<div class="border rounded-3 p-4 bg-light">
 					<h5 class="fw-bold mb-3">주문 정보</h5>
-					<p><strong>주문일자:</strong> <span class="text-secondary" id="orderDate">2025-06-27</span></p>
-					<p><strong>받는 분:</strong> <span class="text-secondary" id="name">홍길동</span></p>
-					<p><strong>배송지:</strong> <span class="text-secondary" id="addr">서울특별시 중구 세종대로 110</span></p> 
-					<p><strong>연락처:</strong> <span class="text-secondary" id="phone">010-1234-5678</span></p>
+					<p><strong>주문일자:</strong> <span class="text-secondary" id="orderDate"></span></p>
+					<p><strong>받는 분:</strong> <span class="text-secondary" id="name"></span></p>
+					<p><strong>배송지:</strong> <span class="text-secondary" id="addr"></span></p> 
+					<p><strong>연락처:</strong> <span class="text-secondary" id="phone"></span></p>
 				</div>
 			</div>
 		</div>
@@ -57,11 +57,11 @@
 							<!-- 반복영역 -->
 							<tr id="lowListlo">
 								<th scope="row" colspan="4" class="text-end text-uppercase">결제금액</th>
-								<td ><strong id="amount">15,000원</strong></td>
+								<td ><strong id="amount"></strong></td>
 							</tr>
 							<tr>
 								<th scope="row" colspan="4" class="text-end">잔여 적립금</th>
-								<td id="myPoint">0 P</td>
+								<td id="myPoint"></td>
 							</tr>
 						</tbody>
 					</table>

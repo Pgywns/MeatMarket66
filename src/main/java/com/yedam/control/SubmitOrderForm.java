@@ -30,7 +30,6 @@ public class SubmitOrderForm implements Control {
 		String phone = req.getParameter("phone");
 		int amount = Integer.parseInt(req.getParameter("amount"));
 		int addrNo = Integer.parseInt(req.getParameter("addr"));
-		
 		OrderVO form = new OrderVO ();
 		
 		form.setUserId(userId);

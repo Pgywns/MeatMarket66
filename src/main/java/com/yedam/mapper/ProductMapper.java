@@ -46,4 +46,7 @@ public interface ProductMapper {
 	// 입출고
 	public int insertStock(StockVO stock);
 
+	//상품코드 재고조회
+	public int selectStockByPrdNo(int prdNo);
+
 }
