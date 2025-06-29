@@ -105,9 +105,7 @@ function review(prdNo) {
 
 async function addCart(orderChk) {
 	let prdQty = parseInt(document.querySelector("#prdQty").value);
-	let chkCart = true;
 
-	
 	//재고확인
 	let checkStock = await fetch('checkStock.do?prdNo=' + prdNo);
 	let stock = await checkStock.text();
@@ -115,23 +113,20 @@ async function addCart(orderChk) {
 	if (prdQty > nowStock ) {
 		alert("재고가 부족합니다. 현재 " + nowStock + "개까지 구매가능 합니다.");
 		return; // 더 진행하지 않음
-    
+    }
+	
 	let data = await fetch("cart.do");
     let result = await data.json();
 
     let cartChk = result.some(cart => cart.prdNo == prdNo);
 
     if (cartChk) {
-		if (orderChk == 'cart') {
-			alert("장바구니에 이미 있습니다");
-			return;
-		} else if (orderChk == 'order') {
-			alert("기존 장바구니 항목과 함께 구매 페이지로 이동합니다.");
-		}
+		alert("장바구니에 이미 있습니다");
+		return;
     } else {
 		countCartlist();	
 	}
-
+	
 	let addCart = await fetch(`cartAdd.do?prdNo=${prdNo}&cartQty=${prdQty}`);
 	let cartResult = await addCart.json();
 
@@ -140,7 +135,7 @@ async function addCart(orderChk) {
 			alert("장바구니에 추가하였습니다.");
 			location.reload();
 		} else if (orderChk == 'order') {
-			window.location.href = "order.do";
+			window.location.href = "cartPage.do";
 		}
 	} else if (cartResult.retCode == 'admin') {
 	    alert("관리자 권한으로는 할 수 없습니다.");

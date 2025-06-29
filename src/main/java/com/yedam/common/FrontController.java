@@ -138,7 +138,7 @@ public class FrontController extends HttpServlet {
 		map.put("/myPoint.do", new OrderMyPoint());
 		map.put("/usingPoint.do", new UsingPoint());
 		map.put("/displayAddress.do", new DispayAddressControl());
-		map.put("/SubmitOderForm.do", new SubmitOrderForm());
+		map.put("/SubmitOrderForm.do", new SubmitOrderForm());
 		map.put("/addressPop.do", new AddressPop());
 		
 		// 주문완료

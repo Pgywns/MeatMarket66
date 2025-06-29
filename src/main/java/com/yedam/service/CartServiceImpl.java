@@ -23,7 +23,7 @@ public class CartServiceImpl implements CartService{
 	public boolean emptyAll(String userId) {
 		int r = mapper.deleteList(userId);
 		System.out.println(r);
-		if (r > 1) {  //1건이상 삭제되면 성공! 
+		if (r >= 1) {  //1건이상 삭제되면 성공! 
 			sqlSession.commit();
 			return true;
 		}
