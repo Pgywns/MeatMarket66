@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.mapper.OrderInfoMapper">
+
+<!-- 주문 상세 조회 -->
+<select id="selectOrderInfo" parameterType="int" resultType="OrderInfo">
+	select o.od_id,
+	       o.od_no,
+	       o.prd_no,
+	       o.od_qty,
+	       p.prd_name
+	 from  tbl_order_info o join tbl_product p
+	 on    o.prd_no = p.prd_no
+	 where o.od_no = #{odNo}
+</select>
+</mapper>
