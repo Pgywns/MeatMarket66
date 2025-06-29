@@ -117,5 +117,4 @@
 		insert into tbl_stock (prd_no, prd_stock)
 		values (#{prdNo}, #{prdStock})
 	</insert>
-
 </mapper>

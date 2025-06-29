@@ -28,6 +28,7 @@ import com.yedam.control.CartPrdDel;
 import com.yedam.control.CartUpdateQty;
 import com.yedam.control.ChangeFalseControl;
 import com.yedam.control.ChangeFirstAddrControl;
+import com.yedam.control.CheckStock;
 import com.yedam.control.CompleteInfo;
 import com.yedam.control.CompleteList;
 import com.yedam.control.CompleteOrder;
@@ -129,6 +130,7 @@ public class FrontController extends HttpServlet {
 		map.put("/cartUpdateQty.do", new CartUpdateQty());
 		map.put("/cartIcon.do", new CountCart());
 		map.put("/cartAdd.do", new CartAddControl());
+		map.put("/checkStock.do", new CheckStock());
 
 		//주문페이지
 		map.put("/order.do", new OrderControl());

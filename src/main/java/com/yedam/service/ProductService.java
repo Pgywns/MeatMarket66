@@ -42,5 +42,6 @@ public interface ProductService {
 	
 	// 입출고
 	boolean insertStock(StockVO stock);
+	
 
 }
