@@ -32,6 +32,10 @@ public class UpdateUserControl implements Control {
 		
 		MemberService svc = new MemberServiceImpl();
 		if (svc.updateUser(member)) {
+			if (userName != null && !userName.isEmpty()) {
+				session.setAttribute("userName", userName);
+			}
+			
 			resp.getWriter().print("{\"retCode\":\"Success\"}");
 		} else {
 			resp.getWriter().print("{\"retCode\":\"Failure\"}");
