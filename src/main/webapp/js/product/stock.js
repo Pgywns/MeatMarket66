@@ -68,6 +68,7 @@ function confirmStock(prdNo, prdStock, e) {
 	.then(result => {
 		if (result.retCode == 'Success') {
 			alert("재고가 변경되었습니다.");
+			location.reload();
 		}
 	})
 }

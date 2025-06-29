@@ -57,8 +57,7 @@ import com.yedam.control.ProductOptionControl;
 import com.yedam.control.ProductPageControl;
 import com.yedam.control.ProductSearchControl;
 import com.yedam.control.RegisterControl;
-
-import com.yedam.control.ReviewListControl;
+import com.yedam.control.ReviewFormControl;
 
 import com.yedam.control.SelectAddressControl;
 import com.yedam.control.SelectBoardControl;
@@ -158,7 +157,7 @@ public class FrontController extends HttpServlet {
 		map.put("/boardinsert.do", new BoardinsertControl());
 		
 		//리뷰
-		map.put("/reviewList.do", new ReviewListControl());
+		map.put("/reviewForm.do", new ReviewFormControl());
 
 	}
 
