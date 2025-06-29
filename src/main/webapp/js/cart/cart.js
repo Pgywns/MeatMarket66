@@ -5,6 +5,8 @@
 //페이지로드시 장바구니 목록출력
 window.addEventListener('DOMContentLoaded', cartList);
 
+let isCartEmpty = 'no'
+
 function cartList() {
 	fetch('cart.do') //frontcontroller
 	.then(result => result.json())
@@ -17,9 +19,29 @@ function cartList() {
 		}
 		//위치중요! 
 		 updateTotal();
+		 
+		 if(!cartItems || cartItems.length === 0){
+			isCartEmpty= 'yes';
+		 }
 	})
 	.catch(err => console.log(err));
 }
+
+//장바구니check
+function isCartEmptyCheck(){
+	let checkbox = document.querySelector('#orderCheck');
+		if (!checkbox.checked) {
+			alert("상기 주문내역을 확인해주세요.");
+			return; //미체크시 종료
+		}
+	
+	if(isCartEmpty === 'yes'){
+		alert("장바구니에 상품을 담아주세요.")
+	} else{
+	    location.href = 'order.do'; 
+	}
+}
+
 
 //장바구니 상품 단건삭제(엑스btn)
 function eachDel(event){
@@ -100,7 +122,11 @@ function keyChange(event){   //숫자지우면 안됨... 오류!!!!!!!!! 수정�
 	let unitPrice = parseInt(unit.textContent);
 	//수량
 	let qty = parseInt(keyQty.value);
-	qty = Math.max(1, qty);  //입력구간지정. 
+	// NaN일 경우 처리
+	if (isNaN(qty) || qty < 1) {
+		alert("수량은 1개 이상 입력해야 합니다.");
+		qty = 1; // 최소 1로 설정
+	}
 	keyQty.value = qty;
 	
 	//단가*수량
@@ -150,9 +176,8 @@ function makeTemplet(item){
 							<i class="fa fa-minus" ></i>
 						</button>
 					</div>
-					<input type="text"
-						class="form-control form-control-sm text-center border-0"
-						  id="productQcy" value="${item.cartQty}" oninput="keyChange(event)"/> 
+					<input type="text" class="form-control form-control-sm text-center border-0" id="productQcy" value="${item.cartQty}" oninput="keyChange(event)"
+						onblur="finalizeQty(event)" />
 					<div class="input-group-btn">
 						<button
 							class="btn btn-sm btn-plus rounded-circle bg-light border" onclick="btnChange(event, 1)">

@@ -85,7 +85,7 @@
 									<td colspan="2" class="py-5 align-middle">
 										<button
 											class="btn border-secondary rounded-pill px-3 py-2 text-primary"
-											type="button" id="popBtn" onclick="myPoint(); modalPop();">
+											type="button" id="popBtn" onclick="myPointCheck(); modalPop();">
 											적립금 사용</button>
 									</td>
 									<td class="py-5 align-middle">
