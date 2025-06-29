@@ -2,6 +2,23 @@
 	pageEncoding="UTF-8"%>
 <link href="css/member/member.css" rel="stylesheet">
 <link href="css/member/myPage.css" rel="stylesheet">
+<style>
+.detail-content {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.4s ease;
+	padding: 0 10px;
+}
+
+.detail-content.open {
+	max-height: 200px;
+	padding: 15px 10px;
+}
+
+tr.detail-row td {
+	padding: 0;
+}
+</style>
 
 <div class="container-fluid page-header py-5"
 	style="background-image: none; background-color: #81c408;">
@@ -54,7 +71,6 @@
 						<th>주문금액</th>
 						<th>받으시는 분</th>
 						<th>날짜</th>
-						<th>리뷰</th>
 					</tr>
 				</thead>
 				<tbody id="orderTable">

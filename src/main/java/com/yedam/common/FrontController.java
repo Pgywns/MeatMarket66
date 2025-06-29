@@ -62,6 +62,7 @@ import com.yedam.control.ReviewFormControl;
 import com.yedam.control.SelectAddressControl;
 import com.yedam.control.SelectBoardControl;
 import com.yedam.control.SelectOrderControl;
+import com.yedam.control.SelectOrderInfoControl;
 import com.yedam.control.SelectPointControl;
 
 import com.yedam.control.SelectReviewControl;
@@ -110,6 +111,7 @@ public class FrontController extends HttpServlet {
 		// 마이페이지
 		map.put("/myPage.do", new MyPageControl());
 		map.put("/selectOrder.do", new SelectOrderControl());
+		map.put("/selectOrderInfo.do", new SelectOrderInfoControl());
 		map.put("/selectReveiw.do", new SelectReviewControl());
 		map.put("/selectPoint.do", new SelectPointControl());
 		map.put("/selectBoard.do", new SelectBoardControl());

@@ -2,27 +2,44 @@
  * 
  */
 // 주문 조회
-function selectOrders() {
-	fetch('selectOrder.do')
-	.then(data => data.json())
-	.then(result => {
-		document.getElementById("orderTable").innerHTML = "";
-		result.forEach(order => {
-			let template = `
-					<tr>
+async function selectOrders() {
+	let data = await fetch('selectOrder.do')
+	let result = await data.json()
+	document.getElementById("orderTable").innerHTML = "";
+	result.forEach(async order => {
+		let template = `
+					<tr onclick="toggleDetail(this)">
 						<td>${order.odNo}</td>
 						<td>${order.addrOne} ${order.addrTwo}</td>
 						<td>${order.amount}원</td>
 						<td>${order.odName}님</td>
 						<td>${order.odDate}</td>
-						<td>
-							<button class="btn" onclick="href=#">리뷰쓰기</button>
-						</td>
 					</tr>
-			`;
-			document.getElementById("orderTable").insertAdjacentHTML("beforeend", template);
+					<tr class="detail-row">
+				<td id="orderInfoTd" colspan="5">
+							<div class="detail-content">
+					`;
+		let data = await fetch('selectOrderInfo.do?odNo=' + order.odNo)
+		let result = await data.json()
+		result.forEach(orderInfo => {
+			if (order.odNo == orderInfo.odNo) {
+				template += `
+							<p>${orderInfo.prdName} ${orderInfo.odQty}개 <button class="btn" onclick="location.href='reviewForm.do?prdNo=${orderInfo.prdNo}&prdName=${orderInfo.prdName}'">리뷰쓰기</button></p>
+							`;
+			}
 		})
+		template += `
+							</div>
+							</td>
+					 </tr>`;
+		document.getElementById("orderTable").insertAdjacentHTML("beforeend", template);
 	})
+}
+
+function toggleDetail(row) {
+	const detailRow = row.nextElementSibling;
+	const content = detailRow.querySelector(".detail-content");
+	content.classList.toggle("open");
 }
 
 /*리뷰 조회 */
