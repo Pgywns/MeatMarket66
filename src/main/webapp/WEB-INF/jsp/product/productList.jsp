@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!-- Single Page Header start -->
 <input type="hidden" name="keyword" value="${search.keyword}">
 <input type="hidden" name="page" value="${search.page}">
@@ -111,6 +112,7 @@
 		</div>
 	</div>
 </div>
+
 
 <script src="js/product/productList.js"></script>
 <script src="js/product/productPage.js"></script>
