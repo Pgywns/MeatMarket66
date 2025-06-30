@@ -1,6 +1,7 @@
 /**
  * pagination;
  */
+import svc from '/js/productList.js';
 
 // 목록 첫 호출
 

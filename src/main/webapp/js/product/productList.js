@@ -1,12 +1,11 @@
 /**
  * productList.js 
  */
-
 let prdSort = "df";
 
 
 // 기능		
-const svc = {
+export const svc = {
 	// 상품 목록 (기본)
 	// 상품 전체 리스트
 	productList: async function(page) {
@@ -244,7 +243,6 @@ async function productCart(productNo) {
         alert("장바구니에 이미 있습니다");
         return;
     } else {
-		//countCartlist();	
 	}
 
     let addCart = await fetch(`cartAdd.do?prdNo=${prdNo}&cartQty=${cartQty}`);
@@ -252,5 +250,6 @@ async function productCart(productNo) {
 
     if (cartResult.retCode == 'Success') {
         alert("장바구니에 추가하였습니다.");
+		countCartlist()//장바구니아이콘 수량변경
     } 
 }
