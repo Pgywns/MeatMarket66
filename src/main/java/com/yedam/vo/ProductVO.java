@@ -6,7 +6,6 @@ import lombok.Data;
 
 @Data
 public class ProductVO {
-	
 	private int prdNo;
 	private String prdName;
 	private String prdImage;
