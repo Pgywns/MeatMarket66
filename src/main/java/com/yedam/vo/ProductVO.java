@@ -13,7 +13,7 @@ public class ProductVO {
 	private String prdContent;
 	private int prdPrice;
 	private String prdSort;
-	private Date prdDate;
+	private String prdDate;
 	private int prdCount;
 	private String prdOrder;
 	private int prdStock;	

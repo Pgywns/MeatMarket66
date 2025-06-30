@@ -9,5 +9,5 @@ import lombok.Data;
 public class PointVO {
 	private String userId;
 	private int point;
-	private Date odDate;
+	private String odDate;
 }

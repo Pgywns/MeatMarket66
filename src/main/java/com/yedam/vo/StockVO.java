@@ -8,5 +8,5 @@ import lombok.Data;
 public class StockVO {
 	private int prdNo;
 	private int prdStock;
-	private Date stDate;
+	private String stDate;
 }

@@ -10,6 +10,6 @@ public class ReviewVO {
 	private int rvwNo;
 	private String rvwContent;
 	private String rvwImage;
-	private Date rvwDate;
+	private String rvwDate;
 	private String prdName;
 }
