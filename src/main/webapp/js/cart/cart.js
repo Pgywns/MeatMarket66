@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', cartList);
 
 
 function cartList() {
-	fetch('cart.do') //frontcontroller
+	fetch('cart.do') 
 	.then(result => result.json())
 	.then(data => {
 		let cartItems = data;
@@ -15,13 +15,8 @@ function cartList() {
 		for (let item of cartItems){
 			let productList = makeTemplet(item);
 			basketBody.insertAdjacentHTML("beforeend", productList);
-		}
-		//위치중요! 
-	updateTotal();
-		 
-		if (!cartItems || cartItems.length === 0) {
-			isCartEmpty = 'yes';
-		}
+		}	
+	updateTotal(); //위치중요! 
 	})
 	.catch(err => console.log(err));
 }

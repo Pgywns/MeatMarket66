@@ -99,7 +99,6 @@ public class FrontController extends HttpServlet {
 		map.put("/productPage.do", new ProductPageControl());
 		map.put("/productSearchPage.do",new ProductSearchPageControl());
 		
-
 		// 로그인
 		map.put("/login.do", new LoginControl());
 		map.put("/logout.do", new LogoutControl());
