@@ -4,7 +4,7 @@
 <style>
 .hero-header {
 	background: linear-gradient(rgba(248, 248, 248, 0.5),
-		rgba(248, 248, 248, 0.5)), url(img/6월6일.png);
+		rgba(248, 248, 248, 0.5)), url(img/6월6일2.png);
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;

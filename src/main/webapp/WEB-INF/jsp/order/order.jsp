@@ -5,15 +5,19 @@
 
 <!-- Single Page Header start -->
 <div class="container-fluid page-header py-5">
-	<h1 class="text-center text-white display-6">Checkout</h1>
+	<h1 class="text-center text-white display-6">주문 정보</h1>
 </div>
 <!-- Single Page Header End -->
-
+<style>
+.img-fluid me-5 rounded-circle {
+	margin-left : 20px;
+}
+</style>
 
 <!-- Checkout Page Start -->
 <div class="container-fluid py-5">
 	<div class="container py-5">
-		<h1 class="mb-4">Billing details</h1>
+		<h1 class="mb-4">배송지 	</h1>
 		<!-- 폼영역 -->
 		<form action="#">
 			<div class="row g-5">
@@ -89,7 +93,7 @@
 											적립금 사용</button>
 									</td>
 									<td class="py-5 align-middle">
-										<p class="mb-0 text-dark">사용적립금</p>
+										<p class="mb-1 text-dark">사용적립금</p>
 									</td>
 									<td class="py-5 align-middle">
 										<p id="myPointPreview" class="mb-0 text-secondary">0 P</p>
