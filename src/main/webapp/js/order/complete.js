@@ -2,6 +2,7 @@
  * complete.js
  */
 window.addEventListener('DOMContentLoaded', function(){
+	countCartlist()
 	completInfo();
 	completOrderList();
 })
