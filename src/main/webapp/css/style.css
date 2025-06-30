@@ -116,6 +116,12 @@
 .topbar .top-link a small:hover i {
 	color: var(--bs-primary) !important;
 }
+
+.small_point {
+	cursor: default;
+	user-select: none;
+}
+
 /*** Topbar End ***/
 
 /*** Navbar Start ***/
