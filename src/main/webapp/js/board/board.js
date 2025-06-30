@@ -9,7 +9,7 @@ const svc = {
 			.then(result => {
 				document.querySelector('#boardCategory').innerHTML = "";
 				result.forEach((board) => {
-					let template = `<div class="accordion accordion-flush" id="accordionExample">
+					let template = `
 	            <div class="accordion-item">
 	              <h2 class="accordion-header" id="flush-heading">
 	                <button class="accordion-button collapsed" type="button"
@@ -21,14 +21,13 @@ const svc = {
 	                  [공통] ${board.boardTitle}
 	                </button>
 	              </h2>
-	              <div id="flush-collapseOne" class="accordion-collapse collapse show"
+	              <div id="flush-collapseOne" class="accordion-collapse collapse"
 	                aria-labelledby="flush-heading"
 	                data-bs-parent="#accordionExample">
 	                <div class="accordion-body w-50">
 	                  <p>${board.boardContent}</p>
 	                </div>
 	              </div>
-	            </div>
 	          `;
 					document.querySelector('#boardCategory').insertAdjacentHTML('beforeend', template);
 				});
@@ -55,14 +54,14 @@ const svc = {
 	                    aria-expanded="false"
 	                    aria-controls="my-collapseOne${idx}"
 	                    style="height: 55px">
-	                    [${board.boardCategory}] 제목: ${board.boardTitle} 내용: ${board.boardContent}
+	                    [${board.boardCategory}] ${board.boardTitle}
 	                  </button>
 	                </h2>
 	                <div id="my-collapseOne${idx}" class="accordion-collapse collapse"
 	                  aria-labelledby="my-heading${idx}"
 	                  data-bs-parent="#accordionFlushExample">
 	                  <div class="accordion-body w-50">
-	                    <p>답변: ${board.answer}</p>
+	                    <p>${board.boardContent}</p>
 	                  </div>
 	                </div>
 	              </div>`;
