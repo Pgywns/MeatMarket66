@@ -8,6 +8,7 @@ svc.productList(1);
 paginationAll(1);
 svc.searchList(1);
 pageEvent();
+svc.optionList(1);
 
 
 // 전체  상품 페이지네이션
