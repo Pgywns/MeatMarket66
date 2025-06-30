@@ -5,9 +5,19 @@
 async function selectOrders() {
 	let data = await fetch('selectOrder.do')
 	let result = await data.json()
-	document.getElementById("orderTable").innerHTML = "";
-	result.forEach(async order => {
-		let template = `
+	if (result.length === 0) {
+		document.getElementById("orderTable").innerHTML = "";
+		let emptyRow = `
+									<tr>
+										<td colspan="5" style="text-align: center;">주문 내역이 없습니다.</td>
+									</tr>
+								`;
+		document.getElementById("orderTable").insertAdjacentHTML("beforeend", emptyRow);
+		return;
+	} else {
+		document.getElementById("orderTable").innerHTML = "";
+		result.forEach(async order => {
+			let template = `
 					<tr onclick="toggleDetail(this)">
 						<td>${order.odNo}</td>
 						<td>${order.addrOne} ${order.addrTwo}</td>
@@ -19,22 +29,23 @@ async function selectOrders() {
 				<td id="orderInfoTd" colspan="5">
 							<div class="detail-content">
 					`;
-		let data = await fetch('selectOrderInfo.do?odNo=' + order.odNo)
-		let result = await data.json()
-		
-		result.forEach(orderInfo => {
-			if (order.odNo == orderInfo.odNo) {
+			let data = await fetch('selectOrderInfo.do?odNo=' + order.odNo)
+			let result = await data.json()
+
+			result.forEach(orderInfo => {
+				if (order.odNo == orderInfo.odNo) {
 					template += `
 				<p>${orderInfo.prdName} ${orderInfo.odQty}개 <button class="btn" onclick="location.href='reviewForm.do?prdNo=${orderInfo.prdNo}&prdName=${orderInfo.prdName}'">리뷰쓰기</button></p>
-				`;					
-			}
-		})
-		template += `
+				`;
+				}
+			})
+			template += `
 							</div>
 							</td>
 					 </tr>`;
-		document.getElementById("orderTable").insertAdjacentHTML("beforeend", template);
-	})
+			document.getElementById("orderTable").insertAdjacentHTML("beforeend", template);
+		})
+	}
 }
 
 function toggleDetail(row) {
@@ -48,9 +59,21 @@ function selectReviews() {
 	fetch('selectReveiw.do')
 		.then(data => data.json())
 		.then(result => {
-			document.getElementById("reviewTable").innerHTML = "";
-			result.forEach(review => {
-				let template = `
+			console.log(result);
+
+			if (result.length === 0) {
+				document.getElementById("reviewTable").innerHTML = "";
+				let emptyRow = `
+								<tr>
+									<td colspan="5" style="text-align: center;">작성된 리뷰가 없습니다.</td>
+								</tr>
+							`;
+				document.getElementById("reviewTable").insertAdjacentHTML("beforeend", emptyRow);
+				return;
+			} else {
+				document.getElementById("reviewTable").innerHTML = "";
+				result.forEach(review => {
+					let template = `
 				<tr>
 				<td>${review.prdName}</td>
 				<td>${review.rvwNo}</td>
@@ -58,9 +81,9 @@ function selectReviews() {
 				<td>${review.rvwDate}</td>
 				</tr>
 				`;
-
-				document.getElementById("reviewTable").insertAdjacentHTML("beforeend", template);
-			})
+					document.getElementById("reviewTable").insertAdjacentHTML("beforeend", template);
+				})
+			}
 		})
 }
 
@@ -92,9 +115,19 @@ function selectBoards() {
 	fetch('selectBoard.do')
 		.then(data => data.json())
 		.then(result => {
-			document.getElementById("boardTable").innerHTML = "";
-			result.forEach(board => {
-				let template = `
+			if (result.length === 0) {
+				document.getElementById("boardTable").innerHTML = "";
+				let emptyRow = `
+											<tr>
+												<td colspan="5" style="text-align: center;">내 문의가 없습니다.</td>
+											</tr>
+										`;
+				document.getElementById("boardTable").insertAdjacentHTML("beforeend", emptyRow);
+				return;
+			} else {
+				document.getElementById("boardTable").innerHTML = "";
+				result.forEach(board => {
+					let template = `
 					<tr>
 						<td>${board.boardNo}</td>
 						<td>${board.boardCategory}</td>
@@ -103,8 +136,9 @@ function selectBoards() {
 						<td>${board.boardDate}</td>
 					</tr>
 			`;
-				document.getElementById("boardTable").insertAdjacentHTML("beforeend", template);
-			})
+					document.getElementById("boardTable").insertAdjacentHTML("beforeend", template);
+				})
+			}
 		})
 }
 
@@ -148,14 +182,14 @@ function selectAddress() {
 			document.getElementById("addressTable").innerHTML = "";
 			result.forEach(addr => {
 				let template = `
-									<tr id="addrListTr">
+									<tr id="addrListTr-${addr.addrNo}">
 									<td>${addr.firstAddr === 'true' ? '✔️' : ''}</td>
 									<td>${addr.addrName}</td>
 									<td>${addr.zipCode}</td>
 									<td>${addr.addrOne} ${addr.addrTwo}</td>
 									<td>
 										<input id="inputAddr" type="hidden" value=${addr.addrNo}>
-										<button class="btn-delete" onclick="deleteAddress('${addr.firstAddr}')">삭제</button>
+										<button class="btn-delete" onclick="deleteAddress('${addr.firstAddr}', ${addr.addrNo})">삭제</button>
 										<button class="btn" onclick="changeFisrtAddr(${addr.addrNo}, ${addr.firstAddr})">기본 배송지 설정</button>
 									</td>
 								</tr>
@@ -253,7 +287,6 @@ function confirmEdit() {
 	if (currentField == 'address') {
 
 		result = "addrName=" + addrName + "&zipCode=" + zipCode + "&addrOne=" + addrOne + "&addrTwo=" + addrTwo;
-		console.log(result);
 
 		fetch('insertAddress.do?' + result)
 			.then(data => data.json())
@@ -324,9 +357,7 @@ function checkPwMatch() {
 }
 
 // 배송지 삭제
-function deleteAddress(firstAddr) {
-	let addrNo = document.getElementById("inputAddr").value;
-	console.log(firstAddr)
+function deleteAddress(firstAddr, addrNo) {
 	if (firstAddr === 'true') {
 		alert("기본 배송지는 삭제할 수 없습니다.")
 		return;
@@ -337,7 +368,7 @@ function deleteAddress(firstAddr) {
 		.then(result => {
 			if (result.retCode == 'Success') {
 				alert("성공적으로 삭제하였습니다.");
-				document.querySelector("#addrListTr").remove();
+				document.querySelector("#addrListTr-" + addrNo).remove();
 				return;
 			} else if (result.retCode == 'Failure') {
 				alert("삭제하지 못하였습니다. 다시 시도해 주세요.");
