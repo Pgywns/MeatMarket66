@@ -56,6 +56,7 @@ const svc = {
 			document.querySelector('#hidden').style.visibility = "visible";
 
 			result.forEach(product => {
+
 				makeProduct(product);
 				document.querySelector('#pList').insertAdjacentHTML('beforeend', makeProduct(product));
 				prdSort = product.prdSort;
@@ -79,6 +80,7 @@ const svc = {
 				result.forEach(product => {
 					makeProduct(product);
 					document.querySelector('#pList').insertAdjacentHTML('beforeend', makeProduct(product));
+
 				});
 				let target = document.querySelector('.pagination');
 				target.innerHTML = "";

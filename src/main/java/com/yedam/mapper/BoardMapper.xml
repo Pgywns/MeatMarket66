@@ -13,6 +13,7 @@ select board_no,
        board_category,
        answer
 from tbl_board
+order by board_no
 </select>
 <!-- 1:1문의 -->
 <insert id="addBoard">
@@ -64,4 +65,11 @@ from tbl_board
 where user_id = #{userId}
 order by board_no desc
 </select>
+
+<!-- 답변 등록 -->
+<update id="insertAnswer" parameterType="Board">
+	update tbl_board set answer = #{answer}
+	where board_no = #{boardNo}
+</update>
+
 </mapper>

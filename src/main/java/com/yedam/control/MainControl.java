@@ -25,7 +25,6 @@ public class MainControl implements Control {
 		MainService svc = new MainServiceImpl();
 		List<ProductVO> list = svc.hotProductList();
 		req.setAttribute("Hlist", list);
-		session.setAttribute("Hlist", list);
 		
 		// 리뷰 목록
 		List<ReviewVO> listR = svc.mainReview();
@@ -38,7 +37,6 @@ public class MainControl implements Control {
 		}
 		
 		req.setAttribute("Rlist", listR);
-		session.setAttribute("Rlist", listR);
 		
 		String auth = null;
 		if (session.getAttribute("auth") != null) {

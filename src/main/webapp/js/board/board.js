@@ -10,7 +10,6 @@ const svc = {
 				document.querySelector('#boardCategory').innerHTML = "";
 				result.forEach((board) => {
 					let template = `
-			<div class="accordion accordion-flush" id="accordionExample">
 	            <div class="accordion-item">
 	              <h2 class="accordion-header" id="flush-heading">
 	                <button class="accordion-button collapsed" type="button"
@@ -22,19 +21,20 @@ const svc = {
 	                  [공통] ${board.boardTitle}
 	                </button>
 	              </h2>
-	              <div id="flush-collapseOne" class="accordion-collapse collapse show"
+	              <div id="flush-collapseOne" class="accordion-collapse collapse"
 	                aria-labelledby="flush-heading"
-	                data-bs-parent="#accordionFlushExample">
+	                data-bs-parent="#accordionExample">
 	                <div class="accordion-body w-50">
 	                  <p>${board.boardContent}</p>
 	                </div>
 	              </div>
-	            </div>
 	          `;
-
 					document.querySelector('#boardCategory').insertAdjacentHTML('beforeend', template);
 				});
-
+				//클릭된것처럼 화면 한번 열려짐
+				document.querySelectorAll('#boardCategory div.accordion-item button').forEach(item => {
+					item.click();
+				})
 			})
 			.catch(err => console.log(err));
 	},
@@ -46,8 +46,7 @@ const svc = {
 			.then(result => {
 				document.querySelector('#boardCategory').innerHTML = "";
 				result.forEach((board, idx) => {
-					let template = `
-	              <div class="accordion-item" id="myboard${idx}">
+					let template = ` <div class="accordion-item" id="myboard${idx}">
 	                <h2 class="accordion-header" id="my-heading${idx}">
 	                  <button class="accordion-button collapsed" type="button"
 	                    data-bs-toggle="collapse"
@@ -65,11 +64,14 @@ const svc = {
 	                    <p>${board.boardContent}</p>
 	                  </div>
 	                </div>
-	              </div>
-            `;
+	              </div>`;
 					document.querySelector('#boardCategory').insertAdjacentHTML('beforeend', template);
 					//document.querySelector('button.accordion-button').click();
 				});
+				//클릭된것처럼 화면 한번 열려짐
+				document.querySelectorAll('#boardCategory div.accordion-item button').forEach(item => {
+					item.click();
+				})
 				/*if (!hasMine) {
 					document.querySelector('#boardCategory').innerHTML = "<p>내 문의가 없습니다.</p>";
 					//location.href = 'login.do';
@@ -98,3 +100,4 @@ document.querySelector('#userBtn').addEventListener('click', () => {
 		svc.btnClickList(boardCategory);
 	}
 });
+

@@ -39,15 +39,16 @@ public class AddReviewControl implements Control {
 		String content = mr.getParameter("content");
 		String prdImage = mr.getFilesystemName("prdImage");
 		
-		
 		java.io.File folder = new java.io.File(path);
 	    if (!folder.exists()) {
 	        folder.mkdirs();
 	    }
-  
-	    java.io.File oldFile = new java.io.File(path, prdImage);
-	    java.io.File newFile = new java.io.File(path, prdImage);
-	    oldFile.renameTo(newFile);
+	    
+	    if (prdImage != null) {
+	    	java.io.File oldFile = new java.io.File(path, prdImage);
+	    	java.io.File newFile = new java.io.File(path, prdImage);
+	    	oldFile.renameTo(newFile);	    	
+	    }
 	    
 	    ReviewVO review = new ReviewVO();
 	    
@@ -55,12 +56,12 @@ public class AddReviewControl implements Control {
 		review.setPrdName(prdName);
 		review.setUserId(userId);
 		review.setRvwContent(content);
-		review.setRvwImage(prdImage);
+		review.setRvwImage(prdImage);			
 		
 		ReviewService svc = new ReviewServiceImpl();
 		
 		if (svc.addReview(review)) {
-			req.getRequestDispatcher("member/myPage.tiles").forward(req, resp);
+			resp.sendRedirect("myPage.do");
 		}
 	}
 

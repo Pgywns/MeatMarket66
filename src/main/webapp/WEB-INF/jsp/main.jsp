@@ -145,7 +145,7 @@
 							<div class="col-6">
 								<a href="#" class="h4">${hot.prdName }</a>
 								<p></p>
-								<h4 class="mb-3">${hot.prdPrice }원</h4>
+								<h4 class="mb-3">${hot.prdPrice}원</h4>
 								<a onclick="javascript:productCart(${hot.prdNo });"
 									class="btn border border-secondary rounded-pill px-3 text-primary"><i
 									class="fa fa-shopping-bag me-2 text-primary"></i>장바구니</a>
@@ -179,7 +179,7 @@
 						</div>
 						<div class="d-flex align-items-center flex-nowrap">
 							<div class="bg-secondary rounded">
-								<img src="img/${review.rvwImage }" class="img-fluid rounded"
+								<img src="img/review/${review.rvwImage }" class="img-fluid rounded"
 									style="width: 100px; height: 100px;" alt="">
 							</div>
 							<div class="ms-4 d-block">

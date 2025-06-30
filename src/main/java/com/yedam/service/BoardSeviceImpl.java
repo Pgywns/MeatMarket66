@@ -46,4 +46,14 @@ public class BoardSeviceImpl implements BoardSevice{
 		// TODO Auto-generated method stub
 		return mapper.selectBoardToUserId(board);
 	}
+	@Override
+	public boolean insertAnswer(BoardVO board) {
+		int r = mapper.insertAnswer(board);
+		
+		if(r == 1) {
+			sqlSession.commit();
+			return true;
+		}
+		return false;
+	}
 }

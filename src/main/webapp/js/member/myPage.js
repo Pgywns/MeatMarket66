@@ -21,7 +21,7 @@ async function selectOrders() {
 					<tr onclick="toggleDetail(this)">
 						<td>${order.odNo}</td>
 						<td>${order.addrOne} ${order.addrTwo}</td>
-						<td>${order.amount}원</td>
+						<td>${(order.amount).toLocaleString()}원</td>
 						<td>${order.odName}님</td>
 						<td>${order.odDate}</td>
 					</tr>
@@ -101,7 +101,7 @@ function selectPoints() {
 				const template = `
 				          <tr>
 				            <td>${point.odDate}</td>
-				            <td style="color: ${pointColor}; font-weight: bold;">${pointText}</td>
+				            <td style="color: ${pointColor}; font-weight: bold;">${pointText + 'P'}</td>
 				          </tr>
 				        `;
 
@@ -128,14 +128,33 @@ function selectBoards() {
 				document.getElementById("boardTable").innerHTML = "";
 				result.forEach(board => {
 					let template = `
-					<tr>
-						<td>${board.boardNo}</td>
-						<td>${board.boardCategory}</td>
-						<td>${board.boardTitle}</td>
-						<td>${board.boardContent}</td>
-						<td>${board.boardDate}</td>
-					</tr>
-			`;
+					
+					<tr onclick="toggleDetail(this)">
+					<td>${board.boardNo}</td>
+					<td>${board.boardCategory}</td>
+					<td>${board.boardTitle}</td>
+					<td>${board.boardContent}</td>
+					<td>${board.boardDate}</td>
+				</tr>
+				<tr class="detail-row">
+			<td id="orderInfoTd" colspan="5">
+						<div class="detail-content">
+						`;
+						
+						if (board.answer != null) {
+									template += `
+										${board.answer }
+									`;			
+						} else {
+							template += `
+								아직 답변이 없습니다.
+							`;
+						}
+					template += `
+						</div>
+							</td>
+					 </tr>
+					 `;
 					document.getElementById("boardTable").insertAdjacentHTML("beforeend", template);
 				})
 			}

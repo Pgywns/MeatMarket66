@@ -5,7 +5,7 @@
 
 <!-- Single Page Header start -->
 <div class="container-fluid page-header py-5">
-	<h1 class="text-center text-white display-6">Cart</h1>
+	<h1 class="text-center text-white display-6">장바구니</h1>
 
 </div>
 <!-- Single Page Header End -->
@@ -48,11 +48,11 @@
 				<div class="bg-light rounded">
 					<div class="p-4 border-bottom">
 						<h1 class="display-6 mb-4">
-							Cart <span class="fw-normal">Total</span>
+							장바구니 <span class="fw-normal"></span>
 						</h1>
 						<div class="d-flex justify-content-between mb-4">
 							<h5 class="mb-0 me-4">결제금액:</h5>
-							<p class="mb-0 totalEl">$96.00</p>
+							<p class="mb-0 totalEl"></p>
 						</div>
 					</div>
 				</div>

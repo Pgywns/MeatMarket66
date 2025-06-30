@@ -106,7 +106,7 @@ body {
 				<input type="text" id="userName" name="userName" value="${userName }" readonly/> 
 				<label for="content">리뷰 내용</label>
 				<textarea id="content" name="content" placeholder="예) 신선하고 맛있네요 ^^" required></textarea>
-				<input type="file" name="prdImage" accept=".png, .jpg" id="prdImage" required style="margin-top: 15px;">
+				<input type="file" name="prdImage" accept=".png, .jpg" id="prdImage" style="margin-top: 15px;">
 				<button type="submit" class="submit-btn">리뷰 등록</button>
 			</form>
 

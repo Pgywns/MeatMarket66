@@ -11,7 +11,7 @@ fetch("adminProductList.do")
 				<td>${product.prdNo }</td>
 				<td>${product.prdName }</td>
 				<td>${product.prdSort }</td>
-				<td>${product.prdPrice }원</td>
+				<td>${(product.prdPrice).toLocaleString() }원</td>
 				<td>${product.prdDate }</td>
 			</tr>
 			<tr class="detail-row">
