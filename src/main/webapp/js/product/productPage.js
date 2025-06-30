@@ -6,8 +6,9 @@
 
 svc.productList(1);
 paginationAll(1);
+svc.searchList(1);
 pageEvent();
-paginationSearch(1);
+
 
 // 전체  상품 페이지네이션
 function paginationAll(page) {
@@ -63,10 +64,10 @@ function pageEvent(){
 		
 		if(e.target.dataset.page){
 			let page = parseInt(e.target.dataset.page);
-			svc.productList(page);
 			
 			if(document.querySelector('#search2').value == ""){
 			paginationAll(page);
+			svc.productList(page);
 			} else {
 				paginationSearch(page);
 				svc.searchList(page); 
@@ -78,9 +79,7 @@ function pageEvent(){
 
 function paginationSearch(page) {
 	document.querySelector("#search2").addEventListener('input', async function(e) {
-	svc.searchList(page);
 	let keyword = e.target.value;
-	console.log(keyword);
 	let data = await fetch("productSearchPage.do?keyword=" + keyword)
 	let result = await data.json();
 			let totalCnt = result.totalCnt;
