@@ -45,7 +45,6 @@ public class MyPageControl implements Control {
 		BoardSevice bsv = new BoardSeviceImpl();
 		int totalBoard = bsv.BoardToTalCount(userId);
 		req.setAttribute("totalBoard", totalBoard);
-		System.out.println(totalBoard);
 		
 		req.getRequestDispatcher("member/myPage.tiles").forward(req, resp);
 	}

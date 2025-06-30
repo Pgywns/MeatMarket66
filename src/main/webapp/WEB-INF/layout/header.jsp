@@ -5,13 +5,13 @@
             <div class="container topbar bg-primary d-none d-lg-block">
                 <div class="d-flex justify-content-between">
                     <div class="top-info ps-2">
-                        <small class="me-3"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> <a href="#" class="text-white">대구광역시 중구 중앙대로 403</a></small>
-                        <small class="me-3"><i class="fas fa-envelope me-2 text-secondary"></i><a href="#" class="text-white">0606@6mont6day.com</a></small>
+                        <small class="text-white me-3 small_point"><i class="fas fa-map-marker-alt me-2 text-secondary"></i> 대구광역시 중구 중앙대로 403</small>
+                        <small class="text-white me-3 small_point"><i class="fas fa-envelope me-2 text-secondary"></i>0606@6mont6day.com</small>
                     </div>
                     <div class="top-link pe-2">
-                        <a href="#" class="text-white"><small class="text-white mx-2">오늘도 육즙이 팡팡!</small>/</a>
-                        <a href="#" class="text-white"><small class="text-white mx-2">고기 앞에선 누구나 평등하다.</small>/</a>
-                        <a href="#" class="text-white"><small class="text-white ms-2">고기의 품격, 배송의 속도 육월육일</small></a>
+                        <small class="text-white mx-2 small_point">오늘도 육즙이 팡팡!</small>/
+                        <small class="text-white mx-2 small_point">고기 앞에선 누구나 평등하다.</small>/
+                        <small class="text-white ms-2 small_point">고기의 품격, 배송의 속도 육월육일</small>
                     </div>
                 </div>
             </div>

@@ -56,7 +56,6 @@ public class SelectOrderInfoControl implements Control {
 
 	    Gson gson = new GsonBuilder().setPrettyPrinting().create();
 	    String json = gson.toJson(list);
-	    System.out.println(json);
 
 	    PrintWriter out = resp.getWriter();
 	    out.print(json);

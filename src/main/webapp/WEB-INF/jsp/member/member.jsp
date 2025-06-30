@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<link href="css/member/member.css" rel="stylesheet">
 <link src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -14,6 +15,11 @@
 				<a class="outer-link pull-left" href="findAccount.do">계정을 잃어버리셨나요?</a>
 				<button type="submit" class="btn btn-submit btn-default pull-right">로그인</button>
 			</form>
+			<c:if test="${not empty msg}">
+	<script>
+		alert("${msg}");
+	</script>
+</c:if>
 		</div>
 	</div>
 	<div class="login-content login-content-signup ng-hide"
