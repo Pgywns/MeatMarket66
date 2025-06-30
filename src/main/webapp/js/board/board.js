@@ -4,25 +4,26 @@ let boardCategory = "상품";
 const svc = {
 	// 공통 글 목록 조회
 	btnClickList(boardCategory) {
-		fetch('boardList.do?boardCategory='+ boardCategory)
+		fetch('boardList.do?boardCategory=' + boardCategory)
 			.then(data => data.json())
 			.then(result => {
 				document.querySelector('#boardCategory').innerHTML = "";
-				result.forEach((board, idx) => {
-			let template = `
-	            <div class="accordion-item" id="acboard${idx}">
-	              <h2 class="accordion-header" id="flush-heading${idx}">
+				result.forEach((board) => {
+					let template = `
+			<div class="accordion accordion-flush" id="accordionExample">
+	            <div class="accordion-item">
+	              <h2 class="accordion-header" id="flush-heading">
 	                <button class="accordion-button collapsed" type="button"
 	                  data-bs-toggle="collapse"
-	                  data-bs-target="#flush-collapseOne${idx}"
+	                  data-bs-target="#flush-collapseOne"
 	                  aria-expanded="false"
-	                  aria-controls="flush-collapseOne${idx}"
+	                  aria-controls="flush-collapseOne"
 	                  style="height: 55px">
 	                  [공통] ${board.boardTitle}
 	                </button>
 	              </h2>
-	              <div id="flush-collapseOne${idx}" class="accordion-collapse collapse"
-	                aria-labelledby="flush-heading${idx}"
+	              <div id="flush-collapseOne" class="accordion-collapse collapse show"
+	                aria-labelledby="flush-heading"
 	                data-bs-parent="#accordionFlushExample">
 	                <div class="accordion-body w-50">
 	                  <p>${board.boardContent}</p>
@@ -31,8 +32,9 @@ const svc = {
 	            </div>
 	          `;
 
-		document.querySelector('#boardCategory').insertAdjacentHTML('beforeend', template);
+					document.querySelector('#boardCategory').insertAdjacentHTML('beforeend', template);
 				});
+
 			})
 			.catch(err => console.log(err));
 	},
@@ -45,28 +47,28 @@ const svc = {
 				document.querySelector('#boardCategory').innerHTML = "";
 				result.forEach((board, idx) => {
 					let template = `
-              <div class="accordion-item" id="myboard${idx}">
-                <h2 class="accordion-header" id="my-heading${idx}">
-                  <button class="accordion-button collapsed" type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#my-collapseOne${idx}"
-                    aria-expanded="false"
-                    aria-controls="my-collapseOne${idx}"
-                    style="height: 55px">
-                    [${board.boardCategory}] ${board.boardTitle}
-                  </button>
-                </h2>
-                <div id="my-collapseOne${idx}" class="accordion-collapse collapse"
-                  aria-labelledby="my-heading${idx}"
-                  data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body w-50">
-                    <p>${board.boardContent}</p>
-                  </div>
-                </div>
-              </div>
+	              <div class="accordion-item" id="myboard${idx}">
+	                <h2 class="accordion-header" id="my-heading${idx}">
+	                  <button class="accordion-button collapsed" type="button"
+	                    data-bs-toggle="collapse"
+	                    data-bs-target="#my-collapseOne${idx}"
+	                    aria-expanded="false"
+	                    aria-controls="my-collapseOne${idx}"
+	                    style="height: 55px">
+	                    [${board.boardCategory}] ${board.boardTitle}
+	                  </button>
+	                </h2>
+	                <div id="my-collapseOne${idx}" class="accordion-collapse collapse"
+	                  aria-labelledby="my-heading${idx}"
+	                  data-bs-parent="#accordionFlushExample">
+	                  <div class="accordion-body w-50">
+	                    <p>${board.boardContent}</p>
+	                  </div>
+	                </div>
+	              </div>
             `;
-			document.querySelector('#boardCategory').insertAdjacentHTML('beforeend', template);
-
+					document.querySelector('#boardCategory').insertAdjacentHTML('beforeend', template);
+					//document.querySelector('button.accordion-button').click();
 				});
 				/*if (!hasMine) {
 					document.querySelector('#boardCategory').innerHTML = "<p>내 문의가 없습니다.</p>";
