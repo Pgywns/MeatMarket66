@@ -122,9 +122,12 @@ async function btnChange(event, upDown){
 	//단가
 	let unit = eachRow.querySelector('.unitPrice');
 	let unitPrice = parseInt(unit.textContent);
+	
 	//단가*수량
 	let totalTag = eachRow.querySelector('.totalTag')
-	totalTag.textContent = (qty * unitPrice) + '원';
+	totalTag.textContent = (qty * unitPrice).toLocaleString() + '원';
+	
+	
 		
 	await fetch('cartUpdateQty.do?prdNo='+ prdNo +'&qty=' + qty)
 	//총액
@@ -149,10 +152,10 @@ function keyChange(event){   //
 		qty = 1; // 최소 1로 설정
 	}
 	keyQty.value = qty;
-	
+		
 	//단가*수량
 	let totalTag = eachRow.querySelector('.totalTag')
-	totalTag.textContent = (qty * unitPrice) + '원';
+	totalTag.textContent = (qty * unitPrice).toLocaleString()+ '원';
 	//DB반영
 	fetch('cartUpdateQty.do?prdNo='+ prdNo +'&qty=' + qty)
 	.catch(err => console.log(err));
@@ -208,7 +211,7 @@ function makeTemplet(item){
 				</div>
 			</td>
 			<td>
-				<p class="mb-0 mt-4 totalTag">${item.prdPrice * item.cartQty} 원</p>
+				<p class="mb-0 mt-4 totalTag">${(item.prdPrice * item.cartQty).toLocaleString() + '원'}</p>
 			</td>
 			<td>
 				<button id="delbtn" class="btn btn-md rounded-circle bg-light border mt-4" onclick="eachDel(event)">

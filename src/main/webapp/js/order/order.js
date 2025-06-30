@@ -122,7 +122,7 @@ function usePoint(){
 	
 	//subtotal금액가지고 오기
 	let subTotalEl = document.querySelector('.subTotal')
-	let subtotalPrice = subTotalEl.textContent;
+	let subtotalPrice = subTotalEl.textContent
 	
 	//total금액반영
 	let totalEl = document.querySelector('#amount');

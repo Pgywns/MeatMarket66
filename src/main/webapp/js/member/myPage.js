@@ -21,7 +21,7 @@ async function selectOrders() {
 					<tr onclick="toggleDetail(this)">
 						<td>${order.odNo}</td>
 						<td>${order.addrOne} ${order.addrTwo}</td>
-						<td>${order.amount}원</td>
+						<td>${(order.amount).toLocaleString()}원</td>
 						<td>${order.odName}님</td>
 						<td>${order.odDate}</td>
 					</tr>
@@ -101,7 +101,7 @@ function selectPoints() {
 				const template = `
 				          <tr>
 				            <td>${point.odDate}</td>
-				            <td style="color: ${pointColor}; font-weight: bold;">${pointText}</td>
+				            <td style="color: ${pointColor}; font-weight: bold;">${pointText + 'P'}</td>
 				          </tr>
 				        `;
 
