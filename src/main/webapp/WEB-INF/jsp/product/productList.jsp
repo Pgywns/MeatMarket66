@@ -13,7 +13,7 @@
 </style>
 
 <div class="container-fluid page-header py-5">
-	<h1 class="text-center text-white display-6">Shop List</h1>
+	<h1 class="text-center text-white display-6">쇼핑하기</h1>
 
 </div>
 <!-- Single Page Header End -->
