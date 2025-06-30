@@ -144,6 +144,7 @@ async function addCart(orderChk) {
 		if (orderChk == 'cart') {
 			alert("장바구니에 추가하였습니다.");
 			location.reload();
+			countCartlist()//장바구니아이콘 수량변경
 		} else if (orderChk == 'order') {
 			window.location.href = "cartPage.do";
 		}
