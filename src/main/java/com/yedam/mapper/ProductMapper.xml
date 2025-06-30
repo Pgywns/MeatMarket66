@@ -81,7 +81,7 @@
 	<select id="selectCountSearch">
 		select count(*)
 		from tbl_product
-		where prd_name like '%' || # {keyword} || '%'
+		where prd_name like '%' || #{keyword} || '%'
 	</select>
 	
 	<!-- 상품 전체 갯수 -->
