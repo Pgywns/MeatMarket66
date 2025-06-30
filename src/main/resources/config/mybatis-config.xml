@@ -33,7 +33,7 @@
 				<property name="driver"
 					value="oracle.jdbc.driver.OracleDriver" />
 				<property name="url"
-					value="jdbc:oracle:thin:@localhost:1521:xe" />
+					value="jdbc:oracle:thin:@192.168.0.19:1521:xe" />
 				<property name="username" value="project0606" />
 				<property name="password" value="project0606" />
 			</dataSource>

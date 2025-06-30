@@ -19,7 +19,8 @@ function newMil() {
         let str = `
           <div class="border border-primary rounded position-relative vesitable-item">
             <div class="vesitable-img">
-              <img src="img/productList/${mil.prdSort}/${mil.prdImage}" class="img-fluid w-100 rounded-top" alt="">
+				<a href="productDetail.do?prdSort=${mil.prdSort}&prdNo=${mil.prdNo}&prdImage=${mil.prdImage}&prdName=${mil.prdName}&prdPrice=${mil.prdPrice}&prdContent=${mil.prdContent}">
+              <img src="img/productList/${mil.prdSort}/${mil.prdImage}" class="img-fluid w-100 rounded-top" alt=""></a>
             </div>
             <div class="text-white bg-primary px-3 py-1 rounded position-absolute" style="top: 10px; right: 10px;">밀키트</div>
             <div class="p-4 rounded-bottom">

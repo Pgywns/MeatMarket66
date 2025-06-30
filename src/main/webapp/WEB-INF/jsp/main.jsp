@@ -138,8 +138,9 @@
 					<div class="p-4 rounded bg-light">
 						<div class="row align-items-center">
 							<div class="col-6">
+								<a href="productDetail.do?prdSort=${hot.prdSort}&prdNo=${hot.prdNo}&prdImage=${hot.prdImage}&prdName=${hot.prdName}&prdPrice=${hot.prdPrice}&prdContent=${hot.prdContent}">
 								<img src="img/productList/${hot.prdSort }/${hot.prdImage}"
-									class="img-fluid rounded-circle w-100" alt="">
+									class="img-fluid rounded-circle w-100" alt=""></a>
 							</div>
 							<div class="col-6">
 								<a href="#" class="h4">${hot.prdName }</a>
