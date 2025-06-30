@@ -26,7 +26,7 @@
 				<button class="nav-link border-white border-bottom-0" type="button"
 					role="tab" id="nav-mission-tab" data-bs-toggle="tab"
 					data-bs-target="#nav-mission" aria-controls="nav-mission"
-					aria-selected="false" onclick="javascript:svc.btnClickList('이벤트');">변경 / 취소 /반품</button>
+					aria-selected="false" onclick="javascript:svc.btnClickList('이벤트');">변경 / 취소 / 반품</button>
 				<button class="nav-link border-white border-bottom-0" type="button"
 					role="tab" id="nav-mission-tab" data-bs-toggle="tab"
 					data-bs-target="#nav-mission" aria-controls="nav-mission"
@@ -34,7 +34,7 @@
 				<button class="nav-link border-white border-bottom-0" type="button"
 					role="tab" data-bs-toggle="tab"
 					data-bs-target="#nav-mission" aria-controls="nav-mission"
-					aria-selected="false" id="userBtn" onclick="javascript:svc.btnClickList('내문의');">내 문의</button>
+					aria-selected="false" id="userBtn" onclick="javascript:svc.btnclickMine();">내 문의</button>
 			</div>
 		</nav>
 	</div>
