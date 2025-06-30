@@ -77,7 +77,7 @@ const svc = {
 	},
 	// 글쓰기 페이지 이동
 	btnclickinsert() {
-		location.href = 'boardinsert.do';
+		location.href = 'boardForm.do';
 	}
 };
 // 처음 화면에 공통 문의 불러오기

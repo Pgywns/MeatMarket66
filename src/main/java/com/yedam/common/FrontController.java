@@ -16,6 +16,7 @@ import com.yedam.control.AddReviewControl;
 import com.yedam.control.AddressPop;
 import com.yedam.control.AdminProductListControl;
 import com.yedam.control.BoardControl;
+import com.yedam.control.BoardFormControl;
 import com.yedam.control.BoardListControl;
 
 import com.yedam.control.BoardinsertControl;
@@ -161,6 +162,7 @@ public class FrontController extends HttpServlet {
 		map.put("/boardList.do", new BoardListControl());
 		map.put("/boardinsert.do", new BoardinsertControl());
 		map.put("/myBoardList.do", new MyBoardListControl());
+		map.put("/boardForm.do", new BoardFormControl());
 		//리뷰
 		map.put("/reviewForm.do", new ReviewFormControl());
 		map.put("/addReview.do", new AddReviewControl());
