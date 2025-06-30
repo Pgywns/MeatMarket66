@@ -13,8 +13,13 @@ import com.yedam.service.AddressService;
 import com.yedam.service.AddressServiceImpl;
 import com.yedam.service.MemberService;
 import com.yedam.service.MemberServiceImpl;
+import com.yedam.service.OrderService;
+import com.yedam.service.OrderServiceImpl;
+import com.yedam.service.PointService;
+import com.yedam.service.PointServiceImpl;
 import com.yedam.vo.AddressVO;
 import com.yedam.vo.MemberVO;
+import com.yedam.vo.PointVO;
 
 public class RegisterControl implements Control {
 
@@ -49,9 +54,10 @@ public class RegisterControl implements Control {
 			
 			MemberService msv = new MemberServiceImpl();
 			AddressService asv = new AddressServiceImpl();
+			OrderService osv = new OrderServiceImpl();
 			
 			
-			if (msv.insertMember(member) && asv.insertAdd(add)) {
+			if (msv.insertMember(member) && asv.insertAdd(add) && osv.addPoint(id, 1000)) {
 				resp.sendRedirect("login.do");
 			} 
 		}
