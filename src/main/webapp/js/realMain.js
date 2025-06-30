@@ -27,7 +27,7 @@ function newMil() {
               <h4 class="text-truncate" style="max-width: 200px;">${mil.prdName}</h4>
               <p class="truncate-line" style="max-height: 50px; overflow: hidden;">${mil.prdContent}</p>
               <div class="d-flex justify-content-between flex-lg-wrap">
-                <p class="text-dark fs-5 fw-bold mb-0">${mil.prdPrice}원</p>
+                <p class="text-dark fs-5 fw-bold mb-0">${(mil.prdPrice).toLocaleString()}원</p>
                 <a onclick="javascript:productCart(${mil.prdNo});" class="btn border border-secondary rounded-pill px-3 text-primary">
                   <i class="fa fa-shopping-bag me-2 text-primary"></i>장바구니
                 </a>
