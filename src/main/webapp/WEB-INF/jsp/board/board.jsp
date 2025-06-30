@@ -38,7 +38,8 @@
 			</div>
 		</nav>
 	</div>
-	<div class="container" id="boardCategory"></div>
+	<div class="container" id="boardCategory">
+	</div>
 </div>
 
 <script src="js/board/board.js"></script>
