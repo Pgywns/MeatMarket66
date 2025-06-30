@@ -14,5 +14,6 @@
 	 from  tbl_order_info o join tbl_product p
 	 on    o.prd_no = p.prd_no
 	 where o.od_no = #{odNo}
+	 order by prd_no asc
 </select>
 </mapper>

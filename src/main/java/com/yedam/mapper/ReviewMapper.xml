@@ -30,6 +30,7 @@
 		from tbl_review r join tbl_product p
         on r.prd_no = p.prd_no
 		where user_id = #{userId}
+		order by rvw_no asc
 	</select>
 	
 	<insert id="insertReview" parameterType="Review">

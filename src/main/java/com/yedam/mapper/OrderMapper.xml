@@ -69,6 +69,7 @@
 		from   tbl_order o join tbl_addr a
 		on    o.addr_no = a.addr_no
 		where  o.user_id = #{userId}
+		order by od_no asc
 	</select>
 
 	<!-- 포인트적립 -->

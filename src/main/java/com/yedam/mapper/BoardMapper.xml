@@ -53,5 +53,6 @@ select board_no,
        answer
 from tbl_board
 where user_id = #{userId}
+order by board_no desc
 </select>
 </mapper>

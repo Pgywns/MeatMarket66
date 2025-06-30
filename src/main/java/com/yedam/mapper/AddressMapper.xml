@@ -25,6 +25,7 @@
 		first_addr
 		from tbl_addr
 		where user_id = #{userId}
+		order by addr_no asc
 	</select>
 
 	<!-- 주소 삭제 -->
