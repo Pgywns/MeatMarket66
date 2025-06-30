@@ -18,9 +18,9 @@ public class BoardSeviceImpl implements BoardSevice{
 		return mapper.selectList();
 	}
 	@Override
-	public List<BoardVO> clickboardList(String boardTitle) {
+	public List<BoardVO> clickboardList(String boardCategory) {
 		// TODO Auto-generated method stub
-		return mapper.clickList(boardTitle);
+		return mapper.clickList(boardCategory);
 	}
 	@Override
 	public boolean insertBoard(String userId, String boardTitle, String boardContent,String boardCategory) {
@@ -31,11 +31,6 @@ public class BoardSeviceImpl implements BoardSevice{
 		}
 		return false;
 	}
-	@Override
-	public List<ReviewVO> selectBoardToUserId(String userId) {
-		// TODO Auto-generated method stub
-		return mapper.selectBoardToUserId(userId);
-	}
 
 	@Override
 	public int BoardToTalCount(String id) {
@@ -45,5 +40,10 @@ public class BoardSeviceImpl implements BoardSevice{
 	@Override
 	public List<BoardVO> selectBoards(String id) {
 		return mapper.selectBoards(id);
+	}
+	@Override
+	public List<BoardVO> selectMyBoard(BoardVO board) {
+		// TODO Auto-generated method stub
+		return mapper.selectBoardToUserId(board);
 	}
 }

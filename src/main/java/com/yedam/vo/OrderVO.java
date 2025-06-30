@@ -9,7 +9,7 @@ public class OrderVO {
 	private int odNo;
 	private String userId;
 	private int addrNo;
-	private Date odDate;
+	private String odDate;
 	private int amount;
 	private String odName;
 	private String phone;

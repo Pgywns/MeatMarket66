@@ -31,9 +31,18 @@ select board_no,
 from tbl_board
 where board_category = #{boardCategory}
 </select>
-<!-- 로그인한 아이디로 게시글 조회 -->
-<select id="selectBoardToUserId" parameterType="String" resultType="Board">
+<!-- 로그인 내문의 목록 -->
+<select id="selectBoardToUserId" resultType="Board" parameterType="Board">
 select board_no,
+       user_id,
+       board_title,
+       board_content,
+       board_date,
+       board_category,
+       answer
+from tbl_board
+where user_id = #{userId}
+and   board_category = #{boardCategory}
 </select>
 <!-- 문의 카운트 -->
 <select id="BoardToTalCount" parameterType="String" resultType="int">
