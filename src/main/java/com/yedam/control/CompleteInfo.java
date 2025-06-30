@@ -1,6 +1,7 @@
 package com.yedam.control;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -37,11 +38,17 @@ public class CompleteInfo implements Control {
 		
 		OrderVO orderInfo = completeSvc.orderInfo(userId);
 		
-		Date orderDate = orderInfo.getOdDate();
+		String orderDate = orderInfo.getOdDate();
 		String reciveName = orderInfo.getOdName();
 		String phone = orderInfo.getPhone();
 		int amount = orderInfo.getAmount();
 		int addrNo = orderInfo.getAddrNo();
+		
+		/*
+		 * //날짜포맷 SimpleDateFormat formatter = new SimpleDateFormat("yyyy년 MM월 dd일" );
+		 * String formattDate = formatter.format(orderDate);
+		 * System.out.println(formattDate);
+		 */
 		
 		//(배송지) -> addrNo쿼리
 		AddressService addrSvc = new AddressServiceImpl();
