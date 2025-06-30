@@ -13,7 +13,7 @@
   </definition>
   
   <!-- 관리사용자 -->
-  <definition name="admin" template="/WEB-INF/layout/template.jsp">
+  <definition name="admin" template="/WEB-INF/layout/template_a.jsp">
     <put-attribute name="title" value="Tiles tutorial homepage" />
     <put-attribute name="header" value="/WEB-INF/layout/header_a.jsp" />
     <put-attribute name="menu" value="/WEB-INF/layout/menu.jsp" />
@@ -32,6 +32,10 @@
   
   <!-- 마지막 -->
   <definition name="WILDCARD:*/*" extends="user">
+  	<put-attribute name="body" value="/WEB-INF/jsp/{1}/{2}.jsp" />
+  </definition>
+  
+  <definition name="WILDCARD:admin/*/*" extends="admin">
   	<put-attribute name="body" value="/WEB-INF/jsp/{1}/{2}.jsp" />
   </definition>
   

@@ -13,7 +13,6 @@ public class ReviewServiceImpl implements ReviewService{
 	ReviewMapper mapper = sqlSession.getMapper(ReviewMapper.class);  
 	@Override
 	public List<ReviewVO> rvwList(int prdNo) {
-		// TODO Auto-generated method stub
 		return mapper.selectReviewList(prdNo);
 	}
 	@Override
@@ -25,6 +24,13 @@ public class ReviewServiceImpl implements ReviewService{
 	public List<ReviewVO> selectReviewToUserId(String id) {
 		return mapper.selectReviewToUserId(id);
 	}
-
-
+	@Override
+	public boolean addReview(ReviewVO review) {
+		int r = mapper.insertReview(review);
+		if(r == 1) {
+			sqlSession.commit();
+			return true;
+		}
+		return false;
+	}
 }

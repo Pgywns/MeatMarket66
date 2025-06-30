@@ -24,11 +24,7 @@
 						<th scope="col">삭제</th>
 					</tr>
 				</thead>
-				<tbody id="basketBody">
-	<!-- 장바구니 목록출력. -->
-	<!-- 장바구니 목록출력. -->
-	<!-- 장바구니 목록출력. -->
-				</tbody>
+				<tbody id="basketBody"></tbody>
 			</table>
 		</div>
 		<div class="row g-4 justify-content-end pb-3">
@@ -64,11 +60,11 @@
 			<div class="col-8"></div>
 			<div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
 				<input type="checkbox" class="form-check-input bg-primary border-0"
-					id="orderCheck" name="orderCheck" /> <label for="odercheckbox">주문확인</label><br>
+					id="orderCheck" name="orderCheck" /> <label for="orderCheck">주문 상품목록을 확인해주세요.</label>
 				<br>
 				<button
 					class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
-					type="button" onclick="location.href='order.do'">주문계속진행</button>
+					type="button" onclick="javascript:isCartEmptyCheck()">주문계속진행</button>
 			</div>
 		</div>
 	</div>

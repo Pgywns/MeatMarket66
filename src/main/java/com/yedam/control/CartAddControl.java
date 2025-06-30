@@ -22,7 +22,7 @@ public class CartAddControl implements Control {
 		// session에서 로그인 정보가져오기
 		HttpSession session = req.getSession();
 		String userId = (String) session.getAttribute("userId");
-
+		
 		// 파라미터 불러오기
 		String prdNo = req.getParameter("prdNo");
 		String cartQty = req.getParameter("cartQty");
@@ -32,13 +32,13 @@ public class CartAddControl implements Control {
 		cart.setCartQty(Integer.parseInt(cartQty));
 		cart.setPrdNo(Integer.parseInt(prdNo));
 		cart.setUserId(userId);
-		System.out.println(cart.getUserId());
+		
 		CartService svc = new CartServiceImpl();
 
 		if (svc.addCart(cart)) {
-			System.out.println("등록 성공");
+			resp.getWriter().print("{\"retCode\":\"Success\"}");
 		} else {
-			System.out.println("등록 실패");
+			resp.getWriter().print("{\"retCode\":\"Fail\"}");
 		}
 	}
 

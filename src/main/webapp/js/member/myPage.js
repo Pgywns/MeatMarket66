@@ -1,6 +1,47 @@
 /**
  * 
  */
+// 주문 조회
+async function selectOrders() {
+	let data = await fetch('selectOrder.do')
+	let result = await data.json()
+	document.getElementById("orderTable").innerHTML = "";
+	result.forEach(async order => {
+		let template = `
+					<tr onclick="toggleDetail(this)">
+						<td>${order.odNo}</td>
+						<td>${order.addrOne} ${order.addrTwo}</td>
+						<td>${order.amount}원</td>
+						<td>${order.odName}님</td>
+						<td>${order.odDate}</td>
+					</tr>
+					<tr class="detail-row">
+				<td id="orderInfoTd" colspan="5">
+							<div class="detail-content">
+					`;
+		let data = await fetch('selectOrderInfo.do?odNo=' + order.odNo)
+		let result = await data.json()
+		
+		result.forEach(orderInfo => {
+			if (order.odNo == orderInfo.odNo) {
+					template += `
+				<p>${orderInfo.prdName} ${orderInfo.odQty}개 <button class="btn" onclick="location.href='reviewForm.do?prdNo=${orderInfo.prdNo}&prdName=${orderInfo.prdName}'">리뷰쓰기</button></p>
+				`;					
+			}
+		})
+		template += `
+							</div>
+							</td>
+					 </tr>`;
+		document.getElementById("orderTable").insertAdjacentHTML("beforeend", template);
+	})
+}
+
+function toggleDetail(row) {
+	const detailRow = row.nextElementSibling;
+	const content = detailRow.querySelector(".detail-content");
+	content.classList.toggle("open");
+}
 
 /*리뷰 조회 */
 function selectReviews() {
@@ -46,6 +87,27 @@ function selectPoints() {
 		})
 }
 
+// 내 질문 조회
+function selectBoards() {
+	fetch('selectBoard.do')
+		.then(data => data.json())
+		.then(result => {
+			document.getElementById("boardTable").innerHTML = "";
+			result.forEach(board => {
+				let template = `
+					<tr>
+						<td>${board.boardNo}</td>
+						<td>${board.boardCategory}</td>
+						<td>${board.boardTitle}</td>
+						<td>${board.boardContent}</td>
+						<td>${board.boardDate}</td>
+					</tr>
+			`;
+				document.getElementById("boardTable").insertAdjacentHTML("beforeend", template);
+			})
+		})
+}
+
 /* 개인정보 관리 */
 function selectUser() {
 	fetch('selectUser.do')
@@ -86,14 +148,15 @@ function selectAddress() {
 			document.getElementById("addressTable").innerHTML = "";
 			result.forEach(addr => {
 				let template = `
-									<tr>
+									<tr id="addrListTr">
+									<td>${addr.firstAddr === 'true' ? '✔️' : ''}</td>
 									<td>${addr.addrName}</td>
 									<td>${addr.zipCode}</td>
 									<td>${addr.addrOne} ${addr.addrTwo}</td>
 									<td>
 										<input id="inputAddr" type="hidden" value=${addr.addrNo}>
-										<button class="btn-delete" onclick="deleteAddress()">삭제</button>
-										<button class="btn" onclick="updateAddress()">변경</button>
+										<button class="btn-delete" onclick="deleteAddress('${addr.firstAddr}')">삭제</button>
+										<button class="btn" onclick="changeFisrtAddr(${addr.addrNo}, ${addr.firstAddr})">기본 배송지 설정</button>
 									</td>
 								</tr>
 			`;
@@ -114,29 +177,97 @@ function openPopUp(field, labelText) {
 	const inputField = document.getElementById("modalInput");
 	const confirmField = document.getElementById("confirmPwInput");
 	const msgField = document.getElementById("pwMatchMsg");
+	const addressSection = document.getElementById("addressInputs");
 
-	if (field === 'userPw') {
-		inputField.type = "password";
-		confirmField.style.display = "block";
-		confirmField.value = "";
-		msgField.innerText = "";
-	} else {
-		inputField.type = "text";
+	// 배송지 추가인 경우
+	if (field === 'address') {
+		document.getElementById("modalBody").style.width = "600px";
+		document.getElementById("modalBody").style.height = "auto";
+		inputField.style.display = "none";
 		confirmField.style.display = "none";
 		msgField.innerText = "";
-	}
 
-	document.getElementById("popUp").style.display = "block";
+		addressSection.style.display = "block";
+
+		document.getElementById("modalTitle").innerText = "배송지 추가";
+		document.getElementById("modalLabel").style.display = "none";
+	} else {
+		inputField.style.display = "block";
+		inputField.type = (field === 'userPw') ? "password" : "text";
+		confirmField.style.display = (field === 'userPw') ? "block" : "none";
+		confirmField.value = "";
+		msgField.innerText = "";
+
+		addressSection.style.display = "none";
+		document.getElementById("modalLabel").style.display = "block";
+	}
+}
+
+// 다음 주소 api
+function execDaumPostcode() {
+	new daum.Postcode(
+		{
+			oncomplete: function(data) {
+				// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+				// 각 주소의 노출 규칙에 따라 주소를 조합한다.
+				// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+				var addr = ''; // 주소 변수
+
+				//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+				if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+					addr = data.roadAddress;
+				} else { // 사용자가 지번 주소를 선택했을 경우(J)
+					addr = data.jibunAddress;
+				}
+
+				// 우편번호와 주소 정보를 해당 필드에 넣는다.
+				document.getElementById('sample6_postcode').value = data.zonecode;
+				document.getElementById("sample6_address").value = addr;
+				// 커서를 상세주소 필드로 이동한다.
+				document.getElementById("sample6_detailAddress")
+					.focus();
+			}
+		}).open();
 }
 
 function closePopUp() {
+	document.getElementById('popUp').style.display = 'none';
+	document.getElementById('modalInput').value = '';
+	document.getElementById('confirmPwInput').value = '';
+	document.getElementById('pwMatchMsg').innerText = '';
+	document.getElementById('modalLabel').style.display = 'block';
+
 	document.getElementById("popUp").style.display = "none";
+	document.getElementById("modalBody").classList.remove("large"); // 크기 초기화
 }
 
 function confirmEdit() {
 	const newValue = document.getElementById("modalInput").value.trim();
+	const addrName = document.getElementById("addrName").value;
+	const zipCode = document.querySelector('input[name=zipCode]').value;
+	const addrOne = document.querySelector('input[name=addrOne]').value;
+	const addrTwo = document.querySelector('input[name=addrTwo]').value;
+
 	let result = "";
-	if (newValue === "") {
+	if (currentField == 'address') {
+
+		result = "addrName=" + addrName + "&zipCode=" + zipCode + "&addrOne=" + addrOne + "&addrTwo=" + addrTwo;
+		console.log(result);
+
+		fetch('insertAddress.do?' + result)
+			.then(data => data.json())
+			.then(resultData => {
+				if (resultData.retCode == 'Success') {
+					alert("배송지가 추가되었습니다.")
+					closePopUp();
+					location.reload();
+				} else if (resultData.retCode == 'Failure') {
+					alert("올바른 값을 입력해주세요.");
+					return;
+				}
+			})
+	} else if (newValue === "") {
 		alert("값을 입력해주세요.");
 		return;
 	}
@@ -156,18 +287,20 @@ function confirmEdit() {
 		}
 	}
 
-	fetch('updateUser.do?' + result)
-		.then(data => data.json())
-		.then(resultData => {
-			if (resultData.retCode == 'Success') {
-				alert("성공적으로 변경하였습니다.")
-				closePopUp();
-				location.reload();
-			} else if (resultData.retCode == 'Failure') {
-				alert("올바른 값을 입력해주세요.");
-				return;
-			}
-		})
+	if (currentField == 'userName' || currentField == 'userPw' || currentField == 'userPhone') {
+		fetch('updateUser.do?' + result)
+			.then(data => data.json())
+			.then(resultData => {
+				if (resultData.retCode == 'Success') {
+					alert("성공적으로 변경하였습니다.")
+					closePopUp();
+					location.reload();
+				} else if (resultData.retCode == 'Failure') {
+					alert("올바른 값을 입력해주세요.");
+					return;
+				}
+			})
+	}
 }
 
 // 비밀번호 체크 실시간 여부
@@ -191,19 +324,45 @@ function checkPwMatch() {
 }
 
 // 배송지 삭제
-function deleteAddress() {
+function deleteAddress(firstAddr) {
 	let addrNo = document.getElementById("inputAddr").value;
-	
+	console.log(firstAddr)
+	if (firstAddr === 'true') {
+		alert("기본 배송지는 삭제할 수 없습니다.")
+		return;
+	}
+
 	fetch('deleteAddress.do?addrNo=' + addrNo)
-	.then(data => data.json())
-	.then(result => {
+		.then(data => data.json())
+		.then(result => {
+			if (result.retCode == 'Success') {
+				alert("성공적으로 삭제하였습니다.");
+				document.querySelector("#addrListTr").remove();
+				return;
+			} else if (result.retCode == 'Failure') {
+				alert("삭제하지 못하였습니다. 다시 시도해 주세요.");
+				return;
+			}
+		})
+}
+
+// 기본 배송지 설정
+async function changeFisrtAddr(addrNo, firstAddr) {
+	let data = await fetch('changeFalse.do');
+	let result = await data.json();
+	if (result.retCode == 'Success') {
+		let data = await fetch('changeFirstAddr.do?addrNo=' + addrNo + '&firstAddr=' + firstAddr)
+		let result = await data.json();
 		if (result.retCode == 'Success') {
-			alert("성공적으로 삭제하였습니다.");
-			location.reload;
+			alert("기본 배송지로 설정하였습니다.");
+			showSection('info');
 			return;
 		} else if (result.retCode == 'Failure') {
-			alert("삭제하지 못하였습니다. 다시 시도해 주세요.");
+			alert("기본 배송지로 설정하지 못하였습니다. 다시 시도해 주세요.");
 			return;
 		}
-	})
+	} else if (result.retCode == 'Failure') {
+		alert("true를 false로 바꾸기 실패")
+		return;
+	}
 }

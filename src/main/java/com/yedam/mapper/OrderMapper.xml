@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.mapper.OrderMapper">
+
+	<!-- 회원정보내 기본주소 -->
+	<select id="selectFirstAddress" parameterType="String" resultType="Address">
+		select addr_no,
+			   zip_code,
+			   addr_one,
+			   addr_two
+		from tbl_addr
+		where user_id = #{userId}
+		and first_addr='true'
+	</select>
+	
+	<!-- 주문테이블등록 -->
+	<insert id="insesrtOrderForm" parameterType="Order">
+		insert into tbl_order (user_id, addr_no, amount, od_name, phone)
+	    values (#{userId}, #{addrNo}, #{amount}, #{odName}, #{phone})
+	</insert>
+	<!-- 주문테이블 번호 -->
+	
+	<select id="selectOrderNo" resultType="int">
+		select max(od_no)
+		from tbl_order
+		where user_id = #{userId}
+	</select>
+	
+	<!-- 주문목록출력 -->
+	<select id="selectOrderList" resultType="Cart">
+		select prd_no,
+               cart_qty
+        from tbl_cart
+        where user_id = #{userId}
+	</select>
+	
+	<!-- 주문상세등록 -->
+	<insert id="insertOrderInfo" parameterType="map">
+		insert into tbl_order_info (od_no, prd_no, od_qty)
+        values (#{odNo}, #{prdNo}, #{orderQty})
+	</insert>
+	
+	<!-- 출고재고등록 -->
+	<insert id="insertOutStock" parameterType="map">
+		insert into tbl_stock (prd_no, prd_stock)
+	    values (#{prdNo}, #{orderQty})
+	</insert>
+	
+	<!-- 주문 카운트 -->
+	<select id="selectOrderCount" parameterType="String">
+		select COUNT(*)
+		from   tbl_order
+		where  user_id = #{userId}
+	</select>
+	
+	<!-- 로그인한 아이디로 주문 조회 -->
+	<select id="selectUserOrder" parameterType="String" resultType="Order">
+		select o.od_no,
+		       o.user_id,
+		       o.addr_no,
+		       o.od_date,
+		       o.amount,
+		       o.od_name,
+		       o.phone,
+		       a.addr_one,
+		       a.addr_two
+		from   tbl_order o join tbl_addr a
+		on    o.addr_no = a.addr_no
+		where  o.user_id = #{userId}
+		order by od_no asc
+	</select>
+
+	<!-- 포인트적립 -->
+	<insert id="insertAddPoint" parameterType="map">
+		insert into tbl_point (user_id, point)
+	    values (#{userId}, #{addPoint})
+	</insert>
+
+</mapper>

@@ -1,0 +1,39 @@
+package com.yedam.control;
+
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.yedam.common.Control;
+import com.yedam.service.OrderService;
+import com.yedam.service.OrderServiceImpl;
+import com.yedam.vo.AddressVO;
+
+public class DispayAddressControl implements Control {
+
+	@Override
+	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/json;charset=utf-8");
+
+		HttpSession session = req.getSession();
+		String userId = (String) session.getAttribute("userId");
+		
+		//아이디 전달해서 조건에 true이면 기본배송지 조회하는 orderservice 만들기
+		OrderService svc = new OrderServiceImpl();
+		
+		List<AddressVO> firstAdd = svc.findAddress(userId);
+		
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		String json = gson.toJson(firstAdd);
+		
+		//데이터전달
+		resp.getWriter().print(json);		
+	}
+
+}

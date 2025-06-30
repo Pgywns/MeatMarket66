@@ -8,6 +8,7 @@ import com.yedam.common.DataSource;
 import com.yedam.common.SearchDTO;
 import com.yedam.mapper.ProductMapper;
 import com.yedam.vo.ProductVO;
+import com.yedam.vo.StockVO;
 
 public class ProductServiceImpl implements ProductService {
 
@@ -29,9 +30,9 @@ public class ProductServiceImpl implements ProductService {
 
 	// 카테고리
 	@Override
-	public List<ProductVO> productListCategory(String prdSort) {
+	public List<ProductVO> productListCategory(int page, String prdSort) {
 		
-		return mapper.selectCategory(prdSort);
+		return mapper.selectCategory(page, prdSort);
 	}
 	// 카테고리 수량체크
 	@Override
@@ -47,12 +48,69 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductVO> productSearch(String keyword) {
+	public List<ProductVO> productSearch(String keyword ,int page) {
 		
-		return mapper.selectSearch(keyword);
+		return mapper.selectSearch(keyword, page);
 	}
 
+	@Override
+	public int productPage() {
+		
+		return mapper.selectCountPage();
+	}
 
+	@Override
+	public boolean addProduct(ProductVO product) {
+		int r = mapper.insertProduct(product);
+		
+		if (r == 1) {
+			sqlSession.commit();
+			return true;
+		}
+		
+		return false;
+	}
 
+	@Override
+	public boolean firstStock(int prdStock) {
+		int r = mapper.firstStock(prdStock);
+		
+		if (r == 1) {
+			sqlSession.commit();
+			return true;
+		}
+		
+		return false;
+	}
+
+	@Override
+	public List<ProductVO> stockList() {
+		return mapper.stockList();
+	}
+
+	@Override
+	public boolean insertStock(StockVO stock) {
+		int r = mapper.insertStock(stock);
+		
+		if (r == 1) {
+			sqlSession.commit();
+			return true;
+		}
+		
+		return false;
+	}
+
+	// 상품 검색 목록 페이징
+	@Override
+	public int productSearchPage(String keyword) {
+		
+		return mapper.selectCountSearch(keyword);
+	}
+
+	@Override
+	public int checkStockByPrdNO(int prdNo) {
+		
+		return mapper.selectStockByPrdNo(prdNo);
+	}
 
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.yedam.common.Control;
 import com.yedam.service.MainService;
@@ -18,10 +19,13 @@ public class MainControl implements Control {
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
+		HttpSession session = req.getSession();
+		
 		// 인기상품
 		MainService svc = new MainServiceImpl();
 		List<ProductVO> list = svc.hotProductList();
 		req.setAttribute("Hlist", list);
+		session.setAttribute("Hlist", list);
 		
 		// 리뷰 목록
 		List<ReviewVO> listR = svc.mainReview();
@@ -34,8 +38,18 @@ public class MainControl implements Control {
 		}
 		
 		req.setAttribute("Rlist", listR);
+		session.setAttribute("Rlist", listR);
 		
-		req.getRequestDispatcher("user/main.tiles").forward(req, resp);
+		String auth = null;
+		if (session.getAttribute("auth") != null) {
+			auth = (String) session.getAttribute("auth");			
+		}
+		
+		if (auth == null || auth.equals("user")) {
+			req.getRequestDispatcher("user/main.tiles").forward(req, resp);
+		} else if (auth != null || auth.equals("admin")) {
+			req.getRequestDispatcher("admin/main.tiles").forward(req, resp);
+		}
 	}
 
 }

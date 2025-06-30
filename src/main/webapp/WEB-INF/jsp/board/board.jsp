@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<!-- jsp->js -->	
+<input type="hidden" id="loginUser" value="<%= session.getAttribute("userId") %>">
 <div class="container-fluid page-header py-5">
 	<h1 class="text-center text-white display-6">고객센터</h1>
 </div>
@@ -8,7 +9,7 @@
 	<div class="container py-5">
 		<!-- click이벤트 발생 -->
 		<nav class="">
-		<button class="btn btn-dark" onclick="btnclickinsert()">1:1문의</button>
+		<button class="btn btn-dark" id="insertBtn">1:1문의</button>
 			<div class="nav nav-tabs mb-3 w-75" id="boardLis">
 				<button class="nav-link active border-white border-bottom-0"
 					type="button" role="tab" id="nav-about-tab" data-bs-toggle="tab"
@@ -31,9 +32,9 @@
 					data-bs-target="#nav-mission" aria-controls="nav-mission"
 					aria-selected="false" onclick="javascript:svc.btnClickList('회원');">회원</button>
 				<button class="nav-link border-white border-bottom-0" type="button"
-					role="tab" id="nav-mission-tab" data-bs-toggle="tab"
+					role="tab" data-bs-toggle="tab"
 					data-bs-target="#nav-mission" aria-controls="nav-mission"
-					aria-selected="false" onclick="">내 문의</button>
+					aria-selected="false" id="userBtn" onclick="javascript:svc.btnClickList('내문의');">내 문의</button>
 			</div>
 		</nav>
 	</div>

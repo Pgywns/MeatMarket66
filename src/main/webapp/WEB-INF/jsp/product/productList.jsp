@@ -21,7 +21,7 @@
 <!-- Fruits Shop Start-->
 <div class="container-fluid fruite py-5">
 	<div class="container py-5">
-		<h1 class="mb-4">탱탱한 상품들</h1>
+		<h1 class="mb-4">당신을 감동시킬 상품</h1>
 		<div class="row g-4">
 			<div class="col-lg-12">
 				<div class="row g-4">
@@ -58,7 +58,7 @@
 										<c:forEach var="item" items="${cList }">
 											<li>
 												<div class="d-flex justify-content-between fruite-name">
-													<a href="#"
+													<a 
 														onclick="javascript:svc.categoryList('${item.prdSort}')"><i
 														class="fas fa-apple-alt me-2"></i>${item.prdSort }</a> <span>${item.prdCount }</span>
 												</div>
@@ -102,11 +102,7 @@
 						</div>
 						<div class="col-12">
 							<div class="pagination d-flex justify-content-center mt-5">
-								<a href="#" class="rounded">&laquo;</a> <a href="#"
-									class="active rounded">1</a> <a href="#" class="rounded">2</a>
-								<a href="#" class="rounded">3</a> <a href="#" class="rounded">4</a>
-								<a href="#" class="rounded">5</a> <a href="#" class="rounded">6</a>
-								<a href="#" class="rounded">&raquo;</a>
+								
 							</div>
 						</div>
 					</div>
@@ -117,6 +113,6 @@
 </div>
 
 <script src="js/product/productList.js"></script>
-
+<script src="js/product/productPage.js"></script>
 <!-- Fruits Shop End-->
 

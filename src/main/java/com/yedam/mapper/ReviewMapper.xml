@@ -30,5 +30,12 @@
 		from tbl_review r join tbl_product p
         on r.prd_no = p.prd_no
 		where user_id = #{userId}
+		order by rvw_no asc
 	</select>
+	
+	<insert id="insertReview" parameterType="Review">
+		insert into tbl_review (prd_no, user_id, rvw_content, rvw_image)
+		values (#{prdNo}, #{userId}, #{rvwContent}, #{rvwImage})
+	</insert>
+	
 </mapper>
