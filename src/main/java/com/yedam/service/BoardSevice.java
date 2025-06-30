@@ -10,10 +10,10 @@ import com.yedam.vo.ReviewVO;
 public interface BoardSevice {
 	public List<BoardVO> boardList();
 	public List<BoardVO> clickboardList(String boardCategory);
+	//내문의
+	public List<BoardVO> selectMyBoard(BoardVO board);
 	// 글 추가
 	public boolean insertBoard(String userId, String boardTitle, String boardContent,String boardCategory);
-	//로그인아이디로 게시글 조회
-	public List<ReviewVO> selectBoardToUserId(String userId);
 	
 	// 내 문의 카운트
 	public int BoardToTalCount(String id);
