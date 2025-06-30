@@ -1,7 +1,6 @@
 /**
  * productList.js 
  */
-
 let prdSort = "df";
 
 function renderProduct(product) {
@@ -31,7 +30,7 @@ function renderProduct(product) {
 }
 
 // 기능		
-const svc = {
+export const svc = {
 	// 상품 목록 (기본)
 	// 상품 전체 리스트
 	productList: async function(page) {
