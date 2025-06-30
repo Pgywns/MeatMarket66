@@ -55,14 +55,14 @@ const svc = {
 	                    aria-expanded="false"
 	                    aria-controls="my-collapseOne${idx}"
 	                    style="height: 55px">
-	                    [${board.boardCategory}] ${board.boardTitle}
+	                    [${board.boardCategory}] 제목: ${board.boardTitle} 내용: ${board.boardContent}
 	                  </button>
 	                </h2>
 	                <div id="my-collapseOne${idx}" class="accordion-collapse collapse"
 	                  aria-labelledby="my-heading${idx}"
 	                  data-bs-parent="#accordionFlushExample">
 	                  <div class="accordion-body w-50">
-	                    <p>${board.boardContent}</p>
+	                    <p>답변: ${board.answer}</p>
 	                  </div>
 	                </div>
 	              </div>`;

@@ -31,6 +31,7 @@
                                     <a href="stockList.do" class="dropdown-item">상품목록</a>
                                 </div>
                             </div>
+                            <a href="boardAnswer.do" class="nav-item nav-link">문의 답변</a>
                             <a href="logout.do" class="nav-item nav-link">Logout</a>
                         </div>
                     </div>

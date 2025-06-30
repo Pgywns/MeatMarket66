@@ -19,4 +19,7 @@ public interface BoardSevice {
 	public int BoardToTalCount(String id);
 	// 내 문의 전체조회
 	public List<BoardVO> selectBoards(String id);
+	
+	// 답변 등록
+	public boolean insertAnswer(BoardVO board);
 }

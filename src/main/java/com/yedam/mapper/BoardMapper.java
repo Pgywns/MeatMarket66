@@ -20,4 +20,7 @@ public interface BoardMapper {
 	public int BoardToTalCount(String id);
 	// 내문의 전체조회
 	public List<BoardVO> selectBoards(String id);
+	
+	// 답변 등록
+	public int insertAnswer(BoardVO board);
 }

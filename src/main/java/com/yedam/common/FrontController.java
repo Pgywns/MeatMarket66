@@ -14,7 +14,9 @@ import com.yedam.control.AddProductControl;
 import com.yedam.control.AddProductFormControl;
 import com.yedam.control.AddReviewControl;
 import com.yedam.control.AddressPop;
+import com.yedam.control.AdminBoardListControl;
 import com.yedam.control.AdminProductListControl;
+import com.yedam.control.BoardAnswerControl;
 import com.yedam.control.BoardControl;
 import com.yedam.control.BoardFormControl;
 import com.yedam.control.BoardListControl;
@@ -41,6 +43,7 @@ import com.yedam.control.FindAccountControl;
 import com.yedam.control.FindIdControl;
 import com.yedam.control.FindPasswordControl;
 import com.yedam.control.InsertAddressControl;
+import com.yedam.control.InsertAnswerControl;
 import com.yedam.control.InsertStockControl;
 import com.yedam.control.LoginControl;
 import com.yedam.control.LogoutControl;
@@ -155,6 +158,9 @@ public class FrontController extends HttpServlet {
 		map.put("/stockList.do", new StockListControl());
 		map.put("/adminProductList.do", new AdminProductListControl());
 		map.put("/insertStock.do", new InsertStockControl());
+		map.put("/boardAnswer.do", new BoardAnswerControl());
+		map.put("/adminBoardList.do", new AdminBoardListControl());
+		map.put("/insertAnswer.do", new InsertAnswerControl());
 		
 		// 고객센터
 		map.put("/board.do", new BoardControl());
@@ -162,6 +168,7 @@ public class FrontController extends HttpServlet {
 		map.put("/boardinsert.do", new BoardinsertControl());
 		map.put("/myBoardList.do", new MyBoardListControl());
 		map.put("/boardForm.do", new BoardFormControl());
+		
 		//리뷰
 		map.put("/reviewForm.do", new ReviewFormControl());
 		map.put("/addReview.do", new AddReviewControl());

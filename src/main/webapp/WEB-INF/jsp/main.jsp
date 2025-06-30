@@ -179,7 +179,7 @@
 						</div>
 						<div class="d-flex align-items-center flex-nowrap">
 							<div class="bg-secondary rounded">
-								<img src="img/${review.rvwImage }" class="img-fluid rounded"
+								<img src="img/review/${review.rvwImage }" class="img-fluid rounded"
 									style="width: 100px; height: 100px;" alt="">
 							</div>
 							<div class="ms-4 d-block">
