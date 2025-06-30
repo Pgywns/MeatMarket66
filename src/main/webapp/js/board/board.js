@@ -61,10 +61,22 @@ const svc = {
 	                  aria-labelledby="my-heading${idx}"
 	                  data-bs-parent="#accordionFlushExample">
 	                  <div class="accordion-body w-50">
-	                    <p>${board.boardContent}</p>
-	                  </div>
-	                </div>
-	              </div>`;
+					  	`;
+						
+						if (board.answer != null) {
+							template += `
+								<p>답변: ${board.answer}</p>
+							`;			
+						} else {
+							template += `
+								<p>아직 답변이 없습니다.<p>
+							`;
+						}
+						template += `                
+		              </div>
+		            </div>
+		          </div>
+				  `;
 					document.querySelector('#boardCategory').insertAdjacentHTML('beforeend', template);
 					//document.querySelector('button.accordion-button').click();
 				});
