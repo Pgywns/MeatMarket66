@@ -5,7 +5,7 @@ let prdSort = "df";
 
 
 // 기능		
-export const svc = {
+const svc = {
 	// 상품 목록 (기본)
 	// 상품 전체 리스트
 	productList: async function(page) {

@@ -1,7 +1,6 @@
 /**
  * pagination;
  */
-import svc from '/js/productList.js';
 
 // 목록 첫 호출
 
@@ -9,6 +8,7 @@ svc.productList(1);
 paginationAll(1);
 svc.searchList(1);
 pageEvent();
+svc.optionList(1);
 
 
 // 전체  상품 페이지네이션
