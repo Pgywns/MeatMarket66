@@ -9,7 +9,7 @@
 	<div class="container py-5">
 		<!-- click이벤트 발생 -->
 		<nav class="">
-		<button class="btn btn-dark" id="insertBtn">1:1문의</button>
+		<button class="btn btn-dark" id="insertBtn" onclick="boardForm.do">1:1문의</button>
 			<div class="nav nav-tabs mb-3 w-75" id="boardLis">
 				<button class="nav-link active border-white border-bottom-0"
 					type="button" role="tab" id="nav-about-tab" data-bs-toggle="tab"
