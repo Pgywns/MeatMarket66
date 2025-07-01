@@ -93,7 +93,7 @@ function myPointCheck(){
 	.then(data => {
 		myPoint = data;
 		let myPointEl = document.querySelector('#myPoint');
-		myPointEl.textContent = myPoint;
+		myPointEl.textContent = Number(myPoint).toLocaleString() + 'P';
 	})
 }
 
@@ -118,7 +118,7 @@ function usePoint(){
 	
 	//사용적립금반영
 	let printUsePointEl = document.querySelector('#myPointPreview');
-	printUsePointEl.textContent = usingPoint + " p";
+	printUsePointEl.textContent = usingPoint.toLocaleString() + " p";
 	
 	//subtotal금액가지고 오기
 	let subTotalEl = document.querySelector('.subTotal')

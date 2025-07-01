@@ -101,7 +101,7 @@ function selectPoints() {
 				const template = `
 				          <tr>
 				            <td>${point.odDate}</td>
-				            <td style="color: ${pointColor}; font-weight: bold;">${pointText + 'P'}</td>
+				            <td style="color: ${pointColor}; font-weight: bold;">${Number(pointText).toLocaleString() + 'P'}</td>
 				          </tr>
 				        `;
 
@@ -416,3 +416,7 @@ async function changeFisrtAddr(addrNo, firstAddr) {
 		return;
 	}
 }
+
+let price = document.querySelector('#totalPoint');
+let price1 = Number(price.innerText).toLocaleString();
+price.innerText = price1 + "P";

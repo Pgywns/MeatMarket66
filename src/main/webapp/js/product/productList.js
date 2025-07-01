@@ -15,7 +15,7 @@ function makeProduct(product) {
 						<h6>${product.prdName}</h6>
 						<p>${product.prdContent}</p>
 						<div class="d-flex justify-content-between flex-lg-wrap">
-							<p class="text-dark fs-5 fw-bold mb-0">${product.prdPrice}원</p>
+							<p class="text-dark fs-5 fw-bold mb-0">${(product.prdPrice).toLocaleString()}원</p>
 							<a onclick="javascript:productCart(${product.prdNo});" id="cartbtn" class="btn border border-secondary rounded-pill px-3 text-primary">
 								<i class="fa fa-shopping-bag me-2 text-primary"></i>장바구니
 							</a>

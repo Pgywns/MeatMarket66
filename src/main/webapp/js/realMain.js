@@ -111,3 +111,10 @@ async function  productCart(productNo){
 	}
 };
 	
+let priceElements = document.querySelectorAll('#hotProduct');
+
+priceElements.forEach((el) => {
+    let raw = el.textContent;
+    let formatted = Number(raw).toLocaleString();
+	el.textContent = formatted + "원";
+});

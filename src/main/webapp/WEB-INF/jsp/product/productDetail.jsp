@@ -32,7 +32,7 @@
 						<h4 class="fw-bold mb-3 mt-3" style="font-size: 30px;">${prdName }</h4>
 						<p class="mb-3 mt-2" style="font-size: 20px;">Category:
 							${prdSort }</p>
-						<h5 class="fw-bold mb-4 mt-2" style="font-size: 28px;">${prdPrice }원</h5>
+						<h5 class="fw-bold mb-4 mt-2" style="font-size: 28px;" id="prdPrice">${prdPrice }</h5>
 						<p class="mb-4" style="font-size: 20px;">${prdContent }</p>
 
 						<div class="input-group quantity mt-5"
