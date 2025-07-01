@@ -91,7 +91,7 @@ body {
 %>
 
 <div class="container-fluid page-header py-5">
-	<h1 class="text-center text-white display-6">Review</h1>
+	<h1 class="text-center text-white display-6">리뷰 작성</h1>
 </div>
 <div class="container-fluid py-5">
 	<div class="container">
