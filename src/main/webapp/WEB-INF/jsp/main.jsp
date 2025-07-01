@@ -175,7 +175,7 @@
 							class="fa fa-quote-right fa-2x text-secondary position-absolute"
 							style="bottom: 30px; right: 0;"></i>
 						<div class="mb-4 pb-4 border-bottom border-secondary">
-							<p class="mb-0">${review.rvwContent }</p>
+							<p class="mb-0" style="height: 48px;">${review.rvwContent }</p>
 						</div>
 						<div class="d-flex align-items-center flex-nowrap">
 							<div class="bg-secondary rounded">
