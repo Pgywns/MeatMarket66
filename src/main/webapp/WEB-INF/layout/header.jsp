@@ -25,7 +25,9 @@
                         <div class="navbar-nav mx-auto">
                             <a href="proudctList.do" class="nav-item nav-link">쇼핑하기</a>            
                             <a href="board.do" class="nav-item nav-link">고객센터</a>
-                            <a href="logout.do" class="nav-item nav-link">로그아웃</a>
+                            <c:if test="${userId != null}">
+                            	<a href="logout.do" class="nav-item nav-link">로그아웃</a>
+                			</c:if>
                         </div>
                         <div class="d-flex m-3 me-0">
                             <a onclick="javascript:cartPage('${userId }');" class="position-relative me-4 my-auto">
