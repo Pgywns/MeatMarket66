@@ -10,7 +10,7 @@
 </style>
 <!-- Single Page Header start -->
 <div class="container-fluid page-header py-5">
-	<h1 class="text-center text-white display-6">Shop Detail</h1>
+	<h1 class="text-center text-white display-6">상품 상세</h1>
 </div>
 <!-- Single Page Header End -->
 <input type="hidden" id="prdSort" value="${prdSort }">

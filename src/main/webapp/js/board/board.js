@@ -24,7 +24,7 @@ const svc = {
 	              <div id="flush-collapseOne${idx}" class="accordion-collapse collapse"
 	                aria-labelledby="flush-heading${idx}"
 	                data-bs-parent="#accordionExample">
-	                <div class="accordion-body w-50">
+	                <div class="accordion-body w-100">
 	                  <p>${board.boardContent}</p>
 	                </div>
 	              </div>
@@ -46,6 +46,9 @@ const svc = {
 			.then(result => {
 				document.querySelector('#boardCategory').innerHTML = "";
 				result.forEach((board, idx) => {
+					if (board.userId == 'admin') {
+						return;
+					}
 					let template = ` <div class="accordion-item" id="myboard${idx}">
 	                <h2 class="accordion-header" id="my-heading${idx}">
 	                  <button class="accordion-button collapsed" type="button"
@@ -60,7 +63,7 @@ const svc = {
 	                <div id="my-collapseOne${idx}" class="accordion-collapse collapse"
 	                  aria-labelledby="my-heading${idx}"
 	                  data-bs-parent="#accordionFlushExample">
-	                  <div class="accordion-body w-50">
+	                  <div class="accordion-body w-100">
 					  	`;
 						
 						if (board.answer != null) {

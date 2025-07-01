@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- jsp->js -->	
 <input type="hidden" id="loginUser" value="<%= session.getAttribute("userId") %>">
 <div class="container-fluid page-header py-5">
@@ -9,7 +10,14 @@
 	<div class="container py-5">
 		<!-- click이벤트 발생 -->
 		<nav class="">
-		<button class="btn btn-dark" id="insertBtn" onclick="boardForm.do">1:1문의</button>
+		<c:choose>
+			<c:when test="${userId == 'admin'}">
+				<button class="btn btn-dark" id="insertBtn" onclick="boardForm.do">등록하기</button>
+			</c:when>
+			<c:otherwise>
+				<button class="btn btn-dark" id="insertBtn" onclick="boardForm.do">1:1문의</button>
+			</c:otherwise>
+		</c:choose>
 			<div class="nav nav-tabs mb-3 w-75" id="boardLis">
 				<button class="nav-link active border-white border-bottom-0"
 					type="button" role="tab" id="nav-about-tab" data-bs-toggle="tab"
@@ -26,7 +34,7 @@
 				<button class="nav-link border-white border-bottom-0" type="button"
 					role="tab" id="nav-mission-tab" data-bs-toggle="tab"
 					data-bs-target="#nav-mission" aria-controls="nav-mission"
-					aria-selected="false" onclick="javascript:svc.btnClickList('이벤트');">변경 / 취소 / 반품</button>
+					aria-selected="false" onclick="javascript:svc.btnClickList('변경/취소/반품');">변경 / 취소 / 반품</button>
 				<button class="nav-link border-white border-bottom-0" type="button"
 					role="tab" id="nav-mission-tab" data-bs-toggle="tab"
 					data-bs-target="#nav-mission" aria-controls="nav-mission"

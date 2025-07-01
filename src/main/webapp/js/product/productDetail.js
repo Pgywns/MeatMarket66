@@ -94,8 +94,12 @@ function review(prdNo) {
 								<p>${review.rvwContent}</p>
 							</div>
 						</div>
-						<img src="img/review/${review.rvwImage}" style="width:300px; height:300px; margin-bottom: 80px;"/>
-							`;
+						`;
+						if (review.rvwImage != null) {
+							str += `
+								<img src="img/review/${review.rvwImage}" style="width:300px; height:300px; margin-bottom: 80px;"/>
+								`;	
+						}
 
 					document.querySelector('#reviewBox').insertAdjacentHTML('beforeend', str);
 				})
