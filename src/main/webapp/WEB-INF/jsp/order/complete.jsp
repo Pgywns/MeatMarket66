@@ -5,7 +5,7 @@
 
 <!-- 헤더 -->
 <div class="container-fluid page-header py-5">
-	<h1 class="text-center text-white display-6">Order Complete</h1>
+	<h1 class="text-center text-white display-6">주문 완료</h1>
 </div>
 
 <!-- 본문 -->
