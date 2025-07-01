@@ -40,7 +40,7 @@ tr.detail-row td {
 			</div>
 			<div class="summary-item">
 				<div>적립금</div>
-				<div>${totalPoint }원</div>
+				<div id="totalPoint">${totalPoint }</div>
 			</div>
 			<div class="summary-item">
 				<div>문의</div>

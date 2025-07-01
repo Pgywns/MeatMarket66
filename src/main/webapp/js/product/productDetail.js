@@ -150,3 +150,7 @@ async function addCart(orderChk) {
 		}
 	} 
 }
+
+let price = document.querySelector('#prdPrice');
+let price1 = Number(price.textContent).toLocaleString();
+price.textContent = price1 + "원";
